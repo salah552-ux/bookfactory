@@ -96,7 +96,23 @@ If eligible, provide:
 - Module 2: Chapter preview / key benefits visual
 - Module 3: Author story module
 
-### 9. Pre-Publication Checklist
+### 9. Distribution Decision
+
+Before finalising the listing, confirm the distribution strategy and flag anything in the listing that needs to change based on it:
+
+- **KDP Select (exclusive):** DRM recommended on, KU enrolment confirmed, wide platforms NOT yet uploaded
+- **Wide from day one:** DRM off recommended, confirm Draft2Digital upload scheduled, IngramSpark set up for print if applicable
+- **After 90-day Select window:** Note exact date to go wide, list platforms to upload to via Draft2Digital
+
+Platforms checklist for wide release:
+- [ ] Draft2Digital (Apple Books, Kobo, B&N, Scribd, Tolino)
+- [ ] Kobo Writing Life (direct — better royalty rate than D2D for Kobo)
+- [ ] Google Play Books (direct upload)
+- [ ] IngramSpark (print — $49 setup, reaches bookstores + libraries)
+- [ ] ACX or Findaway Voices (audiobook — if applicable)
+- [ ] Payhip or Gumroad (direct PDF/epub sales link)
+
+### 10. Pre-Publication Checklist
 - [ ] Title confirmed and available (search Amazon before submitting)
 - [ ] Description proofread and HTML validated
 - [ ] All 7 keywords entered (no duplicates with title)

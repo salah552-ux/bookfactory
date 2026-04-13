@@ -86,7 +86,37 @@ Each: Headline (150 chars) + Body (400 chars)
 - Series teaser strategy
 - Email list building from readers
 
-### 9. Series & Back-Catalog Strategy
+### 9. Distribution Strategy
+
+Make a clear recommendation on KDP Select (exclusive) vs. Wide distribution, specific to this book's genre and audience. This decision must be made BEFORE launch.
+
+**Assess and recommend:**
+
+| Platform | Include? | Why / Why not |
+|----------|----------|---------------|
+| Amazon KDP | Always | Primary channel |
+| Draft2Digital (Apple, Kobo, B&N, Scribd) | Yes/No | Depends on Select decision |
+| IngramSpark (print to bookstores/libraries) | Yes/No | Worth $49 setup for non-fiction |
+| Kobo Writing Life (direct) | Yes/No | Strong for fantasy/international |
+| Google Play Books (direct) | Yes/No | Android + emerging markets |
+| ACX → Audible (audiobook) | Yes/No | Non-fiction converts well |
+| Findaway Voices (wide audio) | Yes/No | If not going ACX exclusive |
+| Payhip / Gumroad (direct PDF sales) | Yes/No | High margin, health audiences |
+| Royal Road (serialized fiction) | Yes/No | Fantasy audience building only |
+| Patreon (chapter subscriptions) | Yes/No | If author has existing audience |
+| Substack (health content → email list) | Yes/No | Non-fiction pre-launch only |
+
+**KDP Select vs. Wide decision framework:**
+- **Health / non-fiction:** Recommend Select for first 90 days (KU income + promotional tools), then go wide via Draft2Digital
+- **Fantasy / fiction:** Recommend wide from day one (Kobo + Apple Books capture large fantasy readership outside Amazon)
+- **Business / self-help:** Depends on audience — corporate buyers use Apple Books; entrepreneurship skews Amazon
+
+**Direct sales channel:**
+- Always recommend Payhip or Gumroad for a direct sales link
+- Suggest one lead magnet (free bonus PDF) to bundle with direct sales to capture email address
+- Direct sales margin: 95%+ vs. 35–70% on Amazon
+
+### 10. Series & Back-Catalog Strategy
 - Should this be Book 1 of a series? (recommendation)
 - Reader magnet idea (free bonus to build email list)
 - Cross-promotion opportunity with other books in catalog

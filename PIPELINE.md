@@ -26,6 +26,15 @@ YOUR IDEA (1 sentence)
 [7] publisher-agent     → KDP listing: title, description, keywords, categories
         ↓
 📦 UPLOAD TO KDP
+        ↓
+[8] DISTRIBUTION (choose strategy)
+    KDP Select (90 days exclusive) → then go wide
+    Wide from day one via Draft2Digital
+        ↓
+    Platforms: Apple Books · Kobo · B&N · Scribd · Google Play
+    Print:     IngramSpark (bookstores + libraries)
+    Audio:     ACX → Audible / Findaway Voices (wide)
+    Direct:    Payhip or Gumroad (95% margin)
 ```
 
 ---
@@ -91,3 +100,8 @@ BookFactory/
 | Midjourney | AI cover art | ~$10/mo |
 | KDP Account | Upload and sell | Free |
 | Publisher Rocket | Verify keyword volumes | ~$97 one-time |
+| Draft2Digital | Wide ebook distribution (Apple, Kobo, B&N, Scribd) | Free (10% cut) |
+| IngramSpark | Print distribution to bookstores + libraries | $49/title |
+| ACX | Audiobook → Audible/Amazon/iTunes | Free (royalty share or fee) |
+| Findaway Voices | Wide audiobook distribution (Spotify, libraries) | Free (non-exclusive) |
+| Payhip | Direct sales page (PDF/epub) — 95% margin | Free tier available |
