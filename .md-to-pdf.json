@@ -1,0 +1,16 @@
+{
+  "stylesheet": "c:/Users/salah/BookFactory/pdf-style.css",
+  "pdf_options": {
+    "format": "Letter",
+    "margin": {
+      "top": "0.85in",
+      "bottom": "0.85in",
+      "left": "1in",
+      "right": "1in"
+    },
+    "displayHeaderFooter": true,
+    "headerTemplate": "<style>* { font-family: 'Lato', Helvetica, sans-serif; font-size: 8pt; color: #888; } .header-wrap { width: 100%; display: flex; justify-content: space-between; padding: 0 1in; box-sizing: border-box; border-bottom: 0.5pt solid #ccc; padding-bottom: 4px; } </style><div class='header-wrap'><span>FIX YOUR GUT FOR GOOD</span><span class='title'></span></div>",
+    "footerTemplate": "<style>* { font-family: 'Lato', Helvetica, sans-serif; font-size: 8pt; color: #888; } .footer-wrap { width: 100%; display: flex; justify-content: center; padding: 0 1in; box-sizing: border-box; } </style><div class='footer-wrap'><span class='pageNumber'></span></div>",
+    "printBackground": true
+  }
+}

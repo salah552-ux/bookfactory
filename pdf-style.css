@@ -1,0 +1,186 @@
+/* BookFactory — KDP-style PDF stylesheet */
+
+@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap');
+
+:root {
+  --body-font: 'Lora', Georgia, serif;
+  --heading-font: 'Lato', Helvetica, sans-serif;
+  --accent: #1a1a2e;
+  --muted: #555;
+  --sidebar-bg: #f5f3ee;
+  --sidebar-border: #c8b99a;
+}
+
+body {
+  font-family: var(--body-font);
+  font-size: 11pt;
+  line-height: 1.8;
+  color: #1c1c1c;
+  max-width: 5.5in;
+  margin: 0 auto;
+  padding: 0.5in 0;
+}
+
+/* ── Chapter Title (h1) ── */
+h1 {
+  font-family: var(--heading-font);
+  font-size: 28pt;
+  font-weight: 700;
+  color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-top: 1.5in;
+  margin-bottom: 0.1in;
+  border-bottom: 3px solid var(--accent);
+  padding-bottom: 0.15in;
+  page-break-before: always;
+}
+
+h1:first-of-type {
+  page-break-before: avoid;
+  margin-top: 0.3in;
+}
+
+/* ── Chapter Subtitle (h2 directly under h1) ── */
+h1 + h2 {
+  font-family: var(--heading-font);
+  font-size: 13pt;
+  font-weight: 300;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-top: 0;
+  margin-bottom: 0.6in;
+  border: none;
+  padding: 0;
+}
+
+/* ── Section Subheadings (h2) ── */
+h2 {
+  font-family: var(--heading-font);
+  font-size: 13pt;
+  font-weight: 700;
+  color: var(--accent);
+  margin-top: 2em;
+  margin-bottom: 0.5em;
+  letter-spacing: 0.02em;
+}
+
+/* ── Paragraphs — book typography ── */
+p {
+  margin: 0;
+  text-align: justify;
+  hyphens: auto;
+  line-height: 1.85;
+}
+
+/* Paragraph following a paragraph: indent, no gap (book standard) */
+p + p {
+  text-indent: 1.5em;
+}
+
+/* First paragraph after heading, rule, blockquote: no indent, breathing room above */
+h1 + p,
+h2 + p,
+hr + p,
+blockquote + p {
+  text-indent: 0;
+  margin-top: 1em;
+}
+
+/* ── Drop Cap — chapter opening paragraph only ── */
+h1 + p::first-letter,
+h1 + h2 + p::first-letter {
+  font-family: var(--heading-font);
+  font-size: 4.2em;
+  font-weight: 700;
+  color: var(--accent);
+  float: left;
+  line-height: 0.78;
+  margin: 0.06em 0.08em 0 0;
+  padding: 0;
+}
+
+/* ── Ornamental section divider ── */
+hr {
+  border: none;
+  text-align: center;
+  margin: 2em auto;
+  overflow: visible;
+  height: 1em;
+  line-height: 1em;
+}
+
+hr::after {
+  content: '✦';
+  display: inline-block;
+  font-size: 11pt;
+  color: var(--sidebar-border);
+  position: relative;
+}
+
+/* ── Sidebar / Pull-quote boxes (blockquote) ── */
+blockquote {
+  background: var(--sidebar-bg);
+  border-left: 4px solid var(--sidebar-border);
+  margin: 2em 0;
+  padding: 1.2em 1.5em;
+  border-radius: 0 4px 4px 0;
+  font-size: 10pt;
+  line-height: 1.7;
+  color: #333;
+}
+
+blockquote p {
+  margin: 0 0 0.7em 0;
+  text-align: left;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+blockquote strong {
+  font-family: var(--heading-font);
+  font-size: 10pt;
+  letter-spacing: 0.03em;
+  color: var(--accent);
+}
+
+/* ── Bold / Strong ── */
+strong {
+  font-weight: 600;
+  color: #111;
+}
+
+/* ── Emphasis / Italic ── */
+em {
+  font-style: italic;
+}
+
+/* ── Lists (protocol steps only) ── */
+ul, ol {
+  padding-left: 1.5em;
+  margin: 0.8em 0 1em 0;
+  line-height: 1.9;
+}
+
+li {
+  margin-bottom: 0.3em;
+}
+
+/* ── Research Notes section ── */
+h2[id*="research"] {
+  font-size: 10pt;
+  color: var(--muted);
+  font-weight: 400;
+  border-top: 1px solid #ddd;
+  padding-top: 1em;
+  margin-top: 3em;
+}
+
+/* ── Page numbers (PDF metadata — md-to-pdf handles via puppeteer) ── */
+@page {
+  margin: 1in 1in 1in 1in;
+  size: 6in 9in;
+}

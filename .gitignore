@@ -1,0 +1,13 @@
+# Exports (PDFs regenerated on build — don't track binaries)
+books/*/exports/*.pdf
+
+# Build temps
+/tmp/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
