@@ -27,6 +27,11 @@ YOUR IDEA (1 sentence)
         ↓
 📦 UPLOAD TO KDP
         ↓
+[PARALLEL] product-extractor → runs on every approved chapter
+    Extracts: printables · journals · courses · bundles · audio
+    Produces: ready-to-paste Etsy listings, Gumroad pages, course outlines
+    Platforms: Etsy · Gumroad · Payhip · Teachable · Udemy · KDP Print · ACX
+        ↓
 [8] DISTRIBUTION (choose strategy)
     KDP Select (90 days exclusive) → then go wide
     Wide from day one via Draft2Digital
@@ -49,6 +54,8 @@ YOUR IDEA (1 sentence)
 | `write chapter [X] fiction` | Writes chapter using fiction-writer |
 | `write chapter [X] business` | Writes chapter using business-writer |
 | `review chapter [X]` | Runs book-reviewer (12 metrics) |
+| `extract products [chapter X]` | Runs product-extractor on one chapter |
+| `extract products full` | Runs product-extractor on entire manuscript |
 | `design [book title]` | Runs design-agent |
 | `market [book title]` | Runs marketing-agent |
 | `publish [book title]` | Runs publisher-agent |
