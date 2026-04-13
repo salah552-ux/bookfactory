@@ -48,6 +48,9 @@ YOUR IDEA (1 sentence)
 
 | Say this... | Does this... |
 |-------------|-------------|
+| `series status` | Runs series-manager — full dashboard of all books |
+| `series next` | Runs series-manager — recommends which book to write next |
+| `series audit [chapter]` | Runs series-manager — brand/voice consistency check |
 | `research [idea]` | Runs market-researcher |
 | `architect [book title]` | Runs book-architect |
 | `write chapter [X] health` | Writes chapter using health-writer |

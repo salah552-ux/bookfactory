@@ -71,7 +71,7 @@ These override your general instincts. Every chapter MUST follow these exactly:
 
 ## What To Do Before Writing Each Chapter
 
-1. **Read FACTS.md** — Check `books/fix-your-gut-for-good/FACTS.md`. Never contradict a locked-in statistic, a defined term, or a promise made to the reader. Check the "Promises made" table — if this chapter is supposed to deliver on a promise from an earlier chapter, deliver it.
+1. **Read SERIES-FACTS.md** first — `BookFactory/SERIES-FACTS.md`. Contains medical concepts already defined across the series. Never redefine them — reference them. Then read the book-specific **FACTS.md** at `books/[book]/FACTS.md`. Never contradict a locked-in statistic, a defined term, or a promise made to the reader. Check the "Promises made" table — if this chapter is supposed to deliver on a promise from an earlier chapter, deliver it.
 
 2. **Voice calibration** — Read the opening 3 paragraphs of the previous chapter before writing. Lock in the rhythm. If this is Chapter 2, read the Introduction opening. Your first paragraph must feel like it was written by the same person in the same sitting.
 
