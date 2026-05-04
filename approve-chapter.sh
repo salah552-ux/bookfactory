@@ -72,24 +72,24 @@ if grep -q "^## HANDOFF BRIEF" "$CHAPTER_PATH"; then
 
   # Strip the HANDOFF BRIEF block (and everything after it) from the manuscript
   # Also strip RESEARCH NOTES, Word count line, and the review comment
-  python3 - "$CHAPTER_PATH" << 'PYSTRIP'
-import sys, re
-path = sys.argv[1]
-content = open(path, encoding='utf-8').read()
+  node - "$CHAPTER_PATH" << 'JSSTRIP'
+const fs = require('fs');
+const path = process.argv[2];
+let content = fs.readFileSync(path, 'utf8');
 
-# Remove from ## HANDOFF BRIEF onwards
-content = re.split(r'\n## HANDOFF BRIEF\b', content)[0]
+// Remove from ## HANDOFF BRIEF onwards
+content = content.split(/\n## HANDOFF BRIEF\b/)[0];
 
-# Remove RESEARCH NOTES section
-content = re.split(r'\n## RESEARCH NOTES\b', content)[0]
+// Remove RESEARCH NOTES section
+content = content.split(/\n## RESEARCH NOTES\b/)[0];
 
-# Remove trailing word count line and review comment
-content = re.sub(r'\n+Word count:.*$', '', content, flags=re.MULTILINE)
-content = re.sub(r'\n+<!--.*REVIEW REQUIRED.*-->', '', content)
-content = content.rstrip() + '\n'
+// Remove trailing word count line and review comment
+content = content.replace(/\n+Word count:.*$/m, '');
+content = content.replace(/\n+<!--.*REVIEW REQUIRED.*-->/g, '');
+content = content.trimEnd() + '\n';
 
-open(path, 'w', encoding='utf-8').write(content)
-PYSTRIP
+fs.writeFileSync(path, content, 'utf8');
+JSSTRIP
 
   echo "  ✓ HANDOFF BRIEF extracted from chapter"
   echo "  ✓ Research notes + metadata stripped from manuscript"

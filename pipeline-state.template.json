@@ -1,0 +1,80 @@
+{
+  "book_slug": "REPLACE_ME",
+  "book_title": "REPLACE_ME",
+  "series": null,
+  "series_number": null,
+  "genre": "FICTION-MYSTERY",
+  "pipeline_version": "2.0",
+  "current_stage": 0,
+  "last_updated": "REPLACE_WITH_DATE",
+  "last_agent_run": null,
+
+  "stages": {
+    "01-research":    { "status": "not_started" },
+    "02-planning":    { "status": "not_started" },
+    "03-writing":     { "status": "not_started" },
+    "04-quality":     { "status": "not_started" },
+    "05-optimisation":{ "status": "not_started" },
+    "06-production":  { "status": "not_started" },
+    "07-publishing":  { "status": "not_started" },
+    "08-products":    { "status": "not_started" },
+    "09-series":      { "status": "not_started" },
+    "10-postlaunch":  { "status": "not_started" }
+  },
+
+  "writing": {
+    "writer_agent": null,
+    "target_chapters": null,
+    "completed_chapters": 0,
+    "approved_chapters": 0,
+    "current_chapter": null,
+    "word_count_current": 0,
+    "word_count_target": null
+  },
+
+  "quality_scores": {
+    "book_reviewer_avg": null,
+    "final_approval_score": null,
+    "chapters_below_threshold": []
+  },
+
+  "human_gates": {
+    "market_intelligence_approved": false,
+    "blueprint_approved": false,
+    "cover_approved": false,
+    "final_approval_passed": false,
+    "ai_questionnaire_confirmed": false,
+    "published": false
+  },
+
+  "production": {
+    "epub_built": false,
+    "pdf_built": false,
+    "docx_built": false,
+    "cover_file": null,
+    "epub_file": null
+  },
+
+  "publishing": {
+    "asin": null,
+    "kdp_status": "not_started",
+    "live_date": null,
+    "list_price_gbp": null,
+    "list_price_usd": null,
+    "royalty_pct": 70,
+    "kdp_select": true,
+    "countdown_deal_eligible_from": null
+  },
+
+  "post_launch": {
+    "review_count": 0,
+    "avg_rating": null,
+    "ads_active": false,
+    "ads_start_date": null,
+    "countdown_deal_run": false,
+    "aplus_content_live": false,
+    "arc_emails_sent": 0
+  },
+
+  "agent_log": []
+}

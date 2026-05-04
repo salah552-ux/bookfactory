@@ -1,0 +1,95 @@
+{
+  "book_slug": "untitled-cosy-mystery",
+  "book_title": "Death in the Cathedral Close",
+  "series": "The Cathedral Close Mysteries",
+  "series_number": 1,
+  "genre": "FICTION-MYSTERY",
+  "pipeline_version": "2.0",
+  "current_stage": 10,
+  "last_updated": "2026-05-03T00:00:00Z",
+  "last_agent_run": "kdp-upload-agent",
+
+  "stages": {
+    "01-research":    { "status": "complete", "completed_at": "2026-04-27T00:00:00Z" },
+    "02-planning":    { "status": "complete", "completed_at": "2026-04-27T00:00:00Z" },
+    "03-writing":     { "status": "complete", "completed_at": "2026-04-27T00:00:00Z" },
+    "04-quality":     { "status": "complete", "completed_at": "2026-04-27T00:00:00Z" },
+    "05-optimisation":{ "status": "complete", "completed_at": "2026-04-27T00:00:00Z" },
+    "06-production":  { "status": "complete", "completed_at": "2026-05-02T00:00:00Z" },
+    "07-publishing":  { "status": "complete", "started_at": "2026-05-02T00:00:00Z", "completed_at": "2026-05-03T00:00:00Z" },
+    "08-products":    { "status": "not_started" },
+    "09-series":      { "status": "not_started" },
+    "10-postlaunch":  { "status": "in_progress", "started_at": "2026-05-03T00:00:00Z" }
+  },
+
+  "writing": {
+    "writer_agent": "murder-mystery-writer",
+    "target_chapters": 40,
+    "completed_chapters": 40,
+    "approved_chapters": 40,
+    "current_chapter": "complete",
+    "word_count_current": 58030,
+    "word_count_target": 85000
+  },
+
+  "quality_scores": {
+    "book_reviewer_avg": 120,
+    "final_approval_score": null,
+    "chapters_below_threshold": []
+  },
+
+  "human_gates": {
+    "market_intelligence_approved": true,
+    "blueprint_approved": true,
+    "cover_approved": true,
+    "final_approval_passed": true,
+    "ai_questionnaire_confirmed": true,
+    "published": true
+  },
+
+  "production": {
+    "epub_built": true,
+    "pdf_built": true,
+    "docx_built": true,
+    "cover_file": "exports/final/cover-kdp.jpg",
+    "epub_file": "exports/final/manuscript-kdp.epub"
+  },
+
+  "publishing": {
+    "asin": "AT25QRT6FPTE6",
+    "kdp_status": "live",
+    "live_date": "2026-05-03",
+    "list_price_gbp": 6.99,
+    "list_price_usd": 6.99,
+    "royalty_pct": 70,
+    "kdp_select": true,
+    "countdown_deal_eligible_from": "2026-06-02"
+  },
+
+  "post_launch": {
+    "review_count": 0,
+    "avg_rating": null,
+    "ads_active": false,
+    "ads_start_date": null,
+    "countdown_deal_run": false,
+    "aplus_content_live": false,
+    "arc_emails_sent": 0
+  },
+
+  "agent_log": [
+    {
+      "timestamp": "2026-05-02T00:00:00Z",
+      "agent": "kdp-upload-agent",
+      "action": "KDP eBook upload — Death in the Cathedral Close",
+      "result": "success",
+      "notes": "ASIN AT25QRT6FPTE6 assigned. Status: In Review. Price: £6.99 / $6.99. 70% royalty. KDP Select enrolled. Categories: Cozy > General + British & Irish > Contemporary."
+    },
+    {
+      "timestamp": "2026-05-03T00:00:00Z",
+      "agent": "pipeline-coordinator",
+      "action": "Book confirmed live on Amazon",
+      "result": "success",
+      "notes": "Live date: 2026-05-03. Countdown Deal eligible from: 2026-06-02. Stage moved to 10-postlaunch. UberReflex staging files pending deletion."
+    }
+  ]
+}

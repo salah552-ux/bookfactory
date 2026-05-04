@@ -21,13 +21,13 @@ This book asks that question. Then it answers it. Then it gives you a framework 
 
 ---
 
-SIBO stands for small intestinal bacterial overgrowth. The name is almost aggressively literal: bacteria that should live in your large intestine have set up residence in your small intestine instead, where they don't belong and where their presence causes genuine, measurable harm. Your small intestine is supposed to be relatively sparsely populated — it has a specific job to do, absorbing nutrients from food before passing the remainder downstream — and bacteria colonizing it in large numbers interfere with that job. They ferment the carbohydrates you eat before your body can absorb them. That fermentation produces gas — hydrogen, methane, or hydrogen sulfide depending on the specific bacteria involved. Gas in an enclosed space produces pressure. Pressure produces bloating. The bloating you've been living with isn't mysterious and it isn't psychosomatic. It's physics.
+SIBO stands for small intestinal bacterial overgrowth. The name is almost aggressively literal: bacteria that should live in your large intestine have set up residence in your small intestine instead, where they don't belong and where their presence causes genuine, measurable harm. Your small intestine is supposed to be relatively sparsely populated — it has a specific job to do, absorbing nutrients from food before passing the remainder downstream — and bacteria colonising it in large numbers interfere with that job. They ferment the carbohydrates you eat before your body can absorb them. That fermentation produces gas — hydrogen, methane, or hydrogen sulfide depending on the specific bacteria involved. Gas in an enclosed space produces pressure. Pressure produces bloating. The bloating you've been living with isn't mysterious and it isn't psychosomatic. It's physics.
 
 The gas production is also, notably, only part of the problem. Bacterial overgrowth in the small intestine can damage the cells lining the intestinal wall, compromise nutrient absorption, contribute to leaky gut, and generate systemic inflammation that reaches well beyond the gut itself. Fatigue. Brain fog. Joint pain. Skin flares. The gut is not a contained organ — when it's in trouble, the rest of the body knows.
 
 ---
 
-Among people diagnosed with IBS — the label many SIBO patients receive first — a meta-analysis of 37 studies found SIBO prevalence at 36.7%. More than a third of people told they have a motility disorder may actually have an infection. A range so wide it tells you how poorly standardized the testing still is — and how many people are being managed for the wrong thing.
+Among people diagnosed with IBS — the label many SIBO patients receive first — a meta-analysis of 37 studies found SIBO prevalence at 36.7%. More than a third of people told they have a motility disorder may actually have an infection. A range so wide it tells you how poorly standardised the testing still is — and how many people are being managed for the wrong thing.
 
 Which is worth sitting with for a moment.
 
@@ -49,7 +49,7 @@ Even when SIBO is correctly diagnosed and successfully treated, it comes back at
 
 Read those numbers again, because they're doing a lot of work. They mean the most commonly prescribed SIBO treatment is, for a substantial portion of patients, a temporary fix at best. It clears the overgrowth. It doesn't address what created it. And so the bacteria return, because the conditions that allowed them to thrive in the first place haven't changed.
 
-What creates those conditions? There are several possible answers, and this book works through all of them. But the one that sits at the center — the one that explains more relapses than anything else — is a structure in your gut you've probably never heard of.
+What creates those conditions? There are several possible answers, and this book works through all of them. But the one that sits at the centre — the one that explains more relapses than anything else — is a structure in your gut you've probably never heard of.
 
 ---
 
@@ -61,7 +61,7 @@ This is what structural relapse looks like. Not bad luck. Not a weakened immune 
 
 ---
 
-This book is organized around four phases, and each one exists for a reason.
+This book is organised around four phases, and each one exists for a reason.
 
 Phase One is about accurate assessment — understanding not just whether you have SIBO but which type, what's driving it, and which of your current habits or health factors may be feeding the cycle. This phase will probably reveal things your previous doctors didn't look for. That's intentional.
 
@@ -77,7 +77,7 @@ You'll notice the phases are sequential. That's not arbitrary. Treating SIBO bef
 
 Before you go further, a word about what this book is and isn't.
 
-This is not a memoir about suffering and eventual redemption. There are good books in that genre; this isn't one of them. You don't need to read about someone else's suffering to understand your own. You need information, organized clearly, with enough context to apply it.
+This is not a memoir about suffering and eventual redemption. There are good books in that genre; this isn't one of them. You don't need to read about someone else's suffering to understand your own. You need information, organised clearly, with enough context to apply it.
 
 This is also not a book that will tell you to eat more vegetables and see how you feel. The advice here is specific, mechanistic, and based on the best available evidence — with clear acknowledgment of where the evidence is strong, where it's preliminary, and where clinical reality outpaces what the studies have yet to confirm. Uncertainty is not vagueness. When something is genuinely unknown, this book says so, and then tells you how to make the most intelligent decision given that uncertainty.
 
@@ -91,8 +91,8 @@ Most SIBO protocols hand you a hammer. They don't tell you the nail is in a diff
 
 That's over now.
 
-Here's what's actually happening in your gut: bacteria are where they shouldn't be, because the mechanism that moves them out isn't working properly, and every course of antibiotics or diet restriction you've completed has temporarily reduced their numbers without touching the underlying dysfunction. The bacteria bounce back because the environment welcomes them back. That environment is what this book changes.
+Here's what's actually happening in your gut: bacteria are where they shouldn't be, because the mechanism that moves them out isn't working properly, and every course of antibiotics or diet restriction you've completed has temporarily reduced their numbers without touching the underlying dysfunction. The bacteria bounce back because the environment welcomes them back. That environment is what this book helps you understand and address.
 
 The four phases ahead of you aren't four separate attempts at the same thing. They're four stages of a single, coherent intervention — one that starts where most books finish, and finishes somewhere most books have never been. This is a book about the mechanism. The mechanism is fixable. The path is specific.
 
-This book is not a last resort. It's what the last resort should have been from the start.
+You've already done the hard part — you got here with last-ditch energy when hope had mostly run out. That matters. What comes next doesn't require optimism. It requires understanding. And understanding, it turns out, is something this book can actually give you.

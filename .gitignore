@@ -1,8 +1,24 @@
-# Exports (PDFs regenerated on build — don't track binaries)
-books/*/exports/*.pdf
+# Secrets — NEVER commit
+.env
+.env.*
+*.pem
+*.key
+
+# Node
+node_modules/
+package-lock.json
+
+# Build outputs (regenerated — don't track large binaries)
+books/*/exports/
+exports/
+*.epub
+*.mobi
+*.docx
+*.pdf
 
 # Build temps
 /tmp/
+*.tmp
 
 # OS
 .DS_Store
@@ -11,3 +27,4 @@ Thumbs.db
 # Editor
 .vscode/
 *.swp
+*.swo

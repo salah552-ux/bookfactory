@@ -1,0 +1,136 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "BookFactory Pipeline State",
+  "description": "Persistent state file for a single book. One file per book. Read at session start by any agent or orchestrator to know exactly where the book is in the pipeline.",
+  "type": "object",
+  "required": ["book_slug", "book_title", "pipeline_version", "current_stage", "last_updated"],
+  "properties": {
+    "book_slug": { "type": "string", "description": "Folder name under books/", "example": "untitled-cosy-mystery" },
+    "book_title": { "type": "string", "example": "Death in the Cathedral Close" },
+    "series": { "type": "string", "example": "The Cathedral Close Mysteries" },
+    "series_number": { "type": "integer", "example": 1 },
+    "genre": { "type": "string", "enum": ["FICTION-MYSTERY", "FICTION-THRILLER", "FICTION-LITERARY", "NONFICTION-HEALTH", "NONFICTION-SELFHELP", "NONFICTION-BUSINESS"] },
+    "pipeline_version": { "type": "string", "example": "2.0" },
+    "current_stage": { "type": "integer", "minimum": 0, "maximum": 10, "description": "Active pipeline stage (0=not started, 10=post-launch)" },
+    "last_updated": { "type": "string", "format": "date-time" },
+    "last_agent_run": { "type": "string", "description": "Name of last agent executed" },
+
+    "stages": {
+      "type": "object",
+      "properties": {
+        "01-research":    { "$ref": "#/definitions/stage_status" },
+        "02-planning":    { "$ref": "#/definitions/stage_status" },
+        "03-writing":     { "$ref": "#/definitions/stage_status" },
+        "04-quality":     { "$ref": "#/definitions/stage_status" },
+        "05-optimisation":{ "$ref": "#/definitions/stage_status" },
+        "06-production":  { "$ref": "#/definitions/stage_status" },
+        "07-publishing":  { "$ref": "#/definitions/stage_status" },
+        "08-products":    { "$ref": "#/definitions/stage_status" },
+        "09-series":      { "$ref": "#/definitions/stage_status" },
+        "10-postlaunch":  { "$ref": "#/definitions/stage_status" }
+      }
+    },
+
+    "writing": {
+      "type": "object",
+      "properties": {
+        "writer_agent": { "type": "string", "description": "Which writer agent is active", "example": "murder-mystery-writer" },
+        "target_chapters": { "type": "integer" },
+        "completed_chapters": { "type": "integer" },
+        "approved_chapters": { "type": "integer" },
+        "current_chapter": { "type": "string", "example": "ch-017.md" },
+        "word_count_current": { "type": "integer" },
+        "word_count_target": { "type": "integer" }
+      }
+    },
+
+    "quality_scores": {
+      "type": "object",
+      "properties": {
+        "book_reviewer_avg": { "type": "number", "description": "Average score across all chapters (max 120)" },
+        "final_approval_score": { "type": "number", "description": "Final approval rubric score (max 300)" },
+        "chapters_below_threshold": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+
+    "human_gates": {
+      "type": "object",
+      "description": "Tracks which human gates have been explicitly approved",
+      "properties": {
+        "market_intelligence_approved": { "type": "boolean", "default": false },
+        "blueprint_approved":           { "type": "boolean", "default": false },
+        "cover_approved":               { "type": "boolean", "default": false },
+        "final_approval_passed":        { "type": "boolean", "default": false },
+        "ai_questionnaire_confirmed":   { "type": "boolean", "default": false },
+        "published":                    { "type": "boolean", "default": false }
+      }
+    },
+
+    "production": {
+      "type": "object",
+      "properties": {
+        "epub_built":    { "type": "boolean", "default": false },
+        "pdf_built":     { "type": "boolean", "default": false },
+        "docx_built":    { "type": "boolean", "default": false },
+        "cover_file":    { "type": "string", "example": "exports/final/cover-kdp.jpg" },
+        "epub_file":     { "type": "string", "example": "exports/final/manuscript-kdp.epub" }
+      }
+    },
+
+    "publishing": {
+      "type": "object",
+      "properties": {
+        "asin":              { "type": "string", "example": "AT25QRT6FPTE6" },
+        "kdp_status":        { "type": "string", "enum": ["not_started", "draft", "in_review", "live", "blocked"] },
+        "live_date":         { "type": "string", "format": "date" },
+        "list_price_gbp":    { "type": "number" },
+        "list_price_usd":    { "type": "number" },
+        "royalty_pct":       { "type": "integer" },
+        "kdp_select":        { "type": "boolean" },
+        "countdown_deal_eligible_from": { "type": "string", "format": "date", "description": "30 days after KDP Select enrollment" }
+      }
+    },
+
+    "post_launch": {
+      "type": "object",
+      "properties": {
+        "review_count":         { "type": "integer", "default": 0 },
+        "avg_rating":           { "type": "number" },
+        "ads_active":           { "type": "boolean", "default": false },
+        "ads_start_date":       { "type": "string", "format": "date" },
+        "countdown_deal_run":   { "type": "boolean", "default": false },
+        "aplus_content_live":   { "type": "boolean", "default": false },
+        "arc_emails_sent":      { "type": "integer", "default": 0 }
+      }
+    },
+
+    "agent_log": {
+      "type": "array",
+      "description": "Append-only log of every agent run. Managed by AGENT-LOG agent.",
+      "items": { "$ref": "#/definitions/log_entry" }
+    }
+  },
+
+  "definitions": {
+    "stage_status": {
+      "type": "object",
+      "properties": {
+        "status": { "type": "string", "enum": ["not_started", "in_progress", "complete", "blocked"] },
+        "started_at":   { "type": "string", "format": "date-time" },
+        "completed_at": { "type": "string", "format": "date-time" },
+        "notes":        { "type": "string" }
+      }
+    },
+    "log_entry": {
+      "type": "object",
+      "required": ["timestamp", "agent", "action", "result"],
+      "properties": {
+        "timestamp": { "type": "string", "format": "date-time" },
+        "agent":     { "type": "string" },
+        "action":    { "type": "string" },
+        "result":    { "type": "string", "enum": ["success", "partial", "failed", "blocked"] },
+        "notes":     { "type": "string" }
+      }
+    }
+  }
+}

@@ -1,0 +1,207 @@
+{
+  "version": "2.0",
+  "pipeline": "BookFactory Publishing Pipeline",
+  "publisher": "BookFactory",
+  "author": "S.A. Ibrahim",
+
+  "genres": {
+    "FICTION-MYSTERY": {
+      "planning_agent": "novel-writer",
+      "writing_agent": "murder-mystery-writer",
+      "extra_planning_files": ["CLUE-MAP.md", "SERIES-PLAN.md", "WRITER-ROUTING.md"]
+    },
+    "FICTION": {
+      "planning_agent": "novel-writer",
+      "writing_agent": "fiction-writer",
+      "extra_planning_files": ["SERIES-PLAN.md"]
+    },
+    "NONFICTION-HEALTH": {
+      "planning_agent": "book-architect",
+      "writing_agent": "health-writer",
+      "extra_planning_files": []
+    },
+    "NONFICTION-BUSINESS": {
+      "planning_agent": "book-architect",
+      "writing_agent": "business-writer",
+      "extra_planning_files": []
+    }
+  },
+
+  "stages": [
+    {
+      "id": "00-coordinator",
+      "name": "Coordinator",
+      "folder": "00-coordinator/",
+      "agents": ["pipeline-orchestrator", "pipeline-guide", "quality-gate", "brief-validator", "agent-log"],
+      "role": "pipeline-orchestrator drives the full pipeline autonomously. pipeline-guide answers routing questions. quality-gate runs between every stage. brief-validator checks chapter inputs before writer fires."
+    },
+    {
+      "id": "01-research",
+      "name": "Market Research",
+      "folder": "01-research/",
+      "agents": ["market-researcher", "competitive-positioning-agent"],
+      "parallel": true,
+      "outputs": ["MARKET-INTELLIGENCE.md", "COMPETITIVE-ANALYSIS.md"],
+      "human_gate_field": "market_intelligence_approved",
+      "human_gate_instruction": "Review MARKET-INTELLIGENCE.md and COMPETITIVE-ANALYSIS.md. Set market_intelligence_approved: true in pipeline-state.json when satisfied."
+    },
+    {
+      "id": "02-planning",
+      "name": "Blueprint & Architecture",
+      "folder": "02-planning/",
+      "agents": ["novel-writer", "book-architect", "title-and-subtitle-lab"],
+      "agent_selection": "novel-writer for FICTION and FICTION-MYSTERY, book-architect for NONFICTION-*",
+      "parallel": false,
+      "sequential_order": ["[genre.planning_agent]", "title-and-subtitle-lab"],
+      "outputs": ["BLUEPRINT.md", "FACTS.md", "KDP-LISTING.md"],
+      "human_gate_field": "blueprint_approved",
+      "human_gate_instruction": "Review BLUEPRINT.md — chapter plan, protagonist, structure, series arc. Set blueprint_approved: true when satisfied."
+    },
+    {
+      "id": "03-writing",
+      "name": "Manuscript Writing",
+      "folder": "03-writing/",
+      "agents": ["health-writer", "fiction-writer", "murder-mystery-writer", "business-writer"],
+      "agent_selection": "Read writing.writer_agent from pipeline-state.json",
+      "parallel": false,
+      "chapter_pipeline": ["brief-validator", "[genre.writing_agent]", "fact-checker", "book-reviewer", "compliance-officer"],
+      "outputs": ["manuscript/ch-*.md", "manuscript/handoffs/ch-*-handoff.md"],
+      "human_gate_field": null
+    },
+    {
+      "id": "04-quality",
+      "name": "Quality Assurance",
+      "folder": "04-quality/",
+      "agents": ["fact-checker", "book-reviewer", "compliance-officer", "proofreader-agent"],
+      "parallel": true,
+      "parallel_group_1": ["fact-checker", "book-reviewer", "proofreader-agent"],
+      "sequential_after_group_1": ["compliance-officer"],
+      "outputs": ["FACT-CHECK-REPORT.md", "COMPLIANCE-REPORT.md", "PROOFREAD-REPORT.md"],
+      "human_gate_field": null
+    },
+    {
+      "id": "05-optimisation",
+      "name": "Optimisation",
+      "folder": "05-optimisation/",
+      "agents": ["hook-optimizer-agent", "review-bait-optimizer"],
+      "parallel": true,
+      "outputs": ["HOOK-OPTIMIZER-REPORT.md", "REVIEW-BAIT-REPORT.md"],
+      "human_gate_field": null
+    },
+    {
+      "id": "06-production",
+      "name": "Design & Production",
+      "folder": "06-production/",
+      "steps": [
+        { "step": 1, "agents": ["manuscript-style-designer", "product-extractor"], "parallel": true },
+        { "step": 2, "agents": ["design-agent"], "parallel": false },
+        { "step": 3, "script": "build-manuscript.sh {book_slug}", "verify": "exports/final/manuscript-kdp.epub > 500KB" },
+        { "step": 4, "agents": ["final-approval-agent"], "parallel": false }
+      ],
+      "outputs": [
+        "exports/final/manuscript-kdp.epub",
+        "exports/final/manuscript-kdp.docx",
+        "exports/final/cover-kdp.jpg",
+        "exports/final/kdp-metadata.txt",
+        "FINAL-APPROVAL-REPORT.md"
+      ],
+      "human_gate_fields": ["final_approval_passed", "cover_approved"],
+      "human_gate_instruction": "Review exports/final/cover-kdp.jpg and FINAL-APPROVAL-REPORT.md (must score 270+/300). Set both fields true when approved."
+    },
+    {
+      "id": "07-publishing",
+      "name": "Publishing Setup & Launch",
+      "folder": "07-publishing/",
+      "agents": ["pre-launch-agent", "publisher-agent", "marketing-agent", "reach-agent", "kdp-upload-agent"],
+      "sequential_order": [["pre-launch-agent", "publisher-agent", "marketing-agent", "reach-agent"], "kdp-upload-agent"],
+      "outputs": ["KDP-LISTING.md", "LAUNCH-PLAN.md"],
+      "human_gate_fields": ["ai_questionnaire_confirmed", "published"],
+      "human_gate_instruction": "Review KDP draft. Complete AI questionnaire. Set ai_questionnaire_confirmed: true. Then type PUBLISH to trigger final click."
+    },
+    {
+      "id": "08-products",
+      "name": "Digital Products",
+      "folder": "08-products/",
+      "agents": ["digital-product-designer"],
+      "parallel": false,
+      "outputs": ["DIGITAL-PRODUCTS.md"],
+      "human_gate_field": null
+    },
+    {
+      "id": "09-series",
+      "name": "Series Management",
+      "folder": "09-series/",
+      "agents": ["series-continuity-guardian", "series-manager", "series-sync-agent"],
+      "parallel": false,
+      "sequential_order": ["series-continuity-guardian", "series-manager", "series-sync-agent"],
+      "outputs": ["SERIES-FACTS.md", "series-dashboard.md", "series-sync-report.md"],
+      "human_gate_field": null,
+      "note": "series-continuity-guardian MUST run first — locks Book N facts before series-manager updates the master"
+    },
+    {
+      "id": "10-postlaunch",
+      "name": "Post-Launch Monitoring",
+      "folder": "10-postlaunch/",
+      "agents": ["post-launch-agent", "ams-optimizer-agent", "aplus-content-agent"],
+      "schedule": "weekly for 90 days",
+      "weekly_agents": ["post-launch-agent"],
+      "conditional_agents": [
+        {
+          "agent": "amazon-ads-agent",
+          "condition": "post_launch.review_count >= 5 AND post_launch.ads_active == false",
+          "fires": "once"
+        },
+        {
+          "agent": "ams-optimizer-agent",
+          "condition": "post_launch.ads_active == true",
+          "fires": "weekly"
+        },
+        {
+          "agent": "aplus-content-agent",
+          "condition": "post_launch.aplus_content_live == false",
+          "fires": "once"
+        }
+      ],
+      "human_gate_field": null
+    }
+  ],
+
+  "human_gates_summary": [
+    { "stage": "01", "field": "market_intelligence_approved", "blocker": "Stage 02 cannot start" },
+    { "stage": "02", "field": "blueprint_approved",           "blocker": "Stage 03 cannot start" },
+    { "stage": "06", "field": "final_approval_passed",        "blocker": "Stage 07 cannot start" },
+    { "stage": "06", "field": "cover_approved",               "blocker": "Stage 07 cannot start" },
+    { "stage": "07", "field": "ai_questionnaire_confirmed",   "blocker": "Book cannot publish" },
+    { "stage": "07", "field": "published",                    "blocker": "Stage 08 cannot start" }
+  ],
+
+  "chapter_pipeline": {
+    "description": "Mandatory sequential pipeline for EVERY chapter — no exceptions",
+    "steps": ["brief-validator", "[genre.writing_agent]", "fact-checker", "book-reviewer", "compliance-officer"],
+    "minimum_reviewer_score": 96,
+    "minimum_final_approval_score": 270
+  },
+
+  "scripts": {
+    "new_book": "new-book.sh {book_slug} {genre}",
+    "build_manuscript": "build-manuscript.sh {book_slug}",
+    "build_pdf": "build-pdf.sh {book_slug}",
+    "approve_chapter": "approve-chapter.sh {book_slug} {chapter_number}"
+  },
+
+  "paths": {
+    "agents_root": "c:/Users/salah/BookFactory/.claude/agents/",
+    "books_root": "c:/Users/salah/BookFactory/books/",
+    "memory_root": "c:/Users/salah/BookFactory/.claude/agent-memory/"
+  },
+
+  "automation": {
+    "orchestrator_agent": "00-coordinator/pipeline-orchestrator.md",
+    "state_file": "books/{book_slug}/pipeline-state.json",
+    "stage_10_requires_github": true,
+    "stage_10_note": "Weekly post-launch scheduling requires GitHub repo + CCR remote triggers. Set up git repo first, then schedule weekly agents via /schedule skill.",
+    "fully_automated_stages": ["01", "02", "03", "04", "05", "06-steps-1-4", "08", "09"],
+    "human_gate_stages": ["01-exit", "02-exit", "06-exit", "07-exit"],
+    "kdp_manual_steps": ["KDP dashboard login", "Countdown Deal setup", "A+ Content submission", "Ad bid execution"]
+  }
+}

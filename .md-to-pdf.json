@@ -1,16 +1,17 @@
 {
   "stylesheet": "c:/Users/salah/BookFactory/pdf-style.css",
   "pdf_options": {
-    "format": "Letter",
+    "width": "6in",
+    "height": "9in",
     "margin": {
       "top": "0.85in",
       "bottom": "0.85in",
-      "left": "1in",
-      "right": "1in"
+      "left": "0.875in",
+      "right": "0.5in"
     },
     "displayHeaderFooter": true,
-    "headerTemplate": "<style>* { margin: 0; padding: 0; } .header-wrap { width: 100%; display: flex; justify-content: center; align-items: flex-end; padding: 0 1in 5px 1in; box-sizing: border-box; border-bottom: 0.5pt solid #ccc; font-family: Georgia, 'Times New Roman', serif; font-size: 7.5pt; color: #999; letter-spacing: 0.12em; text-transform: uppercase; } </style><div class='header-wrap'><span>Fix Your Gut for Good</span></div>",
-    "footerTemplate": "<style>* { margin: 0; padding: 0; } .footer-wrap { width: 100%; display: flex; justify-content: center; align-items: flex-start; padding: 5px 1in 0 1in; box-sizing: border-box; font-family: Georgia, 'Times New Roman', serif; font-size: 7.5pt; color: #999; } </style><div class='footer-wrap'><span class='pageNumber'></span></div>",
+    "headerTemplate": "<style>* { margin: 0; padding: 0; } .hw { width: 100%; display: flex; justify-content: center; align-items: flex-end; padding: 0 0.5in 6px 0.875in; box-sizing: border-box; font-family: Georgia, 'Times New Roman', serif; font-size: 7pt; color: #aaa; letter-spacing: 0.18em; text-transform: uppercase; } </style><div class='hw'><span>Fix Your Gut for Good</span></div>",
+    "footerTemplate": "<style>* { margin: 0; padding: 0; } .fw { width: 100%; display: flex; justify-content: flex-end; align-items: flex-start; padding: 6px 0.5in 0 0.875in; box-sizing: border-box; font-family: Georgia, 'Times New Roman', serif; font-size: 7pt; color: #aaa; letter-spacing: 0.08em; } </style><div class='fw'><span class='pageNumber'></span></div>",
     "printBackground": true
   }
 }

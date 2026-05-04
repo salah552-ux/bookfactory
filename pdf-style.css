@@ -1,139 +1,263 @@
-/* BookFactory — KDP-style PDF stylesheet */
+/* BookFactory — KDP Trade Nonfiction Stylesheet v5
+   Designed to match or exceed InDesign-quality health/wellness books.
+   Body: EB Garamond (Palatino-class, elegant)
+   Display: Playfair Display (high-contrast serif, instantly recognizable)
+   Labels: Lato (clean geometric sans)
+*/
 
-@import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Lato:wght@300;400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
 
 :root {
-  --body-font: 'Lora', Georgia, serif;
-  --heading-font: 'Lato', Helvetica, sans-serif;
-  --accent: #1a1a2e;
-  --muted: #555;
-  --sidebar-bg: #f5f3ee;
+  --body-font:    'EB Garamond', Palatino, Georgia, serif;
+  --display-font: 'Playfair Display', 'Palatino Linotype', Georgia, serif;
+  --label-font:   'Lato', 'Open Sans', Helvetica, sans-serif;
+
+  /* Color system — deep navy + warm ink */
+  --ink:          #000000;       /* body text — true black for KDP print */
+  --accent:       #1b3a5c;       /* headings, chapter title */
+  --rule:         #1b3a5c;       /* accent bar on section heads */
+  --muted:        #5a6472;       /* subtitles, captions */
+  --light:        #9aa3ad;       /* chapter label */
+  --divider:      #c8c0b4;       /* ornamental dividers */
+  --sidebar-bg:   #f5f2ed;
   --sidebar-border: #c8b99a;
 }
 
+/* ─────────────────────────────────────────────
+   PAGE — 6x9 KDP trade paperback
+───────────────────────────────────────────── */
 body {
   font-family: var(--body-font);
-  font-size: 11pt;
-  line-height: 1.8;
-  color: #1c1c1c;
-  max-width: 5.5in;
+  font-size: 11.5pt;
+  line-height: 1.42;
+  letter-spacing: 0.012em;
+  color: var(--ink);
+  max-width: 4.875in;
   margin: 0 auto;
-  padding: 0.5in 0;
+  padding: 0.25in 0;
+  text-align: justify;
+  hyphens: auto;
+  orphans: 2;
+  widows: 2;
 }
 
-/* ── Chapter Title (h1) ── */
+@page {
+  size: 6in 9in;
+  margin: 0.75in 0.5in 0.75in 0.875in;
+}
+
+/* ─────────────────────────────────────────────
+   CHAPTER OPENING DESIGN
+   ─────────────────────
+   A thin 1.5in centered rule anchors the space
+   before the chapter label. The Playfair Display
+   title creates immediate visual authority.
+
+   h1            = "CHAPTER TWO"  (label)
+   h1 + h2       = "The Symptom Web"  (title)
+   h1 + h2 + h3  = subtitle
+───────────────────────────────────────────── */
+
+/* Decorative thin rule + chapter label */
 h1 {
-  font-family: var(--heading-font);
-  font-size: 28pt;
-  font-weight: 700;
-  color: var(--accent);
+  font-family: var(--label-font);
+  font-size: 8pt;
+  font-weight: 400;
+  color: var(--light);
   text-transform: uppercase;
-  letter-spacing: 0.04em;
-  margin-top: 1.5in;
-  margin-bottom: 0.1in;
-  border-bottom: 3px solid var(--accent);
-  padding-bottom: 0.15in;
+  letter-spacing: 0.28em;
+  text-align: center;
+  margin-top: 2.5in;
+  margin-bottom: 0.5em;
+  padding: 0;
+  border: none;
   page-break-before: always;
+}
+
+/* Centered rule above chapter label */
+h1::before {
+  content: '';
+  display: block;
+  width: 1.5in;
+  height: 0.5pt;
+  background: var(--divider);
+  margin: 0 auto 1.1em auto;
 }
 
 h1:first-of-type {
   page-break-before: avoid;
-  margin-top: 0.3in;
+  margin-top: 0.5in;
 }
 
-/* ── Chapter Subtitle (h2 directly under h1) ── */
+/* Chapter title — Playfair Display italic, the visual centrepiece */
 h1 + h2 {
-  font-family: var(--heading-font);
-  font-size: 13pt;
-  font-weight: 300;
-  color: var(--muted);
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-family: var(--display-font);
+  font-size: 26pt;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--accent);
+  letter-spacing: -0.01em;
+  line-height: 1.12;
+  text-transform: none;
+  text-align: center;
   margin-top: 0;
-  margin-bottom: 0.6in;
-  border: none;
+  margin-bottom: 0.5em;
   padding: 0;
+  border: none;
 }
 
-/* ── Section Subheadings (h2) ── */
+/* Chapter subtitle — italic Garamond, breathing room below */
+h1 + h2 + h3 {
+  font-family: var(--body-font);
+  font-size: 11pt;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--muted);
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1.35in;
+  padding: 0;
+  border: none;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION HEADINGS
+   Left accent bar signals hierarchy immediately.
+   More distinctive than an underline — used by
+   prestige nonfiction and academic presses.
+───────────────────────────────────────────── */
+
+/* B-head — left bar, small caps feel */
 h2 {
-  font-family: var(--heading-font);
-  font-size: 13pt;
+  font-family: var(--label-font);
+  font-size: 8.5pt;
   font-weight: 700;
   color: var(--accent);
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
   margin-top: 2em;
-  margin-bottom: 0.5em;
-  letter-spacing: 0.02em;
+  margin-bottom: 0.65em;
+  padding: 0.15em 0 0.15em 0.65em;
+  border: none;
+  border-left: 2.5pt solid var(--rule);
 }
 
-/* ── Paragraphs — book typography ── */
+/* C-head — italic, no bar */
+h3 {
+  font-family: var(--label-font);
+  font-size: 10pt;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--muted);
+  text-transform: none;
+  letter-spacing: 0;
+  margin-top: 1.4em;
+  margin-bottom: 0.4em;
+  padding: 0;
+  border: none;
+}
+
+/* ─────────────────────────────────────────────
+   SMALL CAPS OPENER
+   First 4–5 words after drop cap, set in small
+   caps. Injected by build script. Classic
+   InDesign-quality typographic tradition.
+───────────────────────────────────────────── */
+.opener {
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp' 1;
+  letter-spacing: 0.05em;
+  font-size: 0.92em;
+}
+
+/* ─────────────────────────────────────────────
+   PARAGRAPHS
+───────────────────────────────────────────── */
 p {
   margin: 0;
+  text-indent: 1.5em;
   text-align: justify;
   hyphens: auto;
-  line-height: 1.85;
 }
 
-/* Paragraph following a paragraph: indent, no gap (book standard) */
-p + p {
-  text-indent: 1.5em;
-}
-
-/* First paragraph after heading, rule, blockquote: no indent, breathing room above */
+/* No indent after headings, rules, or blockquotes */
 h1 + p,
 h2 + p,
+h3 + p,
 hr + p,
 blockquote + p {
   text-indent: 0;
-  margin-top: 1em;
 }
 
-/* ── Drop Cap — chapter opening paragraph only ── */
-h1 + p::first-letter,
-h1 + h2 + p::first-letter {
-  font-family: var(--heading-font);
-  font-size: 4.2em;
+/* Chapter body — no indent on first paragraph */
+h1 + h2 + p,
+h1 + h2 + h3 + p {
+  text-indent: 0;
+}
+
+/* ─────────────────────────────────────────────
+   DROP CAP
+   Playfair Display drop cap — same family as
+   the chapter title creates visual cohesion.
+   3em = 3 lines tall.
+───────────────────────────────────────────── */
+h1 + h2 + p::first-letter,
+h1 + h2 + h3 + p::first-letter {
+  font-family: var(--display-font);
+  font-size: 3.2em;
   font-weight: 700;
   color: var(--accent);
   float: left;
   line-height: 0.78;
-  margin: 0.06em 0.08em 0 0;
+  margin: 0.06em 0.07em 0 0;
   padding: 0;
 }
 
-/* ── Ornamental section divider ── */
+/* ─────────────────────────────────────────────
+   SECTION DIVIDER (hr)
+   Rule + ornament + rule — the em-dash style
+   used in prestige nonfiction.
+───────────────────────────────────────────── */
 hr {
   border: none;
   text-align: center;
   margin: 2em auto;
+  height: 1.4em;
+  line-height: 1.4em;
   overflow: visible;
-  height: 1em;
-  line-height: 1em;
 }
 
 hr::after {
-  content: '✦';
-  display: inline-block;
-  font-size: 11pt;
-  color: var(--sidebar-border);
-  position: relative;
+  content: '──── ✦ ────';
+  font-size: 8pt;
+  color: var(--divider);
+  font-family: var(--label-font);
+  font-weight: 300;
+  letter-spacing: 0.1em;
 }
 
-/* ── Sidebar / Pull-quote boxes (blockquote) ── */
+/* ─────────────────────────────────────────────
+   SIDEBAR / DCT BOX
+   Top + left border creates a contained callout.
+   Looks like a deliberate design element, not
+   an indented quote.
+───────────────────────────────────────────── */
 blockquote {
-  background: var(--sidebar-bg);
-  border-left: 4px solid var(--sidebar-border);
-  margin: 2em 0;
-  padding: 1.2em 1.5em;
+  background: var(--sidebar-bg);       /* #f5f2ed warm off-white */
+  border-left: 3pt solid var(--sidebar-border);   /* #c8b99a warm tan — locked */
+  border-top: 0.5pt solid var(--sidebar-border);
+  margin: 2.2em 0;
+  padding: 1.2em 1.5em 1.2em 1.5em;
   border-radius: 0 4px 4px 0;
   font-size: 10pt;
-  line-height: 1.7;
+  line-height: 1.55;
   color: #333;
 }
 
 blockquote p {
   margin: 0 0 0.7em 0;
   text-align: left;
+  text-indent: 0;
 }
 
 blockquote p:last-child {
@@ -141,46 +265,45 @@ blockquote p:last-child {
 }
 
 blockquote strong {
-  font-family: var(--heading-font);
-  font-size: 10pt;
-  letter-spacing: 0.03em;
+  font-family: var(--label-font);
+  font-size: 7.5pt;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
   color: var(--accent);
 }
 
-/* ── Bold / Strong ── */
-strong {
-  font-weight: 600;
-  color: #111;
+blockquote h2 {
+  font-size: 8pt;
+  margin-top: 0;
+  margin-bottom: 0.7em;
+  padding: 0;
+  border: none;
+  color: var(--accent);
 }
 
-/* ── Emphasis / Italic ── */
+/* ─────────────────────────────────────────────
+   INLINE
+───────────────────────────────────────────── */
+strong {
+  font-weight: 600;
+  color: #0f1923;
+}
+
 em {
   font-style: italic;
 }
 
-/* ── Lists (protocol steps only) ── */
+/* ─────────────────────────────────────────────
+   LISTS
+───────────────────────────────────────────── */
 ul, ol {
-  padding-left: 1.5em;
-  margin: 0.8em 0 1em 0;
-  line-height: 1.9;
+  padding-left: 1.3em;
+  margin: 0.75em 0;
+  line-height: 1.55;
 }
 
 li {
-  margin-bottom: 0.3em;
-}
-
-/* ── Research Notes section ── */
-h2[id*="research"] {
-  font-size: 10pt;
-  color: var(--muted);
-  font-weight: 400;
-  border-top: 1px solid #ddd;
-  padding-top: 1em;
-  margin-top: 3em;
-}
-
-/* ── Page numbers (PDF metadata — md-to-pdf handles via puppeteer) ── */
-@page {
-  margin: 1in 1in 1in 1in;
-  size: 6in 9in;
+  margin-bottom: 0.2em;
+  text-indent: 0;
 }

@@ -1,0 +1,254 @@
+/* BookFactory — KDP Fiction Stylesheet v2
+   Genre: British Cosy Mystery / Crime Fiction
+   Book: Death in the Cathedral Close
+   Series: The Cathedral Close Mysteries, Book 1
+
+   Body: EB Garamond — warm, literary, period-appropriate
+   Display: Cormorant Garamond — chapter titles only
+   No sans-serif. Pure serif throughout.
+
+   Page: 5.5 × 8.5 inches (KDP trade paperback)
+   Margins set by .md-to-pdf.json — do NOT set @page here.
+   Body must have no max-width or centering — PDF margins handle all spacing.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=EB+Garamond:ital,wght@0,400;0,500;1,400;1,500&display=swap');
+
+:root {
+  --body-font:     'EB Garamond', Palatino, Georgia, serif;
+  --display-font:  'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+  --ink:           #111111;
+  --chapter-label: #9aa3ad;
+  --divider:       #c8b99a;
+}
+
+/* ─────────────────────────────────────────────
+   BASE
+   No max-width. No margin: 0 auto.
+   The PDF page margins (set in .md-to-pdf.json)
+   define the text area. Body takes 100% of that.
+───────────────────────────────────────────── */
+html, body {
+  font-family: var(--body-font);
+  font-size: 11.5pt;
+  line-height: 1.6;
+  letter-spacing: 0.01em;
+  color: var(--ink);
+  margin: 0;
+  padding: 0;
+  text-align: justify;
+  hyphens: auto;
+  orphans: 2;
+  widows: 2;
+}
+
+/* ─────────────────────────────────────────────
+   CHAPTER OPENING
+   h1  = "CHAPTER ONE"   (label — spaced caps)
+   h2  = "Chapter Title" (Cormorant italic)
+
+   2.2in of white space above the ornamental rule.
+   1.3in below the title before body text begins.
+───────────────────────────────────────────── */
+h1 {
+  font-family: var(--body-font);
+  font-size: 7.5pt;
+  font-weight: 400;
+  color: var(--chapter-label);
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  text-align: center;
+  margin-top: 2.2in;
+  margin-bottom: 0.55em;
+  padding: 0;
+  border: none;
+  page-break-before: always;
+}
+
+/* Ornamental rule above chapter label */
+h1::before {
+  content: '';
+  display: block;
+  width: 1.2in;
+  height: 0.5pt;
+  background: var(--divider);
+  margin: 0 auto 1.1em auto;
+}
+
+/* First chapter: TOC already opens a new page — no double break */
+h1:first-of-type {
+  page-break-before: avoid;
+  margin-top: 1.8in;
+}
+
+/* Chapter title — Cormorant Garamond italic */
+h1 + h2 {
+  font-family: var(--display-font);
+  font-size: 22pt;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1.18;
+  text-transform: none;
+  text-align: center;
+  margin-top: 0;
+  margin-bottom: 1.3in;
+  padding: 0;
+  border: none;
+}
+
+/* Standalone h2 (defensive — not used in body) */
+h2 {
+  font-family: var(--body-font);
+  font-size: 10pt;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--chapter-label);
+  text-align: center;
+  margin-top: 2em;
+  margin-bottom: 1em;
+  padding: 0;
+  border: none;
+}
+
+h3 {
+  font-family: var(--body-font);
+  font-size: 10pt;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--chapter-label);
+  text-align: center;
+  margin-top: 1.5em;
+  margin-bottom: 0.5em;
+  padding: 0;
+  border: none;
+}
+
+/* ─────────────────────────────────────────────
+   DROP CAP
+   Cormorant Garamond — echoes the chapter title.
+   3.4em ≈ 3 lines of body text.
+───────────────────────────────────────────── */
+h1 + h2 + p::first-letter {
+  font-family: var(--display-font);
+  font-size: 3.4em;
+  font-weight: 600;
+  color: var(--ink);
+  float: left;
+  line-height: 0.76;
+  margin: 0.04em 0.09em 0 0;
+  padding: 0;
+}
+
+/* ─────────────────────────────────────────────
+   SMALL CAPS OPENER
+   Applied via build script to first 5 words
+   after the drop cap.
+───────────────────────────────────────────── */
+.opener {
+  font-variant-caps: small-caps;
+  font-feature-settings: 'smcp' 1;
+  letter-spacing: 0.04em;
+  font-size: 0.92em;
+}
+
+/* ─────────────────────────────────────────────
+   PARAGRAPHS
+───────────────────────────────────────────── */
+p {
+  margin: 0;
+  text-indent: 1.5em;
+}
+
+/* No indent after any heading or scene break */
+h1 + p,
+h2 + p,
+h3 + p,
+hr + p,
+blockquote + p {
+  text-indent: 0;
+}
+
+/* No indent on chapter opening paragraph */
+h1 + h2 + p {
+  text-indent: 0;
+}
+
+/* ─────────────────────────────────────────────
+   SCENE BREAK (hr)
+   Single centred ornament. No rule. The star
+   is enough.
+───────────────────────────────────────────── */
+hr {
+  border: none;
+  text-align: center;
+  margin: 2em auto;
+  height: 1.2em;
+  line-height: 1.2em;
+  overflow: visible;
+}
+
+hr::after {
+  content: '✦';
+  font-size: 9pt;
+  color: var(--divider);
+  font-family: var(--body-font);
+}
+
+/* ─────────────────────────────────────────────
+   EPIGRAPH / BLOCKQUOTE
+   No background, no border. Indented italic.
+   The restraint is the design.
+
+   Structure expected:
+     > Quoted passage.
+     > — Attribution
+───────────────────────────────────────────── */
+blockquote {
+  margin: 2em 0.6in 2em 0.6in;
+  padding: 0;
+  background: none;
+  border: none;
+}
+
+blockquote p {
+  font-size: 10.5pt;
+  font-style: italic;
+  line-height: 1.6;
+  text-align: center;
+  color: #3a3a3a;
+  text-indent: 0;
+  margin: 0 0 0.4em 0;
+}
+
+/* Attribution — last p in blockquote */
+blockquote p:last-child {
+  font-style: normal;
+  font-size: 8pt;
+  color: var(--chapter-label);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 0.6em;
+}
+
+/* ─────────────────────────────────────────────
+   INLINE
+───────────────────────────────────────────── */
+strong { font-weight: 600; }
+em     { font-style: italic; }
+
+/* ─────────────────────────────────────────────
+   LISTS
+   Used sparingly — cast lists etc.
+───────────────────────────────────────────── */
+ul, ol {
+  padding-left: 1.3em;
+  margin: 0.75em 0;
+  line-height: 1.6;
+}
+
+li {
+  margin-bottom: 0.2em;
+  text-indent: 0;
+}

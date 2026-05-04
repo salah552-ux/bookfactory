@@ -1,7 +1,11 @@
 # Chapter Three
 ## Testing: The Gap Between What's Available and What's Actually Useful
 
-You took the test. You fasted the night before. You followed the prep diet for a full day. You sat in a clinic or a lab or your kitchen, depending on how you ordered it, and you breathed into a tube every fifteen or twenty minutes for two or three hours. The results came back, and they said negative. And your body, since then, has continued doing what it does.
+The test has a 42 percent sensitivity rate. That number — published in meta-analyses, not contested in the clinical literature — means that if you have SIBO and you take a lactulose breath test, it will miss it more than half the time.
+
+You took the test. It came back negative. Your body, since then, has continued doing what it does.
+
+That's not a disclaimer buried in the fine print. That's the test.
 
 If that's where you are, this chapter is for you.
 
@@ -53,21 +57,21 @@ If you don't know which substrate your test used, that's information worth getti
 
 Here's a gap in standard testing that doesn't get enough attention.
 
-Most breath tests measure two gases: hydrogen and methane. Hydrogen is the primary output of bacterial fermentation. Methane is produced by archaea — specifically Methanobrevibacter smithii — and is the defining marker of what we now call intestinal methanogen overgrowth, or IMO. A test that catches both covers the two most commonly recognized SIBO types.
+Most breath tests measure two gases: hydrogen and methane. Hydrogen is the primary output of bacterial fermentation. Methane is produced by archaea — specifically Methanobrevibacter smithii — and is the defining marker of what we now call intestinal methanogen overgrowth, or IMO. A test that catches both covers the two most commonly recognised SIBO types.
 
 It doesn't catch the third.
 
-Hydrogen sulfide — the gas associated with hydrogen sulfide SIBO — is not measured by standard two-gas breath tests. Hydrogen sulfide-dominant overgrowth presents differently: it's strongly associated with diarrhea-predominant patterns, a characteristic sulfurous odor, and a pro-inflammatory gut environment. And until recently, there was no commercially available breath test that captured it at all.
+Hydrogen sulfide — the gas associated with hydrogen sulfide SIBO — is not measured by standard two-gas breath tests. Hydrogen sulfide-dominant overgrowth presents differently: it's strongly associated with diarrhoea-predominant patterns, a characteristic sulfurous odour, and a pro-inflammatory gut environment. And until recently, there was no commercially available breath test that captured it at all.
 
-Three-gas testing is now available through certain specialty labs. It adds hydrogen sulfide to the measurement panel. The research on interpretation thresholds for hydrogen sulfide is still developing — the clinical community hasn't fully standardized what constitutes a positive result — but having the data is better than not having it. If your symptoms lean toward the diarrhea end, if you experience a particularly sulfurous quality to your digestive output, or if your previous testing came back negative on hydrogen and methane, a three-gas test is worth asking about.
+Three-gas testing is now available through certain specialty labs. It adds hydrogen sulfide to the measurement panel. The research on interpretation thresholds for hydrogen sulfide is still developing — the clinical community hasn't fully standardised what constitutes a positive result — but having the data is better than not having it. If your symptoms lean toward the diarrhoea end, if you experience a particularly sulfurous quality to your digestive output, or if your previous testing came back negative on hydrogen and methane, a three-gas test is worth asking about.
 
-A standard two-gas test can return completely clean results on someone with hydrogen sulfide SIBO. Not a borderline negative. A clean negative. Because the gas that bacterium produces wasn't measured.
+A standard two-gas test can return completely clean results on someone with hydrogen sulfide SIBO. Not a borderline negative. A clean negative. Because the gas those bacteria produce wasn't measured.
 
 ---
 
 ## How Your Prep Can Produce a False Negative Before You Even Drink Anything
 
-The preparation protocol for breath testing exists for a reason: it's trying to minimize background fermentation so that the test can detect the signal from the substrate you drink. The standard prep involves a low-fermentation diet for twenty-four hours before testing — typically no high-fiber vegetables, no whole grains, no legumes, no fermented foods — followed by a fast of eight to twelve hours.
+The preparation protocol for breath testing exists for a reason: it's trying to minimize background fermentation so that the test can detect the signal from the substrate you drink. The standard prep involves a low-fermentation diet for twenty-four hours before testing — typically no high-fibre vegetables, no whole grains, no legumes, no fermented foods — followed by a fast of eight to twelve hours.
 
 When this protocol works, it quiets down the colonic bacteria enough that any hydrogen you produce during the test is more likely to reflect small intestine activity than background noise.
 
@@ -127,11 +131,11 @@ But if the question is whether you have bacterial overgrowth in your small intes
 
 If you've done any research into SIBO testing, you may have come across references to small intestinal aspirate and culture — the direct sampling of fluid from the small intestine. This is the actual gold standard for diagnosing SIBO. Not the breath test. Not the stool test. The aspirate.
 
-Here's how it works. During an upper endoscopy — the same procedure used to diagnose celiac disease and visualize the upper GI tract — a physician uses a sterile catheter to aspirate a sample of fluid directly from the jejunum, the middle section of the small intestine. That fluid is then cultured in a laboratory. If bacterial colony counts come back at or above 10^3 colony-forming units per milliliter, SIBO is confirmed. There's no inference from gas measurements, no substrate transit assumptions, no prep diet variables. You're measuring the bacteria directly.
+Here's how it works. During an upper endoscopy — the same procedure used to diagnose celiac disease and visualise the upper GI tract — a physician uses a sterile catheter to aspirate a sample of fluid directly from the jejunum, the middle section of the small intestine. That fluid is then cultured in a laboratory. If bacterial colony counts come back at or above 10^3 colony-forming units per millilitre, SIBO is confirmed. There's no inference from gas measurements, no substrate transit assumptions, no prep diet variables. You're measuring the bacteria directly.
 
 The reason almost no one gets this test is straightforward. It requires an endoscopy — an invasive procedure under sedation, performed by a gastroenterologist, with the associated cost and scheduling delays. The catheter must remain sterile throughout, which introduces technical challenges. And even when everything goes correctly, the sample captures only the section of small intestine reached by the scope. The distal small intestine — the ileum — isn't sampled. So even the gold standard has anatomical blind spots.
 
-In clinical practice, the aspirate is usually reserved for patients with complex presentations, immunocompromised states, or cases where treatment repeatedly fails and the diagnosis is genuinely in question. Most people with suspected SIBO will never receive one, not because their doctors are cutting corners, but because the infrastructure to do it routinely simply doesn't exist outside of academic medical centers.
+In clinical practice, the aspirate is usually reserved for patients with complex presentations, immunocompromised states, or cases where treatment repeatedly fails and the diagnosis is genuinely in question. Most people with suspected SIBO will never receive one, not because their doctors are cutting corners, but because the infrastructure to do it routinely simply doesn't exist outside of academic medical centres.
 
 Knowing this matters. It means that the breath test was never chosen as the diagnostic standard because it's accurate. It was chosen because it's accessible. That's not a critique of any individual clinician. It's a structural fact about how medicine operates when the best option is impractical at scale. The breath test is not the gold standard. It's the available standard. Those are different things, and you needed someone to say it plainly.
 
@@ -139,7 +143,7 @@ Knowing this matters. It means that the breath test was never chosen as the diag
 
 ## When the Treatment Becomes the Test
 
-Some clinicians — particularly those who specialize in complex gut presentations — use the elemental diet as a diagnostic tool when breath testing has failed to provide a clear answer.
+Some clinicians — particularly those who specialise in complex gut presentations — use the elemental diet as a diagnostic tool when breath testing has failed to provide a clear answer.
 
 An elemental diet is a pre-digested liquid formula: nutrients broken down to their simplest components — amino acids, simple sugars, fats, vitamins, minerals. Because the gut absorbs these components directly, almost nothing reaches the small intestine as substrate for bacterial fermentation. You essentially starve the bacteria for two to three weeks while continuing to feed yourself.
 
@@ -159,7 +163,7 @@ The following is a set of exact sentences you can use at your next appointment. 
 
 **About the gas panel:**
 
-"Was hydrogen sulfide measured in this test? I ask because I understand it's not included in standard two-gas panels, and some of my symptoms — particularly [insert: diarrhea / sulfurous odor / bloating pattern] — are associated with hydrogen sulfide SIBO."
+"Was hydrogen sulfide measured in this test? I ask because I understand it's not included in standard two-gas panels, and some of my symptoms — particularly [insert: diarrhoea / sulfurous odour / bloating pattern] — are associated with hydrogen sulfide SIBO."
 
 **About the actual numbers:**
 
@@ -173,7 +177,9 @@ The following is a set of exact sentences you can use at your next appointment. 
 
 "Given that I still have symptoms consistent with SIBO, what would you recommend as next steps? I'd like to understand whether a three-gas test, organic acids testing, or a clinical trial of treatment makes sense in my case."
 
-You are not asking your doctor to diagnose you with SIBO. You are asking for the information you need to make a decision together. There's a difference, and most good clinicians will recognize it.
+You are not asking your doctor to diagnose you with SIBO. You are asking for the information you need to make a decision together. There's a difference, and most good clinicians will recognise it.
+
+*The language in this box is designed to facilitate conversation with your healthcare provider, not to substitute for their clinical judgment. All diagnostic and treatment decisions should be made in partnership with a qualified medical professional.*
 
 ---
 
@@ -183,7 +189,7 @@ Here's the plain version.
 
 Breath testing is the primary diagnostic tool for SIBO, and it is genuinely limited. Not dramatically — it catches a real proportion of true cases — but limited enough that a negative result cannot close the book on the question. The sensitivity numbers we established in the introduction mean exactly what they sound like: a significant number of people with real bacterial overgrowth test negative. Add substrate limitations, prep variables, unmeasured gases, and the anatomical reality that no breath test reaches the entire small intestine, and the margin of error widens further.
 
-If you tested negative and still feel exactly the way you'd expect to feel with SIBO, the test may have missed it. That is a legitimate medical possibility, not a rationalization.
+If you tested negative and still feel exactly the way you'd expect to feel with SIBO, the test may have missed it. That is a legitimate medical possibility, not a rationalisation.
 
 Your job from here is not to self-diagnose. It's to understand what information the test did and didn't collect, and to ask specific questions before accepting a negative as the final word. The DCT box above gives you the exact language. Use it.
 
