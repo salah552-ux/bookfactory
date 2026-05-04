@@ -8,6 +8,11 @@
 node_modules/
 package-lock.json
 
+# Python
+__pycache__/
+*.pyc
+*.pyo
+
 # Build outputs (regenerated — don't track large binaries)
 books/*/exports/
 exports/
