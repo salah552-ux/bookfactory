@@ -108,36 +108,46 @@ Reviews are the algorithm's trust signal. Zero reviews = invisible. 5 reviews = 
 
 **Target:** 10 reviews in first 30 days. 25 by day 60. 50 by day 90.
 
-### ARC Distribution Platforms
+### KDP Select vs Wide — Check Before Recommending Any Platform
 
-Submit to all of the following. Each produces verified Kindle reviews.
+Read `pipeline-state.json` — check `kdp_select` before writing this section.
+
+**If kdp_select: true — KDP Select enrolled:**
+
+BookSirens, StoryOrigin, NetGalley, and BookFunnel ALL violate KDP Select exclusivity.
+Do not recommend them. KDP Select grants Amazon exclusive digital distribution rights —
+any platform that hosts or distributes the ebook file breaks the agreement and risks
+the book being removed.
+
+KDP Select-compliant ARC methods:
 
 ```
-PLATFORM 1: BookSirens — booksirens.com/for-authors
-  Genre: Fiction/mystery ✓
-  How: Upload ARC mobi, set quota, approved readers download via Kindle
-  Cost: Free for first 5 ARCs, then $9.99/month
-  Review timeline: 2–3 weeks after submission
-  Submit today.
+METHOD 1: Kindle Gifting (verified purchase reviews — highest credibility)
+  How: Amazon → book listing → "Give as a gift" → enter reviewer email
+  Cost: Full retail price per copy
+  Budget: Gift 10–15 copies → target 8–10 posted reviews
+  Why it matters: Verified purchase reviews carry more weight in the algorithm
+                  than unverified. This is the only way to generate them without
+                  the reader paying.
 
-PLATFORM 2: StoryOrigin — storyoriginapp.com
-  Genre: All fiction ✓ — also has newsletter swap network built in
-  How: ARC groups — readers request, you approve
+METHOD 2: Direct PDF via email (unverified reviews — still count fully)
+  How: Send the book as a PDF directly to the reviewer's personal email
   Cost: Free
-  Review timeline: 2–4 weeks
-  Submit today.
+  Amazon ToS targets commercial platform distribution, not private individual email
+  Use for: Friends, personal contacts, anyone who confirms they will review
 
-PLATFORM 3: NetGalley — netgalley.com
-  Genre: Cozy mystery is one of their strongest categories ✓
-  How: Professional reviewers, librarians, booksellers leave verified reviews
-  Cost: $450 for 6 months — the most credible review source
-  Review timeline: 2–6 weeks
-  Submit when budget allows. Flag as Tier 1 priority.
+RECRUITMENT: Post ARC call in Reddit + Facebook communities (see Output 8 for copy).
+  Confirm interest → Kindle gift or PDF email → coordinated drop date.
+  Target 20 recruited reviewers, expect 8–12 posted reviews.
+```
 
-PLATFORM 4: BookFunnel — bookfunnel.com
-  How: ARC delivery tool — readers download directly
-  Cost: $20/year
-  Note: Pairs with your own outreach for ARC delivery
+**If kdp_select: false (wide distribution):**
+
+```
+PLATFORM 1: BookSirens — booksirens.com/for-authors | Free (5 ARCs) / $9.99/mo
+PLATFORM 2: StoryOrigin — storyoriginapp.com | Free | Also has newsletter swaps
+PLATFORM 3: NetGalley — netgalley.com | $450/6mo | Professional reviewers
+PLATFORM 4: BookFunnel — bookfunnel.com | $20/yr | ARC delivery tool
 ```
 
 ### Coordinated Review Drop Protocol
