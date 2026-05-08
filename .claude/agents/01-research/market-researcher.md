@@ -53,6 +53,15 @@ For every book idea, investigate:
 - What title/subtitle formula would perform best?
 - What comparable titles should we target?
 
+### 7. Launch Intelligence (mandatory — feeds marketing-agent)
+- **Category rank threshold:** What BSR does #1 in the best target category currently hold? Calculate the daily sales needed to hit it.
+- **Snowball price point:** Is this a £0.99 velocity launch (fiction series Book 1, non-fiction debut) or a full-price launch (established series, premium non-fiction)?
+- **Also-bought seed targets:** Which 5 specific authors, if the same reader buys both, would signal to Amazon that this book belongs in the recommended-alongside list? Name them specifically.
+- **Promotional site fit:** Which Tier 1 sites (Bargain Booksy, ENT, Robin Reads, Fussy Librarian, BookBub) accept this genre? Does this book meet their review and rating requirements yet, or not?
+- **BookBub category:** Does BookBub have a dedicated category for this sub-genre? What is the typical deal price they accept? What review count do accepted books in this category typically have?
+- **Community seeding targets:** The top 3 specific Reddit communities and Facebook groups where the ideal reader is active right now — with subscriber counts.
+- **Newsletter swap pool:** Are there 10+ authors in this exact sub-genre with active newsletters who would be realistic swap partners?
+
 ## Output Format
 
 Always respond in this exact structure:
@@ -105,8 +114,41 @@ Always respond in this exact structure:
 - [Title by Author] — BSR: [X] — Weakness: [what we do better]
 
 ---
-**BRIEF FOR BOOK-ARCHITECT:**
-[3-5 bullet points the architect needs to know to structure the book correctly]
+**LAUNCH INTELLIGENCE (for marketing-agent):**
+
+Category rank threshold:
+  Best target category: [Full path]
+  Current #1 BSR in that category: [X]
+  Daily sales needed to hit #1: approximately [N]
+
+Snowball price strategy:
+  Recommended launch price: [£X.XX / $X.XX]
+  Reason: [Series Book 1 = velocity over revenue / premium non-fiction = hold price]
+
+Also-bought seed targets (buy these Kindle books this week):
+  1. [Author] — [Title] — ASIN: [X]
+  2. [Author] — [Title] — ASIN: [X]
+  3. [Author] — [Title] — ASIN: [X]
+  4. [Author] — [Title] — ASIN: [X]
+  5. [Author] — [Title] — ASIN: [X]
+
+Promotional site eligibility:
+  Bargain Booksy: [eligible / requires X reviews first]
+  Robin Reads:    [eligible / requires X reviews first]
+  ENT:            [eligible / requires X reviews first]
+  Fussy Librarian:[eligible / requires X reviews first]
+  BookBub:        [category name] — typical deal price [£X] — typical accepted review count [N]
+
+Community seeding targets:
+  1. [Subreddit] — [N] members — [posting approach]
+  2. [Facebook Group] — [N] members — [posting approach]
+  3. [Facebook Group / Goodreads group] — [N] members — [posting approach]
+
+Newsletter swap pool: [Yes — estimated [N] realistic partners / No — niche too small]
+
+---
+**BRIEF FOR BOOK-ARCHITECT / NOVEL-WRITER:**
+[3-5 bullet points the planner needs to know to structure the book correctly]
 
 ---
 
@@ -116,4 +158,5 @@ Always respond in this exact structure:
 - If signal is RED, explain exactly what niche adjustment would make it GREEN
 - Always find the gap — if the niche is crowded, find the underserved angle
 - Reader profile must be specific enough to visualize one real person
-- Keep the full report under 600 words
+- Launch Intelligence section is mandatory — marketing-agent depends on it
+- Also-bought seed targets must be real books with real ASINs — verify them
