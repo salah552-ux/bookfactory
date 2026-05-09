@@ -88,6 +88,20 @@ Full manuscript gate (all chapters done):
 
 ---
 
+### After Stage 06.5 — PRE-LAUNCH
+- [ ] `pre_launch.arc_readers_confirmed` >= 20
+- [ ] `pre_launch.review_drop_date` is set (not null)
+- [ ] `pre_launch.free_days_scheduled` == true
+- [ ] `pre_launch.ams_campaigns_built` == true
+- [ ] `pre_launch.listing_audit_passed` == true
+- [ ] `pre_launch.promo_sites_booked` is not empty
+- [ ] `pre_launch.also_bought_seeding_done` == true
+- [ ] `pre_launch.launch_ready` == true
+- [ ] Human gate: `pre_launch_approved: true` in pipeline-state.json
+- [ ] `PRE-LAUNCH-PLAN.md` exists and is non-empty
+
+---
+
 ### After Stage 07 — PUBLISHING
 - [ ] `publishing.asin` is set (not null)
 - [ ] `publishing.kdp_status` is "in_review" or "live"

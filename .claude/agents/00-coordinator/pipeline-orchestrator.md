@@ -203,15 +203,48 @@ Then run the orchestrator again to begin publishing setup.
 
 ---
 
-### STAGE 07 — PUBLISHING
+### STAGE 06.5 — PRE-LAUNCH (runs immediately after Stage 06 passes)
 **Prerequisite human gate:** `final_approval_passed: true` AND `cover_approved: true`
-**Agents (run in parallel):**
-- `pre-launch-agent` — ARC recruitment, 6-week runway, launch date
-- `publisher-agent` — KDP listing package with keyword density check
-- `marketing-agent` — 90-day launch plan
-- `reach-agent` — organic content (social, email, BookTok)
+**Timing:** Runs 42 days before planned launch date. Stage 07 is BLOCKED until this passes.
 
-Then sequentially:
+**Agents (run in parallel):**
+- `pre-launch-agent` — builds full launch infrastructure: ARC recruitment posts, email sequences, community seeding posts, AMS campaign specs, promo site booking schedule, listing audit, free day scheduling, launch day sequence
+- `publisher-agent` — KDP listing package with keyword density check
+- `marketing-agent` — full snowball launch + 90-day plan
+- `reach-agent` — organic content pack (social, BookTok, Reddit, email)
+
+**After pre-launch-agent completes:**
+- Check `pre_launch.launch_ready` in pipeline-state.json
+- If false: STOP. Output the incomplete checklist items. Do not proceed to Stage 07.
+- If true: proceed to human gate.
+
+**Human gate — PRE-LAUNCH APPROVAL:**
+```
+⏸ HUMAN GATE — Stage 06.5: Pre-Launch Ready for Review
+
+Before the book publishes, confirm all launch infrastructure is in place:
+
+Review PRE-LAUNCH-PLAN.md — confirm:
+  □ ARC readers recruited and copies sent (target: 20+)
+  □ Review drop date communicated to all ARC readers
+  □ Free days scheduled in KDP dashboard for launch day
+  □ Promo sites booked (Fussy Librarian for launch day, others for Countdown Deal)
+  □ AMS campaigns built and paused in Amazon Ads
+  □ Listing audit passed (categories, keywords, cover, description)
+  □ Also-bought seeding purchases made
+
+When confirmed, update pipeline-state.json:
+  "pre_launch_approved": true
+Then run the orchestrator again to trigger publishing.
+
+DO NOT PUBLISH without this gate. A cold launch cannot be recovered cheaply.
+```
+
+---
+
+### STAGE 07 — PUBLISHING
+**Prerequisite human gate:** `pre_launch_approved: true` (in addition to `final_approval_passed` and `cover_approved`)
+**Agents (sequential):**
 - `kdp-upload-agent` — browser upload, saves as DRAFT (not published)
 
 **Human gate — PUBLISH confirmation:**
