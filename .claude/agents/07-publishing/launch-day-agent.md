@@ -103,23 +103,35 @@ Time to send: NOW — 07:30 on launch day
 
 ---
 
-## STEP 5 — ACTIVATE AMS AUTO CAMPAIGN
+## STEP 5 — AMS CAMPAIGNS (do NOT activate on launch day)
 
-Output instructions:
+AMS ads without reviews waste money. A browser clicks through, sees zero reviews,
+and leaves. You pay for the click, Amazon records a non-conversion, and the
+campaign's performance history is poisoned from day one.
+
+During free days, organic free chart discovery does the work. Do not run paid ads
+while giving the book away for free — you would be paying per click to distribute
+a free product.
 
 ```
-ACTION — Activate AMS Campaign 1 (AUTO):
-  1. Go to: advertising.amazon.com
-  2. Find campaign: [Book Title] — AUTO — [launch date]
-  3. Change status from PAUSED to ENABLED
-  4. Confirm budget is £3/$4 per day
-  5. Confirm default bid is £0.30/$0.38
+AMS CAMPAIGN ACTIVATION SCHEDULE:
+  Day 0 (launch day):      NO campaigns active. Free days run organically.
+  Day 2 (free days end):   NO campaigns yet. Monitor reviews.
+  At 5 reviews live:       Activate Campaign 1 (AUTO) + Campaign 2 (keyword exact)
+  At 10 reviews live:      Activate Campaign 3 (ASIN targeting)
 
-Do this at 08:00 on launch day.
+CHECK REVIEW COUNT DAILY:
+  Amazon UK: amazon.co.uk/dp/[ASIN]#customerReviews
+  Amazon US: amazon.com/dp/[ASIN]#customerReviews
 
-Note: Campaign 2 (keyword) activates when reviews reach 5.
-      Campaign 3 (ASIN) activates when reviews reach 10.
-      Check review count daily — activate campaigns the moment thresholds are hit.
+The moment 5 reviews are live:
+  1. Go to advertising.amazon.com
+  2. Activate Campaign 1 (AUTO) — budget £3/$4/day, bid £0.30/$0.38
+  3. Activate Campaign 2 (keyword exact) — budget £6/$8/day
+  4. Record activation date in pipeline-state.json
+
+The moment 10 reviews are live:
+  1. Activate Campaign 3 (ASIN) — budget £8/$10/day, bid £0.40/$0.50
 ```
 
 ---

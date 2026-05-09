@@ -246,24 +246,29 @@ NOTE: If using KDP Countdown Deal as the PRIMARY launch push (book already live 
 Build all three campaigns in Amazon Ads before launch day. Set to PAUSED. Activate on the schedule below.
 
 ```
-CAMPAIGN 1 — AUTO (activate on Day 0, launch day)
+AMS WITHOUT REVIEWS IS WASTED SPEND.
+A browser clicks, sees zero reviews, leaves. You paid for a non-conversion.
+Amazon records that non-conversion and depresses your campaign quality score.
+Do not activate any campaign before 5 reviews are live.
+
+CAMPAIGN 1 — AUTO
 Name: [Book Title] — AUTO — [launch date]
 Type: Sponsored Products, Automatic Targeting
 Daily budget: £3 / $4
 Default bid: £0.30 / $0.38
 Bidding strategy: Dynamic bids — down only
 Negative keywords (add now): free, pdf, audiobook, download, used, cheap
-Status: PAUSED until launch day
+Status: PAUSED — activate when review count hits 5 (not before)
 
-CAMPAIGN 2 — MANUAL KEYWORD EXACT (activate at 5 reviews)
+CAMPAIGN 2 — MANUAL KEYWORD EXACT
 Name: [Book Title] — KW EXACT — [launch date]
 Type: Sponsored Products, Manual, Exact Match
 Daily budget: £6 / $8
 Keywords and bids (pull all 7 from KDP-LISTING.md + top 10 from MARKET-INTELLIGENCE.md):
   [List every keyword with individual bid of £0.30–0.45]
-Status: PAUSED — activate when review count hits 5
+Status: PAUSED — activate when review count hits 5 (same day as Campaign 1)
 
-CAMPAIGN 3 — ASIN TARGETING (activate at 10 reviews)
+CAMPAIGN 3 — ASIN TARGETING
 Name: [Book Title] — ASIN — [launch date]
 Type: Sponsored Products, Manual, Product Targeting
 Daily budget: £8 / $10
@@ -272,10 +277,14 @@ Target ASINs (pull all from MARKET-INTELLIGENCE.md competitor list):
   [List every competitor ASIN]
 Status: PAUSED — activate when review count hits 10
 
-WEEKLY AUDIT RULE:
+ACTIVATION RULE — check Amazon listing daily after launch:
+  5 reviews live → activate Campaign 1 + Campaign 2 same day
+  10 reviews live → activate Campaign 3
+
+WEEKLY AUDIT RULE (once active):
   ACOS < 40%: increase budget 20%
   ACOS 40–70%: hold, adjust individual bids
-  ACOS > 70%: pause worst-performing keywords/ASINs, diagnose
+  ACOS > 70%: pause worst performers, diagnose — usually a cover or review count problem
 ```
 
 ---

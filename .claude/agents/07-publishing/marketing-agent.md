@@ -293,7 +293,7 @@ MONTHLY:
 
 ## OUTPUT 6: AMAZON ADS STRATEGY
 
-Do not launch AMS campaigns until 5+ reviews are live. Ads without social proof waste budget — browsers see no reviews and do not convert.
+Do not launch AMS campaigns until 5+ reviews are live. Ads without reviews waste budget and permanently damage campaign quality score — Amazon records every non-converting click. During free days, organic free chart discovery does the work. Never run paid ads while the book is free.
 
 ### Campaign Structure
 
