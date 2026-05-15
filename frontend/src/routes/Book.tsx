@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/Button";
 import { StageTracker } from "@/components/StageTracker";
 import { ws } from "@/lib/ws";
 import { useWsEvent, useWsStatus } from "@/hooks/useWs";
-import { ArrowLeft } from "lucide-react";
+import { ArrowLeft, FileText, FolderTree } from "lucide-react";
 
 export function Book() {
   const { slug = "" } = useParams<{ slug: string }>();
@@ -44,9 +44,25 @@ export function Book() {
         <ArrowLeft className="size-3" /> Fleet
       </Link>
 
-      <div>
-        <h1 className="font-display text-3xl tracking-tight">{title}</h1>
-        <div className="text-sm text-slate-500 mt-1 font-mono">{slug}</div>
+      <div className="flex items-end justify-between gap-4">
+        <div>
+          <h1 className="font-display text-3xl tracking-tight">{title}</h1>
+          <div className="text-sm text-slate-500 mt-1 font-mono">{slug}</div>
+        </div>
+        <div className="flex gap-2">
+          <Link
+            to={`/books/${slug}/files`}
+            className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200"
+          >
+            <FolderTree className="size-3" /> Files
+          </Link>
+          <Link
+            to={`/books/${slug}/state`}
+            className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200"
+          >
+            <FileText className="size-3" /> State JSON
+          </Link>
+        </div>
       </div>
 
       <Card>

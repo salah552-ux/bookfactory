@@ -3,6 +3,7 @@ import websocket from "@fastify/websocket";
 import cors from "@fastify/cors";
 import { handleConnection } from "./ws/handler.js";
 import { BOOKFACTORY_ROOT } from "./paths.js";
+import { startWatcher, stopWatcher } from "./lib/watcher.js";
 
 const PORT = Number(process.env.PORT ?? 8787);
 const HOST = process.env.HOST ?? "127.0.0.1";
@@ -32,6 +33,7 @@ app.get("/ws", { websocket: true }, (socket /* SocketStream wraps a ws */) => {
 
 const close = async () => {
   app.log.info("shutting down");
+  await stopWatcher();
   await app.close();
   process.exit(0);
 };
@@ -40,6 +42,7 @@ process.on("SIGTERM", close);
 
 try {
   await app.listen({ port: PORT, host: HOST });
+  startWatcher();
   app.log.info({ port: PORT, host: HOST, bookfactoryRoot: BOOKFACTORY_ROOT }, "ready");
 } catch (err) {
   app.log.error(err);

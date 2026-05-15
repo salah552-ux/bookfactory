@@ -6,6 +6,8 @@ import { Demo } from "@/routes/Demo";
 import { Agents } from "@/routes/Agents";
 import { Runs } from "@/routes/Runs";
 import { Book } from "@/routes/Book";
+import { BookFiles } from "@/routes/BookFiles";
+import { BookState } from "@/routes/BookState";
 
 export default function App() {
   return (
@@ -18,6 +20,8 @@ export default function App() {
           <Route path="/demo" element={<Demo />} />
           <Route path="/settings" element={<Settings />} />
           <Route path="/books/:slug" element={<Book />} />
+          <Route path="/books/:slug/files" element={<BookFiles />} />
+          <Route path="/books/:slug/state" element={<BookState />} />
         </Route>
       </Routes>
     </BrowserRouter>
