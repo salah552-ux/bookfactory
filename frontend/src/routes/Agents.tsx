@@ -5,11 +5,13 @@ import { Button } from "@/components/ui/Button";
 import { ws } from "@/lib/ws";
 import { useWsEvent, useWsStatus } from "@/hooks/useWs";
 import type { AgentDescriptor } from "@/lib/schemas";
+import { AgentRunnerModal } from "@/components/AgentRunnerModal";
 
 export function Agents() {
   const status = useWsStatus();
   const [agents, setAgents] = useState<AgentDescriptor[]>([]);
   const [query, setQuery] = useState("");
+  const [runAgent, setRunAgent] = useState<string | null>(null);
 
   useEffect(() => {
     if (status === "open") ws.send({ type: "agents.list" });
@@ -66,13 +68,7 @@ export function Agents() {
                     <Button
                       size="sm"
                       variant="ghost"
-                      onClick={() =>
-                        ws.send({
-                          type: "agent.run",
-                          runId: crypto.randomUUID(),
-                          agent: a.id,
-                        })
-                      }
+                      onClick={() => setRunAgent(a.id)}
                     >
                       Run
                     </Button>
@@ -88,6 +84,12 @@ export function Agents() {
           </div>
         </section>
       ))}
+
+      <AgentRunnerModal
+        open={!!runAgent}
+        onClose={() => setRunAgent(null)}
+        agent={runAgent}
+      />
     </div>
   );
 }

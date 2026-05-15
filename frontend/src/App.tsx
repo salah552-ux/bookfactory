@@ -8,6 +8,7 @@ import { Runs } from "@/routes/Runs";
 import { Book } from "@/routes/Book";
 import { BookFiles } from "@/routes/BookFiles";
 import { BookState } from "@/routes/BookState";
+import { BookWriting } from "@/routes/BookWriting";
 
 export default function App() {
   return (
@@ -22,6 +23,7 @@ export default function App() {
           <Route path="/books/:slug" element={<Book />} />
           <Route path="/books/:slug/files" element={<BookFiles />} />
           <Route path="/books/:slug/state" element={<BookState />} />
+          <Route path="/books/:slug/writing" element={<BookWriting />} />
         </Route>
       </Routes>
     </BrowserRouter>

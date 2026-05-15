@@ -5,13 +5,15 @@ import { Button } from "@/components/ui/Button";
 import { StageTracker } from "@/components/StageTracker";
 import { ws } from "@/lib/ws";
 import { useWsEvent, useWsStatus } from "@/hooks/useWs";
-import { ArrowLeft, FileText, FolderTree } from "lucide-react";
+import { ArrowLeft, FileText, FolderTree, PenLine, Upload } from "lucide-react";
+import { PublishGateModal } from "@/components/PublishGateModal";
 
 export function Book() {
   const { slug = "" } = useParams<{ slug: string }>();
   const status = useWsStatus();
   const [state, setState] = useState<unknown>(null);
   const [files, setFiles] = useState<Array<{ name: string; type: string }>>([]);
+  const [publishOpen, setPublishOpen] = useState(false);
 
   useEffect(() => {
     if (status === "open") {
@@ -49,7 +51,13 @@ export function Book() {
           <h1 className="font-display text-3xl tracking-tight">{title}</h1>
           <div className="text-sm text-slate-500 mt-1 font-mono">{slug}</div>
         </div>
-        <div className="flex gap-2">
+        <div className="flex gap-2 flex-wrap">
+          <Link
+            to={`/books/${slug}/writing`}
+            className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200"
+          >
+            <PenLine className="size-3" /> Writing
+          </Link>
           <Link
             to={`/books/${slug}/files`}
             className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded bg-slate-800 hover:bg-slate-700 text-slate-200"
@@ -62,6 +70,12 @@ export function Book() {
           >
             <FileText className="size-3" /> State JSON
           </Link>
+          <button
+            onClick={() => setPublishOpen(true)}
+            className="inline-flex items-center gap-1 text-xs px-3 py-1.5 rounded bg-red-900/40 hover:bg-red-900/60 text-red-200 border border-red-900"
+          >
+            <Upload className="size-3" /> Publish gate
+          </button>
         </div>
       </div>
 
@@ -127,6 +141,12 @@ export function Book() {
           </pre>
         </CardBody>
       </Card>
+
+      <PublishGateModal
+        open={publishOpen}
+        onClose={() => setPublishOpen(false)}
+        book={slug}
+      />
     </div>
   );
 }
