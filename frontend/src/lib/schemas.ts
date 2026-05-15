@@ -97,6 +97,44 @@ export const ServerMsg = z.discriminatedUnion("type", [
     message: z.string(),
   }),
   z.object({
+    type: z.literal("runs.list.snapshot"),
+    runs: z.array(
+      z.object({
+        runId: z.string(),
+        agent: z.string().optional(),
+        script: z.string().optional(),
+        book: z.string().optional(),
+        startedAt: z.number(),
+        finishedAt: z.number().optional(),
+        exitCode: z.number().optional(),
+      })
+    ),
+  }),
+  z.object({
+    type: z.literal("run.snapshot"),
+    run: z.object({
+      runId: z.string(),
+      agent: z.string().optional(),
+      script: z.string().optional(),
+      book: z.string().optional(),
+      startedAt: z.number(),
+      finishedAt: z.number().optional(),
+      exitCode: z.number().optional(),
+      chunks: z.array(
+        z.object({
+          stream: z.enum(["stdout", "stderr", "tool"]),
+          text: z.string(),
+          ts: z.number(),
+        })
+      ),
+    }),
+  }),
+  z.object({
+    type: z.literal("book.created"),
+    runId: z.string(),
+    slug: z.string(),
+  }),
+  z.object({
     type: z.literal("error"),
     runId: z.string().optional(),
     code: z.string(),

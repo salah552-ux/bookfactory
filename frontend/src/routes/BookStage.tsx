@@ -3,6 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import { Card, CardBody, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { AgentRunnerModal } from "@/components/AgentRunnerModal";
+import { PostLaunchCharts } from "@/components/PostLaunchCharts";
 import { ws } from "@/lib/ws";
 import { useWsEvent, useWsStatus } from "@/hooks/useWs";
 import { STAGES, stageById } from "@/lib/stages";
@@ -110,6 +111,10 @@ export function BookStage() {
           <p className="text-sm text-slate-400 mt-1">{stage.notes}</p>
         )}
       </div>
+
+      {stage.id === "10-postlaunch" && (
+        <PostLaunchCharts data={{}} />
+      )}
 
       {stage.id === "03-writing" && (
         <Card>

@@ -35,6 +35,9 @@ backend/.env
 # UI screenshot artefacts (regenerated via scripts/screenshot-ui.mjs)
 .screenshots/
 
+# Persistent run history (regenerated as the backend runs)
+.bookfactory-runs/
+
 # OS
 .DS_Store
 Thumbs.db

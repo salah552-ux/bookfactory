@@ -86,6 +86,33 @@ export const KdpPublishConfirmMsg = z.object({
   phrase: z.string(),
 });
 
+export const RunsListMsg = z.object({
+  type: z.literal("runs.list"),
+  limit: z.number().int().positive().max(500).optional(),
+});
+
+export const RunReadMsg = z.object({
+  type: z.literal("run.read"),
+  runId: z.string().min(1),
+});
+
+export const BookCreateMsg = z.object({
+  type: z.literal("book.create"),
+  runId: z.string().min(1),
+  slug: z
+    .string()
+    .min(2)
+    .max(60)
+    .regex(/^[a-z0-9][a-z0-9-]*[a-z0-9]$/, "slug must be lowercase-hyphen"),
+  title: z.string().min(2),
+  genre: z.enum([
+    "FICTION-MYSTERY",
+    "FICTION",
+    "NONFICTION-HEALTH",
+    "NONFICTION-BUSINESS",
+  ]),
+});
+
 export const ClientMsg = z.discriminatedUnion("type", [
   PingMsg,
   AgentRunMsg,
@@ -101,6 +128,9 @@ export const ClientMsg = z.discriminatedUnion("type", [
   BuildRunMsg,
   AgentsListMsg,
   KdpPublishConfirmMsg,
+  RunsListMsg,
+  RunReadMsg,
+  BookCreateMsg,
 ]);
 
 export type ClientMsg = z.infer<typeof ClientMsg>;
@@ -125,7 +155,24 @@ export type ServerMsg =
   | { type: "file.changed"; path: string; sha: string; source: string }
   | { type: "agents.snapshot"; agents: AgentDescriptor[]; manifest: unknown }
   | { type: "kdp.publish.result"; book: string; ok: boolean; message: string }
+  | { type: "runs.list.snapshot"; runs: Array<RunRecordSummary> }
+  | { type: "run.snapshot"; run: RunRecordFull }
+  | { type: "book.created"; runId: string; slug: string }
   | { type: "error"; runId?: string; code: string; message: string; detail?: unknown };
+
+export interface RunRecordSummary {
+  runId: string;
+  agent?: string;
+  script?: string;
+  book?: string;
+  startedAt: number;
+  finishedAt?: number;
+  exitCode?: number;
+}
+
+export interface RunRecordFull extends RunRecordSummary {
+  chunks: Array<{ stream: "stdout" | "stderr" | "tool"; text: string; ts: number }>;
+}
 
 export interface AgentDescriptor {
   id: string;

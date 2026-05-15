@@ -4,6 +4,7 @@ import { loadAgents } from "../lib/agents.js";
 import { listBooks, readState, patchState } from "../lib/state.js";
 import { readTextFile, writeTextFile, listDir } from "../lib/files.js";
 import { runAgent, runScript, cancelRun } from "../lib/runner.js";
+import { listRuns, readRun } from "../lib/runStore.js";
 import { BOOKFACTORY_ROOT } from "../paths.js";
 
 interface ConnState {
@@ -198,6 +199,47 @@ async function dispatch(socket: WebSocket, state: ConnState, msg: import("../sch
           ? "Publish confirmation accepted. kdp-upload-agent gate cleared."
           : "Rejected: phrase must be the exact word PUBLISH.",
       });
+    }
+
+    case "runs.list": {
+      const runs = await listRuns(msg.limit ?? 200);
+      return send(socket, {
+        type: "runs.list.snapshot",
+        runs: runs.map(({ chunks: _c, ...r }) => r),
+      });
+    }
+
+    case "run.read": {
+      const run = await readRun(msg.runId);
+      if (!run) {
+        return send(socket, {
+          type: "error",
+          runId: msg.runId,
+          code: "no_such_run",
+          message: "Run not found.",
+        });
+      }
+      return send(socket, { type: "run.snapshot", run });
+    }
+
+    case "book.create": {
+      // new-book.sh accepts "Title" + genre flag (health|fiction|business).
+      // It derives the slug itself. Map the typed genre enum to the
+      // short flag the script expects.
+      const genreFlag =
+        msg.genre === "FICTION-MYSTERY" || msg.genre === "FICTION"
+          ? "fiction"
+          : msg.genre === "NONFICTION-HEALTH"
+            ? "health"
+            : "business";
+      await runScript({
+        runId: msg.runId,
+        script: "new-book.sh",
+        scriptArgs: [msg.title, genreFlag],
+        emit,
+      });
+      send(socket, { type: "book.created", runId: msg.runId, slug: msg.slug });
+      return;
     }
   }
 }

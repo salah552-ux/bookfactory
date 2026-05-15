@@ -1,10 +1,12 @@
 import { NavLink, Outlet } from "react-router-dom";
-import { Activity, BookOpen, Cog, Layers, Library, Play } from "lucide-react";
+import { Activity, BookOpen, Cog, Layers, Library, Play, Plus, Network } from "lucide-react";
 import { useWsStatus } from "@/hooks/useWs";
 import { cn } from "@/lib/cn";
 
 const nav = [
   { to: "/", label: "Fleet", Icon: Library, end: true },
+  { to: "/books/new", label: "New book", Icon: Plus },
+  { to: "/series", label: "Series", Icon: Network },
   { to: "/agents", label: "Agents", Icon: Layers },
   { to: "/runs", label: "Runs", Icon: Activity },
   { to: "/demo", label: "Demo", Icon: Play },

@@ -10,6 +10,8 @@ import { BookFiles } from "@/routes/BookFiles";
 import { BookState } from "@/routes/BookState";
 import { BookWriting } from "@/routes/BookWriting";
 import { BookStage } from "@/routes/BookStage";
+import { NewBook } from "@/routes/NewBook";
+import { Series } from "@/routes/Series";
 
 export default function App() {
   return (
@@ -17,6 +19,8 @@ export default function App() {
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
+          <Route path="/books/new" element={<NewBook />} />
+          <Route path="/series" element={<Series />} />
           <Route path="/agents" element={<Agents />} />
           <Route path="/runs" element={<Runs />} />
           <Route path="/demo" element={<Demo />} />

@@ -2,8 +2,54 @@ import { spawn, ChildProcess } from "node:child_process";
 import path from "node:path";
 import { BOOKFACTORY_ROOT, bookDir } from "../paths.js";
 import type { ServerMsg } from "../schemas.js";
+import {
+  appendRunChunk,
+  finishRunRecord,
+  flushRun,
+  startRunRecord,
+} from "./runStore.js";
 
 export type Emit = (msg: ServerMsg) => void;
+
+/**
+ * Wraps an emit fn so every run.* event is also persisted to disk. Chunks
+ * are fire-and-forget (no client-observable race), but run.finished is
+ * awaited BEFORE the message is emitted to clients so that any subsequent
+ * runs.list call sees the finished state on disk.
+ */
+function persistingEmit(emit: Emit): Emit {
+  return (msg) => {
+    if (msg.type === "run.started") {
+      // Start record must exist before chunks can append; emit + enqueue.
+      emit(msg);
+      void startRunRecord({
+        runId: msg.runId,
+        agent: msg.agent,
+        script: msg.script,
+        book: msg.book,
+        startedAt: msg.ts,
+      });
+    } else if (msg.type === "run.chunk") {
+      emit(msg);
+      void appendRunChunk(msg.runId, {
+        stream: msg.stream,
+        text: msg.text,
+        ts: Date.now(),
+      });
+    } else if (msg.type === "run.finished") {
+      // Persist first, then emit. The wrapper of the original emit closure
+      // can't be async, but enqueueing returns a promise that resolves AFTER
+      // disk is updated. We void-emit synchronously after queuing via a
+      // microtask so external observers still see the message — the caller
+      // (runAgent/runScript) does an explicit flushRun afterward.
+      void finishRunRecord(msg.runId, msg.exitCode);
+      // Defer emit until after the persistence enqueue chain drains.
+      void flushRun(msg.runId).then(() => emit(msg));
+    } else {
+      emit(msg);
+    }
+  };
+}
 
 interface ActiveRun {
   proc: ChildProcess;
@@ -36,7 +82,8 @@ export async function runAgent(args: {
   agentArgs?: Record<string, unknown>;
   emit: Emit;
 }): Promise<void> {
-  const { runId, agent, book, prompt, agentArgs, emit } = args;
+  const { runId, agent, book, prompt, agentArgs } = args;
+  const emit = persistingEmit(args.emit);
   const cli = process.env.CLAUDE_CLI || "claude";
 
   const userPrompt = buildPrompt(agent, book, prompt, agentArgs);
@@ -100,6 +147,7 @@ export async function runAgent(args: {
       resolve();
     });
   });
+  await flushRun(runId);
 }
 
 /**
@@ -113,7 +161,8 @@ export async function runScript(args: {
   scriptArgs?: string[];
   emit: Emit;
 }): Promise<void> {
-  const { runId, script, book, scriptArgs, emit } = args;
+  const { runId, script, book, scriptArgs } = args;
+  const emit = persistingEmit(args.emit);
   const scriptPath = path.join(BOOKFACTORY_ROOT, script);
   const argv = [scriptPath, ...(book ? [book] : []), ...(scriptArgs ?? [])];
 
@@ -149,6 +198,7 @@ export async function runScript(args: {
       resolve();
     });
   });
+  await flushRun(runId);
 }
 
 function buildPrompt(

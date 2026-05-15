@@ -23,6 +23,8 @@ const PAGES = [
   { name: "16-stage-production", path: "/books/fix-your-gut-for-good/stage/06-production" },
   { name: "17-stage-publishing", path: "/books/fix-your-gut-for-good/stage/07-publishing" },
   { name: "18-stage-postlaunch", path: "/books/fix-your-gut-for-good/stage/10-postlaunch" },
+  { name: "19-new-book", path: "/books/new" },
+  { name: "20-series", path: "/series" },
 ];
 
 await fs.mkdir(OUT, { recursive: true });
