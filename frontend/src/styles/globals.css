@@ -19,8 +19,42 @@ body {
   font-family: "Lato", system-ui, sans-serif;
 }
 
+/* Dark theme (default) */
+html.dark body {
+  background: #020617;
+  color: #e2e8f0;
+}
+
+/* Light theme */
+html.light {
+  color-scheme: light;
+}
+html.light body {
+  background: #f8f5ef;
+  color: #0e1c2c;
+}
+html.light .bg-slate-950 { background-color: #f8f5ef !important; }
+html.light .bg-slate-900\/60 { background-color: #ffffff !important; }
+html.light .bg-slate-900 { background-color: #f1ece2 !important; }
+html.light .bg-slate-800\/60 { background-color: #e8e0cf !important; }
+html.light .bg-slate-800 { background-color: #d8cdb4 !important; }
+html.light .text-slate-100 { color: #0e1c2c !important; }
+html.light .text-slate-200 { color: #1f2937 !important; }
+html.light .text-slate-300 { color: #334155 !important; }
+html.light .text-slate-400 { color: #475569 !important; }
+html.light .text-slate-500 { color: #64748b !important; }
+html.light .border-slate-800 { border-color: #d8cdb4 !important; }
+html.light .border-slate-700 { border-color: #c8b99a !important; }
+
 /* Scrollbar */
 ::-webkit-scrollbar { width: 10px; height: 10px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(148,163,184,0.25); border-radius: 6px; }
 ::-webkit-scrollbar-thumb:hover { background: rgba(148,163,184,0.5); }
+
+/* Subtle reveal animation for route changes */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+main > div { animation: fadeIn 200ms ease-out; }

@@ -1,4 +1,5 @@
 import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
+import { AuthGate } from "@/components/AuthGate";
 import { Layout } from "@/components/Layout";
 import { Home } from "@/routes/Home";
 import { Settings } from "@/routes/Settings";
@@ -25,6 +26,7 @@ const basename = import.meta.env.BASE_URL?.replace(/\/$/, "") || "/";
 export default function App() {
   return (
     <Router basename={basename}>
+      <AuthGate>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
@@ -41,6 +43,7 @@ export default function App() {
           <Route path="/books/:slug/stage/:stageId" element={<BookStage />} />
         </Route>
       </Routes>
+      </AuthGate>
     </Router>
   );
 }
