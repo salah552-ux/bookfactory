@@ -7,6 +7,7 @@ interface ImportMetaEnv {
   readonly VITE_AUTH_TOKEN?: string;
   readonly VITE_DEMO?: string;
   readonly VITE_BASE?: string;
+  readonly VITE_STANDALONE?: string;
 }
 
 interface ImportMeta {

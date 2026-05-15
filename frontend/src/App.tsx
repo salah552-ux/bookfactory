@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import { Home } from "@/routes/Home";
 import { Settings } from "@/routes/Settings";
@@ -13,9 +13,14 @@ import { BookStage } from "@/routes/BookStage";
 import { NewBook } from "@/routes/NewBook";
 import { Series } from "@/routes/Series";
 
+// Use HashRouter when the bundle is served from file:// (single-file demo)
+// because BrowserRouter requires a real HTTP server for path-based routes.
+const Router =
+  import.meta.env.VITE_STANDALONE === "true" ? HashRouter : BrowserRouter;
+
 export default function App() {
   return (
-    <BrowserRouter>
+    <Router>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
@@ -32,6 +37,6 @@ export default function App() {
           <Route path="/books/:slug/stage/:stageId" element={<BookStage />} />
         </Route>
       </Routes>
-    </BrowserRouter>
+    </Router>
   );
 }
