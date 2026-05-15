@@ -3,6 +3,8 @@ import { Link, useParams } from "react-router-dom";
 import { Card, CardBody, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { AgentRunnerModal } from "@/components/AgentRunnerModal";
+import { parseArtefact } from "@/lib/postLaunchData";
+import type { PostLaunchData } from "@/components/PostLaunchCharts";
 const PostLaunchCharts = lazy(() =>
   import("@/components/PostLaunchCharts").then((m) => ({
     default: m.PostLaunchCharts,
@@ -25,13 +27,20 @@ export function BookStage() {
   const [state, setState] = useState<Record<string, unknown> | null>(null);
   const [files, setFiles] = useState<Array<{ name: string; type: string }>>([]);
   const [runAgent, setRunAgent] = useState<string | null>(null);
+  const [postLaunchData, setPostLaunchData] = useState<PostLaunchData>({});
 
   useEffect(() => {
     if (status !== "open") return;
     ws.send({ type: "pipeline.read", book: slug });
     ws.send({ type: "pipeline.subscribe", book: slug });
     ws.send({ type: "file.list", path: `books/${slug}` });
-  }, [status, slug]);
+    if (stageId === "10-postlaunch") {
+      ws.send({
+        type: "file.read",
+        path: `books/${slug}/POST-LAUNCH-DATA.json`,
+      });
+    }
+  }, [status, slug, stageId]);
 
   useWsEvent("pipeline.snapshot", (m) => {
     if (m.book === slug) setState(m.state as Record<string, unknown> | null);
@@ -41,6 +50,16 @@ export function BookStage() {
   });
   useWsEvent("file.list.snapshot", (m) => {
     if (m.path === `books/${slug}`) setFiles(m.entries);
+  });
+  useWsEvent("file.snapshot", (m) => {
+    if (m.path === `books/${slug}/POST-LAUNCH-DATA.json`) {
+      setPostLaunchData(parseArtefact(m.content));
+    }
+  });
+  useWsEvent("file.changed", (m) => {
+    if (m.path === `books/${slug}/POST-LAUNCH-DATA.json` && status === "open") {
+      ws.send({ type: "file.read", path: m.path });
+    }
   });
 
   if (!stage) {
@@ -122,7 +141,7 @@ export function BookStage() {
             <div className="text-xs text-slate-500">Loading charts…</div>
           }
         >
-          <PostLaunchCharts data={{}} />
+          <PostLaunchCharts data={postLaunchData} />
         </Suspense>
       )}
 
