@@ -8,8 +8,18 @@ Full-stack control surface for the BookFactory publishing pipeline. 44 specialis
 # Dev mode — host Node + Vite, fastest iteration
 bash start-ui.sh
 
-# Open http://127.0.0.1:5173
+# Open http://127.0.0.1:5180
 ```
+
+> ⚠️ Default frontend port is **5180** (not 5173) because Podman / Pod Engine
+> claims 5173 on many machines. Override either port with env vars if needed:
+>
+> ```bash
+> FRONTEND_PORT=5190 BACKEND_PORT=8795 bash start-ui.sh
+> ```
+>
+> The launcher checks the chosen ports are free before starting and bails with
+> a helpful message if not.
 
 Or deploy via Docker:
 
