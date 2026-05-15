@@ -18,9 +18,13 @@ import { Series } from "@/routes/Series";
 const Router =
   import.meta.env.VITE_STANDALONE === "true" ? HashRouter : BrowserRouter;
 
+// BASE_URL comes from vite.config base (e.g. "/bookfactory/" on GitHub Pages).
+// React Router needs it as basename or no routes will match under the subpath.
+const basename = import.meta.env.BASE_URL?.replace(/\/$/, "") || "/";
+
 export default function App() {
   return (
-    <Router>
+    <Router basename={basename}>
       <Routes>
         <Route element={<Layout />}>
           <Route path="/" element={<Home />} />
