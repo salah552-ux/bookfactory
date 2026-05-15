@@ -7,6 +7,23 @@ export default defineConfig({
   resolve: {
     alias: { "@": path.resolve(__dirname, "./src") },
   },
+  build: {
+    // Split big vendor deps into their own chunks so the initial bundle
+    // stays under ~200 KB gzipped and Recharts/Monaco only load on demand.
+    rollupOptions: {
+      output: {
+        manualChunks(id) {
+          if (id.includes("node_modules")) {
+            if (id.includes("monaco-editor")) return "monaco";
+            if (id.includes("recharts") || id.includes("d3-")) return "charts";
+            if (id.includes("react")) return "react";
+          }
+          return undefined;
+        },
+      },
+    },
+    chunkSizeWarningLimit: 700,
+  },
   server: {
     port: 5173,
     proxy: {

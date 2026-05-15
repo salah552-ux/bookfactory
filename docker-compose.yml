@@ -1,0 +1,56 @@
+# BookFactory — one-command local + remote deploy.
+#
+#   docker compose up --build         # build + run everything
+#   docker compose logs -f backend    # tail backend logs
+#   docker compose down               # stop
+#
+# Single source of truth: the repo root (mounted into the backend) holds all
+# books, agents, manifests, build scripts. Anything the agents write lands
+# back on the host filesystem. The frontend is a static bundle served by
+# nginx that proxies /ws to the backend container.
+
+services:
+  backend:
+    build:
+      context: ./backend
+    image: bookfactory-backend:latest
+    container_name: bookfactory-backend
+    restart: unless-stopped
+    environment:
+      PORT: "8787"
+      HOST: "0.0.0.0"
+      BOOKFACTORY_ROOT: "/workspace"
+      CLAUDE_CLI: "/usr/local/bin/claude"
+      AUTH_MODE: "${AUTH_MODE:-none}"
+      AUTH_TOKEN: "${AUTH_TOKEN:-}"
+      LOG_LEVEL: "${LOG_LEVEL:-info}"
+    volumes:
+      # Mount the repo root so the backend can read books/, .claude/, etc.
+      - ./:/workspace
+      # Mount the host Claude CLI binary + config so `claude` works inside
+      # the container using your existing auth.
+      - ${HOME}/.claude:/root/.claude
+      - /usr/local/bin/claude:/usr/local/bin/claude:ro
+    ports:
+      - "8787:8787"
+    healthcheck:
+      test: ["CMD", "wget", "-qO-", "http://localhost:8787/health"]
+      interval: 10s
+      timeout: 3s
+      retries: 5
+      start_period: 5s
+
+  frontend:
+    build:
+      context: ./frontend
+      args:
+        VITE_WS_URL: "/ws"
+        VITE_API_URL: "/api"
+    image: bookfactory-frontend:latest
+    container_name: bookfactory-frontend
+    restart: unless-stopped
+    depends_on:
+      backend:
+        condition: service_healthy
+    ports:
+      - "${FRONTEND_PORT:-5173}:80"

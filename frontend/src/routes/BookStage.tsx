@@ -1,9 +1,13 @@
-import { useEffect, useState } from "react";
+import { lazy, Suspense, useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import { Card, CardBody, CardHeader, CardTitle } from "@/components/ui/Card";
 import { Button } from "@/components/ui/Button";
 import { AgentRunnerModal } from "@/components/AgentRunnerModal";
-import { PostLaunchCharts } from "@/components/PostLaunchCharts";
+const PostLaunchCharts = lazy(() =>
+  import("@/components/PostLaunchCharts").then((m) => ({
+    default: m.PostLaunchCharts,
+  }))
+);
 import { ws } from "@/lib/ws";
 import { useWsEvent, useWsStatus } from "@/hooks/useWs";
 import { STAGES, stageById } from "@/lib/stages";
@@ -113,7 +117,13 @@ export function BookStage() {
       </div>
 
       {stage.id === "10-postlaunch" && (
-        <PostLaunchCharts data={{}} />
+        <Suspense
+          fallback={
+            <div className="text-xs text-slate-500">Loading charts…</div>
+          }
+        >
+          <PostLaunchCharts data={{}} />
+        </Suspense>
       )}
 
       {stage.id === "03-writing" && (
