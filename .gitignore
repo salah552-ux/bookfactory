@@ -30,6 +30,7 @@ frontend/dist/
 backend/dist/
 frontend/.env
 backend/.env
+*.tsbuildinfo
 
 # OS
 .DS_Store
