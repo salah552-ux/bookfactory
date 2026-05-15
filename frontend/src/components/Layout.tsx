@@ -65,8 +65,20 @@ export function Layout() {
           </div>
         </div>
       </aside>
-      <main className="flex-1 min-w-0 bg-slate-950">
-        <Outlet />
+      <main className="flex-1 min-w-0 bg-slate-950 flex flex-col">
+        {import.meta.env.VITE_DEMO === "true" && (
+          <div className="bg-amber-900/40 text-amber-200 text-xs px-4 py-2 border-b border-amber-800 flex items-center gap-2 justify-center">
+            <span className="font-bold">DEMO MODE —</span>
+            <span>
+              Mock data, no real agents. Run{" "}
+              <code className="text-amber-100">bash start-ui.sh</code> on your
+              own machine to drive the real pipeline.
+            </span>
+          </div>
+        )}
+        <div className="flex-1 min-h-0">
+          <Outlet />
+        </div>
       </main>
     </div>
   );

@@ -1,5 +1,8 @@
 import { ServerMsg } from "./schemas";
 import { getWsUrl, getAuthToken } from "./env";
+import { mockWs } from "./wsMock";
+
+const DEMO = import.meta.env.VITE_DEMO === "true";
 
 type Listener = (msg: ServerMsg) => void;
 type StatusListener = (status: WsStatus) => void;
@@ -115,4 +118,4 @@ class WsClient {
   }
 }
 
-export const ws = new WsClient();
+export const ws = DEMO ? (mockWs as unknown as WsClient) : new WsClient();

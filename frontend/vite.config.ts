@@ -4,6 +4,9 @@ import path from "node:path";
 
 export default defineConfig({
   plugins: [react()],
+  // Base path for hosted builds (e.g. /bookfactory/ on GitHub Pages).
+  // Set via VITE_BASE at build time. Empty for local dev.
+  base: process.env.VITE_BASE || "/",
   resolve: {
     alias: { "@": path.resolve(__dirname, "./src") },
   },
