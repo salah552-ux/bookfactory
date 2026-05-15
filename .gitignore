@@ -32,6 +32,9 @@ frontend/.env
 backend/.env
 *.tsbuildinfo
 
+# UI screenshot artefacts (regenerated via scripts/screenshot-ui.mjs)
+.screenshots/
+
 # OS
 .DS_Store
 Thumbs.db
