@@ -1,0 +1,26 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-navy: #1b3a5c;
+  --brand-tan: #c8b99a;
+  --brand-ink: #0e1c2c;
+  --brand-paper: #f8f5ef;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  font-family: "Lato", system-ui, sans-serif;
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(148,163,184,0.25); border-radius: 6px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(148,163,184,0.5); }

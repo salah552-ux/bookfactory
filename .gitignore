@@ -25,6 +25,12 @@ exports/
 /tmp/
 *.tmp
 
+# Frontend / backend build outputs
+frontend/dist/
+backend/dist/
+frontend/.env
+backend/.env
+
 # OS
 .DS_Store
 Thumbs.db
