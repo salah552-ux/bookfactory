@@ -8,9 +8,15 @@ import { BOOKFACTORY_ROOT } from "../paths.js";
 
 interface ConnState {
   subscribedBooks: Set<string>;
+  authed: boolean;
 }
 
 const connections = new Map<WebSocket, ConnState>();
+
+function isAuthed(authedFromHandshake: boolean): boolean {
+  if (process.env.AUTH_MODE !== "token") return true;
+  return authedFromHandshake;
+}
 
 /**
  * Allow other parts of the server (e.g. a file watcher) to broadcast events
@@ -23,9 +29,30 @@ export function broadcast(predicate: (state: ConnState) => boolean, msg: ServerM
   }
 }
 
-export function handleConnection(socket: WebSocket): void {
-  const state: ConnState = { subscribedBooks: new Set() };
+export function handleConnection(
+  socket: WebSocket,
+  opts: { tokenFromQuery?: string } = {}
+): void {
+  const tokenMode = process.env.AUTH_MODE === "token";
+  const expected = process.env.AUTH_TOKEN ?? "";
+  const tokenOK =
+    !tokenMode || (expected !== "" && opts.tokenFromQuery === expected);
+
+  const state: ConnState = {
+    subscribedBooks: new Set(),
+    authed: tokenOK,
+  };
   connections.set(socket, state);
+
+  if (!tokenOK) {
+    send(socket, {
+      type: "error",
+      code: "auth_required",
+      message: "Auth token required. Pass ?token= on the WebSocket URL.",
+    });
+    socket.close(1008, "auth_required");
+    return;
+  }
 
   send(socket, {
     type: "hello",
@@ -52,6 +79,14 @@ export function handleConnection(socket: WebSocket): void {
         code: "invalid_message",
         message: "Message did not match schema.",
         detail: result.error.flatten(),
+      });
+    }
+
+    if (!isAuthed(state.authed)) {
+      return send(socket, {
+        type: "error",
+        code: "auth_required",
+        message: "Not authenticated.",
       });
     }
 

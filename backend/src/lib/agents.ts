@@ -21,6 +21,8 @@ export async function loadAgents(): Promise<{
   const manifest = JSON.parse(manifestRaw);
 
   const files = await fg("*/*.md", { cwd: AGENTS_DIR, dot: false });
+  // exclude the manifest/coordinator non-agent docs by relying on the stage
+  // dir prefix matching NN-name pattern.
   const agents: AgentDescriptor[] = [];
 
   for (const rel of files) {

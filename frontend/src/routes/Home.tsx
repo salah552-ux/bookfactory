@@ -81,7 +81,7 @@ function BookCard({ book }: { book: BookEntry }) {
           <span className="text-slate-500 mr-2">Genre</span>
           <span className="text-slate-200">{genre}</span>
         </div>
-        <StageTracker state={book.state} />
+        <StageTracker state={book.state} bookSlug={book.slug} />
       </CardBody>
     </Card>
   );

@@ -26,9 +26,15 @@ app.get("/health", async () => ({
   bookfactoryRoot: BOOKFACTORY_ROOT,
 }));
 
-app.get("/ws", { websocket: true }, (socket /* SocketStream wraps a ws */) => {
-  // @fastify/websocket v10 hands us the WebSocket directly via `socket`.
-  handleConnection(socket as unknown as import("@fastify/websocket").WebSocket);
+app.get("/ws", { websocket: true }, (socket, req) => {
+  const token =
+    typeof req.query === "object" && req.query !== null
+      ? (req.query as Record<string, string | undefined>).token
+      : undefined;
+  handleConnection(
+    socket as unknown as import("@fastify/websocket").WebSocket,
+    { tokenFromQuery: token }
+  );
 });
 
 const close = async () => {

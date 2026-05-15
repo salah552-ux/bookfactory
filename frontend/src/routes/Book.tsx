@@ -88,7 +88,7 @@ export function Book() {
             <span className="text-slate-500 mr-2">Genre</span>
             <span className="text-slate-200">{genre}</span>
           </div>
-          <StageTracker state={state} />
+          <StageTracker state={state} bookSlug={slug} />
         </CardBody>
       </Card>
 

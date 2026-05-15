@@ -17,6 +17,12 @@ const PAGES = [
   { name: "07-book-writing", path: "/books/fix-your-gut-for-good/writing" },
   { name: "08-book-files", path: "/books/fix-your-gut-for-good/files" },
   { name: "09-book-state", path: "/books/untitled-cosy-mystery/state" },
+  { name: "13-stage-research", path: "/books/fix-your-gut-for-good/stage/01-research" },
+  { name: "14-stage-planning", path: "/books/fix-your-gut-for-good/stage/02-planning" },
+  { name: "15-stage-quality", path: "/books/fix-your-gut-for-good/stage/04-quality" },
+  { name: "16-stage-production", path: "/books/fix-your-gut-for-good/stage/06-production" },
+  { name: "17-stage-publishing", path: "/books/fix-your-gut-for-good/stage/07-publishing" },
+  { name: "18-stage-postlaunch", path: "/books/fix-your-gut-for-good/stage/10-postlaunch" },
 ];
 
 await fs.mkdir(OUT, { recursive: true });
