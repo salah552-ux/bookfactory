@@ -1,10 +1,13 @@
 import { useEffect, useMemo, useState } from "react";
 import { Card, CardBody, CardHeader, CardTitle } from "@/components/ui/Card";
+import { PageHeader } from "@/components/PageHeader";
+import { EmptyState } from "@/components/EmptyState";
 import { RunLog } from "@/components/RunLog";
 import { useRunStore } from "@/stores/runs";
 import { useWsEvent, useWsStatus } from "@/hooks/useWs";
 import { ws } from "@/lib/ws";
 import { cn } from "@/lib/cn";
+import { Activity } from "lucide-react";
 
 export function Runs() {
   const status = useWsStatus();
@@ -15,7 +18,6 @@ export function Runs() {
   const finish = useRunStore((s) => s.finish);
   const [selected, setSelected] = useState<string | null>(null);
 
-  // Hydrate from server on connect.
   useEffect(() => {
     if (status === "open") ws.send({ type: "runs.list" });
   }, [status]);
@@ -42,9 +44,7 @@ export function Runs() {
       book: m.run.book,
       startedAt: m.run.startedAt,
     });
-    for (const c of m.run.chunks) {
-      appendChunk(m.run.runId, c);
-    }
+    for (const c of m.run.chunks) appendChunk(m.run.runId, c);
     if (m.run.finishedAt && typeof m.run.exitCode === "number")
       finish(m.run.runId, m.run.exitCode);
   });
@@ -67,7 +67,6 @@ export function Runs() {
   function openRun(id: string) {
     setSelected(id);
     const r = runs[id];
-    // If we don't have chunks yet (just summary from persistent list), fetch.
     if (!r || r.chunks.length === 0) {
       ws.send({ type: "run.read", runId: id });
     }
@@ -79,74 +78,87 @@ export function Runs() {
   );
 
   return (
-    <div className="p-8 max-w-7xl mx-auto">
-      <div className="flex items-center justify-between mb-6">
-        <h1 className="font-display text-3xl tracking-tight">Runs</h1>
-        <div className="text-xs text-slate-500">
-          {order.length} runs · persistent across sessions
-        </div>
-      </div>
+    <div className="p-6 sm:p-10 max-w-7xl mx-auto space-y-8">
+      <PageHeader
+        eyebrow="Activity"
+        title="Runs"
+        subtitle="Every agent invocation and build script run, streamed live and persisted across sessions."
+      />
 
-      <div className="grid grid-cols-1 lg:grid-cols-[300px_1fr] gap-4">
-        <Card className="max-h-[75vh] overflow-auto">
+      <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-5">
+        <Card className="max-h-[72vh] overflow-auto">
           <CardHeader>
-            <CardTitle>History</CardTitle>
+            <div className="flex items-center justify-between">
+              <CardTitle>History</CardTitle>
+              <span className="text-[11px] text-slate-500">{order.length}</span>
+            </div>
           </CardHeader>
-          <CardBody className="p-0 divide-y divide-slate-800">
-            {order.length === 0 && (
-              <div className="p-4 text-xs text-slate-500">
-                No runs recorded yet.
-              </div>
+          <CardBody className="p-0">
+            {order.length === 0 ? (
+              <EmptyState
+                icon={<Activity className="size-5" />}
+                title="No runs yet"
+                description="Trigger an agent from the Agents page or a build script from any book hub."
+              />
+            ) : (
+              <ul className="divide-y divide-slate-800/50">
+                {order.map((id) => {
+                  const r = runs[id];
+                  const isSel = selected === id;
+                  return (
+                    <li key={id}>
+                      <button
+                        onClick={() => openRun(id)}
+                        className={cn(
+                          "block w-full text-left px-4 py-3 text-xs transition-colors",
+                          isSel
+                            ? "bg-gradient-to-r from-slate-800/70 to-slate-800/30"
+                            : "hover:bg-slate-800/30"
+                        )}
+                      >
+                        <div className="flex items-center justify-between gap-2">
+                          <span className="font-mono text-slate-200 truncate">
+                            {r.agent ?? r.script ?? id.slice(0, 8)}
+                          </span>
+                          <span
+                            className={cn(
+                              "shrink-0 rounded-full px-2 py-0.5 text-[10px] ring-1",
+                              r.finishedAt
+                                ? r.exitCode === 0
+                                  ? "text-emerald-300 ring-emerald-700/40 bg-emerald-900/20"
+                                  : "text-red-300 ring-red-700/40 bg-red-900/20"
+                                : "text-amber-300 ring-amber-700/40 bg-amber-900/20"
+                            )}
+                          >
+                            {r.finishedAt
+                              ? r.exitCode === 0
+                                ? "ok"
+                                : `exit ${r.exitCode}`
+                              : "running"}
+                          </span>
+                        </div>
+                        <div className="text-slate-500 mt-1 flex items-center justify-between">
+                          {r.book && (
+                            <span className="font-mono truncate">{r.book}</span>
+                          )}
+                          <span className="ml-auto">
+                            {new Date(r.startedAt).toLocaleTimeString()}
+                          </span>
+                        </div>
+                      </button>
+                    </li>
+                  );
+                })}
+              </ul>
             )}
-            {order.map((id) => {
-              const r = runs[id];
-              return (
-                <button
-                  key={id}
-                  onClick={() => openRun(id)}
-                  className={cn(
-                    "block w-full text-left px-3 py-2 text-xs hover:bg-slate-800/40",
-                    selected === id && "bg-slate-800/60"
-                  )}
-                >
-                  <div className="flex items-center justify-between">
-                    <span className="font-mono text-slate-300 truncate">
-                      {r.agent ?? r.script ?? id.slice(0, 8)}
-                    </span>
-                    <span
-                      className={cn(
-                        "text-[10px] ml-2",
-                        r.finishedAt
-                          ? r.exitCode === 0
-                            ? "text-emerald-400"
-                            : "text-red-400"
-                          : "text-amber-400"
-                      )}
-                    >
-                      {r.finishedAt
-                        ? r.exitCode === 0
-                          ? "ok"
-                          : `exit ${r.exitCode}`
-                        : "running"}
-                    </span>
-                  </div>
-                  <div className="text-slate-500 mt-0.5 flex justify-between">
-                    {r.book && <span>{r.book}</span>}
-                    <span className="ml-auto">
-                      {new Date(r.startedAt).toLocaleTimeString()}
-                    </span>
-                  </div>
-                </button>
-              );
-            })}
           </CardBody>
         </Card>
 
-        <Card className="h-[75vh]">
+        <Card className="h-[72vh]">
           <CardHeader>
             <CardTitle>Output</CardTitle>
           </CardHeader>
-          <CardBody className="p-0 h-[calc(100%-49px)]">
+          <CardBody className="p-0 h-[calc(100%-57px)]">
             <RunLog run={current} className="h-full" />
           </CardBody>
         </Card>
