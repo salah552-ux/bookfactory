@@ -39,8 +39,14 @@ export default {
         "text-2":"#a1a1aa",
         "text-3":"#71717a",
         "text-4":"#52525b",
-        accent:  "#c8b99a",
+        // Brand accent (identity): used for active nav, brand mark, focus rings
+        accent:        "#c8b99a",
         "accent-soft": "rgba(200,185,154,0.10)",
+        // Action accent (the IDE "run/execute" green per ui-ux-pro-max design
+        // system for Developer Tool / IDE category — most CTAs in this app
+        // are "Run agent", so primary actions get this colour, not white).
+        run:           "#22c55e",
+        "run-soft":    "rgba(34,197,94,0.12)",
         brand: {
           navy: "#1b3a5c",
           tan:  "#c8b99a",
