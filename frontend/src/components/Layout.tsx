@@ -55,7 +55,7 @@ export function Layout() {
       <aside
         className={cn(
           "fixed md:static z-40 inset-y-0 left-0 w-56 shrink-0 flex flex-col",
-          "border-r border-line bg-bg",
+          "border-r border-line bg-bg-side",
           "transition-transform md:translate-x-0",
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         )}

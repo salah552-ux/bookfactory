@@ -30,9 +30,10 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg:      "#0a0a0a",
-        surface: "#111111",
-        raised:  "#171717",
+        bg:        "#0c0c0e",   // warm-tinted near-black
+        "bg-side": "#08080a",   // sidebar (slightly deeper)
+        surface:   "#15151a",   // cards / containers
+        raised:    "#1c1c22",   // hover / nested surface
         line:    "rgba(255,255,255,0.06)",
         "line-2":"rgba(255,255,255,0.10)",
         "text-1":"#fafafa",

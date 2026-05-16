@@ -15,9 +15,12 @@ body {
 }
 
 html.dark body {
-  background: #0a0a0a;
+  background: #0c0c0e;
   color: #fafafa;
 }
+
+/* Tabular figures for stat numbers — gives data dignity */
+.tnum { font-variant-numeric: tabular-nums; }
 
 html.light body {
   background: #fafafa;
