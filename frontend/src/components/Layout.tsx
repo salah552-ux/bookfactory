@@ -3,7 +3,7 @@ import {
   Activity,
   Cog,
   Layers,
-  Library,
+  LibraryBig,
   Menu,
   Moon,
   Network,
@@ -17,30 +17,23 @@ import { cn } from "@/lib/cn";
 import { useUi } from "@/stores/ui";
 
 const nav = [
-  { to: "/",            label: "Fleet",     Icon: Library, end: true },
-  { to: "/books/new",   label: "New book",  Icon: Plus },
-  { to: "/series",      label: "Series",    Icon: Network },
-  { to: "/agents",      label: "Agents",    Icon: Layers },
-  { to: "/runs",        label: "Runs",      Icon: Activity },
-  { to: "/demo",        label: "Demo",      Icon: Play },
-  { to: "/settings",    label: "Settings",  Icon: Cog },
+  { to: "/",          label: "Fleet",     Icon: LibraryBig, end: true },
+  { to: "/books/new", label: "New book",  Icon: Plus },
+  { to: "/series",    label: "Series",    Icon: Network },
+  { to: "/agents",    label: "Agents",    Icon: Layers },
+  { to: "/runs",      label: "Runs",      Icon: Activity },
+  { to: "/demo",      label: "Demo",      Icon: Play },
+  { to: "/settings",  label: "Settings",  Icon: Cog },
 ];
 
-function BrandMark() {
+/** Linear/Vercel wordmark — no monogram, just type. */
+function Brand() {
   return (
-    <div className="flex items-center gap-3">
-      <div className="relative">
-        <div className="size-9 rounded-md bg-gradient-to-br from-[#284b73] via-[#1b3a5c] to-[#0a1424] flex items-center justify-center border border-brand-tan/30 shadow-[inset_0_1px_0_rgba(255,255,255,0.06)]">
-          <span className="text-display text-lg gold-text leading-none">B</span>
-        </div>
-        <span className="absolute -bottom-1 -right-1 size-2.5 rounded-full bg-brand-tan ring-2 ring-[#07101c]" />
-      </div>
-      <div className="leading-tight">
-        <div className="text-display text-[15px] tracking-tight text-slate-100">
-          BookFactory
-        </div>
-        <div className="eyebrow !text-[9px]">Control Surface</div>
-      </div>
+    <div className="flex items-center gap-2">
+      <span className="size-1.5 rounded-full bg-accent" />
+      <span className="text-md font-semibold tracking-tight text-text-1">
+        BookFactory
+      </span>
     </div>
   );
 }
@@ -50,38 +43,35 @@ export function Layout() {
   const { theme, toggleTheme, sidebarOpen, setSidebarOpen } = useUi();
 
   return (
-    <div className="min-h-screen flex">
+    <div className="min-h-screen flex bg-bg">
       {sidebarOpen && (
         <button
           onClick={() => setSidebarOpen(false)}
-          className="fixed inset-0 z-30 bg-black/70 backdrop-blur-sm md:hidden"
+          className="fixed inset-0 z-30 bg-black/60 md:hidden"
           aria-label="Close menu"
         />
       )}
 
       <aside
         className={cn(
-          "fixed md:static z-40 inset-y-0 left-0 w-64 md:w-60 shrink-0 flex flex-col",
-          "border-r border-slate-800/60",
-          "bg-gradient-to-b from-[#0a1424] to-[#07101c]",
-          "backdrop-blur-md",
+          "fixed md:static z-40 inset-y-0 left-0 w-56 shrink-0 flex flex-col",
+          "border-r border-line bg-bg",
           "transition-transform md:translate-x-0",
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         )}
       >
-        <div className="px-5 py-5 border-b border-slate-800/60 flex items-center justify-between">
-          <BrandMark />
+        <div className="h-12 px-4 border-b border-line flex items-center justify-between">
+          <Brand />
           <button
             onClick={() => setSidebarOpen(false)}
-            className="md:hidden text-slate-400 hover:text-slate-100"
+            className="md:hidden text-text-3 hover:text-text-1"
             aria-label="Close sidebar"
           >
             <X className="size-4" />
           </button>
         </div>
 
-        <nav className="flex-1 px-3 py-4 space-y-0.5">
-          <div className="eyebrow px-3 pb-2">Navigate</div>
+        <nav className="flex-1 px-2 py-3 space-y-px">
           {nav.map(({ to, label, Icon, end }) => (
             <NavLink
               key={to}
@@ -90,10 +80,10 @@ export function Layout() {
               onClick={() => setSidebarOpen(false)}
               className={({ isActive }) =>
                 cn(
-                  "group flex items-center gap-3 rounded-md px-3 py-2 text-[13px] transition-all",
+                  "group flex items-center gap-2.5 rounded-md px-2.5 py-1.5 text-sm transition-colors",
                   isActive
-                    ? "bg-gradient-to-r from-slate-800/80 to-slate-800/30 text-slate-100 shadow-[inset_0_1px_0_rgba(255,255,255,0.04)]"
-                    : "text-slate-400 hover:bg-slate-800/40 hover:text-slate-100"
+                    ? "bg-raised text-text-1"
+                    : "text-text-3 hover:bg-raised/60 hover:text-text-1"
                 )
               }
             >
@@ -102,12 +92,13 @@ export function Layout() {
                   <Icon
                     className={cn(
                       "size-4 transition-colors",
-                      isActive ? "text-brand-tan" : "text-slate-500 group-hover:text-slate-300"
+                      isActive ? "text-text-1" : "text-text-4 group-hover:text-text-2"
                     )}
+                    strokeWidth={1.75}
                   />
                   <span>{label}</span>
                   {isActive && (
-                    <span className="ml-auto size-1.5 rounded-full bg-brand-tan" />
+                    <span className="ml-auto size-1 rounded-full bg-accent" />
                   )}
                 </>
               )}
@@ -115,58 +106,55 @@ export function Layout() {
           ))}
         </nav>
 
-        <div className="px-3 py-4 border-t border-slate-800/60 space-y-2">
+        <div className="px-2 py-3 border-t border-line space-y-1">
           <button
             onClick={toggleTheme}
-            className="flex w-full items-center justify-between rounded-md px-3 py-1.5 text-xs text-slate-400 hover:bg-slate-800/60 hover:text-slate-200 transition-colors"
+            className="w-full flex items-center justify-between rounded-md px-2.5 py-1.5 text-xs text-text-3 hover:bg-raised hover:text-text-1 transition-colors"
           >
             <span className="flex items-center gap-2">
               {theme === "dark" ? (
-                <Moon className="size-3.5" />
+                <Moon className="size-3.5" strokeWidth={1.75} />
               ) : (
-                <Sun className="size-3.5" />
+                <Sun className="size-3.5" strokeWidth={1.75} />
               )}
-              {theme === "dark" ? "Dark mode" : "Light mode"}
+              {theme === "dark" ? "Dark" : "Light"}
             </span>
             <span className="kbd">⌥T</span>
           </button>
-          <div className="flex items-center gap-2 px-3 text-[11px] text-slate-500">
+          <div className="flex items-center gap-2 px-2.5 py-1 text-xs text-text-4">
             <span
               className={cn(
-                "inline-block size-2 rounded-full",
+                "status-dot",
                 status === "open"
-                  ? "bg-emerald-400 pulse-glow"
+                  ? "bg-ok"
                   : status === "connecting"
-                    ? "bg-yellow-400 animate-pulse"
-                    : "bg-red-500"
+                    ? "bg-warn"
+                    : "bg-err"
               )}
             />
-            <span className="capitalize tracking-wide">{status}</span>
+            <span className="capitalize">{status}</span>
           </div>
         </div>
       </aside>
 
-      <main className="flex-1 min-w-0 flex flex-col">
-        <header className="md:hidden flex items-center gap-3 px-4 py-3 border-b border-slate-800/60 bg-slate-950/80 backdrop-blur sticky top-0 z-20">
+      <main className="flex-1 min-w-0 flex flex-col bg-bg">
+        <header className="md:hidden h-12 flex items-center gap-3 px-4 border-b border-line bg-bg sticky top-0 z-20">
           <button
             onClick={() => setSidebarOpen(true)}
-            className="text-slate-300 hover:text-slate-100"
+            className="text-text-2 hover:text-text-1"
             aria-label="Open menu"
           >
-            <Menu className="size-5" />
+            <Menu className="size-4" strokeWidth={1.75} />
           </button>
-          <BrandMark />
+          <Brand />
         </header>
 
         {import.meta.env.VITE_DEMO === "true" && (
-          <div className="bg-gradient-to-r from-amber-900/30 via-amber-800/40 to-amber-900/30 text-amber-100 text-xs px-4 py-2 border-b border-amber-800/50 flex items-center gap-2 justify-center backdrop-blur">
-            <span className="size-1.5 rounded-full bg-amber-300 animate-pulse" />
-            <span className="font-semibold tracking-wide">DEMO MODE</span>
-            <span className="text-amber-200/80">
+          <div className="h-7 bg-warn/10 text-warn text-xs px-4 border-b border-warn/20 flex items-center gap-2 justify-center">
+            <span className="font-medium">DEMO MODE</span>
+            <span className="text-warn/80">
               · Mock data, no real agents · Run
-              <code className="mx-1.5 px-1.5 py-0.5 rounded bg-amber-950/40 text-amber-100">
-                bash start-ui.sh
-              </code>
+              <code className="mx-1 kbd">bash start-ui.sh</code>
               locally for the real pipeline
             </span>
           </div>

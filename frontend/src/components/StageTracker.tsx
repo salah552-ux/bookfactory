@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { cn } from "@/lib/cn";
 
-const STAGES: Array<{ id: string; label: string; fullId: string }> = [
+const STAGES = [
   { id: "01", label: "Research",     fullId: "01-research" },
   { id: "02", label: "Planning",     fullId: "02-planning" },
   { id: "03", label: "Writing",      fullId: "03-writing" },
@@ -30,50 +30,65 @@ function statusFor(state: unknown, stageId: string): Status {
   return "todo";
 }
 
-const chipStyle: Record<Status, string> = {
-  done: "bg-emerald-900/30 text-emerald-300 ring-1 ring-emerald-700/40",
-  active: "bg-amber-900/30 text-amber-200 ring-1 ring-amber-600/40",
-  todo: "bg-slate-800/40 text-slate-500 ring-1 ring-slate-700/40",
+const dotByStatus: Record<Status, string> = {
+  done:   "bg-ok",
+  active: "bg-warn",
+  todo:   "bg-text-4",
 };
 
-const dotStyle: Record<Status, string> = {
-  done:   "bg-emerald-400",
-  active: "bg-amber-300 animate-pulse",
-  todo:   "bg-slate-600",
+const textByStatus: Record<Status, string> = {
+  done:   "text-text-2",
+  active: "text-text-1",
+  todo:   "text-text-3",
 };
 
+/**
+ * Linear-style stage tracker: a horizontal row of pills with a status dot
+ * and a stage number + name. No gradients, no rings — just text + dot.
+ */
 export function StageTracker({
   state,
   bookSlug,
   className,
+  compact,
 }: {
   state: unknown;
   bookSlug?: string;
   className?: string;
+  compact?: boolean;
 }) {
   return (
-    <ol className={cn("flex flex-wrap gap-1.5", className)}>
-      {STAGES.map((stage, i) => {
+    <ol
+      className={cn(
+        "flex flex-wrap",
+        compact ? "gap-1" : "gap-2",
+        className
+      )}
+    >
+      {STAGES.map((stage) => {
         const status = statusFor(state, stage.id);
         const body = (
           <div
             className={cn(
-              "relative flex items-center gap-2 rounded-md px-2.5 py-1.5 text-[10px] min-w-[78px] transition-all",
-              chipStyle[status],
-              bookSlug && "hover:ring-brand-tan/40 hover:bg-slate-800/60 hover:text-slate-100 cursor-pointer"
+              "flex items-center gap-1.5 rounded-md border border-line px-2 py-1 transition-colors",
+              "bg-surface",
+              bookSlug && "hover:bg-raised hover:border-line-2 cursor-pointer",
+              textByStatus[status]
             )}
           >
-            <span className={cn("size-1.5 rounded-full shrink-0", dotStyle[status])} />
-            <div className="flex flex-col leading-tight">
-              <span className="font-mono opacity-60">{stage.id}</span>
-              <span className="tracking-tight">{stage.label}</span>
-            </div>
+            <span className={cn("status-dot", dotByStatus[status])} />
+            <span className="font-mono text-xs text-text-4">{stage.id}</span>
+            {!compact && (
+              <span className="text-xs">{stage.label}</span>
+            )}
           </div>
         );
         return (
-          <li key={stage.id} style={{ animationDelay: `${i * 20}ms` }}>
+          <li key={stage.id}>
             {bookSlug ? (
-              <Link to={`/books/${bookSlug}/stage/${stage.fullId}`}>{body}</Link>
+              <Link to={`/books/${bookSlug}/stage/${stage.fullId}`}>
+                {body}
+              </Link>
             ) : (
               body
             )}

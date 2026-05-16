@@ -28,9 +28,9 @@ export function Settings() {
   return (
     <div className="p-6 sm:p-10 max-w-3xl mx-auto space-y-8">
       <PageHeader
-        eyebrow="Workspace"
+        meta="Workspace"
         title="Settings"
-        subtitle="Backend connection, auth, and appearance. Stored per browser in localStorage."
+        description="Backend connection, auth, and appearance. Stored per browser in localStorage."
       />
 
       <Card>
