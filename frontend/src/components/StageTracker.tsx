@@ -25,7 +25,8 @@ function statusFor(state: unknown, stageId: string): Status {
     if (node.complete === true || node.status === "done") return "done";
     if (node.status === "in_progress" || node.in_progress === true) return "active";
   }
-  if ((s.current_stage as string | undefined)?.startsWith(stageId)) return "active";
+  const cs = s.current_stage;
+  if (typeof cs === "string" && cs.startsWith(stageId)) return "active";
   return "todo";
 }
 

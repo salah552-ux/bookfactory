@@ -107,42 +107,49 @@ function BookCard({ book }: { book: BookEntry }) {
   const state = book.state as Record<string, unknown> | null;
   const title = (state?.book_title as string | undefined) ?? prettify(book.slug);
   const genre = (state?.genre as string | undefined) ?? "—";
-  const currentStage = (state?.current_stage as string | undefined) ?? null;
+  const rawStage = state?.current_stage;
+  const currentStage = typeof rawStage === "string" ? rawStage : null;
 
+  // Card itself isn't a Link — the title + arrow are, so the inner
+  // StageTracker can keep its own per-chip links without nested <a>.
   return (
-    <Link to={`/books/${book.slug}`}>
-      <Card hoverable className="h-full">
-        <CardBody className="space-y-4">
-          <div className="flex items-start justify-between gap-4">
-            <div className="min-w-0">
-              <div className="text-[15px] font-semibold tracking-tight text-slate-100 truncate">
-                {title}
-              </div>
-              <div className="text-[11px] font-mono text-slate-500 mt-1 truncate">
-                {book.slug}
-              </div>
+    <Card hoverable className="h-full">
+      <CardBody className="space-y-4">
+        <div className="flex items-start justify-between gap-4">
+          <Link to={`/books/${book.slug}`} className="min-w-0 group">
+            <div className="text-[15px] font-semibold tracking-tight text-slate-100 truncate group-hover:text-brand-tan transition-colors">
+              {title}
             </div>
-            <ArrowUpRight className="size-4 text-slate-500 group-hover:text-brand-tan shrink-0 mt-1" />
-          </div>
+            <div className="text-[11px] font-mono text-slate-500 mt-1 truncate">
+              {book.slug}
+            </div>
+          </Link>
+          <Link
+            to={`/books/${book.slug}`}
+            className="shrink-0 mt-1 text-slate-500 hover:text-brand-tan transition-colors"
+            aria-label="Open book"
+          >
+            <ArrowUpRight className="size-4" />
+          </Link>
+        </div>
 
-          <div className="flex items-center gap-3 text-[11px]">
-            <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-800/60 px-2 py-0.5 text-slate-300 ring-1 ring-slate-700/60">
-              <span className="size-1.5 rounded-full bg-brand-tan" />
-              {genre}
+        <div className="flex items-center gap-3 text-[11px]">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-800/60 px-2 py-0.5 text-slate-300 ring-1 ring-slate-700/60">
+            <span className="size-1.5 rounded-full bg-brand-tan" />
+            {genre}
+          </span>
+          {currentStage && (
+            <span className="text-slate-500">
+              currently · <span className="text-slate-300">{currentStage}</span>
             </span>
-            {currentStage && (
-              <span className="text-slate-500">
-                currently · <span className="text-slate-300">{currentStage}</span>
-              </span>
-            )}
-          </div>
+          )}
+        </div>
 
-          <div className="hairline" />
+        <div className="hairline" />
 
-          <StageTracker state={book.state} bookSlug={book.slug} />
-        </CardBody>
-      </Card>
-    </Link>
+        <StageTracker state={book.state} bookSlug={book.slug} />
+      </CardBody>
+    </Card>
   );
 }
 
