@@ -30,65 +30,60 @@ function statusFor(state: unknown, stageId: string): Status {
   return "todo";
 }
 
-const dotByStatus: Record<Status, string> = {
-  done:   "bg-ok",
-  active: "bg-warn",
-  todo:   "bg-text-4",
-};
-
-const textByStatus: Record<Status, string> = {
-  done:   "text-text-2",
-  active: "text-text-1",
-  todo:   "text-text-3",
-};
+function StageDot({ status }: { status: Status }) {
+  switch (status) {
+    case "done":
+      return <span className="size-1.5 rounded-full bg-text-2" />;
+    case "active":
+      return (
+        <span className="relative inline-flex">
+          <span className="size-1.5 rounded-full bg-accent" />
+          <span className="absolute inset-0 size-1.5 rounded-full bg-accent animate-ping opacity-50" />
+        </span>
+      );
+    default:
+      return (
+        <span className="size-1.5 rounded-full border border-text-4" />
+      );
+  }
+}
 
 /**
- * Linear-style stage tracker: a horizontal row of pills with a status dot
- * and a stage number + name. No gradients, no rings — just text + dot.
+ * Stage tracker — full-width strip of pills under a book row.
+ * Direction B / Comfortable density.
  */
 export function StageTracker({
   state,
   bookSlug,
   className,
-  compact,
 }: {
   state: unknown;
   bookSlug?: string;
   className?: string;
-  compact?: boolean;
 }) {
   return (
-    <ol
-      className={cn(
-        "flex flex-wrap",
-        compact ? "gap-1" : "gap-2",
-        className
-      )}
-    >
+    <ol className={cn("flex flex-wrap gap-1.5", className)}>
       {STAGES.map((stage) => {
         const status = statusFor(state, stage.id);
         const body = (
           <div
             className={cn(
-              "flex items-center gap-1.5 rounded-md border border-line px-2 py-1 transition-colors",
-              "bg-surface",
-              bookSlug && "hover:bg-raised hover:border-line-2 cursor-pointer",
-              textByStatus[status]
+              "flex items-center gap-2 rounded-md border px-2.5 h-7 transition-colors",
+              status === "done" && "border-line bg-surface text-text-2",
+              status === "active" && "border-accent/30 bg-accent-soft text-text-1",
+              status === "todo" && "border-line bg-transparent text-text-4",
+              bookSlug && "hover:border-line-2 hover:bg-raised hover:text-text-1 cursor-pointer"
             )}
           >
-            <span className={cn("status-dot", dotByStatus[status])} />
-            <span className="font-mono text-xs text-text-4">{stage.id}</span>
-            {!compact && (
-              <span className="text-xs">{stage.label}</span>
-            )}
+            <StageDot status={status} />
+            <span className="font-mono text-[11px] opacity-60">{stage.id}</span>
+            <span className="text-xs">{stage.label}</span>
           </div>
         );
         return (
           <li key={stage.id}>
             {bookSlug ? (
-              <Link to={`/books/${bookSlug}/stage/${stage.fullId}`}>
-                {body}
-              </Link>
+              <Link to={`/books/${bookSlug}/stage/${stage.fullId}`}>{body}</Link>
             ) : (
               body
             )}
