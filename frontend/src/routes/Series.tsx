@@ -43,9 +43,9 @@ export function Series() {
   return (
     <div className="p-6 sm:p-10 max-w-7xl mx-auto space-y-8">
       <PageHeader
-        eyebrow="Catalogue"
+        meta="Catalogue"
         title="Series"
-        subtitle="Cross-book continuity, brand consistency, ARC programmes."
+        description="Cross-book continuity, brand consistency, ARC programmes."
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-5">

@@ -80,9 +80,9 @@ export function Runs() {
   return (
     <div className="p-6 sm:p-10 max-w-7xl mx-auto space-y-8">
       <PageHeader
-        eyebrow="Activity"
+        meta="Activity"
         title="Runs"
-        subtitle="Every agent invocation and build script run, streamed live and persisted across sessions."
+        description="Every agent invocation and build script run, streamed live and persisted across sessions."
       />
 
       <div className="grid grid-cols-1 lg:grid-cols-[320px_1fr] gap-5">

@@ -42,9 +42,9 @@ export function Agents() {
   return (
     <div className="p-6 sm:p-10 max-w-7xl mx-auto space-y-8">
       <PageHeader
-        eyebrow="Catalogue"
+        meta="Catalogue"
         title="Agents"
-        subtitle="44 specialists across 11 stages. Each is a Claude Code agent with its own brief and quality gates. Click run on any to invoke it against a book."
+        description="44 specialists across 11 stages. Each is a Claude Code agent with its own brief and quality gates. Click run on any to invoke it against a book."
         actions={
           <div className="relative">
             <Search className="absolute left-3 top-1/2 -translate-y-1/2 size-3.5 text-slate-500" />

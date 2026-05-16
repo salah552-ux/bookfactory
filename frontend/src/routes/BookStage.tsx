@@ -136,9 +136,9 @@ export function BookStage() {
       </div>
 
       <PageHeader
-        eyebrow={stage.id}
+        meta={stage.id}
         title={stage.name}
-        subtitle={stage.notes}
+        description={stage.notes}
       />
 
       {stage.id === "10-postlaunch" && (
@@ -163,7 +163,7 @@ export function BookStage() {
               </p>
             </div>
             <Link to={`/books/${slug}/writing`}>
-              <Button variant="gold" size="sm">
+              <Button variant="primary" size="sm">
                 <PlayCircle className="size-3.5" /> Open Writing
               </Button>
             </Link>

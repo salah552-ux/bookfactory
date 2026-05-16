@@ -56,9 +56,9 @@ export function Book() {
       </Link>
 
       <PageHeader
-        eyebrow={`Book · ${slug}`}
+        meta={`Book · ${slug}`}
         title={title}
-        subtitle={
+        description={
           <span className="flex flex-wrap items-center gap-x-4 gap-y-1 text-slate-400">
             <span>
               <span className="text-slate-500">Genre</span>{" "}

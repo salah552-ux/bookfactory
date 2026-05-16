@@ -1,59 +1,54 @@
 import * as React from "react";
 import { cn } from "@/lib/cn";
 
-type Variant = "default" | "secondary" | "ghost" | "danger" | "gold";
+type Variant = "primary" | "secondary" | "ghost" | "danger";
 type Size = "sm" | "md" | "lg";
 
+/**
+ * Flat, low-chrome buttons. No gradients. Subtle border + bg-on-hover.
+ * Inspired by Linear / Vercel button system.
+ */
 const variants: Record<Variant, string> = {
-  default: cn(
-    "text-white border border-brand-navy/60",
-    "bg-gradient-to-b from-[#2b507a] to-[#1b3a5c]",
-    "hover:from-[#345f8e] hover:to-[#23476f]",
-    "shadow-[inset_0_1px_0_rgba(255,255,255,0.10),0_1px_3px_rgba(0,0,0,0.35)]"
+  primary: cn(
+    "bg-text-1 text-bg border border-text-1",
+    "hover:bg-text-2 hover:border-text-2",
+    "active:opacity-90"
   ),
   secondary: cn(
-    "border border-slate-700/70 text-slate-100",
-    "bg-slate-800/60 hover:bg-slate-800 hover:border-slate-600",
-    "backdrop-blur-sm"
+    "bg-raised text-text-1 border border-line-2",
+    "hover:bg-surface hover:border-text-3"
   ),
   ghost: cn(
-    "border border-transparent text-slate-300",
-    "hover:bg-slate-800/50 hover:text-slate-100"
+    "bg-transparent text-text-2 border border-transparent",
+    "hover:bg-raised hover:text-text-1"
   ),
   danger: cn(
-    "text-white border border-red-900",
-    "bg-gradient-to-b from-red-600 to-red-800",
-    "hover:from-red-500 hover:to-red-700"
-  ),
-  gold: cn(
-    "text-[#1a1306] border border-[#a98c3c]",
-    "bg-gradient-to-b from-[#e9d8a1] via-[#d4af37] to-[#a98c3c]",
-    "hover:from-[#f0deaa] hover:via-[#dcb53f] hover:to-[#b39440]",
-    "shadow-[0_1px_2px_rgba(0,0,0,0.4),inset_0_1px_0_rgba(255,255,255,0.4)]"
+    "bg-err/10 text-err border border-err/40",
+    "hover:bg-err/20 hover:border-err/60"
   ),
 };
 
 const sizes: Record<Size, string> = {
-  sm: "h-8 px-3 text-xs gap-1.5",
-  md: "h-9 px-4 text-sm gap-2",
-  lg: "h-11 px-6 text-[15px] gap-2",
+  sm: "h-7 px-2.5 text-xs gap-1.5",
+  md: "h-8 px-3 text-sm gap-1.5",
+  lg: "h-9 px-4 text-md gap-2",
 };
 
-export interface ButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+export interface ButtonProps
+  extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   variant?: Variant;
   size?: Size;
 }
 
 export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
-  ({ className, variant = "default", size = "md", ...props }, ref) => (
+  ({ className, variant = "secondary", size = "md", ...props }, ref) => (
     <button
       ref={ref}
       className={cn(
-        "inline-flex items-center justify-center rounded-md font-medium tracking-tight",
-        "transition-[background,border-color,box-shadow,transform] duration-150",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-tan/60",
-        "active:translate-y-px",
-        "disabled:cursor-not-allowed disabled:opacity-50",
+        "inline-flex items-center justify-center rounded-md font-medium",
+        "transition-colors duration-150",
+        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent/60 focus-visible:ring-offset-1 focus-visible:ring-offset-bg",
+        "disabled:cursor-not-allowed disabled:opacity-40",
         variants[variant],
         sizes[size],
         className
@@ -63,3 +58,33 @@ export const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   )
 );
 Button.displayName = "Button";
+
+/** Pill / chip — for stage chips, tags, status indicators. */
+export function Chip({
+  children,
+  tone = "neutral",
+  className,
+}: {
+  children: React.ReactNode;
+  tone?: "neutral" | "ok" | "warn" | "err" | "accent";
+  className?: string;
+}) {
+  const tones = {
+    neutral: "bg-raised text-text-2 border-line",
+    ok:      "bg-ok/10 text-ok border-ok/30",
+    warn:    "bg-warn/10 text-warn border-warn/30",
+    err:     "bg-err/10 text-err border-err/30",
+    accent:  "bg-accent-soft text-accent border-accent/30",
+  } as const;
+  return (
+    <span
+      className={cn(
+        "inline-flex items-center gap-1.5 rounded-md border px-2 py-0.5 text-xs font-medium",
+        tones[tone],
+        className
+      )}
+    >
+      {children}
+    </span>
+  );
+}

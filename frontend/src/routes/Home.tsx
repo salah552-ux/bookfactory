@@ -1,15 +1,12 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { Card, CardBody } from "@/components/ui/Card";
-import { Button } from "@/components/ui/Button";
+import { Button, Chip } from "@/components/ui/Button";
 import { PageHeader } from "@/components/PageHeader";
 import { StageTracker } from "@/components/StageTracker";
-import { BookCardSkeleton } from "@/components/Skeleton";
-import { EmptyState } from "@/components/EmptyState";
 import { ws } from "@/lib/ws";
 import { useWsEvent, useWsStatus } from "@/hooks/useWs";
 import type { BookEntry } from "@/lib/schemas";
-import { ArrowUpRight, BookPlus, Library, RefreshCw } from "lucide-react";
+import { ArrowUpRight, Plus, RefreshCw } from "lucide-react";
 
 export function Home() {
   const [books, setBooks] = useState<BookEntry[] | null>(null);
@@ -23,22 +20,22 @@ export function Home() {
 
   const loading = books === null;
   const total = books?.length ?? 0;
-  const inProgress = books?.filter(
-    (b) =>
-      typeof (b.state as { current_stage?: string } | null)?.current_stage ===
-      "string"
-  ).length ?? 0;
+  const inProgress =
+    books?.filter(
+      (b) =>
+        typeof (b.state as { current_stage?: string } | null)?.current_stage ===
+        "string"
+    ).length ?? 0;
 
   return (
-    <div className="p-6 sm:p-10 max-w-7xl mx-auto space-y-10">
+    <div className="px-6 sm:px-10 py-10 max-w-6xl mx-auto space-y-8">
       <PageHeader
-        eyebrow="Fleet · all books"
-        title="Your publishing pipeline"
-        subtitle="Every book in flight, every stage gate, every agent on call. Click into any book to drive its next move."
+        title="Fleet"
+        description="Every book in flight, every stage gate, every agent on call."
         actions={
           <>
             <Button
-              variant="secondary"
+              variant="ghost"
               size="sm"
               onClick={() => ws.send({ type: "pipeline.list" })}
               disabled={status !== "open"}
@@ -46,110 +43,123 @@ export function Home() {
               <RefreshCw className="size-3.5" /> Refresh
             </Button>
             <Link to="/books/new">
-              <Button variant="gold" size="sm">
-                <BookPlus className="size-3.5" /> New book
+              <Button variant="primary" size="sm">
+                <Plus className="size-3.5" /> New book
               </Button>
             </Link>
           </>
         }
       />
 
-      {/* Stat row */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <StatTile label="Books" value={loading ? "—" : String(total)} />
-        <StatTile label="In progress" value={loading ? "—" : String(inProgress)} />
-        <StatTile label="Agents" value="44" />
-        <StatTile label="Stages" value="10" />
+      {/* Stats — single row with hairline dividers */}
+      <div className="flex items-stretch border border-line rounded-md bg-surface overflow-hidden">
+        <Stat label="Books"        value={loading ? "—" : String(total)} />
+        <Divider />
+        <Stat label="In progress"  value={loading ? "—" : String(inProgress)} />
+        <Divider />
+        <Stat label="Agents"       value="44" />
+        <Divider />
+        <Stat label="Stages"       value="10" />
       </div>
 
-      {/* Books */}
-      {loading ? (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          <BookCardSkeleton />
-          <BookCardSkeleton />
+      {/* Book list — flat rows, not cards */}
+      <section>
+        <div className="flex items-center justify-between pb-3 border-b border-line">
+          <h2 className="text-md font-semibold text-text-1">Books</h2>
+          <span className="text-xs text-text-4 font-mono">{loading ? "" : `${total} total`}</span>
         </div>
-      ) : books.length === 0 ? (
-        <Card>
-          <EmptyState
-            icon={<Library className="size-5" />}
-            title="No books yet"
-            description="Scaffold your first project with the wizard — it sets up BLUEPRINT, FACTS, manuscript skeleton, and the right writer routing."
-            action={
-              <Link to="/books/new">
-                <Button variant="gold">
-                  <BookPlus className="size-4" /> Start a book
-                </Button>
-              </Link>
-            }
-          />
-        </Card>
-      ) : (
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
-          {books.map((b) => (
-            <BookCard key={b.slug} book={b} />
-          ))}
-        </div>
-      )}
+
+        {loading ? (
+          <div className="divide-y divide-line">
+            {[0, 1, 2].map((i) => (
+              <div key={i} className="py-4 flex items-center gap-4">
+                <div className="shimmer h-4 w-48 rounded" />
+                <div className="shimmer h-4 w-32 rounded" />
+                <div className="shimmer h-4 w-20 rounded ml-auto" />
+              </div>
+            ))}
+          </div>
+        ) : books.length === 0 ? (
+          <div className="py-16 text-center">
+            <p className="text-md text-text-2 mb-1">No books yet</p>
+            <p className="text-sm text-text-4 mb-4">
+              Scaffold your first project with the wizard.
+            </p>
+            <Link to="/books/new">
+              <Button variant="primary" size="sm">
+                <Plus className="size-3.5" /> Start a book
+              </Button>
+            </Link>
+          </div>
+        ) : (
+          <ul className="divide-y divide-line">
+            {books.map((b) => (
+              <BookRow key={b.slug} book={b} />
+            ))}
+          </ul>
+        )}
+      </section>
     </div>
   );
 }
 
-function StatTile({ label, value }: { label: string; value: string }) {
+function Stat({ label, value }: { label: string; value: string }) {
   return (
-    <div className="surface px-4 py-3">
-      <div className="eyebrow">{label}</div>
-      <div className="text-display text-2xl text-slate-100 mt-1">{value}</div>
+    <div className="flex-1 px-4 py-3">
+      <div className="text-xs text-text-3">{label}</div>
+      <div className="text-xl font-semibold text-text-1 mt-0.5 tabular-nums">
+        {value}
+      </div>
     </div>
   );
 }
 
-function BookCard({ book }: { book: BookEntry }) {
+function Divider() {
+  return <div className="w-px bg-line" />;
+}
+
+function BookRow({ book }: { book: BookEntry }) {
   const state = book.state as Record<string, unknown> | null;
   const title = (state?.book_title as string | undefined) ?? prettify(book.slug);
-  const genre = (state?.genre as string | undefined) ?? "—";
+  const genre = (state?.genre as string | undefined) ?? null;
   const rawStage = state?.current_stage;
   const currentStage = typeof rawStage === "string" ? rawStage : null;
 
-  // Card itself isn't a Link — the title + arrow are, so the inner
-  // StageTracker can keep its own per-chip links without nested <a>.
   return (
-    <Card hoverable className="h-full">
-      <CardBody className="space-y-4">
-        <div className="flex items-start justify-between gap-4">
-          <Link to={`/books/${book.slug}`} className="min-w-0 group">
-            <div className="text-[15px] font-semibold tracking-tight text-slate-100 truncate group-hover:text-brand-tan transition-colors">
-              {title}
+    <li>
+      <Link
+        to={`/books/${book.slug}`}
+        className="group block py-4 hover:bg-raised/40 -mx-3 px-3 rounded-md transition-colors"
+      >
+        <div className="flex items-center gap-3">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-2">
+              <span className="text-md font-medium text-text-1 truncate group-hover:text-accent transition-colors">
+                {title}
+              </span>
+              {genre && (
+                <Chip tone="neutral" className="!py-0 !text-[10px]">
+                  {genre}
+                </Chip>
+              )}
             </div>
-            <div className="text-[11px] font-mono text-slate-500 mt-1 truncate">
+            <div className="mt-1 text-xs font-mono text-text-4 truncate">
               {book.slug}
+              {currentStage && (
+                <>
+                  <span className="mx-2">·</span>
+                  <span className="text-text-3">current: {currentStage}</span>
+                </>
+              )}
             </div>
-          </Link>
-          <Link
-            to={`/books/${book.slug}`}
-            className="shrink-0 mt-1 text-slate-500 hover:text-brand-tan transition-colors"
-            aria-label="Open book"
-          >
-            <ArrowUpRight className="size-4" />
-          </Link>
+          </div>
+          <ArrowUpRight className="size-4 text-text-4 group-hover:text-text-1 transition-colors shrink-0" />
         </div>
-
-        <div className="flex items-center gap-3 text-[11px]">
-          <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-800/60 px-2 py-0.5 text-slate-300 ring-1 ring-slate-700/60">
-            <span className="size-1.5 rounded-full bg-brand-tan" />
-            {genre}
-          </span>
-          {currentStage && (
-            <span className="text-slate-500">
-              currently · <span className="text-slate-300">{currentStage}</span>
-            </span>
-          )}
+        <div className="mt-3">
+          <StageTracker state={book.state} bookSlug={book.slug} />
         </div>
-
-        <div className="hairline" />
-
-        <StageTracker state={book.state} bookSlug={book.slug} />
-      </CardBody>
-    </Card>
+      </Link>
+    </li>
   );
 }
 

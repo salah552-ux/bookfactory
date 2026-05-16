@@ -1,37 +1,39 @@
 import { cn } from "@/lib/cn";
 
 /**
- * Premium page header — eyebrow + display title + lede subtitle + optional
- * right-aligned action cluster. Used across every top-level route for
- * consistent hierarchy.
+ * Linear-style page header. Compact, no eyebrow micro-text by default —
+ * the page title carries the hierarchy on its own. Actions sit to the right.
  */
 export function PageHeader({
-  eyebrow,
   title,
-  subtitle,
+  description,
   actions,
+  meta,
   className,
 }: {
-  eyebrow?: string;
   title: string;
-  subtitle?: React.ReactNode;
+  description?: React.ReactNode;
   actions?: React.ReactNode;
+  /** Small monospace meta line above the title — e.g. breadcrumb or slug. */
+  meta?: React.ReactNode;
   className?: string;
 }) {
   return (
     <header
       className={cn(
-        "flex flex-col gap-6 sm:flex-row sm:items-end sm:justify-between pb-6 border-b border-slate-800/50",
+        "flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between",
         className
       )}
     >
-      <div className="space-y-2 min-w-0">
-        {eyebrow && <div className="eyebrow">{eyebrow}</div>}
-        <h1 className="text-display text-4xl sm:text-5xl text-slate-100 truncate">
+      <div className="space-y-1 min-w-0">
+        {meta && (
+          <div className="text-xs font-mono text-text-4 truncate">{meta}</div>
+        )}
+        <h1 className="text-2xl font-semibold tracking-tight text-text-1 truncate">
           {title}
         </h1>
-        {subtitle && (
-          <p className="text-sm text-slate-400 max-w-2xl">{subtitle}</p>
+        {description && (
+          <p className="text-md text-text-3 max-w-2xl">{description}</p>
         )}
       </div>
       {actions && (

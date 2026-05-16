@@ -84,9 +84,9 @@ export function NewBook() {
   return (
     <div className="p-6 sm:p-10 max-w-4xl mx-auto space-y-8">
       <PageHeader
-        eyebrow="Scaffold"
+        meta="Scaffold"
         title="New book"
-        subtitle="Wraps new-book.sh. Sets up BLUEPRINT, FACTS, manuscript skeleton, and routes to the correct genre writer."
+        description="Wraps new-book.sh. Sets up BLUEPRINT, FACTS, manuscript skeleton, and routes to the correct genre writer."
       />
 
       <Card>
@@ -141,7 +141,7 @@ export function NewBook() {
 
       <div className="flex items-center gap-3">
         <Button
-          variant="gold"
+          variant="primary"
           onClick={create}
           disabled={!title.trim() || !slug || isRunning || status !== "open"}
           size="lg"
