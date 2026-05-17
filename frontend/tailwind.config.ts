@@ -1,18 +1,20 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Design system v6 — EDITORIAL DARK.
+ * Refined design system v7 — applied from `.claude/skills/refined/SKILL.md`.
  *
- *   A literary magazine that became a control surface.
- *
- *   Driven by the ui-ux-pro-max skill recommendation for the "publishing /
- *   editorial" product category, and the frontend-design skill's mandate
- *   to commit to a bold aesthetic.
- *
- *   Style: Editorial Grid / Magazine (WCAG AAA)
- *   Type:  Cormorant Garamond (display) + Libre Baskerville (body) +
- *          IBM Plex Mono (data/code)
- *   Canvas: warm dark brown-black with cream text and surgical gold accent
+ *   Style:      modern, minimal
+ *   Typography: Playfair Display (primary + display), JetBrains Mono
+ *   Type scale: 12 / 14 / 16 / 20 / 24 / 32
+ *   Spacing:    4 / 8 / 12 / 16 / 24 / 32
+ *   Surface:    #FFFFFF (light)
+ *   Text:       #111827
+ *   Primary:    #3B82F6
+ *   Secondary:  #8B5CF6
+ *   Success:    #16A34A
+ *   Warning:    #D97706
+ *   Danger:     #DC2626
+ *   Accessibility: WCAG 2.2 AA, visible focus
  */
 export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
@@ -20,100 +22,95 @@ export default {
   theme: {
     extend: {
       colors: {
-        // Warm-dark editorial canvas
-        bg:        "#1a1614",   // brown-black paper
-        "bg-side": "#14110f",   // sidebar (slightly deeper)
-        surface:   "#231f18",   // cards / panels
-        "surface-2":"#2c2820",  // elevated
-        raised:    "#332e25",
-        // Cream-tinted borders for warmth
-        line:    "rgba(232,217,188,0.08)",
-        "line-2":"rgba(232,217,188,0.14)",
-        "line-3":"rgba(232,217,188,0.22)",
-        // Type scale (cream tones for paper-on-ink feel)
-        "text-1":"#f5efe0",
-        "text-2":"#b8ad96",
-        "text-3":"#847962",
-        "text-4":"#5a5141",
-        // Surgical accent (Penguin Classic gold)
-        gold:     "#ca8a04",
-        "gold-2": "#eab308",
-        "gold-soft": "rgba(202,138,4,0.10)",
-        // Brand aliases for code that still imports them
-        accent:   "#ca8a04",
-        "accent-soft": "rgba(202,138,4,0.10)",
-        // Status tones — muted to suit editorial aesthetic
-        ok:       "#6b8e7f",
-        warn:     "#d4a655",
-        err:      "#a4544d",
-        run:      "#6b8e7f",
-        // Stage tone aliases (used by older components — map to editorial)
-        violet:    "#ca8a04",
-        "violet-2":"#eab308",
-        magenta:   "#a4544d",
-        cyan:      "#6b8e7f",
-        green:     "#6b8e7f",
-        orange:    "#d4a655",
-        red:       "#a4544d",
-        brand: {
-          navy: "#1a1614",
-          tan:  "#b8ad96",
-          ink:  "#0c0a08",
-        },
+        // Semantic tokens (refined)
+        surface:   "#ffffff",
+        "surface-2":"#fafafa",
+        raised:    "#f3f4f6",
+        bg:        "#ffffff",   // alias for legacy code
+        "bg-side": "#fafafa",
+
+        line:    "#e5e7eb",
+        "line-2":"#d1d5db",
+        "line-3":"#9ca3af",
+
+        "text-1":"#111827",
+        "text-2":"#374151",
+        "text-3":"#6b7280",
+        "text-4":"#9ca3af",
+
+        primary:   "#3b82f6",
+        "primary-soft": "#dbeafe",
+        secondary: "#8b5cf6",
+        "secondary-soft": "#ede9fe",
+        success:   "#16a34a",
+        warning:   "#d97706",
+        danger:    "#dc2626",
+
+        // Aliases kept so older components don't break
+        accent:    "#3b82f6",
+        "accent-soft": "#dbeafe",
+        gold:      "#d97706",
+        "gold-soft": "rgba(217,119,6,0.10)",
+        ok:        "#16a34a",
+        warn:      "#d97706",
+        err:       "#dc2626",
+        run:       "#16a34a",
+        violet:    "#8b5cf6",
+        "violet-2":"#a78bfa",
+        magenta:   "#dc2626",
+        cyan:      "#3b82f6",
+        green:     "#16a34a",
+        orange:    "#d97706",
+        red:       "#dc2626",
+        brand: { navy: "#1f2937", tan: "#9ca3af", ink: "#111827" },
       },
       fontFamily: {
-        // Editorial serif — used for ALL page titles, book titles, key headings
-        display: ['"Cormorant Garamond"', "Georgia", "serif"],
-        serif:   ['"Cormorant Garamond"', "Georgia", "serif"],
-        // Body — readable book serif for descriptions
-        body:    ['"Libre Baskerville"', "Georgia", "serif"],
-        sans:    ['"Libre Baskerville"', "Georgia", "serif"],
-        // Mono — characterful with editorial alternate forms
-        mono:    ['"IBM Plex Mono"', "ui-monospace", "monospace"],
+        // Refined uses Playfair Display for everything text-y, JetBrains Mono for data
+        sans:    ['"Playfair Display"', "Georgia", "serif"],
+        body:    ['"Playfair Display"', "Georgia", "serif"],
+        display: ['"Playfair Display"', "Georgia", "serif"],
+        serif:   ['"Playfair Display"', "Georgia", "serif"],
+        mono:    ['"JetBrains Mono"', "ui-monospace", "monospace"],
       },
       fontSize: {
-        // Slightly more generous than the previous Inter scale because
-        // serif body type needs more vertical space.
-        xs:   ["11px", { lineHeight: "16px", letterSpacing: "0.04em" }],
-        sm:   ["12px", { lineHeight: "18px" }],
-        base: ["13px", { lineHeight: "21px" }],
-        md:   ["14px", { lineHeight: "23px" }],
-        lg:   ["17px", { lineHeight: "26px" }],
-        xl:   ["22px", { lineHeight: "30px", letterSpacing: "-0.01em" }],
-        "2xl":["32px", { lineHeight: "38px", letterSpacing: "-0.015em" }],
-        "3xl":["48px", { lineHeight: "54px", letterSpacing: "-0.02em" }],
-        "4xl":["64px", { lineHeight: "68px", letterSpacing: "-0.025em" }],
+        // Refined scale: 12/14/16/20/24/32
+        xs:   ["12px", { lineHeight: "18px" }],
+        sm:   ["14px", { lineHeight: "20px" }],
+        base: ["16px", { lineHeight: "24px" }],
+        md:   ["16px", { lineHeight: "24px" }],
+        lg:   ["20px", { lineHeight: "28px" }],
+        xl:   ["24px", { lineHeight: "32px", letterSpacing: "-0.01em" }],
+        "2xl":["32px", { lineHeight: "40px", letterSpacing: "-0.015em" }],
+        "3xl":["48px", { lineHeight: "56px", letterSpacing: "-0.02em" }],
+        "4xl":["64px", { lineHeight: "72px", letterSpacing: "-0.025em" }],
       },
       borderRadius: {
         none: "0",
-        sm:  "2px",
-        md:  "4px",
-        lg:  "6px",
-        xl:  "8px",
-        "2xl":"12px",
+        sm: "4px",
+        md: "6px",
+        lg: "8px",
+        xl: "12px",
       },
       spacing: {
+        // Refined scale: 4/8/12/16/24/32
         0.5: "2px",
         1:   "4px",
-        1.5: "6px",
         2:   "8px",
         3:   "12px",
         4:   "16px",
-        5:   "20px",
         6:   "24px",
         8:   "32px",
-        10:  "40px",
         12:  "48px",
-        14:  "56px",
         16:  "64px",
         20:  "80px",
         24:  "96px",
-        32:  "128px",
       },
       boxShadow: {
-        // Soft warm shadow — paper falling onto dark wood
-        soft: "0 8px 24px -16px rgba(0,0,0,0.8)",
-        gold: "0 0 0 1px rgba(202,138,4,0.30), 0 4px 16px -4px rgba(202,138,4,0.20)",
+        sm: "0 1px 2px rgba(17,24,39,0.04)",
+        md: "0 4px 12px rgba(17,24,39,0.06)",
+        lg: "0 8px 24px rgba(17,24,39,0.08)",
+        // Visible focus per WCAG 2.2
+        focus: "0 0 0 3px rgba(59,130,246,0.30)",
       },
     },
   },
