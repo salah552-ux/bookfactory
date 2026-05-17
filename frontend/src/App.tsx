@@ -13,6 +13,7 @@ import { BookWriting } from "@/routes/BookWriting";
 import { BookStage } from "@/routes/BookStage";
 import { NewBook } from "@/routes/NewBook";
 import { Series } from "@/routes/Series";
+import { Doctor } from "@/routes/Doctor";
 
 // Use HashRouter when the bundle is served from file:// (single-file demo)
 // because BrowserRouter requires a real HTTP server for path-based routes.
@@ -36,6 +37,7 @@ export default function App() {
           <Route path="/runs" element={<Runs />} />
           <Route path="/demo" element={<Demo />} />
           <Route path="/settings" element={<Settings />} />
+          <Route path="/doctor" element={<Doctor />} />
           <Route path="/books/:slug" element={<Book />} />
           <Route path="/books/:slug/files" element={<BookFiles />} />
           <Route path="/books/:slug/state" element={<BookState />} />
