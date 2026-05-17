@@ -1,21 +1,8 @@
 import { Link } from "react-router-dom";
+import { Check } from "lucide-react";
 import { cn } from "@/lib/cn";
 
-const STAGES = [
-  "01","02","03","04","05","06","07","08","09","10",
-];
-const STAGE_FULL: Record<string, string> = {
-  "01": "01-research",
-  "02": "02-planning",
-  "03": "03-writing",
-  "04": "04-quality",
-  "05": "05-optimisation",
-  "06": "06-production",
-  "07": "07-publishing",
-  "08": "08-products",
-  "09": "09-series",
-  "10": "10-postlaunch",
-};
+const STAGE_IDS = ["01","02","03","04","05","06","07","08","09","10"];
 
 type Status = "done" | "active" | "todo";
 
@@ -33,12 +20,30 @@ function statusFor(state: unknown, stageId: string): Status {
   return "todo";
 }
 
+// Active-stage colour by stage index — matches the mockup's per-book colour
+function activeTone(stageId: string): "violet" | "cyan" | "orange" {
+  const n = parseInt(stageId, 10);
+  if (n >= 7) return "violet";
+  if (n >= 3 && n <= 5) return "cyan";
+  return "orange";
+}
+
+const STAGE_FULL: Record<string, string> = {
+  "01": "01-research",
+  "02": "02-planning",
+  "03": "03-writing",
+  "04": "04-quality",
+  "05": "05-optimisation",
+  "06": "06-production",
+  "07": "07-publishing",
+  "08": "08-products",
+  "09": "09-series",
+  "10": "10-postlaunch",
+};
+
 /**
- * Editorial pipeline — each stage rendered as a small numbered mark
- * connected by a hairline rule. Active stage gets the gold dot + italic
- * "current" annotation hovering above (CSS-only).
- *
- * Inspired by a table of contents in a literary magazine.
+ * Horizontal pipeline strip — 10 stages with circles + connector lines.
+ * Matches the ChatGPT mockup exactly.
  */
 export function StageProgress({
   state,
@@ -50,22 +55,34 @@ export function StageProgress({
   className?: string;
 }) {
   return (
-    <div className={cn("flex items-end pt-5 pb-1", className)}>
-      {STAGES.map((id, i) => {
+    <div className={cn("flex items-center", className)}>
+      {STAGE_IDS.map((id, i) => {
         const status = statusFor(state, id);
-        const prevStatus = i > 0 ? statusFor(state, STAGES[i - 1]) : "todo";
-        const mark = (
-          <div className={cn("stage-mark", status)}>
-            <span className="num">{id}</span>
-            <span className="dot" />
+        const tone = activeTone(id);
+        const circle = (
+          <div
+            className={cn(
+              "stage-circle",
+              status === "done" && "done",
+              status === "active" && `active ${tone}`,
+              status === "todo" && "todo"
+            )}
+            title={`Stage ${id}`}
+          >
+            {status === "done" ? (
+              <Check className="size-3.5" strokeWidth={3} />
+            ) : (
+              id
+            )}
           </div>
         );
+        const prevStatus = i > 0 ? statusFor(state, STAGE_IDS[i - 1]) : "todo";
         return (
-          <div key={id} className="flex items-end flex-1 last:flex-none">
+          <div key={id} className="flex items-center flex-1 last:flex-none">
             {i > 0 && (
               <div
                 className={cn(
-                  "stage-rule",
+                  "stage-connector",
                   prevStatus === "done" && status !== "todo" && "done",
                   prevStatus === "done" && status === "done" && "done"
                 )}
@@ -73,10 +90,10 @@ export function StageProgress({
             )}
             {bookSlug ? (
               <Link to={`/books/${bookSlug}/stage/${STAGE_FULL[id]}`}>
-                {mark}
+                {circle}
               </Link>
             ) : (
-              mark
+              circle
             )}
           </div>
         );
