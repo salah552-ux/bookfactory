@@ -1,28 +1,8 @@
 import type { Config } from "tailwindcss";
 
 /**
- * Linear/Vercel-grade design system.
- *
- *   bg          0a0a0a    near-black canvas
- *   surface     111       cards, panels, primary surfaces
- *   raised     171717    elevated surfaces (hover, nested)
- *   line        rgba(255,255,255,0.06)  hairline borders
- *   line-2      rgba(255,255,255,0.10)  emphasised borders
- *   text-1      fafafa    headings, primary text
- *   text-2      a1a1aa    secondary text, labels
- *   text-3      71717a    tertiary text, hints
- *   text-4      52525b    disabled, decorative
- *   accent      c8b99a    brand-tan — used sparingly
- *
- * Type scale (matches Inter optical sizes used by Linear):
- *   xs   11 / 16
- *   sm   12 / 18
- *   base 13 / 20
- *   md   14 / 22
- *   lg   16 / 24
- *   xl   20 / 28
- *   2xl  28 / 36
- *   3xl  40 / 48
+ * Design system v5 — matches the ChatGPT mockup (deep navy + neon accents).
+ * Visual reference: see prompt history for the source image.
  */
 export default {
   content: ["./index.html", "./src/**/*.{ts,tsx}"],
@@ -30,32 +10,29 @@ export default {
   theme: {
     extend: {
       colors: {
-        bg:        "#0c0c0e",   // warm-tinted near-black
-        "bg-side": "#08080a",   // sidebar (slightly deeper)
-        surface:   "#15151a",   // cards / containers
-        raised:    "#1c1c22",   // hover / nested surface
+        bg:        "#0a0f1e",   // canvas
+        "bg-side": "#0a0f1d",   // sidebar (slightly cooler)
+        surface:   "#111933",   // cards/containers
+        "surface-2": "#162042", // elevated / hover
+        raised:    "#1a2548",   // emphasised surfaces
         line:    "rgba(255,255,255,0.06)",
         "line-2":"rgba(255,255,255,0.10)",
-        "text-1":"#fafafa",
-        "text-2":"#a1a1aa",
-        "text-3":"#71717a",
-        "text-4":"#52525b",
-        // Brand accent (identity): used for active nav, brand mark, focus rings
-        accent:        "#c8b99a",
-        "accent-soft": "rgba(200,185,154,0.10)",
-        // Action accent (the IDE "run/execute" green per ui-ux-pro-max design
-        // system for Developer Tool / IDE category — most CTAs in this app
-        // are "Run agent", so primary actions get this colour, not white).
-        run:           "#22c55e",
-        "run-soft":    "rgba(34,197,94,0.12)",
-        brand: {
-          navy: "#1b3a5c",
-          tan:  "#c8b99a",
-          ink:  "#0a0a0a",
-        },
-        ok:   "#10b981",
-        warn: "#f59e0b",
-        err:  "#ef4444",
+        "line-3":"rgba(255,255,255,0.18)",
+        "text-1":"#ffffff",
+        "text-2":"#a3b1c6",
+        "text-3":"#6b7a96",
+        "text-4":"#475168",
+        // Accent neons (used for stage states + stat icons)
+        violet:   "#a855f7",
+        "violet-2": "#c084fc",
+        magenta:  "#ec4899",
+        cyan:     "#06b6d4",
+        green:    "#10b981",
+        orange:   "#f59e0b",
+        red:      "#ef4444",
+        // Brand alias kept for code that still references it
+        accent:   "#a855f7",
+        run:      "#10b981",
       },
       fontFamily: {
         sans: ["Inter", "system-ui", "sans-serif"],
@@ -63,7 +40,7 @@ export default {
         display: ["Inter", "system-ui", "sans-serif"],
       },
       fontSize: {
-        xs:   ["11px", { lineHeight: "16px", letterSpacing: "0.01em" }],
+        xs:   ["11px", { lineHeight: "16px" }],
         sm:   ["12px", { lineHeight: "18px" }],
         base: ["13px", { lineHeight: "20px" }],
         md:   ["14px", { lineHeight: "22px" }],
@@ -73,30 +50,19 @@ export default {
         "3xl":["40px", { lineHeight: "48px", letterSpacing: "-0.025em" }],
       },
       borderRadius: {
-        none: "0",
-        sm:   "4px",
-        md:   "6px",
-        lg:   "8px",
-        xl:   "10px",
-      },
-      spacing: {
-        0.5: "2px",
-        1:   "4px",
-        1.5: "6px",
-        2:   "8px",
-        3:   "12px",
-        4:   "16px",
-        5:   "20px",
-        6:   "24px",
-        8:   "32px",
-        10:  "40px",
-        12:  "48px",
-        16:  "64px",
-        20:  "80px",
+        sm:  "4px",
+        md:  "8px",
+        lg:  "12px",
+        xl:  "16px",
+        "2xl": "20px",
       },
       boxShadow: {
-        sm: "0 1px 0 rgba(255,255,255,0.04) inset, 0 1px 2px rgba(0,0,0,0.4)",
-        md: "0 1px 0 rgba(255,255,255,0.05) inset, 0 2px 8px -2px rgba(0,0,0,0.6)",
+        glow:        "0 0 24px -4px rgba(168,85,247,0.40)",
+        "glow-cyan": "0 0 24px -4px rgba(6,182,212,0.40)",
+        "glow-green":"0 0 24px -4px rgba(16,185,129,0.40)",
+        "glow-orange":"0 0 24px -4px rgba(245,158,11,0.40)",
+        "glow-red":  "0 0 24px -4px rgba(239,68,68,0.40)",
+        card:        "0 1px 0 rgba(255,255,255,0.04) inset, 0 8px 24px -8px rgba(0,0,0,0.6)",
       },
     },
   },
