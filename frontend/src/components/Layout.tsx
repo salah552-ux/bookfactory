@@ -80,9 +80,9 @@ export function Layout() {
               onClick={() => setSidebarOpen(false)}
               className={({ isActive }) =>
                 cn(
-                  "flex items-center gap-3 rounded-lg px-3 py-2.5 text-md transition-all",
+                  "flex items-center gap-3 rounded-lg px-3 py-2.5 text-md transition-all relative",
                   isActive
-                    ? "bg-violet/15 text-text-1 shadow-[inset_0_1px_0_rgba(255,255,255,0.05),0_0_18px_-6px_rgba(168,85,247,0.6)] border border-violet/30"
+                    ? "bg-violet/[0.12] text-text-1 border border-violet/40 shadow-[inset_0_1px_0_rgba(255,255,255,0.06),0_0_28px_-6px_rgba(168,85,247,0.9),0_0_0_1px_rgba(168,85,247,0.15)]"
                     : "text-text-2 hover:bg-white/[0.03] hover:text-text-1"
                 )
               }
