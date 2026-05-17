@@ -10,6 +10,7 @@ import {
   Play,
   Plus,
   Sparkles,
+  Stethoscope,
   X,
 } from "lucide-react";
 import { useWsStatus } from "@/hooks/useWs";
@@ -23,6 +24,7 @@ const nav = [
   { to: "/series",    label: "Series",    Icon: LibraryBig },
   { to: "/agents",    label: "Agents",    Icon: Layers },
   { to: "/runs",      label: "Runs",      Icon: Activity },
+  { to: "/doctor",    label: "Doctor",    Icon: Stethoscope },
   { to: "/demo",      label: "Demo",      Icon: Play },
   { to: "/settings",  label: "Settings",  Icon: Cog },
 ];
