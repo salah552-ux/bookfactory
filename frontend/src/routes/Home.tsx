@@ -118,7 +118,7 @@ function BookRow({ book }: { book: BookEntry }) {
         <div className="flex items-center gap-4">
           {/* Cover + title block (fixed 320px to align with StageHeader spacer) */}
           <div className="w-[320px] shrink-0 flex items-center gap-4">
-            <BookCover title={title} genre={genre} size="md" />
+            <BookCover title={title} genre={genre} slug={book.slug} size="md" />
             <div className="min-w-0">
               <div className="text-md font-semibold text-text-1 truncate group-hover:text-violet-2 transition-colors">
                 {title}

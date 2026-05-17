@@ -65,12 +65,28 @@ html.dark body {
   position: relative;
   isolation: isolate;
 }
-.icon-tile.violet  { background: rgba(168,85,247,0.12);  color: #c084fc; box-shadow: 0 0 18px -6px rgba(168,85,247,0.6); }
-.icon-tile.cyan    { background: rgba(6,182,212,0.12);   color: #22d3ee; box-shadow: 0 0 18px -6px rgba(6,182,212,0.6); }
-.icon-tile.green   { background: rgba(16,185,129,0.12);  color: #34d399; box-shadow: 0 0 18px -6px rgba(16,185,129,0.55); }
-.icon-tile.orange  { background: rgba(245,158,11,0.12);  color: #fbbf24; box-shadow: 0 0 18px -6px rgba(245,158,11,0.55); }
-.icon-tile.red     { background: rgba(239,68,68,0.12);   color: #f87171; box-shadow: 0 0 18px -6px rgba(239,68,68,0.55); }
-.icon-tile.magenta { background: rgba(236,72,153,0.12);  color: #f472b6; box-shadow: 0 0 18px -6px rgba(236,72,153,0.55); }
+.icon-tile::before {
+  /* Inner halo behind the icon */
+  content: "";
+  position: absolute;
+  inset: -2px;
+  border-radius: 12px;
+  z-index: -1;
+  filter: blur(8px);
+  opacity: 0.6;
+}
+.icon-tile.violet  { background: rgba(168,85,247,0.18);  color: #d8b4fe; box-shadow: 0 0 28px -4px rgba(168,85,247,0.85), inset 0 0 0 1px rgba(168,85,247,0.30); }
+.icon-tile.violet::before  { background: rgba(168,85,247,0.55); }
+.icon-tile.cyan    { background: rgba(6,182,212,0.18);   color: #67e8f9; box-shadow: 0 0 28px -4px rgba(6,182,212,0.85),  inset 0 0 0 1px rgba(6,182,212,0.30); }
+.icon-tile.cyan::before    { background: rgba(6,182,212,0.55); }
+.icon-tile.green   { background: rgba(16,185,129,0.18);  color: #6ee7b7; box-shadow: 0 0 28px -4px rgba(16,185,129,0.80), inset 0 0 0 1px rgba(16,185,129,0.30); }
+.icon-tile.green::before   { background: rgba(16,185,129,0.55); }
+.icon-tile.orange  { background: rgba(245,158,11,0.18);  color: #fcd34d; box-shadow: 0 0 28px -4px rgba(245,158,11,0.80), inset 0 0 0 1px rgba(245,158,11,0.30); }
+.icon-tile.orange::before  { background: rgba(245,158,11,0.55); }
+.icon-tile.red     { background: rgba(239,68,68,0.18);   color: #fca5a5; box-shadow: 0 0 28px -4px rgba(239,68,68,0.80),  inset 0 0 0 1px rgba(239,68,68,0.30); }
+.icon-tile.red::before     { background: rgba(239,68,68,0.55); }
+.icon-tile.magenta { background: rgba(236,72,153,0.18);  color: #f9a8d4; box-shadow: 0 0 28px -4px rgba(236,72,153,0.80), inset 0 0 0 1px rgba(236,72,153,0.30); }
+.icon-tile.magenta::before { background: rgba(236,72,153,0.55); }
 
 /* Stage circle — used in the pipeline progress row */
 .stage-circle {
@@ -85,25 +101,33 @@ html.dark body {
   font-family: "JetBrains Mono", monospace;
   position: relative;
   flex-shrink: 0;
+  transition: transform 200ms ease, box-shadow 200ms ease;
 }
 .stage-circle.done {
-  background: rgba(16,185,129,0.14);
+  background: rgba(16,185,129,0.16);
   color: #34d399;
-  border: 1.5px solid rgba(16,185,129,0.55);
-  box-shadow: 0 0 10px -2px rgba(16,185,129,0.35);
+  border: 1.5px solid rgba(16,185,129,0.60);
+  box-shadow:
+    0 0 14px -2px rgba(16,185,129,0.55),
+    inset 0 0 8px -2px rgba(16,185,129,0.35);
 }
 .stage-circle.active {
   color: #ffffff;
   border: 2px solid currentColor;
-  box-shadow: 0 0 16px -2px currentColor, inset 0 0 8px -2px currentColor;
+  /* Punchier outer halo */
+  box-shadow:
+    0 0 0 4px rgba(255,255,255,0.02),
+    0 0 24px 0 currentColor,
+    inset 0 0 12px -2px currentColor;
+  transform: scale(1.08);
 }
-.stage-circle.active.violet { color: #c084fc; background: rgba(168,85,247,0.18); }
-.stage-circle.active.cyan   { color: #22d3ee; background: rgba(6,182,212,0.18); }
-.stage-circle.active.orange { color: #fbbf24; background: rgba(245,158,11,0.18); }
+.stage-circle.active.violet { color: #c084fc; background: rgba(168,85,247,0.22); }
+.stage-circle.active.cyan   { color: #22d3ee; background: rgba(6,182,212,0.22); }
+.stage-circle.active.orange { color: #fbbf24; background: rgba(245,158,11,0.22); }
 .stage-circle.todo {
-  background: rgba(255,255,255,0.03);
+  background: rgba(255,255,255,0.025);
   color: #475168;
-  border: 1.5px solid rgba(255,255,255,0.06);
+  border: 1.5px solid rgba(255,255,255,0.08);
 }
 
 /* Connector line between stage circles */
