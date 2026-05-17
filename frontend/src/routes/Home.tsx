@@ -1,14 +1,44 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link } from "react-router-dom";
-import { Button, Chip } from "@/components/ui/Button";
-import { PageHeader } from "@/components/PageHeader";
-import { StageTracker } from "@/components/StageTracker";
-import { Sparkline } from "@/components/Sparkline";
+import { BookOpen, Bot, Clock, Timer } from "lucide-react";
+import { StatCard } from "@/components/StatCard";
+import { StageHeader } from "@/components/StageHeader";
+import { StageProgress } from "@/components/StageProgress";
+import { BookCover } from "@/components/BookCover";
+import { RightRail } from "@/components/RightRail";
+import { LiveActivity } from "@/components/LiveActivity";
 import { ws } from "@/lib/ws";
 import { useWsEvent, useWsStatus } from "@/hooks/useWs";
 import type { BookEntry } from "@/lib/schemas";
-import { ArrowUpRight, Filter, Plus, RefreshCw } from "lucide-react";
-import { cn } from "@/lib/cn";
+
+const STAGE_LABELS: Record<string, string> = {
+  "01": "01 Research",
+  "02": "02 Planning",
+  "03": "03 Writing",
+  "04": "04 Quality",
+  "05": "05 Optimisation",
+  "06": "06 Production",
+  "07": "07 Publishing",
+  "08": "08 Products",
+  "09": "09 Series",
+  "10": "10 Post-launch",
+};
+
+function activeStageId(state: unknown): string | null {
+  if (!state || typeof state !== "object") return null;
+  const s = state as Record<string, unknown>;
+  const cs = s.current_stage;
+  if (typeof cs === "string") {
+    const m = cs.match(/^(\d{2})/);
+    return m ? m[1] : null;
+  }
+  const stages = (s.stages as Record<string, unknown> | undefined) ?? {};
+  for (const id of Object.keys(stages).sort()) {
+    const node = stages[id] as Record<string, unknown>;
+    if (node?.status === "in_progress" || node?.in_progress === true) return id;
+  }
+  return null;
+}
 
 export function Home() {
   const [books, setBooks] = useState<BookEntry[] | null>(null);
@@ -17,217 +47,130 @@ export function Home() {
   useEffect(() => {
     if (status === "open") ws.send({ type: "pipeline.list" });
   }, [status]);
-
   useWsEvent("pipeline.list.snapshot", (m) => setBooks(m.books));
 
-  const loading = books === null;
-  const total = books?.length ?? 0;
-
-  const stats = useMemo(() => deriveStats(books), [books]);
+  const totals = useMemo(() => {
+    if (!books) return { total: 0, inProgress: 0 };
+    let inProgress = 0;
+    for (const b of books) if (activeStageId(b.state)) inProgress += 1;
+    return { total: books.length, inProgress };
+  }, [books]);
 
   return (
-    <div className="px-6 sm:px-10 py-10 max-w-6xl mx-auto space-y-10">
-      <PageHeader
-        title="Fleet"
-        description="Every book in flight, every stage gate, every agent on call."
-        actions={
-          <>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={() => ws.send({ type: "pipeline.list" })}
-              disabled={status !== "open"}
-            >
-              <RefreshCw className="size-3.5" /> Refresh
-            </Button>
-            <Link to="/books/new">
-              <Button variant="primary" size="sm">
-                <Plus className="size-3.5" /> New book
-              </Button>
-            </Link>
-          </>
-        }
-      />
-
-      {/* Stats — single bordered row with hairline dividers + sparklines */}
-      <div className="rounded-md border border-line bg-surface flex items-stretch overflow-hidden">
-        <StatCell
-          label="Books"
-          value={loading ? "—" : String(total)}
-          spark={[2, 2, 2, 3, 3, 3]}
-        />
-        <Divider />
-        <StatCell
-          label="In progress"
-          value={loading ? "—" : String(stats.inProgress)}
-          spark={[1, 1, 2, 2, 1, 2]}
-        />
-        <Divider />
-        <StatCell
-          label="Agents"
-          value="44"
-          spark={[44, 44, 44, 44, 44, 44]}
-        />
-        <Divider />
-        <StatCell
-          label="This week"
-          value={loading ? "—" : `${stats.activityCount}`}
-          spark={[1, 3, 2, 4, 3, 5]}
-        />
-      </div>
-
-      {/* Books list */}
-      <section className="space-y-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <h2 className="text-md font-semibold text-text-1">Your books</h2>
-            <p className="text-sm text-text-3 mt-0.5">
-              Click a book to open its hub, or any stage chip to jump straight to the panel.
-            </p>
-          </div>
-          <button className="flex items-center gap-1.5 text-xs text-text-3 hover:text-text-1 transition-colors">
-            <Filter className="size-3" /> Filter
-          </button>
-        </div>
-
-        <div className="rounded-md border border-line bg-surface overflow-hidden">
-          {loading ? (
-            <ul>
-              {[0, 1, 2].map((i) => (
-                <li
-                  key={i}
-                  className={cn("px-5 py-5", i > 0 && "border-t border-line")}
-                >
-                  <div className="shimmer h-4 w-56 rounded mb-2" />
-                  <div className="shimmer h-3 w-72 rounded mb-4" />
-                  <div className="flex gap-1.5">
-                    {Array.from({ length: 10 }).map((_, j) => (
-                      <div key={j} className="shimmer h-7 w-24 rounded" />
-                    ))}
-                  </div>
-                </li>
-              ))}
-            </ul>
-          ) : books.length === 0 ? (
-            <div className="px-6 py-16 text-center">
-              <p className="text-md text-text-2 mb-1">No books yet</p>
-              <p className="text-sm text-text-4 mb-4">
-                Scaffold your first project with the wizard.
+    <div className="p-6 sm:p-10 max-w-[1600px] mx-auto">
+      <div className="flex gap-6 items-start">
+        {/* Main column */}
+        <div className="flex-1 min-w-0 space-y-6">
+          {/* Header row: title + 4 stat cards */}
+          <div className="flex items-start justify-between gap-6 flex-wrap">
+            <div>
+              <h1 className="text-3xl font-semibold tracking-tight">Fleet</h1>
+              <p className="text-md text-text-2 mt-1.5 max-w-xl">
+                Live overview of every book in flight, pipeline progress, and system health.
               </p>
-              <Link to="/books/new">
-                <Button variant="primary" size="sm">
-                  <Plus className="size-3.5" /> Start a book
-                </Button>
-              </Link>
             </div>
-          ) : (
-            <ul>
-              {books.map((b, i) => (
-                <BookRow key={b.slug} book={b} divided={i > 0} />
-              ))}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 flex-1 max-w-3xl">
+              <StatCard tone="violet"  icon={<BookOpen className="size-4" strokeWidth={2} />} value={totals.total} label="Books total" />
+              <StatCard tone="cyan"    icon={<Timer    className="size-4" strokeWidth={2} />} value={totals.inProgress} label="Books in progress" />
+              <StatCard tone="green"   icon={<Bot      className="size-4" strokeWidth={2} />} value={44}                label="Agents total" />
+              <StatCard tone="magenta" icon={<Clock    className="size-4" strokeWidth={2} />} value={12}                label="Runs this week" />
+            </div>
+          </div>
+
+          {/* Books in flight panel */}
+          <div className="card p-6">
+            <div className="text-[11px] font-semibold tracking-[0.18em] uppercase text-text-3 mb-4">
+              Books in flight
+            </div>
+
+            <StageHeader />
+
+            <ul className="space-y-1">
+              {books === null
+                ? [0, 1, 2].map((i) => <SkeletonRow key={i} />)
+                : books.map((b) => <BookRow key={b.slug} book={b} />)}
             </ul>
-          )}
-        </div>
-      </section>
-    </div>
-  );
-}
+          </div>
 
-function deriveStats(books: BookEntry[] | null) {
-  if (!books) return { inProgress: 0, activityCount: 0 };
-  let inProgress = 0;
-  let activityCount = 0;
-  for (const b of books) {
-    const s = b.state as Record<string, unknown> | null;
-    if (s && typeof s.current_stage === "string") inProgress += 1;
-    // count "this week's activity" — placeholder: number of completed stages
-    const stages = (s?.stages as Record<string, unknown> | undefined) ?? {};
-    activityCount += Object.values(stages).filter(
-      (n) => (n as Record<string, unknown>)?.complete === true
-    ).length;
-  }
-  return { inProgress, activityCount };
-}
-
-function StatCell({
-  label,
-  value,
-  spark,
-}: {
-  label: string;
-  value: string;
-  spark: number[];
-}) {
-  return (
-    <div className="flex-1 px-5 py-4">
-      <div className="text-xs text-text-3">{label}</div>
-      <div className="mt-1 flex items-baseline justify-between gap-3">
-        <div className="text-2xl font-semibold text-text-1 tnum tracking-tight">
-          {value}
+          <LiveActivity />
         </div>
-        <Sparkline
-          data={spark}
-          className="text-text-4 group-hover:text-accent"
-        />
+
+        <RightRail healthPct={98} />
       </div>
     </div>
   );
 }
 
-function Divider() {
-  return <div className="w-px bg-line" />;
-}
-
-function BookRow({ book, divided }: { book: BookEntry; divided: boolean }) {
+function BookRow({ book }: { book: BookEntry }) {
   const state = book.state as Record<string, unknown> | null;
   const title = (state?.book_title as string | undefined) ?? prettify(book.slug);
-  const genre = (state?.genre as string | undefined) ?? null;
-  const lastTouched = (state?.last_updated as string | undefined) ?? null;
-
-  // Compute stage progress
-  const stages = (state?.stages as Record<string, unknown> | undefined) ?? {};
-  const completeCount = Object.values(stages).filter(
-    (n) => (n as Record<string, unknown>)?.complete === true
-  ).length;
+  const genre = (state?.genre as string | undefined) ?? "FICTION";
+  const lastTouched = (state?.last_updated as string | undefined) ?? "—";
+  const active = activeStageId(state);
+  const stageLabel = active ? STAGE_LABELS[active] : "—";
 
   return (
-    <li className={cn(divided && "border-t border-line")}>
+    <li>
       <Link
         to={`/books/${book.slug}`}
-        className="group block px-5 py-5 hover:bg-raised/40 transition-colors"
+        className="group block py-4 px-2 -mx-2 rounded-lg hover:bg-white/[0.025] transition-colors"
       >
-        <div className="flex items-start gap-4">
-          <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-2.5 flex-wrap">
-              <h3 className="text-md font-medium text-text-1 truncate group-hover:text-accent transition-colors">
+        <div className="flex items-center gap-4">
+          {/* Cover + title block (fixed 320px to align with StageHeader spacer) */}
+          <div className="w-[320px] shrink-0 flex items-center gap-4">
+            <BookCover title={title} genre={genre} size="md" />
+            <div className="min-w-0">
+              <div className="text-md font-semibold text-text-1 truncate group-hover:text-violet-2 transition-colors">
                 {title}
-              </h3>
-              {genre && (
-                <Chip tone="neutral" className="!py-0 !text-[10px]">
-                  {genre}
-                </Chip>
-              )}
-              <span className="text-xs text-text-4 tnum">
-                stage {String(completeCount + 1).padStart(2, "0")}/10
-              </span>
-            </div>
-            <div className="mt-1 text-xs font-mono text-text-4 truncate">
-              {book.slug}
-              {lastTouched && (
-                <>
-                  <span className="mx-2">·</span>
-                  <span>last activity {lastTouched}</span>
-                </>
-              )}
+              </div>
+              <div className="text-xs text-text-3 mt-1 truncate">
+                {genre.replace(/-/g, " · ").toLowerCase()}
+              </div>
             </div>
           </div>
-          <ArrowUpRight className="size-4 text-text-4 group-hover:text-text-1 transition-colors shrink-0 mt-1" />
-        </div>
 
-        <div className="mt-4">
-          <StageTracker state={book.state} bookSlug={book.slug} />
+          {/* Pipeline */}
+          <div className="flex-1 min-w-0">
+            <StageProgress state={state} bookSlug={book.slug} />
+          </div>
+
+          {/* Right-hand stage label + last activity (fixed 140px) */}
+          <div className="w-[140px] shrink-0">
+            <div className="text-md font-semibold text-violet-2">{stageLabel}</div>
+            <div className="text-[11px] text-text-3 mt-0.5">Current stage</div>
+            <div className="flex items-center gap-1.5 mt-2.5 text-[11px] text-text-3">
+              <Clock className="size-3" strokeWidth={1.75} />
+              <span className="tnum">{lastTouched}</span>
+            </div>
+            <div className="text-[11px] text-text-3 -mt-0.5">Last activity</div>
+          </div>
         </div>
       </Link>
+    </li>
+  );
+}
+
+function SkeletonRow() {
+  return (
+    <li className="py-5">
+      <div className="flex items-center gap-4">
+        <div className="w-[320px] flex items-center gap-4 shrink-0">
+          <div className="w-16 h-20 rounded-md shimmer" />
+          <div className="flex-1">
+            <div className="h-4 w-40 rounded shimmer mb-2" />
+            <div className="h-3 w-24 rounded shimmer" />
+          </div>
+        </div>
+        <div className="flex-1 flex items-center gap-2">
+          {Array.from({ length: 10 }).map((_, i) => (
+            <div key={i} className="size-8 rounded-full shimmer" />
+          ))}
+        </div>
+        <div className="w-[140px] shrink-0">
+          <div className="h-4 w-24 rounded shimmer mb-2" />
+          <div className="h-3 w-16 rounded shimmer" />
+        </div>
+      </div>
     </li>
   );
 }
