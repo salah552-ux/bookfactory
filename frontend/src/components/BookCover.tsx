@@ -1,19 +1,20 @@
 import { useState } from "react";
 
 /**
- * Book cover thumbnail. If /covers/<slug>.{png,jpg,webp} exists, render
- * it. Otherwise fall back to a stylised genre-coloured placeholder with
- * the title typeset on it.
+ * Editorial book cover. Drops in /covers/<slug>.{png,jpg,webp} when
+ * available; otherwise renders a stylised antique-paper placeholder with
+ * the title set in display serif. Inspired by Penguin Classics covers —
+ * single warm field + framed serif title.
  */
-const GENRE_PALETTES: Record<
+const GENRE_TINTS: Record<
   string,
-  { from: string; to: string; accent: string }
+  { from: string; to: string; ink: string; band: string }
 > = {
-  "NONFICTION-HEALTH":   { from: "#10b981", to: "#065f46", accent: "#a7f3d0" },
-  "NONFICTION-BUSINESS": { from: "#3b82f6", to: "#1e3a8a", accent: "#dbeafe" },
-  FICTION:               { from: "#1e293b", to: "#0f172a", accent: "#94a3b8" },
-  "FICTION-MYSTERY":     { from: "#831843", to: "#1c1917", accent: "#fda4af" },
-  DEFAULT:               { from: "#1e293b", to: "#0f172a", accent: "#94a3b8" },
+  "NONFICTION-HEALTH":   { from: "#3a4a40", to: "#1f2620", ink: "#e8d9b0", band: "#7a8f7d" },
+  "NONFICTION-BUSINESS": { from: "#3a4252", to: "#1f2330", ink: "#e8d9b0", band: "#6b7a96" },
+  FICTION:               { from: "#2a2620", to: "#14110d", ink: "#e8d9b0", band: "#8c7a5a" },
+  "FICTION-MYSTERY":     { from: "#3b1e1e", to: "#1a0c0c", ink: "#e8d9b0", band: "#a4544d" },
+  DEFAULT:               { from: "#2a2620", to: "#14110d", ink: "#e8d9b0", band: "#8c7a5a" },
 };
 
 const EXTENSIONS = ["png", "jpg", "jpeg", "webp"] as const;
@@ -29,27 +30,26 @@ export function BookCover({
   slug?: string;
   size?: "sm" | "md" | "lg";
 }) {
-  const palette = GENRE_PALETTES[genre ?? "DEFAULT"] ?? GENRE_PALETTES.DEFAULT;
+  const palette = GENRE_TINTS[genre ?? "DEFAULT"] ?? GENRE_TINTS.DEFAULT;
   const dims =
-    size === "sm" ? "w-12 h-16" : size === "lg" ? "w-24 h-32" : "w-16 h-20";
+    size === "sm" ? { w: 48, h: 64, t: 8 }
+    : size === "lg" ? { w: 120, h: 160, t: 14 }
+    : { w: 72, h: 96, t: 10 };
 
   const [extIndex, setExtIndex] = useState(0);
   const [imageFailed, setImageFailed] = useState(!slug);
 
-  const imageBase = `${import.meta.env.BASE_URL ?? "/"}covers/${slug}.${EXTENSIONS[extIndex]}`;
-
   if (!imageFailed && slug) {
+    const src = `${import.meta.env.BASE_URL ?? "/"}covers/${slug}.${EXTENSIONS[extIndex]}`;
     return (
       <img
-        src={imageBase}
+        src={src}
         alt={title}
-        className={`${dims} rounded-md shrink-0 object-cover shadow-[0_8px_16px_-8px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)]`}
+        style={{ width: dims.w, height: dims.h }}
+        className="rounded-[2px] shrink-0 object-cover shadow-soft ring-1 ring-line"
         onError={() => {
-          if (extIndex < EXTENSIONS.length - 1) {
-            setExtIndex(extIndex + 1);
-          } else {
-            setImageFailed(true);
-          }
+          if (extIndex < EXTENSIONS.length - 1) setExtIndex(extIndex + 1);
+          else setImageFailed(true);
         }}
       />
     );
@@ -57,35 +57,68 @@ export function BookCover({
 
   return (
     <div
-      className={`${dims} rounded-md shrink-0 relative overflow-hidden flex flex-col justify-between p-2`}
       style={{
-        background: `linear-gradient(160deg, ${palette.from} 0%, ${palette.to} 100%)`,
-        boxShadow: `
-          0 1px 0 rgba(255,255,255,0.12) inset,
-          0 8px 16px -8px rgba(0,0,0,0.6),
-          0 0 0 1px rgba(255,255,255,0.08)
-        `,
+        width: dims.w,
+        height: dims.h,
+        background: `linear-gradient(180deg, ${palette.from} 0%, ${palette.to} 100%)`,
+        boxShadow:
+          "inset 0 1px 0 rgba(245,239,224,0.10), 0 8px 24px -16px rgba(0,0,0,0.8)",
       }}
+      className="relative rounded-[2px] shrink-0 overflow-hidden flex flex-col"
     >
+      {/* Top hairline frame */}
       <div
-        className="absolute inset-0 opacity-30 pointer-events-none"
+        className="mx-2 mt-2 border-t border-b"
         style={{
-          background:
-            "radial-gradient(120% 80% at 20% 0%, rgba(255,255,255,0.20), transparent 50%)",
+          borderColor: palette.band,
+          opacity: 0.5,
+          paddingBlock: 2,
         }}
-      />
-      <div className="relative z-10 mt-auto">
+      >
         <div
-          className="text-[7px] font-bold leading-tight tracking-wide uppercase"
-          style={{ color: palette.accent, fontFamily: "Georgia, serif" }}
+          className="text-center"
+          style={{
+            color: palette.ink,
+            fontFamily: '"IBM Plex Mono", monospace',
+            fontSize: dims.t * 0.55,
+            letterSpacing: "0.16em",
+          }}
         >
-          {title.slice(0, 32)}
+          BF
         </div>
       </div>
+
+      {/* Title set in display italic */}
+      <div className="flex-1 flex items-center justify-center p-2 text-center">
+        <div
+          style={{
+            color: palette.ink,
+            fontFamily: '"Cormorant Garamond", Georgia, serif',
+            fontStyle: "italic",
+            fontSize: dims.t,
+            lineHeight: 1.1,
+            fontWeight: 500,
+          }}
+        >
+          {title.split(" ").slice(0, 4).join(" ")}
+        </div>
+      </div>
+
+      {/* Bottom band like a Penguin Classic */}
       <div
-        className="absolute left-1 top-1 bottom-1 w-px"
-        style={{ background: "rgba(255,255,255,0.08)" }}
-      />
+        className="mx-2 mb-2 text-center"
+        style={{
+          color: palette.ink,
+          opacity: 0.7,
+          fontFamily: '"IBM Plex Mono", monospace',
+          fontSize: dims.t * 0.45,
+          letterSpacing: "0.18em",
+          borderTop: `1px solid ${palette.band}`,
+          paddingTop: 2,
+        }}
+      >
+        {(genre ?? "BOOK").split("-")[0].slice(0, 6)}
+      </div>
     </div>
   );
 }
