@@ -1,6 +1,6 @@
 /**
- * Editorial brand mark — a gold serif "B" inside a hairline gold square,
- * like an old publisher's colophon. Replaces the previous SVG monogram.
+ * Refined brand mark — a serif italic "B" framed by a hairline blue square.
+ * Aligned to the `refined` skill: Playfair Display + primary #3B82F6.
  */
 export function BrandMark({ size = 40 }: { size?: number }) {
   return (
@@ -9,25 +9,23 @@ export function BrandMark({ size = 40 }: { size?: number }) {
       style={{
         width: size,
         height: size,
-        border: "1px solid rgba(202,138,4,0.55)",
-        background:
-          "radial-gradient(60% 60% at 50% 40%, rgba(202,138,4,0.08), transparent 70%), rgba(202,138,4,0.04)",
+        border: "1px solid #3b82f6",
+        background: "#ffffff",
       }}
       aria-label="BookFactory"
     >
       <span
         style={{
-          fontFamily: '"Cormorant Garamond", Georgia, serif',
-          fontWeight: 600,
+          fontFamily: '"Playfair Display", Georgia, serif',
+          fontWeight: 700,
           fontStyle: "italic",
-          fontSize: size * 0.58,
-          color: "#ca8a04",
+          fontSize: size * 0.6,
+          color: "#3b82f6",
           lineHeight: 1,
           letterSpacing: "-0.02em",
-          textShadow: "0 0 12px rgba(202,138,4,0.3)",
         }}
       >
-        ℬ
+        B
       </span>
     </div>
   );
