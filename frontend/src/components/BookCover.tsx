@@ -1,18 +1,19 @@
 import { useState } from "react";
 
 /**
- * Refined book cover — modern minimal. Tinted card with Playfair serif
- * title centred. Drops in /covers/<slug>.{png,jpg,webp} when available.
+ * Book cover thumbnail. If /covers/<slug>.{png,jpg,webp} exists, render
+ * it. Otherwise fall back to a stylised genre-coloured placeholder with
+ * the title typeset on it.
  */
 const GENRE_PALETTES: Record<
   string,
-  { from: string; to: string; ink: string }
+  { from: string; to: string; accent: string }
 > = {
-  "NONFICTION-HEALTH":   { from: "#dcfce7", to: "#bbf7d0", ink: "#166534" },
-  "NONFICTION-BUSINESS": { from: "#dbeafe", to: "#bfdbfe", ink: "#1e3a8a" },
-  FICTION:               { from: "#f3f4f6", to: "#e5e7eb", ink: "#111827" },
-  "FICTION-MYSTERY":     { from: "#fce7f3", to: "#fbcfe8", ink: "#831843" },
-  DEFAULT:               { from: "#f3f4f6", to: "#e5e7eb", ink: "#111827" },
+  "NONFICTION-HEALTH":   { from: "#10b981", to: "#065f46", accent: "#a7f3d0" },
+  "NONFICTION-BUSINESS": { from: "#3b82f6", to: "#1e3a8a", accent: "#dbeafe" },
+  FICTION:               { from: "#1e293b", to: "#0f172a", accent: "#94a3b8" },
+  "FICTION-MYSTERY":     { from: "#831843", to: "#1c1917", accent: "#fda4af" },
+  DEFAULT:               { from: "#1e293b", to: "#0f172a", accent: "#94a3b8" },
 };
 
 const EXTENSIONS = ["png", "jpg", "jpeg", "webp"] as const;
@@ -30,24 +31,25 @@ export function BookCover({
 }) {
   const palette = GENRE_PALETTES[genre ?? "DEFAULT"] ?? GENRE_PALETTES.DEFAULT;
   const dims =
-    size === "sm" ? { w: 48, h: 64, t: 9 }
-    : size === "lg" ? { w: 112, h: 152, t: 16 }
-    : { w: 72, h: 96, t: 11 };
+    size === "sm" ? "w-12 h-16" : size === "lg" ? "w-24 h-32" : "w-16 h-20";
 
   const [extIndex, setExtIndex] = useState(0);
   const [imageFailed, setImageFailed] = useState(!slug);
 
+  const imageBase = `${import.meta.env.BASE_URL ?? "/"}covers/${slug}.${EXTENSIONS[extIndex]}`;
+
   if (!imageFailed && slug) {
-    const src = `${import.meta.env.BASE_URL ?? "/"}covers/${slug}.${EXTENSIONS[extIndex]}`;
     return (
       <img
-        src={src}
+        src={imageBase}
         alt={title}
-        style={{ width: dims.w, height: dims.h }}
-        className="rounded-md shrink-0 object-cover shadow-md border border-line"
+        className={`${dims} rounded-md shrink-0 object-cover shadow-[0_8px_16px_-8px_rgba(0,0,0,0.6),0_0_0_1px_rgba(255,255,255,0.06)]`}
         onError={() => {
-          if (extIndex < EXTENSIONS.length - 1) setExtIndex(extIndex + 1);
-          else setImageFailed(true);
+          if (extIndex < EXTENSIONS.length - 1) {
+            setExtIndex(extIndex + 1);
+          } else {
+            setImageFailed(true);
+          }
         }}
       />
     );
@@ -55,26 +57,35 @@ export function BookCover({
 
   return (
     <div
+      className={`${dims} rounded-md shrink-0 relative overflow-hidden flex flex-col justify-between p-2`}
       style={{
-        width: dims.w,
-        height: dims.h,
-        background: `linear-gradient(180deg, ${palette.from} 0%, ${palette.to} 100%)`,
+        background: `linear-gradient(160deg, ${palette.from} 0%, ${palette.to} 100%)`,
+        boxShadow: `
+          0 1px 0 rgba(255,255,255,0.12) inset,
+          0 8px 16px -8px rgba(0,0,0,0.6),
+          0 0 0 1px rgba(255,255,255,0.08)
+        `,
       }}
-      className="relative rounded-md shrink-0 overflow-hidden flex items-center justify-center p-3 shadow-md border border-line"
     >
       <div
-        className="text-center"
+        className="absolute inset-0 opacity-30 pointer-events-none"
         style={{
-          color: palette.ink,
-          fontFamily: '"Playfair Display", Georgia, serif',
-          fontWeight: 600,
-          fontSize: dims.t,
-          lineHeight: 1.1,
-          letterSpacing: "-0.01em",
+          background:
+            "radial-gradient(120% 80% at 20% 0%, rgba(255,255,255,0.20), transparent 50%)",
         }}
-      >
-        {title.split(" ").slice(0, 4).join(" ")}
+      />
+      <div className="relative z-10 mt-auto">
+        <div
+          className="text-[7px] font-bold leading-tight tracking-wide uppercase"
+          style={{ color: palette.accent, fontFamily: "Georgia, serif" }}
+        >
+          {title.slice(0, 32)}
+        </div>
       </div>
+      <div
+        className="absolute left-1 top-1 bottom-1 w-px"
+        style={{ background: "rgba(255,255,255,0.08)" }}
+      />
     </div>
   );
 }
