@@ -37,6 +37,10 @@ jobs:
       - name: Install backend dependencies
         run: npm install --no-audit --no-fund
 
+      - name: Install Claude CLI
+        working-directory: .
+        run: npm install -g @anthropic-ai/claude-code
+
       - name: Check kill switch
         id: pause
         working-directory: .
@@ -57,6 +61,7 @@ jobs:
         run: npm run daemon:live
         env:
           DAEMON_LIVE: "true"
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
       - name: Commit notifications and activity log
         if: steps.pause.outputs.paused == 'false'
