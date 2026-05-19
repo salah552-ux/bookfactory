@@ -131,6 +131,34 @@ cat > "$BOOK_DIR/manuscript/00-introduction.md" << INTROSTUB
 *(Write: write chapter intro $GENRE)*
 INTROSTUB
 
+# ── Create pipeline-state.json from template ──
+GENRE_CODE=$(echo "$GENRE" | tr '[:lower:]' '[:upper:]')
+case "$GENRE" in
+  health)   GENRE_CODE="NON-FICTION-HEALTH" ;;
+  business) GENRE_CODE="NON-FICTION-BUSINESS" ;;
+  fiction)  GENRE_CODE="FICTION-GENERAL" ;;
+  mystery)  GENRE_CODE="FICTION-MYSTERY" ;;
+  fantasy)  GENRE_CODE="FICTION-FANTASY" ;;
+  thriller) GENRE_CODE="FICTION-THRILLER" ;;
+  romance)  GENRE_CODE="FICTION-ROMANCE" ;;
+esac
+
+python3 -c "
+import json, sys
+with open('$FACTORY/pipeline-state.template.json') as f:
+    state = json.load(f)
+state['book_slug']    = '$SLUG'
+state['book_title']   = '$TITLE'
+state['genre']        = '$GENRE_CODE'
+state['current_stage'] = 1
+import datetime
+state['last_updated'] = datetime.datetime.utcnow().strftime('%Y-%m-%dT%H:%M:%SZ')
+state['agent_log'] = []
+with open('$BOOK_DIR/pipeline-state.json', 'w') as f:
+    json.dump(state, f, indent=2)
+    f.write('\n')
+" && echo "  ✓ pipeline-state.json created" || echo "  ⚠ Could not create pipeline-state.json — copy pipeline-state.template.json manually."
+
 # ── Update PIPELINE.md ──
 PIPELINE="$FACTORY/PIPELINE.md"
 

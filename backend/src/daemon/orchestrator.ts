@@ -30,6 +30,7 @@ import {
   appendGateHit,
 } from "./notifications.js";
 import type { DaemonConfig, PipelineState } from "./types.js";
+import { processQueue } from "./queue-processor.js";
 
 const DEFAULT_MAX_INVOCATIONS_PER_DAY = Number(
   process.env.DAEMON_MAX_INVOCATIONS_PER_DAY ?? 20
@@ -204,6 +205,10 @@ export async function runDaemon(
     });
     return;
   }
+
+  // Process the intake queue before advancing existing books.
+  // Bootstraps pending ideas → starts research; unlocks approved niches.
+  await processQueue(config, now);
 
   const booksDir = path.join(config.bookfactoryRoot, "books");
   const slugs = await listBookSlugs(booksDir);

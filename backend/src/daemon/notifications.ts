@@ -14,7 +14,9 @@ export interface GateHit {
 export interface ActivityEntry {
   ts: Date;
   book: string;
-  action: "invoked" | "blocked" | "spend_cap" | "paused" | "no_state" | "error";
+  action:
+    | "invoked" | "blocked" | "spend_cap" | "paused" | "no_state" | "error"
+    | "queued" | "niche_approved" | "niche_rejected";
   detail?: string;
 }
 
