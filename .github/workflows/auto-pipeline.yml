@@ -1,0 +1,82 @@
+name: Auto Pipeline Daemon (Phase 1)
+
+on:
+  # Run every 6 hours by default. Adjust the cron when you're confident.
+  schedule:
+    - cron: "0 */6 * * *"
+  # Manual trigger so you can run it on demand from the GitHub UI.
+  workflow_dispatch:
+    inputs:
+      live:
+        description: "Set true to actually invoke claude (default: dry-run)"
+        required: false
+        default: "false"
+
+permissions:
+  contents: write
+
+concurrency:
+  group: auto-pipeline-daemon
+  cancel-in-progress: false
+
+jobs:
+  daemon:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: backend
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+
+      - name: Install backend dependencies
+        run: npm install --no-audit --no-fund
+
+      - name: Install Claude CLI
+        working-directory: .
+        run: npm install -g @anthropic-ai/claude-code
+
+      - name: Check kill switch
+        id: pause
+        working-directory: .
+        run: |
+          if [ -f PAUSE_AUTOMATION ]; then
+            echo "PAUSE_AUTOMATION present — skipping daemon run"
+            echo "paused=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "paused=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Run orchestrator daemon (dry-run)
+        if: steps.pause.outputs.paused == 'false' && github.event.inputs.live != 'true'
+        run: npm run daemon
+
+      - name: Run orchestrator daemon (LIVE)
+        if: steps.pause.outputs.paused == 'false' && github.event.inputs.live == 'true'
+        run: npm run daemon:live
+        env:
+          DAEMON_LIVE: "true"
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+
+      - name: Commit notifications and activity log
+        if: steps.pause.outputs.paused == 'false'
+        working-directory: .
+        run: |
+          git config user.name "bookfactory-daemon"
+          git config user.email "daemon@bookfactory.local"
+
+          # Stage only the files the daemon writes
+          git add NOTIFICATIONS.md AUTOMATION-LOG.md books/*/.spend-log.json 2>/dev/null || true
+
+          if git diff --staged --quiet; then
+            echo "No daemon-produced changes to commit."
+            exit 0
+          fi
+
+          git commit -m "daemon: $(date -u +'%Y-%m-%dT%H:%M:%SZ') update notifications and spend logs"
+          git push

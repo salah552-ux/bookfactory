@@ -1,0 +1,88 @@
+{
+  "book_slug": "the-dust-between-seconds",
+  "book_title": "The Dust Between Seconds",
+  "series": null,
+  "series_number": null,
+  "genre": "FICTION-FANTASY",
+  "pipeline_version": "2.0",
+  "current_stage": 3,
+  "last_updated": "2026-05-01T00:00:00Z",
+  "last_agent_run": "fiction-writer",
+
+  "stages": {
+    "01-research":    { "status": "complete", "completed_at": "2026-04-28T00:00:00Z" },
+    "02-planning":    { "status": "complete", "completed_at": "2026-04-29T00:00:00Z" },
+    "03-writing":     { "status": "in_progress", "started_at": "2026-04-30T00:00:00Z" },
+    "04-quality":     { "status": "not_started" },
+    "05-optimisation":{ "status": "not_started" },
+    "06-production":  { "status": "not_started" },
+    "07-publishing":  { "status": "not_started" },
+    "08-products":    { "status": "not_started" },
+    "09-series":      { "status": "not_started" },
+    "10-postlaunch":  { "status": "not_started" }
+  },
+
+  "writing": {
+    "writer_agent": "fiction-writer",
+    "target_chapters": 32,
+    "completed_chapters": 1,
+    "approved_chapters": 1,
+    "current_chapter": "04-chapter-4",
+    "word_count_current": 3200,
+    "word_count_target": 95000
+  },
+
+  "quality_scores": {
+    "book_reviewer_avg": null,
+    "final_approval_score": null,
+    "chapters_below_threshold": []
+  },
+
+  "human_gates": {
+    "market_intelligence_approved": true,
+    "blueprint_approved": true,
+    "cover_approved": false,
+    "final_approval_passed": false,
+    "ai_questionnaire_confirmed": false,
+    "published": false
+  },
+
+  "production": {
+    "epub_built": false,
+    "pdf_built": false,
+    "docx_built": false,
+    "cover_file": null,
+    "epub_file": null
+  },
+
+  "publishing": {
+    "asin": null,
+    "kdp_status": "not_started",
+    "live_date": null,
+    "list_price_gbp": null,
+    "list_price_usd": null,
+    "royalty_pct": null,
+    "kdp_select": null,
+    "countdown_deal_eligible_from": null
+  },
+
+  "post_launch": {
+    "review_count": 0,
+    "avg_rating": null,
+    "ads_active": false,
+    "ads_start_date": null,
+    "countdown_deal_run": false,
+    "aplus_content_live": false,
+    "arc_emails_sent": 0
+  },
+
+  "agent_log": [
+    {
+      "timestamp": "2026-04-29T00:00:00Z",
+      "agent": "fiction-writer",
+      "action": "Writing stage in progress — The Dust Between Seconds",
+      "result": "in_progress",
+      "notes": "Chapter 3 complete and approved. Resuming from Chapter 4. Target: 32 chapters / 95,000 words."
+    }
+  ]
+}

@@ -1,0 +1,88 @@
+{
+  "book_slug": "fix-your-gut-for-good",
+  "book_title": "Fix Your Gut for Good",
+  "series": null,
+  "series_number": null,
+  "genre": "NON-FICTION-HEALTH",
+  "pipeline_version": "2.0",
+  "current_stage": 6,
+  "last_updated": "2026-04-19T00:00:00Z",
+  "last_agent_run": "final-approval-agent",
+
+  "stages": {
+    "01-research":    { "status": "complete", "completed_at": "2026-04-10T00:00:00Z" },
+    "02-planning":    { "status": "complete", "completed_at": "2026-04-11T00:00:00Z" },
+    "03-writing":     { "status": "complete", "completed_at": "2026-04-17T00:00:00Z" },
+    "04-quality":     { "status": "complete", "completed_at": "2026-04-18T00:00:00Z" },
+    "05-optimisation":{ "status": "complete", "completed_at": "2026-04-18T00:00:00Z" },
+    "06-production":  { "status": "complete", "completed_at": "2026-04-19T00:00:00Z" },
+    "07-publishing":  { "status": "not_started" },
+    "08-products":    { "status": "not_started" },
+    "09-series":      { "status": "not_started" },
+    "10-postlaunch":  { "status": "not_started" }
+  },
+
+  "writing": {
+    "writer_agent": "health-writer",
+    "target_chapters": 13,
+    "completed_chapters": 13,
+    "approved_chapters": 13,
+    "current_chapter": "complete",
+    "word_count_current": 45000,
+    "word_count_target": 50000
+  },
+
+  "quality_scores": {
+    "book_reviewer_avg": 113,
+    "final_approval_score": 274,
+    "chapters_below_threshold": []
+  },
+
+  "human_gates": {
+    "market_intelligence_approved": true,
+    "blueprint_approved": true,
+    "cover_approved": true,
+    "final_approval_passed": true,
+    "ai_questionnaire_confirmed": false,
+    "published": false
+  },
+
+  "production": {
+    "epub_built": false,
+    "pdf_built": false,
+    "docx_built": false,
+    "cover_file": null,
+    "epub_file": null
+  },
+
+  "publishing": {
+    "asin": null,
+    "kdp_status": "not_started",
+    "live_date": null,
+    "list_price_gbp": null,
+    "list_price_usd": null,
+    "royalty_pct": null,
+    "kdp_select": null,
+    "countdown_deal_eligible_from": null
+  },
+
+  "post_launch": {
+    "review_count": 0,
+    "avg_rating": null,
+    "ads_active": false,
+    "ads_start_date": null,
+    "countdown_deal_run": false,
+    "aplus_content_live": false,
+    "arc_emails_sent": 0
+  },
+
+  "agent_log": [
+    {
+      "timestamp": "2026-04-19T00:00:00Z",
+      "agent": "final-approval-agent",
+      "action": "300-point production audit — Fix Your Gut for Good",
+      "result": "conditional_pass",
+      "notes": "Score 274/300. All 13 chapters approved Grade A. CONDITIONAL PASS — ready for KDP upload. Awaiting pre-launch infrastructure and KDP AI questionnaire confirmation."
+    }
+  ]
+}
