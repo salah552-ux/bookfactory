@@ -76,8 +76,11 @@ jobs:
           git config user.name "bookfactory-daemon"
           git config user.email "daemon@bookfactory.local"
 
-          # Stage the files the daemon writes
-          git add NOTIFICATIONS.md AUTOMATION-LOG.md 2>/dev/null || true
+          # Stage each daemon-produced file separately so one missing file
+          # doesn't prevent staging the others (git add fails the whole
+          # command if any pathspec is missing).
+          git add NOTIFICATIONS.md 2>/dev/null || true
+          git add AUTOMATION-LOG.md 2>/dev/null || true
           git add books/fix-your-gut-for-good/.spend-log.json 2>/dev/null || true
           git add books/the-dust-between-seconds/.spend-log.json 2>/dev/null || true
           git add books/untitled-cosy-mystery/.spend-log.json 2>/dev/null || true
