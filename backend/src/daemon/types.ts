@@ -38,12 +38,14 @@ export interface SpendLog {
 // ── Queue types ────────────────────────────────────────────────────────────
 
 export type QueueStatus =
-  | "pending"       // user added the idea — not yet bootstrapped
-  | "researching"   // book folder created, stage-1 agents running
-  | "approved"      // user approved the niche — daemon will unlock stage 2
-  | "rejected"      // user rejected — archived, pipeline won't run
-  | "in_pipeline"   // niche approved, pipeline advancing normally
-  | "archived";     // terminal state for rejected ideas
+  | "pending"        // user added the idea — not yet bootstrapped
+  | "researching"    // book folder created, stage-1 research agents running
+  | "master_review"  // research complete — Master Orchestrator reviewing findings
+  | "brief_ready"    // Master Orc satisfied — brief written, awaiting YOUR approval
+  | "approved"       // you approved — daemon unlocks stage 2
+  | "rejected"       // you rejected — archived, pipeline won't run
+  | "in_pipeline"    // pipeline advancing through all 10 stages
+  | "archived";      // terminal state for rejected ideas
 
 export interface QueueEntry {
   /** Stable identifier — set on first write, never changed. */
@@ -61,6 +63,8 @@ export interface QueueEntry {
   approved_at?: string;
   rejected_at?: string;
   reject_reason?: string;
+  /** How many Master Orchestrator review rounds have run. */
+  review_rounds?: number;
 }
 
 export interface QueueFile {

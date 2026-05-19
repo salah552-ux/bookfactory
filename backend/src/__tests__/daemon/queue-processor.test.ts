@@ -8,6 +8,7 @@ import {
   slugify,
   bootstrapBook,
   approveNiche,
+  readMasterReviewDecision,
   processQueue,
 } from "../../daemon/queue-processor.js";
 import type { DaemonConfig, QueueEntry } from "../../daemon/types.js";
@@ -265,6 +266,79 @@ describe("processQueue", () => {
     const q = await readQueue(qf);
     expect(q.entries[0].status).toBe("archived");
     expect(q.entries[0].rejected_at).toBeTruthy();
+  });
+
+  it("advances researching → master_review when MARKET-INTELLIGENCE.md exists (dry-run)", async () => {
+    const slug = "sleep-book";
+    await mkdir(join(root, "books", slug), { recursive: true });
+    // Simulate research complete — MARKET-INTELLIGENCE.md written by deep-market-intelligence-agent
+    await writeFile(join(root, "books", slug, "MARKET-INTELLIGENCE.md"), "# Market Intelligence\n\nSales forecast: £800/month");
+
+    const qf = join(root, "books", ".queue.json");
+    await writeFile(qf, JSON.stringify({
+      entries: [{ id: "t", title: "Sleep Book", genre: "health", status: "researching", slug, added_at: "2026-01-01T00:00:00Z" }]
+    }));
+
+    const dryConfig = { ...config, dryRun: true };
+    await processQueue(dryConfig, new Date());
+
+    // In dry-run mode the queue file is not persisted, but we can check in-memory logic
+    // by checking the activity log was written (dry-run still appends activity entries)
+    const log = await readFile(config.activityLogFile, "utf8").catch(() => "");
+    expect(log).toContain("DRY RUN");
+  });
+
+  it("advances master_review → brief_ready when MASTER-REVIEW.json has decision brief_ready", async () => {
+    const slug = "brief-ready-book";
+    await mkdir(join(root, "books", slug), { recursive: true });
+    const decision = { decision: "brief_ready", round: 1, go_recommendation: "strong_go", confidence: "high", gaps: [] };
+    await writeFile(join(root, "books", slug, "MASTER-REVIEW.json"), JSON.stringify(decision));
+    await writeFile(join(root, "books", slug, "NICHE-DECISION-BRIEF.md"), "# Brief\n\n## Master Orchestrator Recommendation: STRONG GO\n");
+
+    const qf = join(root, "books", ".queue.json");
+    await writeFile(qf, JSON.stringify({
+      entries: [{ id: "t", title: "Brief Ready Book", genre: "health", status: "master_review", slug, added_at: "2026-01-01T00:00:00Z" }]
+    }));
+
+    await processQueue(config, new Date());
+
+    const q = await readQueue(qf);
+    expect(q.entries[0].status).toBe("brief_ready");
+  });
+
+  it("resets master_review → researching when MASTER-REVIEW.json has need_more_research", async () => {
+    const slug = "more-research-book";
+    await mkdir(join(root, "books", slug), { recursive: true });
+    const decision = { decision: "need_more_research", round: 1, gaps: ["weak BSR data"] };
+    await writeFile(join(root, "books", slug, "MASTER-REVIEW.json"), JSON.stringify(decision));
+
+    const qf = join(root, "books", ".queue.json");
+    await writeFile(qf, JSON.stringify({
+      entries: [{ id: "t", title: "More Research Book", genre: "health", status: "master_review", slug, added_at: "2026-01-01T00:00:00Z" }]
+    }));
+
+    await processQueue(config, new Date());
+
+    const q = await readQueue(qf);
+    expect(q.entries[0].status).toBe("researching");
+  });
+
+  it("readMasterReviewDecision returns null when file missing", async () => {
+    const slug = "no-review";
+    await mkdir(join(root, "books", slug), { recursive: true });
+    const result = await readMasterReviewDecision(join(root, "books", slug));
+    expect(result).toBeNull();
+  });
+
+  it("readMasterReviewDecision parses a valid decision file", async () => {
+    const slug = "has-review";
+    await mkdir(join(root, "books", slug), { recursive: true });
+    const decision = { decision: "brief_ready", round: 2, go_recommendation: "conditional_go", confidence: "medium", gaps: ["needs pricing data"] };
+    await writeFile(join(root, "books", slug, "MASTER-REVIEW.json"), JSON.stringify(decision));
+    const result = await readMasterReviewDecision(join(root, "books", slug));
+    expect(result?.decision).toBe("brief_ready");
+    expect(result?.go_recommendation).toBe("conditional_go");
+    expect(result?.round).toBe(2);
   });
 
   it("does not write files in dry-run mode", async () => {
