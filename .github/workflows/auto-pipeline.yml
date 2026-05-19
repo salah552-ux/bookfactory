@@ -19,6 +19,9 @@ concurrency:
   group: auto-pipeline-daemon
   cancel-in-progress: false
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+
 jobs:
   daemon:
     runs-on: ubuntu-latest
@@ -55,11 +58,14 @@ jobs:
       - name: Run orchestrator daemon (dry-run)
         if: steps.pause.outputs.paused == 'false' && github.event.inputs.live != 'true'
         run: npm run daemon
+        env:
+          BOOKFACTORY_ROOT: ${{ github.workspace }}
 
       - name: Run orchestrator daemon (LIVE)
         if: steps.pause.outputs.paused == 'false' && github.event.inputs.live == 'true'
         run: npm run daemon:live
         env:
+          BOOKFACTORY_ROOT: ${{ github.workspace }}
           DAEMON_LIVE: "true"
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
 
@@ -70,8 +76,11 @@ jobs:
           git config user.name "bookfactory-daemon"
           git config user.email "daemon@bookfactory.local"
 
-          # Stage only the files the daemon writes
-          git add NOTIFICATIONS.md AUTOMATION-LOG.md books/*/.spend-log.json 2>/dev/null || true
+          # Stage the files the daemon writes
+          git add NOTIFICATIONS.md AUTOMATION-LOG.md 2>/dev/null || true
+          git add books/fix-your-gut-for-good/.spend-log.json 2>/dev/null || true
+          git add books/the-dust-between-seconds/.spend-log.json 2>/dev/null || true
+          git add books/untitled-cosy-mystery/.spend-log.json 2>/dev/null || true
 
           if git diff --staged --quiet; then
             echo "No daemon-produced changes to commit."
