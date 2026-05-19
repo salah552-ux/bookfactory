@@ -1,16 +1,11 @@
-name: Auto Pipeline Daemon (Phase 1)
+name: Auto Pipeline Daemon — Status Monitor (dry-run only)
 
 on:
-  # Run every 6 hours by default. Adjust the cron when you're confident.
+  # Runs every 6 hours to log pipeline status. No claude invocations — free.
+  # Live execution runs on your local machine via run-daemon-local.sh
   schedule:
     - cron: "0 */6 * * *"
-  # Manual trigger so you can run it on demand from the GitHub UI.
   workflow_dispatch:
-    inputs:
-      live:
-        description: "Set true to actually invoke claude (default: dry-run)"
-        required: false
-        default: "false"
 
 permissions:
   contents: write
@@ -40,10 +35,6 @@ jobs:
       - name: Install backend dependencies
         run: npm install --no-audit --no-fund
 
-      - name: Install Claude CLI
-        working-directory: .
-        run: npm install -g @anthropic-ai/claude-code
-
       - name: Check kill switch
         id: pause
         working-directory: .
@@ -55,30 +46,19 @@ jobs:
             echo "paused=false" >> "$GITHUB_OUTPUT"
           fi
 
-      - name: Run orchestrator daemon (dry-run)
-        if: steps.pause.outputs.paused == 'false' && github.event.inputs.live != 'true'
+      - name: Run orchestrator daemon (dry-run status check)
+        if: steps.pause.outputs.paused == 'false'
         run: npm run daemon
         env:
           BOOKFACTORY_ROOT: ${{ github.workspace }}
 
-      - name: Run orchestrator daemon (LIVE)
-        if: steps.pause.outputs.paused == 'false' && github.event.inputs.live == 'true'
-        run: npm run daemon:live
-        env:
-          BOOKFACTORY_ROOT: ${{ github.workspace }}
-          DAEMON_LIVE: "true"
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-
-      - name: Commit notifications and activity log
+      - name: Commit activity log
         if: steps.pause.outputs.paused == 'false'
         working-directory: .
         run: |
           git config user.name "bookfactory-daemon"
           git config user.email "daemon@bookfactory.local"
 
-          # Stage each daemon-produced file separately so one missing file
-          # doesn't prevent staging the others (git add fails the whole
-          # command if any pathspec is missing).
           git add NOTIFICATIONS.md 2>/dev/null || true
           git add AUTOMATION-LOG.md 2>/dev/null || true
           git add books/fix-your-gut-for-good/.spend-log.json 2>/dev/null || true
@@ -90,5 +70,5 @@ jobs:
             exit 0
           fi
 
-          git commit -m "daemon: $(date -u +'%Y-%m-%dT%H:%M:%SZ') update notifications and spend logs"
+          git commit -m "daemon: $(date -u +'%Y-%m-%dT%H:%M:%SZ') status check"
           git push
