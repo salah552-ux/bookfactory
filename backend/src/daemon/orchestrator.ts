@@ -238,10 +238,10 @@ export async function runDaemon(
   console.log(`[daemon] ${new Date().toISOString()} done.`);
 }
 
-// Entry point — only runs when this file is executed directly (not on import)
-const isDirectInvoke =
-  process.argv[1] && import.meta.url.endsWith(path.basename(process.argv[1]));
-if (isDirectInvoke) {
+// Entry point — only runs when invoked via `npm run daemon` or `npm run daemon:live`,
+// not when imported by tests. npm_lifecycle_event is set by npm to the script name.
+const isDaemonScript = process.env.npm_lifecycle_event?.startsWith("daemon");
+if (isDaemonScript) {
   runDaemon().catch((err) => {
     console.error("[daemon] fatal:", err);
     process.exit(1);
