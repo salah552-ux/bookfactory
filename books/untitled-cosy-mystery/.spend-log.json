@@ -6,6 +6,13 @@
       "runId": "daemon-2026-05-19-16374b39",
       "exitCode": 0,
       "dryRun": true
+    },
+    {
+      "ts": "2026-05-19T09:49:19.334Z",
+      "agent": "pipeline-orchestrator",
+      "runId": "daemon-2026-05-19-cdd8fdc7",
+      "exitCode": 1,
+      "dryRun": false
     }
   ]
 }
