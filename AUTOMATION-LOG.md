@@ -158,3 +158,6 @@ Append-only log of every orchestrator daemon decision.
 - `2026-06-01T05:06:52.708Z` **fix-your-gut-for-good** `invoked` — DRY RUN — would invoke pipeline-orchestrator for fix-your-gut-for-good
 - `2026-06-01T05:06:52.711Z` **the-dust-between-seconds** `invoked` — DRY RUN — would invoke pipeline-orchestrator for the-dust-between-seconds
 - `2026-06-01T05:06:52.712Z` **untitled-cosy-mystery** `invoked` — DRY RUN — would invoke pipeline-orchestrator for untitled-cosy-mystery
+- `2026-06-01T11:52:20.577Z` **fix-your-gut-for-good** `invoked` — DRY RUN — would invoke pipeline-orchestrator for fix-your-gut-for-good
+- `2026-06-01T11:52:20.578Z` **the-dust-between-seconds** `invoked` — DRY RUN — would invoke pipeline-orchestrator for the-dust-between-seconds
+- `2026-06-01T11:52:20.580Z` **untitled-cosy-mystery** `invoked` — DRY RUN — would invoke pipeline-orchestrator for untitled-cosy-mystery
