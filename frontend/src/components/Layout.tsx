@@ -12,7 +12,6 @@ import {
   Sparkles,
   Stethoscope,
   X,
-  Youtube,
 } from "lucide-react";
 import { useWsStatus } from "@/hooks/useWs";
 import { cn } from "@/lib/cn";
@@ -25,7 +24,6 @@ const nav = [
   { to: "/series",    label: "Series",    Icon: LibraryBig },
   { to: "/agents",    label: "Agents",    Icon: Layers },
   { to: "/runs",      label: "Runs",      Icon: Activity },
-  { to: "/youtube",   label: "YouTube AI", Icon: Youtube },
   { to: "/doctor",    label: "Doctor",    Icon: Stethoscope },
   { to: "/demo",      label: "Demo",      Icon: Play },
   { to: "/settings",  label: "Settings",  Icon: Cog },
