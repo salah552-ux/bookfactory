@@ -7,6 +7,7 @@ import { join } from "node:path";
 import { handleConnection } from "./ws/handler.js";
 import { BOOKFACTORY_ROOT, BOOKS_DIR, AGENTS_DIR } from "./paths.js";
 import { startWatcher, stopWatcher } from "./lib/watcher.js";
+import { registerYouTubeRoutes } from "./youtube/routes.js";
 
 const PORT = Number(process.env.PORT ?? 8787);
 const HOST = process.env.HOST ?? "127.0.0.1";
@@ -134,6 +135,8 @@ app.get("/diagnose", async () => {
 
   return out;
 });
+
+await registerYouTubeRoutes(app);
 
 app.get("/ws", { websocket: true }, (socket, req) => {
   const token =
