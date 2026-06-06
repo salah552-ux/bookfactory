@@ -115,16 +115,50 @@ from agent writes. `settings.local.json` is merged on top by Claude Code.
 
 ---
 
-## Registered IDs (filled after RemoteTrigger create)
+## Registered IDs (registered 2026-06-07 by Opus orchestrator)
 
-| Job | Trigger ID | Status |
-|-----|-----------|--------|
-| 1 Watchdog | _see registration log_ | |
-| 2 Milestones | | |
-| 3 Intel Freshness | | |
-| 4 Algo Sweep | | |
-| 5 Integrity | | |
-| 6 Morning Briefing | | |
+| Job | Trigger ID | Cron (UTC) | Next run (UTC) | Status |
+|-----|-----------|------------|----------------|--------|
+| 1 Watchdog | `trig_012AcuM1gJ57WADyrkykkwGe` | `2 7 * * *` | 2026-06-07 07:02 | enabled |
+| 2 Milestones | `trig_017VkDSRLLCcs8M7gvJSXA32` | `5 7 * * *` | 2026-06-07 07:05 | enabled |
+| 3 Intel Freshness | `trig_01Qz2wiYHb52xYbE787gqMWU` | `3 8 * * 1` | 2026-06-08 08:03 (Mon) | enabled |
+| 4 Algo Sweep | `trig_01PgH7pMs2Vgr19v6En6xFMR` | `4 8 1 * *` | 2026-07-01 08:04 (1st) | enabled |
+| 5 Integrity | `trig_01G9ChcmxWx8UmWos1DYMHSG` | `0 23 * * 0` | 2026-06-07 23:02 (Sun) | enabled |
+| 6 Morning Briefing | `trig_01YR79mVRYA2chTaS6VqHfT7` | `28 7 * * *` | 2026-06-07 07:28 | enabled |
+
+**Note on time zone:** CCR cron is interpreted in UTC. The cron strings above
+were authored to read as the intended local clock times (07:00, 07:30, etc.) and
+fire at those UTC minutes. In British Summer Time (UTC+1) the Architect will see
+them land ~1h later local. If exact local-clock timing matters, shift each cron
+hour back by 1 and `RemoteTrigger update` the trigger.
+
+**Do NOT touch these pre-existing triggers (not part of this system):**
+- `trig_01TB3c2cTEWyn1mPi3HxDHNR` — Cathedral Close category fix (one-shot, Jun 9)
+- `trig_013FrPUMfNB4ZqKc6GtPxYQi` — Cathedral Close £0.99 price (one-shot, Jun 8)
+- `trig_01WRDL6yyAWN9KVMxHthua6P` — Weekly Post-Launch Monitor (Mon)
+- `trig_019uZk9G94bE1nhUABBoNcAP` — Countdown Deal reminder (fired, disabled)
+
+---
+
+## Repo visibility / CCR access decision (2026-06-07)
+
+The repo is kept **private**. CCR cloud agents access it via the
+`session_context.sources[].git_repository` field (the connected GitHub account on
+the claude.ai environment clones it for each run) — confirmed working by the
+pre-existing Weekly Post-Launch Monitor trigger which uses the same mechanism.
+No GitHub token is embedded in any trigger body. Agent strategies stay protected.
+The local repo is therefore **not pushed** by this session; the daemon and the
+cloud jobs push to `master` on their own cadence.
+
+---
+
+## Velocity-cliff alert
+
+Implemented inside **Job 1 (Watchdog)** as the rule "BSR worsened by >40% vs last
+recorded value (velocity-cliff)" rather than as a local Claude Code hook. A local
+PreToolUse/Stop hook cannot observe Amazon sales velocity (no live data at hook
+time), so the cloud Watchdog is the correct home for this signal. The Watchdog
+surfaces it in ACTION REQUIRED and the Morning Briefing relays it.
 
 ---
 
