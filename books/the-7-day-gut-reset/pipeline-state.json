@@ -1,0 +1,175 @@
+{
+  "book_slug": "the-7-day-gut-reset",
+  "book_title": "The 7-Day Gut Reset",
+  "genre": "health",
+  "current_stage": 6.5,
+  "created_at": "2026-05-13T00:00:00Z",
+  "last_updated": "2026-05-29T00:00:00Z",
+  "last_agent_run": "Four pipeline enhancements built: post-launch-tracker agent (10-postlaunch/post-launch-tracker.md) — weekly metrics logger with hard-coded intervention rules, LAUNCH-TRACKER.md output; email-list-builder agent (08-products/email-list-builder.md) — lead magnet + 3-email sequence per book; new-book.sh upgrade — full pipeline-state.json schema, SERIES-FACTS cross-ref in FACTS.md, EMAIL-SEQUENCE.md template, upgraded setup checklist; aplus-content-agent spec upgraded (existing agent reviewed; APLUS-CONTENT.md generated for fix-your-gut-for-good). All three new agents added to sonnet-dispatcher-guide.md trigger table and agent roster.",
+  "word_count": 12124,
+  "writing": {
+    "writer_agent": "health-writer",
+    "target_chapters": 9,
+    "completed_chapters": 9
+  },
+  "stages": {
+    "00-intelligence": { "status": "complete", "completed_at": "2026-05-13T00:00:00Z", "notes": "harvested.json + opportunity.db + PRODUCT-BLUEPRINT.md all exist" },
+    "01-research": { "status": "awaiting-human-gate", "agents_completed": "market-researcher + competitive-positioning-agent", "outputs": ["MARKET-INTELLIGENCE.md (2084 words)", "COMPETITIVE-ANALYSIS.md (2593 words)"], "quality_gate": "PARTIAL — files verified, human_gate pending" },
+    "02-planning": { "status": "complete", "completed_at": "2026-05-13T12:00:00Z", "notes": "Retrospective fix: BLUEPRINT.md and FACTS.md both exist on disk and were used by Stage 03 writers. Status corrected from pending to complete on 2026-05-15 by pipeline-orchestrator continuation session." },
+    "03-writing": { "status": "complete", "completed_at": "2026-05-14T00:00:00Z", "notes": "Retrospective fix: All 9 manuscript chapters (00-introduction through 08-conclusion) plus 00-front-matter and 09-about-author exist in manuscript/. Stage 04 quality reports already verify them. Status corrected from pending to complete on 2026-05-15 by pipeline-orchestrator continuation session." },
+    "04-quality": { "status": "complete", "completed_at": "2026-05-21T09:15:00Z", "notes": "Re-run after 2026-05-21 chapter expansion. All 9 chapters re-scored against SCORING-RUBRIC.md: 110-115/120, average 111.8/120 (up from 101). Fact-check: every statistic web-search verified before writing — 9 verified clinical sources (David Nature 2014, Balban Cell Reports Medicine 2023, Sugiyama Scientific Reports 2017, Thabane post-infectious IBS meta-analysis, low-FODMAP IBS RCT/meta-analyses, postprandial walking AJG/Nutrients, Monash + Gastroenterology 2024 reintroduction, bone broth/gelatin animal evidence framed honestly, IFFGD food-intolerance data). Compliance: no brand names, no cure/treat/heal claims, IBS used only in Intro + once in Day 2 as GP label, no named GI conditions in body, DCT Boxes carry not-a-diagnosis disclaimers. APPROVALS.md updated." },
+    "05-optimisation": { "status": "complete", "completed_at": "2026-05-14T16:01:00Z", "notes": "hook-optimizer-agent: 5 rewrites applied (Day 3 opening+closing, Day 4 opening, Day 5 closing, Day 7 opening). review-bait-optimizer: 3 review trigger moments inserted, back matter CTA rewritten with [AMAZON_REVIEW_LINK] placeholder. Both reports verified on disk." },
+    "06-production": { "status": "complete", "completed_at": "2026-05-22T18:55:00Z", "notes": "APPROVED at 285/300 (final-approval-agent re-audit 2026-05-22 with cover in place + AI disclosure removed from front matter). Dimension 2 Cover 48/50 — cover-kdp-final.jpg (1600x2560 JPEG RGB, 165KB) passes all 7 COVER-PSYCHOLOGY Section 9 checks. Compliance 55/55. All 4 exports rebuilt fresh 18:54 from updated source; canonical manuscript-kdp.pdf overwrote cleanly (prior OS lock cleared). Non-blocking score-trim items remain (keyword dup, paperback price, ARC plan, long bio, stale HTML cleanup) — none block Stage 06 closure. Stage 06 gate cleared." },
+    "06.5-pre-launch": { "status": "complete", "completed_at": "2026-05-23T12:00:00Z", "notes": "Pre-launch quartet complete. marketing-agent.md upgraded with Section 0 KDP Algorithm Mastery (subcategory BSR targeting, category arbitrage, launch velocity window, KU multiplier, also-bought seeding, free-BEFORE-paid mechanics, review velocity stagger, BSR-under-1000-in-subcategory math, A+ Content / Author Central / Editorial Reviews / Goodreads bypass moves). PRE-LAUNCH-PLAN.md, KDP-LISTING.md, MARKETING-PLAN.md, REACH-PLAN.md all written/refreshed to apply Section 0 — free days now scheduled BEFORE paid launch (T-5/T-4, paid T-3) per Section 0.6; also-bought seeding mandatory from three sources (publisher account, ARC readers who own competitor titles, community traffic); reviews staggered 5/5/5 across paid Days 1-3; Author Central UK+US live before paid-launch day; A+ Content submitted at T-14; Goodreads at T-42; editorial reviews loaded before paid launch. Subcategory BSR target: under 100 in Abdominal Disorders (top 5-10 books); under 1,000 in Digestive Health (top 20-50). Awaiting human gate pre_launch_approved before Stage 07." },
+    "07-publishing": { "status": "pending" },
+    "08-products": { "status": "pending" },
+    "09-series": { "status": "pending" },
+    "10-post-launch": { "status": "pending" }
+  },
+  "human_gates": {
+    "market_intelligence_approved": true,
+    "blueprint_approved": true,
+    "final_approval_passed": true,
+    "cover_approved": true,
+    "pre_launch_approved": false,
+    "ai_questionnaire_confirmed": false,
+    "published": false
+  },
+  "publishing": {
+    "asin": null,
+    "kdp_status": null,
+    "live_date": null
+  },
+  "pre_launch": {
+    "launch_ready": false,
+    "arc_readers_confirmed": 0,
+    "arc_copies_sent": 0,
+    "review_drop_date": "2026-05-31",
+    "free_days_scheduled": false,
+    "free_days_pattern": "T-5/T-4 BEFORE paid launch at T-3 (per marketing-agent Section 0.6)",
+    "free_day_1": "2026-05-27",
+    "free_day_2": "2026-05-28",
+    "paid_launch_date_locked": "2026-05-29",
+    "launch_milestones": {
+      "T-42_goodreads": "2026-04-17 — MISSED (claim profile now, no warmup)",
+      "T-14_aplus_submit": "2026-05-15 — MISSED (submit now, may not approve before launch)",
+      "T-7_arc_final_reminder": "2026-05-22 — MISSED (send reminders immediately)",
+      "T-5_free_day_1": "2026-05-27",
+      "T-4_free_day_2": "2026-05-28",
+      "T-3_paid_launch": "2026-05-29",
+      "D1_review_stagger_1": "2026-05-29",
+      "D2_review_stagger_2": "2026-05-30",
+      "D3_review_stagger_3": "2026-05-31",
+      "D7_first_bsr_check": "2026-06-05",
+      "D14_ads_unlock_check": "2026-06-12",
+      "D30_post_launch_review": "2026-06-28"
+    },
+    "urgent_actions_by_may24": [
+      "1. UPLOAD EPUB TO KDP NOW — 24-72hr review window, free days cannot be scheduled until live",
+      "2. PURCHASE 5 also-bought seed titles from publisher Amazon account (Section 4 ASINs) — 10 minutes",
+      "3. Author Central UK + US — create/complete profiles TODAY (authorcentral.amazon.co.uk + .com)",
+      "4. Schedule free days May 27-28 in KDP Select dashboard immediately after upload clears",
+      "5. A+ Content — submit May 25 (approval 7-14 days; will lift conversion from Week 2)",
+      "6. Goodreads — claim author profile May 25, add book, link ASIN when available",
+      "7. Build Auto SP campaign PAUSED in Amazon Ads May 26 (£1-2/day budget) — ready to flip at Day 14 gate check",
+      "8. DO NOT chase promo sites — May 27-28 spots are sold out; time cost exceeds benefit"
+    ],
+    "strategy_pivot_note": "ARC-first strategy replaced with algorithm-first engine: free days → paid rank spike → Rung 0 Auto SP £1-2/day teaching signal → KU borrows → Countdown Day 30. No ARC readers confirmed = no Day 1 review stagger. Review gate expected to open ~Day 45 not Day 14. Plan accounts for this honestly.",
+    "ams_campaigns_built": false,
+    "listing_audit_passed": false,
+    "categories_confirmed": false,
+    "promo_sites_booked": [],
+    "also_bought_seeding_done": false,
+    "author_central_uk_live": false,
+    "author_central_us_live": false,
+    "aplus_content_submitted": false,
+    "goodreads_listing_live": false,
+    "editorial_reviews_loaded": 0,
+    "newsletter_swaps_confirmed": 0,
+    "subcategory_bsr_target_primary": "Abdominal Disorders — BSR under 100 in sub (top 5-10)",
+    "subcategory_bsr_target_secondary": "Digestive Health — BSR under 1,000 in sub (top 20-50)"
+  },
+  "quality_scores": {
+    "book_reviewer_avg": 111.8,
+    "book_reviewer_avg_pre_expansion": 101,
+    "final_approval_score": 285,
+    "final_approval_score_pre_cover": 241,
+    "final_approval_score_pre_expansion_rerun": 236,
+    "final_approval_score_prior_run": 218,
+    "final_approval_score_expected_after_cover": 281
+  },
+  "marketing": {
+    "ads_starting_bid_gbp": null,
+    "ads_daily_budget_gbp": null,
+    "ads_asin_budget_gbp": null,
+    "ads_auto_budget_gbp": null,
+    "bookbub_ads_daily_gbp": null
+  },
+  "production": {
+    "epub_built": true,
+    "pdf_built": true,
+    "docx_built": true,
+    "html_built": true,
+    "epub_path": "books/the-7-day-gut-reset/exports/final/manuscript-kdp.epub",
+    "pdf_path": "books/the-7-day-gut-reset/exports/final/manuscript-kdp.pdf",
+    "docx_path": "books/the-7-day-gut-reset/exports/final/manuscript-kdp.docx",
+    "html_path": "books/the-7-day-gut-reset/exports/final/manuscript-kdp.html",
+    "cover_built": true,
+    "front_matter_built": true,
+    "about_author_built": true,
+    "pdf_visual_review_passed": true,
+    "pdf_visual_review_date": "2026-05-29",
+    "pdf_visual_review_build": "The_7_Day_Gut_Reset_FIXED.pdf (904 KB)",
+    "pdf_canonical_locked": false,
+    "build_note": "2026-05-21 19:36-19:37 (continuation run 3): all exports rebuilt from expanded 12,124-word manuscript. build-manuscript.sh produced manuscript-kdp.epub (44K), manuscript-kdp.docx (40K), manuscript-kdp.pdf (185K). build-pdf.sh produced exports/The_7_Day_Gut_Reset.pdf (854K, styled). Note: exports/final/manuscript-kdp.html is a stale 2026-05-19 reference artifact (build-manuscript.sh does not regenerate HTML; it is not a KDP upload file). cover_built=false — blocked on human cover generation per COVER-BRIEF.md (sole remaining blocker)."
+  },
+  "post_launch": {
+    "review_count": 0,
+    "countdown_deal_eligible_from": null,
+    "aplus_content_live": false
+  },
+  "agent_log": [
+    {
+      "timestamp": "2026-05-13T00:00:00Z",
+      "agent": "pipeline-orchestrator",
+      "action": "Book initialised",
+      "result": "success",
+      "notes": "pipeline-state.json created. Intelligence layer complete. Resuming from Stage 01."
+    },
+    {
+      "timestamp": "2026-05-22T18:55:00Z",
+      "agent": "final-approval-agent",
+      "action": "Stage 06 final approval re-audit (cover in place, AI disclosure removed)",
+      "result": "APPROVED",
+      "notes": "300-point audit scored 285/300 (was 241). Dimension 2 Cover 48/50 — cover-kdp-final.jpg verified 1600x2560 JPEG RGB, passes all 7 COVER-PSYCHOLOGY Section 9 checks. AI Disclosure section removed from front matter; all exports rebuilt. Stage 06 complete, current_stage advanced to 6.5. final_approval_passed and cover_approved gates set true."
+    },
+    {
+      "timestamp": "2026-05-24T09:00:00Z",
+      "agent": "pipeline-orchestrator",
+      "action": "MARKETING-PLAN.md algorithm-first rebuild (5-day runway, 0-ARC reality)",
+      "result": "complete",
+      "notes": "MARKETING-PLAN.md fully replaced. Old plan was built for T-42 ARC runway that no longer exists. New plan: algorithm-first engine (free days → paid rank spike → Rung 0 Auto SP £1-2/day → KU borrows → Countdown Day 30). Also-bought seeding simplified to publisher-account-only (5 ASINs). New Rung 0 pre-gate teaching signal added to ad ladder. Review velocity targets adjusted to zero-ARC baseline (gate expected ~Day 45 not Day 14). 5-day pre-launch checklist (May 24-28) added with priority order. marketing-agent.md update recommended: algorithm-first, platform-free approach should be first-class strategy not fallback."
+    },
+    {
+      "timestamp": "2026-05-24T14:00:00Z",
+      "agent": "pipeline-orchestrator",
+      "action": "marketing-agent.md + MARKETING-PLAN.md Section 0 upgrade — zero-spend algorithmic intelligence layer (0.10-0.20)",
+      "result": "complete",
+      "notes": "marketing-agent.md: 11 new subsections (0.10-0.20) added to Section 0 after 0.9. Each subsection is mechanistically explained (HOW the algorithm works) and operationalised (specific actions). WHAT THIS AGENT PRODUCES updated with mandatory 11-item zero-spend checklist that must appear in every MARKETING-PLAN.md. MARKETING-PLAN.md Section 0 fully replaced with applied version for this book — all 11 checks executed with pass/flag verdicts. KEY FINDINGS: (1) CRITICAL: 'gut reset' not in Look Inside (intro + Day 1) — single sentence fix required before upload to double indexing weight for primary keyword. (2) FLAG: description body opens without primary keyword phrase in first 200 chars — recommend restructuring first body sentence to lead with '7-Day Gut Reset' before the atmospheric hook. (3) 3-hour launch concentration window set to 7am-10am GMT on May 29. (4) Series tag match confirmed as hard gate — must verify against Fix Your Gut for Good metadata before KDP submission. (5) Also-bought seeding deadline: May 28 (day before paid launch) — time-locked, cannot be deferred. (6) UK+US simultaneous publish: worldwide rights must be confirmed at upload, USD $3.99 must be set explicitly."
+    },
+    {
+      "timestamp": "2026-05-24T17:00:00Z",
+      "agent": "pipeline-orchestrator",
+      "action": "Pre-upload Look Inside + description keyword fixes",
+      "result": "complete",
+      "notes": "FIX 1 — 00-introduction.md: appended sentence to Day 2–7 structure paragraph (last sentence of that paragraph): 'That's what makes this a gut reset and not just another protocol.' Appears within first 300 words of introduction; reads naturally in existing voice. FIX 2 — KDP-LISTING.md Section 5: description body restructured so first sentence now leads with 'The 7-Day Gut Reset' and core claim ('science-backed, day-by-day programme... identifies your personal gut trigger'); emotional hook ('You cut out gluten...') follows as sentence 2 of the same paragraph; rest of description unchanged. Day 1 fix: skipped — Day 1 opening paragraph is deliberately stripped of programme-framing language (clinical observation setup); adding 'gut reset' would be forced; introduction fix is sufficient for Look Inside indexing. Build: build-manuscript.sh succeeded — EPUB 44K, DOCX 40K, PDF 184K. All three exports rebuilt fresh from updated source."
+    },
+    {
+      "timestamp": "2026-05-23T12:00:00Z",
+      "agent": "pipeline-orchestrator",
+      "action": "Stage 06.5 pre-launch quartet + marketing-agent Section 0 upgrade",
+      "result": "complete",
+      "notes": "marketing-agent.md upgraded with Section 0 KDP Algorithm Mastery (subcategory BSR targeting under 1,000, category arbitrage for #1 New Release, launch velocity window concentration in Days 1-3, KU multiplier as rank fuel, mandatory also-bought seeding from three sources, free-BEFORE-paid mechanics T-5/T-4/paid T-3, review velocity stagger 5/5/5, BSR sales math anchored to MARKET-INTELLIGENCE data, A+ Content / Author Central / Editorial Reviews / Goodreads / Series flag bypass moves). OUTPUT TEMPLATE updated to require these in MARKETING-PLAN.md. Four pre-launch files written: PRE-LAUNCH-PLAN.md (refreshed with free-before-paid, ARC-seeded-by-competitor-ownership selection, three-source also-bought seeding, Author Central UK+US / A+ / Goodreads / Editorial Reviews mandatory pre-launch gate items), KDP-LISTING.md (pricing ladder updated to free-before-paid; pre-publication checklist updated with Author Central UK + US, A+ Content, Goodreads, Editorial Reviews), MARKETING-PLAN.md (Section 0 algorithmic target — subcategory BSR <100 in Abdominal Disorders / <1,000 in Digestive Health; Section 4 explicit also-bought seeding plan with three sources and verification action; Section 10 conversion-lift levers table; 12-week paid calendar rewritten around free-before-paid; review velocity stagger explicit), REACH-PLAN.md (5 Twitter posts under 280 chars, 3 Facebook/Instagram posts, 3-email sequence, blog post outline 600 words on 'find your gut trigger', 3 community-voice Reddit comments for r/SIBO/r/ibs/r/GutHealth, 3 keyword-rich Pinterest pin descriptions, full posting schedule synced with PRE-LAUNCH-PLAN.md hour-by-hour). pre_launch fields expanded with Author Central, A+, Goodreads, Editorial Reviews, also-bought seeding tracking. Subcategory BSR targets recorded. Stage 06.5 status: complete. human_gates.pre_launch_approved still false — awaiting human review of quartet before Stage 07."
+    }
+  ]
+}

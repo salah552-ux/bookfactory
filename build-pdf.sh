@@ -2,7 +2,7 @@
 # BookFactory — Genre-Aware PDF Builder v3
 # Usage: bash build-pdf.sh [book-folder-name]
 # Example: bash build-pdf.sh fix-your-gut-for-good
-#          bash build-pdf.sh untitled-cosy-mystery
+#          bash build-pdf.sh death-in-the-cathedral-close
 #
 # Per-book overrides: place BOOK-CONFIG.sh in the book folder.
 # BOOK-CONFIG.sh sets: TARGET_WORDS, PHASE_NUMBER/NAME/TAGLINE arrays.
@@ -83,13 +83,28 @@ else
 fi
 
 # ── Collect chapters in order: front matter (00-*), main (ch-*), back matter (99-*) ──
+# Fallback convention for nonfiction with numeric prefixes (01-*.md … 09-*.md):
+#   00-*.md  = front matter
+#   ch-*.md  = main chapters (cosy mystery / fiction)
+#   0[1-9]-*.md = main chapters (nonfiction day-by-day / numbered)  ← fallback
+#   99-*.md  = back matter
 CHAPTERS=()
 while IFS= read -r -d '' f; do
   CHAPTERS+=("$f")
 done < <(find "$MANUSCRIPT" -maxdepth 1 -name "00-*.md" -print0 | sort -z)
+
+# Main chapters — try ch-*.md first (fiction), fall back to 0[1-9]-*.md (nonfiction)
+CH_MAIN=()
 while IFS= read -r -d '' f; do
-  CHAPTERS+=("$f")
+  CH_MAIN+=("$f")
 done < <(find "$MANUSCRIPT" -maxdepth 1 -name "ch-*.md" -print0 | sort -z)
+if [ ${#CH_MAIN[@]} -eq 0 ]; then
+  while IFS= read -r -d '' f; do
+    CH_MAIN+=("$f")
+  done < <(find "$MANUSCRIPT" -maxdepth 1 -name "0[1-9]-*.md" -print0 | sort -z)
+fi
+CHAPTERS+=("${CH_MAIN[@]}")
+
 while IFS= read -r -d '' f; do
   CHAPTERS+=("$f")
 done < <(find "$MANUSCRIPT" -maxdepth 1 -name "99-*.md" -print0 | sort -z)
@@ -202,13 +217,13 @@ BOOK_SUBTITLE=$(grep -m1 "^\*\*Subtitle:\*\*" "$BLUEPRINT" 2>/dev/null \
 
 # Pre-build optional HTML blocks (empty string = renders nothing)
 if [ -n "$BOOK_SERIES" ]; then
-  SERIES_BLOCK="<p style=\"font-family: 'EB Garamond', Georgia, serif; font-size: 7.5pt; letter-spacing: 0.22em; text-transform: uppercase; color: #9aa3ad; margin: 0 0 0.45in 0;\">$BOOK_SERIES</p>"
+  SERIES_BLOCK="<p style=\"font-family: 'EB Garamond', Georgia, serif; font-size: 7.5pt; letter-spacing: 0.22em; text-transform: uppercase; color: #9aa3ad; margin: 0 0 0.25in 0;\">$BOOK_SERIES</p>"
 else
   SERIES_BLOCK=""
 fi
 
 if [ -n "$BOOK_SUBTITLE" ]; then
-  SUBTITLE_BLOCK="<p style=\"font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; font-style: italic; color: #5a6472; line-height: 1.55; margin: 0.35in auto 0 auto; max-width: 3.2in;\">$BOOK_SUBTITLE</p>"
+  SUBTITLE_BLOCK="<p style=\"font-family: 'EB Garamond', Georgia, serif; font-size: 11pt; font-style: italic; color: #5a6472; line-height: 1.55; margin: 0.2in auto 0 auto; max-width: 3.2in;\">$BOOK_SUBTITLE</p>"
 else
   SUBTITLE_BLOCK=""
 fi
@@ -219,19 +234,19 @@ TMPFILE=$(mktemp /tmp/bookfactory-XXXXXX.md)
 # Layout: series line → rule → title (→ optional subtitle) → spacer → author
 # Flexbox pushes the author to the lower third of the page.
 cat >> "$TMPFILE" << TITLEPAGE
-<div style="page-break-after: always; font-family: 'EB Garamond', Georgia, serif; text-align: center; min-height: 6.7in; display: flex; flex-direction: column; align-items: center; padding: 1.3in 0.3in 0.7in 0.3in; box-sizing: border-box;">
+<div style="page-break-after: always; font-family: 'EB Garamond', Georgia, serif; text-align: center; min-height: 7.3in; display: flex; flex-direction: column; align-items: center; padding: 0.9in 0.3in 0.6in 0.3in; box-sizing: border-box;">
 
 <div style="flex: 0 0 auto; width: 100%;">
 
 $SERIES_BLOCK
 
-<div style="width: 1.5in; height: 0.5pt; background: #c8c0b4; margin: 0 auto 0.4in auto;"></div>
+<div style="width: 1.5in; height: 0.5pt; background: #c8c0b4; margin: 0 auto 0.28in auto;"></div>
 
 <p style="font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif; font-size: 34pt; font-weight: 400; font-style: italic; color: #111111; line-height: 1.12; margin: 0 auto; letter-spacing: -0.01em; max-width: 3.8in;">$BOOK_TITLE</p>
 
 $SUBTITLE_BLOCK
 
-<div style="width: 1in; height: 0.5pt; background: #c8c0b4; margin: 0.4in auto 0 auto;"></div>
+<div style="width: 1in; height: 0.5pt; background: #c8c0b4; margin: 0.28in auto 0 auto;"></div>
 
 </div>
 

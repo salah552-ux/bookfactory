@@ -3,11 +3,11 @@ const sharp     = require('sharp');
 const { mkdirSync, statSync } = require('fs');
 const { resolve } = require('path');
 
-const HTML   = resolve('books/untitled-cosy-mystery/exports/cover.html');
-const TMPOUT = resolve('books/untitled-cosy-mystery/exports/cover-rendered.png');
-const FINAL  = resolve('books/untitled-cosy-mystery/exports/final/cover-kdp.jpg');
+const HTML   = resolve('books/death-in-the-cathedral-close/exports/cover.html');
+const TMPOUT = resolve('books/death-in-the-cathedral-close/exports/cover-rendered.png');
+const FINAL  = resolve('books/death-in-the-cathedral-close/exports/final/cover-kdp.jpg');
 
-mkdirSync('books/untitled-cosy-mystery/exports/final', { recursive: true });
+mkdirSync('books/death-in-the-cathedral-close/exports/final', { recursive: true });
 
 (async () => {
   console.log('Launching browser...');

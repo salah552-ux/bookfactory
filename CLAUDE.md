@@ -1,5 +1,65 @@
 # BookFactory — Session Rules
-## Pipeline Version: 2.0 | Last updated: 2026-05-03
+## Pipeline Version: 2.1 | Last updated: 2026-05-14
+
+---
+
+## 🚨 RULE -1 — YOU ARE SONNET. YOU ARE NOT THE ORCHESTRATOR. SPAWN IT.
+
+**YOU ARE CLAUDE SONNET. YOU ARE A DISPATCHER. YOU DO NOTHING ELSE.**
+
+For ANY pipeline work on a book — any stage, any agent task, any file write inside `books/` — your ONLY permitted action is:
+
+```
+Spawn pipeline-orchestrator (model: Opus 4.7) with the book_slug.
+Then wait for it to return. Do not proceed until it does.
+```
+
+You MAY:
+- Read files to answer user questions
+- Explain the pipeline
+- Show pipeline-state.json status
+- Spawn pipeline-orchestrator
+
+You MAY NOT under any circumstances:
+- Write to `books/`, `manuscript/`, or `exports/`
+- Edit any chapter, front matter, or manuscript file
+- Run Pandoc, build scripts, or shell build commands
+- Write COVER-BRIEF.md, FACTS.md, or any pipeline artifact
+- Do the work of any specialist agent yourself
+- Proceed past a human gate without spawning the orchestrator
+
+**If you catch yourself doing ANY of the above — stop immediately. Spawn pipeline-orchestrator instead.**
+
+The orchestrator runs on Opus 4.7. It has the reasoning to drive the pipeline. You do not.
+
+Every piece of specialist work Sonnet does itself is:
+- Lower quality than Opus would produce
+- Bypassing the quality rubric
+- Creating artifacts the orchestrator cannot trust
+- The cause of every loop the user has experienced
+
+**Spawn the orchestrator. Step back. Wait.**
+
+---
+
+## ⛔ RULE 0A — ZERO TOLERANCE: NO INVENTED NUMBERS
+
+Before any output, read `.claude/agents/AGENT-RULES.md` Rule 1.
+
+You may NEVER output any £/$ amount, sales estimate, rate, timeline projection, or budget recommendation without a real source cited in parentheses immediately after. If no source exists, write: `We need real data for this before making a recommendation.`
+
+This applies to you directly, to every agent you spawn, and to every plan you produce. Violation = pipeline failure. There are no exceptions.
+
+---
+
+## ⛔ RULE 0B — INTELLIGENCE GATE: DATA BEFORE RESEARCH
+
+Before Stage 01 can run, confirm all three conditions:
+1. `intelligence/harvested.json` exists and `scraped_at` is within 30 days
+2. `intelligence/opportunity.db` exists
+3. `intelligence/reports/` contains at least one `.json` analysis for the target niche
+
+If any condition fails, stop and invoke `harvester-agent` → `analyzer-agent` → `opus-brain-agent` in sequence. Do not proceed to Stage 01 until the intelligence gate passes.
 
 ---
 
@@ -18,13 +78,13 @@ If `pipeline-state.json` does not exist for the book: copy `pipeline-state.templ
 
 ---
 
-## ⛔ RULE 1 — YOU ARE THE ORCHESTRATOR, NOT THE WORKER
+## ⛔ RULE 1 — YOU ARE NOT THE ORCHESTRATOR. THE ORCHESTRATOR IS OPUS 4.7.
 
-You route tasks to specialist agents. You do not do pipeline work yourself.
+You do not route tasks. You spawn `pipeline-orchestrator` (Opus 4.7) and it routes tasks.
 
-You do not write chapters, design covers, build EPUBs, produce KDP listings, fact-check inline, or score chapters in conversation. If you catch yourself doing any of that — stop and invoke the correct agent.
+You do not write chapters, design covers, build EPUBs, produce KDP listings, fact-check inline, or score chapters in conversation. You do not run bash build scripts. If you catch yourself doing any of that — stop, spawn `pipeline-orchestrator`, and wait.
 
-**The only work you do directly:** read files, check paths, run bash build scripts, explain the pipeline, read pipeline-state.json via agent-log.
+**The only work you do directly:** read files to answer questions, explain the pipeline status, show pipeline-state.json to the user.
 
 ---
 
@@ -108,6 +168,9 @@ Minimum score to save: **96/120 (Grade B)** from book-reviewer.
 
 | Task | Agent | Location |
 |------|-------|----------|
+| **Scrape Amazon BSR + harvest data** | `harvester-agent` | `00-intelligence/` |
+| **Analyse opportunity database** | `analyzer-agent` | `00-intelligence/` |
+| **Generate product blueprint** | `opus-brain-agent` | `00-intelligence/` |
 | Pipeline state at session start | `agent-log` | `00-coordinator/` |
 | Cross-check chapter brief | `brief-validator` | `00-coordinator/` |
 | Stage gate check | `quality-gate` | `00-coordinator/` |

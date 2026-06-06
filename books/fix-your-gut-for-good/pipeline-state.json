@@ -1,71 +1,98 @@
 {
-  "book_slug": "fix-your-gut-for-good",
-  "book_title": "Fix Your Gut for Good",
-  "series": null,
-  "series_number": null,
-  "genre": "NON-FICTION-HEALTH",
-  "pipeline_version": "2.0",
-  "current_stage": 6,
-  "last_updated": "2026-04-19T00:00:00Z",
-  "last_agent_run": "final-approval-agent",
-
-  "stages": {
-    "01-research":    { "status": "complete", "completed_at": "2026-04-10T00:00:00Z" },
-    "02-planning":    { "status": "complete", "completed_at": "2026-04-11T00:00:00Z" },
-    "03-writing":     { "status": "complete", "completed_at": "2026-04-17T00:00:00Z" },
-    "04-quality":     { "status": "complete", "completed_at": "2026-04-18T00:00:00Z" },
-    "05-optimisation":{ "status": "complete", "completed_at": "2026-04-18T00:00:00Z" },
-    "06-production":  { "status": "complete", "completed_at": "2026-04-19T00:00:00Z" },
-    "07-publishing":  { "status": "not_started" },
-    "08-products":    { "status": "not_started" },
-    "09-series":      { "status": "not_started" },
-    "10-postlaunch":  { "status": "not_started" }
-  },
-
+  "book_title": "Fix Your Gut for Good: Stop Relapsing",
+  "genre": "health",
+  "current_stage": 10,
+  "created_at": "2026-04-13T00:00:00Z",
+  "last_updated": "2026-06-02T00:00:00Z",
+  "last_agent_run": "pipeline-orchestrator: four pipeline enhancements built (post-launch-tracker, email-list-builder, new-book.sh upgrade, aplus-content-agent). LEAD-MAGNET.md, EMAIL-SEQUENCE.md, APLUS-CONTENT.md created for this book.",
+  "word_count": null,
   "writing": {
     "writer_agent": "health-writer",
     "target_chapters": 13,
-    "completed_chapters": 13,
-    "approved_chapters": 13,
-    "current_chapter": "complete",
-    "word_count_current": 45000,
-    "word_count_target": 50000
+    "completed_chapters": 13
   },
-
-  "quality_scores": {
-    "book_reviewer_avg": 113,
-    "final_approval_score": 274,
-    "chapters_below_threshold": []
+  "stages": {
+    "00-intelligence": { "status": "complete", "completed_at": "2026-04-13T00:00:00Z", "notes": "Retrospective — book was created before intelligence layer was formalised" },
+    "01-research": { "status": "complete", "completed_at": "2026-04-15T00:00:00Z", "notes": "MARKET-INTELLIGENCE.md and KDP-LISTING.md present on disk" },
+    "02-planning": { "status": "complete", "completed_at": "2026-04-13T00:00:00Z", "notes": "BLUEPRINT.md and FACTS.md present on disk" },
+    "03-writing": { "status": "complete", "completed_at": "2026-04-18T00:00:00Z", "notes": "All 13 manuscript files present (intro, 10 chapters, conclusion, appendices)" },
+    "04-quality": { "status": "complete", "completed_at": "2026-04-17T00:00:00Z", "notes": "APPROVALS.md present on disk" },
+    "05-optimisation": { "status": "complete", "completed_at": "2026-04-18T00:00:00Z", "notes": "REVIEW-VELOCITY-REPORT.md present on disk" },
+    "06-production": { "status": "complete", "completed_at": "2026-04-19T00:00:00Z", "notes": "FINAL-APPROVAL.md and DESIGN-PACKAGE.md present on disk. Exports built." },
+    "06.5-pre-launch": { "status": "complete", "completed_at": "2026-04-21T00:00:00Z", "notes": "MARKETING-PLAN.md present on disk" },
+    "07-publishing": { "status": "complete", "completed_at": null, "notes": "Book live — KDP status confirmed. ASIN not yet recorded in this file." },
+    "08-products": { "status": "in_progress", "completed_at": null, "notes": "LEAD-MAGNET.md and EMAIL-SEQUENCE.md created 2026-05-28. BookFunnel link pending." },
+    "09-series": { "status": "pending", "completed_at": null, "notes": null },
+    "10-post-launch": { "status": "in_progress", "completed_at": null, "notes": "APLUS-CONTENT.md created 2026-05-28. Awaiting Brand Registry enrollment to submit." }
   },
-
   "human_gates": {
     "market_intelligence_approved": true,
     "blueprint_approved": true,
-    "cover_approved": true,
     "final_approval_passed": true,
-    "ai_questionnaire_confirmed": false,
-    "published": false
+    "cover_approved": true,
+    "pre_launch_approved": true,
+    "ai_questionnaire_confirmed": true,
+    "kdp_listing_confirmed": true,
+    "published": true
   },
-
-  "production": {
-    "epub_built": false,
-    "pdf_built": false,
-    "docx_built": false,
-    "cover_file": null,
-    "epub_file": null
-  },
-
   "publishing": {
-    "asin": null,
-    "kdp_status": "not_started",
-    "live_date": null,
+    "asin": "B0GXYLWS1W",
+    "kdp_status": "live",
     "list_price_gbp": null,
-    "list_price_usd": null,
-    "royalty_pct": null,
-    "kdp_select": null,
-    "countdown_deal_eligible_from": null
+    "list_price_usd": 9.99,
+    "royalty_pct": 70,
+    "kdp_select": true,
+    "live_date": "2026-04-21",
+    "kdp_select_term_start": "2026-04-21",
+    "kdp_select_term_end": "2026-07-19",
+    "countdown_deal_eligible_from": "2026-05-21"
   },
-
+  "pre_launch": {
+    "launch_ready": true,
+    "arc_readers_confirmed": 0,
+    "arc_copies_sent": 0,
+    "review_drop_date": null,
+    "free_days_scheduled": false,
+    "free_days_pattern": null,
+    "free_day_1": null,
+    "free_day_2": null,
+    "paid_launch_date_locked": null,
+    "ams_campaigns_built": false,
+    "listing_audit_passed": true,
+    "categories_confirmed": true,
+    "promo_sites_booked": [],
+    "also_bought_seeding_done": false,
+    "author_central_uk_live": false,
+    "author_central_us_live": false,
+    "aplus_content_submitted": false,
+    "goodreads_listing_live": false,
+    "editorial_reviews_loaded": 0,
+    "newsletter_swaps_confirmed": 0
+  },
+  "quality_scores": {
+    "book_reviewer_avg": null,
+    "final_approval_score": null,
+    "final_approval_score_expected": null
+  },
+  "marketing": {
+    "ads_starting_bid_gbp": null,
+    "ads_daily_budget_gbp": null,
+    "bookbub_ads_daily_gbp": null
+  },
+  "production": {
+    "epub_built": true,
+    "pdf_built": true,
+    "docx_built": true,
+    "html_built": false,
+    "epub_path": "books/fix-your-gut-for-good/exports/final/manuscript-kdp.epub",
+    "pdf_path": null,
+    "docx_path": null,
+    "cover_built": true,
+    "front_matter_built": true,
+    "about_author_built": true,
+    "pdf_canonical_locked": false,
+    "build_note": "Export files present in exports/final/ — exact paths not verified in this session. EPUB-BUILD-REPORT.md and PACKAGE-MANIFEST.md present on disk."
+  },
   "post_launch": {
     "review_count": 0,
     "avg_rating": null,
@@ -73,16 +100,38 @@
     "ads_start_date": null,
     "countdown_deal_run": false,
     "aplus_content_live": false,
-    "arc_emails_sent": 0
+    "aplus_content_submitted": false,
+    "arc_emails_sent": 0,
+    "countdown_deal_eligible_from": "2026-05-21",
+    "countdown_deal_eligible_next_term": "2026-08-18",
+    "countdown_deal_note": "Free promo slots both used (Apr 25–27, May 2–3). Countdown deal cannot run this term. Next window: ~2026-08-18 in next Select term.",
+    "launch_tracker_created": "2026-05-31",
+    "bookfunnel_link_live": false,
+    "bookfunnel_gap_flagged": true,
+    "weekly_log": [],
+    "tracker_note": "LAUNCH-TRACKER.md baseline created 2026-05-31. No live data logged yet — Architect must run 'track launch fix-your-gut-for-good' and paste KDP dashboard values to populate."
   },
-
   "agent_log": [
     {
-      "timestamp": "2026-04-19T00:00:00Z",
-      "agent": "final-approval-agent",
-      "action": "300-point production audit — Fix Your Gut for Good",
-      "result": "conditional_pass",
-      "notes": "Score 274/300. All 13 chapters approved Grade A. CONDITIONAL PASS — ready for KDP upload. Awaiting pre-launch infrastructure and KDP AI questionnaire confirmation."
+      "timestamp": "2026-05-28T00:00:00Z",
+      "agent": "pipeline-orchestrator",
+      "action": "pipeline-state.json initialised (book was live without this file)",
+      "result": "success",
+      "notes": "pipeline-state.json created retrospectively from files on disk. Stage statuses inferred from file presence — verify against actual KDP dashboard. Four pipeline enhancements also built this session: post-launch-tracker agent, email-list-builder agent, new-book.sh schema upgrade, aplus-content-agent upgrade. LEAD-MAGNET.md (The Gut Trigger Cheat Sheet), EMAIL-SEQUENCE.md (3-email MailerLite sequence), and APLUS-CONTENT.md (5 modules, paste-ready) all written for this book."
+    },
+    {
+      "timestamp": "2026-05-31T00:00:00Z",
+      "agent": "pipeline-orchestrator",
+      "action": "6-gap system audit — GAP 1 fix: LAUNCH-TRACKER.md baseline created",
+      "result": "partial",
+      "notes": "LAUNCH-TRACKER.md created with baseline state. No live metrics logged — BSR, reviews, KU pages require Architect input from KDP dashboard. BookFunnel gap flagged in pipeline-state. Milestone alerts active from this point. Run 'track launch fix-your-gut-for-good' to log Week 1 data."
+    },
+    {
+      "timestamp": "2026-06-02T00:00:00Z",
+      "agent": "pipeline-orchestrator",
+      "action": "KDP dashboard data confirmed — publishing dates and Select term recorded",
+      "result": "success",
+      "notes": "live_date set 2026-04-21. KDP Select term 2026-04-21 to 2026-07-19. Countdown deal eligible from 2026-05-21 (already passed, not run). Both free promo slots used: Apr 25–27 and May 2–3. Countdown deal cannot run this term. Next eligible window ~2026-08-18 (next Select term re-enrollment + 30 days). Fields updated: publishing.live_date, publishing.kdp_select_term_start, publishing.kdp_select_term_end, publishing.countdown_deal_eligible_from, post_launch.countdown_deal_eligible_from, post_launch.countdown_deal_eligible_next_term, post_launch.countdown_deal_note."
     }
   ]
 }

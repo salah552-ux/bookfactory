@@ -5,7 +5,7 @@
   "type": "object",
   "required": ["book_slug", "book_title", "pipeline_version", "current_stage", "last_updated"],
   "properties": {
-    "book_slug": { "type": "string", "description": "Folder name under books/", "example": "untitled-cosy-mystery" },
+    "book_slug": { "type": "string", "description": "Folder name under books/", "example": "death-in-the-cathedral-close" },
     "book_title": { "type": "string", "example": "Death in the Cathedral Close" },
     "series": { "type": "string", "example": "The Cathedral Close Mysteries" },
     "series_number": { "type": "integer", "example": 1 },

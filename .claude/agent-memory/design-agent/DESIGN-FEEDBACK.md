@@ -133,3 +133,22 @@
 - The most commercially impactful change in v3: gold now appears in three vertical zones — (1) stop-underline between STOP and RELAPSING, (2) the mid-cover divider bar, (3) the author rules and name.
 - This creates a gold axis running top-to-bottom that unifies the cover and signals premium quality.
 - This pattern should be carried into all subsequent books in the series.
+
+---
+
+## SESSION: 2026-05-14 — The 7-Day Gut Reset
+
+### COVER PATH: HTML+Playwright is MANDATORY
+- AI image generators (Canva AI, ChatGPT DALL-E, Gemini Nano Banana) all produce wellness tropes (gut anatomy, food photography, blue/teal backgrounds) regardless of negative constraints. This is a confirmed failure mode for the gut health niche.
+- HTML+Playwright produces deterministic output — exactly what the CSS specifies, every time.
+- Fix Your Gut for Good cover: HTML+Playwright path scored 47/50. This is the proven path.
+- Never revert to AI image generation for the main cover.
+
+### COVER BRIEF FORMAT
+- Always wrap Nano Banana prompts in [NANO BANANA PRO COVER PROMPT] code blocks — not prose briefs.
+- The 7-Day Gut Reset COVER-BRIEF.md was prose format — this was wrong. HTML+Playwright makes this moot.
+
+### WHAT FAILED
+- design-agent wrote COVER-BRIEF.md and stopped — never generated the cover.
+- orchestrator accepted the brief as proof of completion — wrong threshold.
+- Both issues are now fixed in their respective spec files (pipeline-orchestrator.md verification table now requires JPG + 8-check; design-agent.md execution path is HTML+Playwright only).

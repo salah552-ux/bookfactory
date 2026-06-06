@@ -1,0 +1,33 @@
+{
+  "niches": [
+    {
+      "name": "gut health",
+      "search_terms": [
+        "gut health book",
+        "SIBO treatment book",
+        "leaky gut book",
+        "IBS book",
+        "microbiome book",
+        "digestive health book",
+        "SIFO book",
+        "candida gut book"
+      ],
+      "amazon_category": "Health, Fitness & Dieting",
+      "marketplaces": ["UK", "US"],
+      "priority": 1
+    },
+    {
+      "name": "cozy mystery",
+      "search_terms": [
+        "cozy mystery",
+        "British cozy mystery",
+        "village cozy mystery",
+        "amateur sleuth mystery",
+        "English village murder mystery"
+      ],
+      "amazon_category": "Mystery, Thriller & Suspense",
+      "marketplaces": ["UK", "US"],
+      "priority": 2
+    }
+  ]
+}

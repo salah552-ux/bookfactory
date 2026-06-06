@@ -1,0 +1,26 @@
+{
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "mcp__plugin_playwright_playwright__browser_click|mcp__plugin_playwright_playwright__browser_fill_form|mcp__plugin_playwright_playwright__browser_evaluate|mcp__plugin_playwright_playwright__browser_run_code_unsafe",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:/Users/salah/BookFactory/automation/hooks/kdp-publish-guard.mjs\""
+          }
+        ]
+      }
+    ],
+    "SubagentStop": [
+      {
+        "matcher": "*",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:/Users/salah/BookFactory/automation/hooks/agent-log-append.mjs\""
+          }
+        ]
+      }
+    ]
+  }
+}

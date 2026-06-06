@@ -13,7 +13,7 @@ BOOK="${1:-}"
 
 if [ -z "$BOOK" ]; then
   echo "Usage: bash build-manuscript.sh <book-slug>"
-  echo "Example: bash build-manuscript.sh untitled-cosy-mystery"
+  echo "Example: bash build-manuscript.sh death-in-the-cathedral-close"
   exit 1
 fi
 
@@ -64,9 +64,10 @@ echo "  Output: $FINAL"
 echo ""
 
 # ── Collect files in canonical order ─────────────────────────────────────────
-# 00-00-copyright.md is SKIPPED — it contains raw HTML for PDF only.
-# Front matter (title, copyright) is supplied via --metadata flags.
-# Content order: ch-*.md (chapters) → 99-*.md (back matter)
+# Supports two naming conventions:
+#   ch-*.md + 99-*.md  (cosy mystery / fiction convention)
+#   00-*.md ... 09-*.md (numeric prefix convention — health guides)
+# Tries ch-*.md first; falls back to [0-9][0-9]-*.md if empty.
 
 FILES=()
 while IFS= read -r -d '' f; do
@@ -76,8 +77,16 @@ while IFS= read -r -d '' f; do
   FILES+=("$f")
 done < <(find "$MANUSCRIPT" -maxdepth 1 -name "99-*.md" -print0 | sort -z)
 
+# Fallback: numeric-prefix convention (00-intro.md, 01-day-one.md, etc.)
+if [ ${#FILES[@]} -eq 0 ]; then
+  while IFS= read -r -d '' f; do
+    FILES+=("$f")
+  done < <(find "$MANUSCRIPT" -maxdepth 1 -name "[0-9][0-9]-*.md" -print0 | sort -z)
+fi
+
 if [ ${#FILES[@]} -eq 0 ]; then
   echo "Error: No chapter files found in $MANUSCRIPT"
+  echo "Expected: ch-*.md / 99-*.md (fiction) or 00-*.md..09-*.md (numeric)"
   exit 1
 fi
 
@@ -131,6 +140,49 @@ echo "  Generating DOCX..."
 
 DOCX_SIZE=$(du -sh "$FINAL/manuscript-kdp.docx" | cut -f1)
 echo "  ✓ DOCX: $DOCX_SIZE — $FINAL/manuscript-kdp.docx"
+
+# ── Generate PDF via Chrome headless ─────────────────────────────────────────
+echo "  Generating PDF..."
+CHROME=""
+for candidate in \
+  "/c/Program Files/Google/Chrome/Application/chrome.exe" \
+  "/c/Program Files (x86)/Google/Chrome/Application/chrome.exe" \
+  "$LOCALAPPDATA/Google/Chrome/Application/chrome.exe"; do
+  if [ -f "$candidate" ]; then
+    CHROME="$candidate"
+    break
+  fi
+done
+
+if [ -z "$CHROME" ]; then
+  echo "  Warning: Chrome not found — PDF skipped. Install Chrome to enable PDF builds."
+else
+  HTML_FILE="$FINAL/manuscript-kdp.html"
+  PDF_FILE="$FINAL/manuscript-kdp.pdf"
+
+  # Generate HTML first if it doesn't exist yet
+  if [ ! -f "$HTML_FILE" ]; then
+    "$PANDOC" "${CLEAN_FILES[@]}" \
+      --metadata title="$BOOK_TITLE" \
+      --metadata author="$BOOK_AUTHOR" \
+      --metadata lang="en-GB" \
+      --standalone \
+      -o "$HTML_FILE"
+  fi
+
+  "$CHROME" --headless=new --disable-gpu \
+    --print-to-pdf="$PDF_FILE" \
+    --no-pdf-header-footer \
+    --run-all-compositor-stages-before-draw \
+    "$HTML_FILE" 2>/dev/null
+
+  if [ -f "$PDF_FILE" ]; then
+    PDF_SIZE=$(du -sh "$PDF_FILE" | cut -f1)
+    echo "  ✓ PDF: $PDF_SIZE — $PDF_FILE"
+  else
+    echo "  Warning: PDF generation failed — check Chrome installation."
+  fi
+fi
 
 echo ""
 echo "  ✓ Manuscript build complete."

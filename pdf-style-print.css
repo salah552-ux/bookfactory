@@ -1,0 +1,295 @@
+/* BookFactory — KDP Print Interior Stylesheet v1
+   Print-ready 6" × 9" paperback interior.
+   Facing-page margins · Running headers · Drop caps
+   Designed for: md-to-pdf (Puppeteer/Chrome)
+   Target: KDP 60lb white paper / IngramSpark (PDF/X-1a after conversion)
+*/
+
+/* ─────────────────────────────────────────────
+   PAGE SIZE & DEFAULT MARGINS (right-hand / recto)
+───────────────────────────────────────────── */
+@page {
+  size: 6in 9in;
+  /* Default (right / recto): gutter is on the left */
+  margin-top:    0.75in;
+  margin-bottom: 0.75in;
+  margin-left:   0.75in;   /* gutter side */
+  margin-right:  0.5in;    /* outside */
+
+  /* Page number — bottom outside (right on recto) */
+  @bottom-right {
+    content: counter(page);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 9pt;
+    color: #333;
+  }
+
+  /* Running header — book title on right pages */
+  @top-right {
+    content: "Fix Your Gut for Good";
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 8pt;
+    font-style: italic;
+    color: #555;
+    letter-spacing: 0.04em;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   LEFT-HAND (VERSO) PAGES
+   Gutter flips to the right side
+───────────────────────────────────────────── */
+@page :left {
+  margin-left:  0.5in;    /* outside */
+  margin-right: 0.75in;   /* gutter side */
+
+  /* Page number — bottom outside (left on verso) */
+  @bottom-left {
+    content: counter(page);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 9pt;
+    color: #333;
+  }
+  @bottom-right {
+    content: none;
+  }
+
+  /* Running header — chapter title on left pages */
+  @top-left {
+    content: string(chapter-title);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 8pt;
+    font-style: italic;
+    color: #555;
+    letter-spacing: 0.04em;
+  }
+  @top-right {
+    content: none;
+  }
+}
+
+/* ─────────────────────────────────────────────
+   RIGHT-HAND (RECTO) PAGES
+───────────────────────────────────────────── */
+@page :right {
+  margin-left:  0.75in;   /* gutter side */
+  margin-right: 0.5in;    /* outside */
+}
+
+/* ─────────────────────────────────────────────
+   CHAPTER OPENER PAGES — no running header
+───────────────────────────────────────────── */
+@page chapter-opener {
+  @top-left  { content: none; }
+  @top-right { content: none; }
+  @bottom-left  { content: counter(page); font-family: Georgia, serif; font-size: 9pt; color: #333; }
+  @bottom-right { content: counter(page); font-family: Georgia, serif; font-size: 9pt; color: #333; }
+}
+
+/* ─────────────────────────────────────────────
+   BODY
+───────────────────────────────────────────── */
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 11pt;
+  line-height: 1.4;
+  color: #000;
+  text-align: justify;
+  hyphens: auto;
+  orphans: 2;
+  widows: 2;
+}
+
+/* ─────────────────────────────────────────────
+   CHAPTER NUMBER (h1)
+   Full drop — starts each new chapter
+───────────────────────────────────────────── */
+h1 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 18pt;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  margin-top: 2in;
+  margin-bottom: 0.25em;
+  padding: 0;
+  border: none;
+  page-break-before: always;
+  page: chapter-opener;
+  string-set: chapter-title content();
+}
+
+h1:first-of-type {
+  page-break-before: avoid;
+  margin-top: 0.75in;
+}
+
+/* ─────────────────────────────────────────────
+   CHAPTER TITLE (h2)
+   Appears immediately after h1
+───────────────────────────────────────────── */
+h2 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 14pt;
+  font-weight: bold;
+  color: #000;
+  text-align: center;
+  margin-top: 0.15em;
+  margin-bottom: 0.5in;
+  padding: 0;
+  border: none;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION HEADING (h3)
+───────────────────────────────────────────── */
+h3 {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 12pt;
+  font-weight: bold;
+  color: #000;
+  margin-top: 1.6em;
+  margin-bottom: 0.5em;
+  padding: 0;
+  border: none;
+}
+
+/* ─────────────────────────────────────────────
+   PARAGRAPHS
+───────────────────────────────────────────── */
+p {
+  margin: 0;
+  text-indent: 1.5em;
+  text-align: justify;
+  hyphens: auto;
+}
+
+/* No indent after headings or block elements */
+h1 + p,
+h2 + p,
+h3 + p,
+hr + p,
+blockquote + p,
+h1 + h2 + p,
+h1 + h2 + h3 + p {
+  text-indent: 0;
+}
+
+/* ─────────────────────────────────────────────
+   DROP CAP — chapter opener first letter
+   Selector: .chapter-open:first-letter
+   Fallback: h1 + h2 + p::first-letter
+───────────────────────────────────────────── */
+p.chapter-open:first-letter,
+h1 + h2 + p:first-of-type::first-letter,
+h1 + h2 + h3 + p:first-of-type::first-letter {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 3.5em;
+  font-weight: bold;
+  float: left;
+  line-height: 0.78;
+  margin: 0.05em 0.07em 0 0;
+  padding: 0;
+  color: #000;
+}
+
+/* ─────────────────────────────────────────────
+   SECTION DIVIDER (hr)
+───────────────────────────────────────────── */
+hr {
+  border: none;
+  text-align: center;
+  margin: 1.8em auto;
+  height: 1.4em;
+  line-height: 1.4em;
+  overflow: visible;
+}
+
+hr::after {
+  content: '\2726';   /* ✦ */
+  font-size: 9pt;
+  color: #555;
+  letter-spacing: 0.1em;
+}
+
+/* ─────────────────────────────────────────────
+   BLOCKQUOTES / DCT SIDEBARS
+───────────────────────────────────────────── */
+blockquote {
+  border-left: 2.5pt solid #999;
+  margin: 1.8em 0 1.8em 0.25in;
+  padding: 0.6em 0.75em;
+  font-style: italic;
+  font-size: 10pt;
+  line-height: 1.5;
+  color: #222;
+}
+
+blockquote p {
+  margin: 0 0 0.5em 0;
+  text-indent: 0;
+  text-align: left;
+}
+
+blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+/* ─────────────────────────────────────────────
+   TABLES
+───────────────────────────────────────────── */
+table {
+  font-size: 10pt;
+  border-collapse: collapse;
+  width: 100%;
+  margin: 1.5em 0;
+}
+
+th, td {
+  border: 0.5pt solid #888;
+  padding: 0.3em 0.5em;
+  text-align: left;
+  vertical-align: top;
+}
+
+th {
+  font-weight: bold;
+  background: #f0f0f0;
+}
+
+/* ─────────────────────────────────────────────
+   LISTS
+───────────────────────────────────────────── */
+ul, ol {
+  padding-left: 1.3em;
+  margin: 0.6em 0;
+  line-height: 1.5;
+}
+
+li {
+  margin-bottom: 0.2em;
+  text-indent: 0;
+}
+
+/* ─────────────────────────────────────────────
+   INLINE
+───────────────────────────────────────────── */
+strong {
+  font-weight: bold;
+}
+
+em {
+  font-style: italic;
+}
+
+/* ─────────────────────────────────────────────
+   ORPHAN / WIDOW CONTROL
+───────────────────────────────────────────── */
+p {
+  orphans: 2;
+  widows: 2;
+}
+
+h1, h2, h3 {
+  page-break-after: avoid;
+}

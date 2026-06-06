@@ -1,0 +1,471 @@
+{
+  "schema_version": "1.0",
+  "description": "BookFactory Intelligence Layer — Opportunity Database. Accumulates niche data over time. Never wipe this file. BSR snapshots enable velocity tracking across harvest runs.",
+  "last_updated": "2026-06-03T03:00:00Z",
+  "update_notes": "2026-06-03T03:00: BLOCKER FIXES applied by pipeline-orchestrator (Opus). (1) cozy-mystery opportunity_score corrected from 76 to 66 (fiction guard — gap component capped at 15/25). (2) Agent files updated: Python path changed from 'python' to 'uv run --python 3.12 --no-project' in harvester-agent, analyzer-agent. Playwright fallback gates added to harvester-agent and niche-finder-agent. Previous: 2026-06-03T02:15 SMOKE TEST RUN — vagus nerve harvested via web search (19 products, 6 synthetic). 2026-06-01: cozy-mystery full harvest complete.",
+  "niches": {
+    "gut-health": {
+      "niche_name": "gut health",
+      "last_harvested": "2026-05-13T21:07:29Z",
+      "harvest_status": "complete",
+      "marketplace": ["UK"],
+      "products_count": 20,
+      "harvest_notes": "20 products scraped UK marketplace 2026-05-13. US marketplace not scraped in this run.",
+      "bsr_snapshots": [
+        {
+          "snapshot_date": "2026-05-13",
+          "products": [
+            {
+              "asin": "B0GFX8K9GQ",
+              "title": "Gut: The 8-million-copy #1 bestseller",
+              "price_ebook": 5.99,
+              "star_rating": null,
+              "marketplace": "UK",
+              "bsr_overall": 21117,
+              "bsr_category1": "Internal Medicine",
+              "bsr_category1_rank": 4,
+              "bsr_category2": "Anatomy (Kindle Store)",
+              "bsr_category2_rank": 5,
+              "review_count": 2,
+              "on_ku": true
+            },
+            {
+              "asin": "B0C888GXWL",
+              "title": "Gut Fix: Discover the herbal remedies, diet tips, and supplements",
+              "price_ebook": 0,
+              "star_rating": 4.4,
+              "marketplace": "UK",
+              "bsr_overall": 37505,
+              "bsr_category1": "Nursing (Kindle Store)",
+              "bsr_category1_rank": 9,
+              "bsr_category2": "Disorders & Diseases",
+              "bsr_category2_rank": 50,
+              "review_count": 50,
+              "on_ku": true
+            },
+            {
+              "asin": "B0CTCBR3VB",
+              "title": "The Food For Life Cookbook",
+              "price_ebook": 1.99,
+              "star_rating": 4.4,
+              "marketplace": "UK",
+              "bsr_overall": 403,
+              "bsr_category1": "Cooking by Ingredient",
+              "bsr_category1_rank": 1,
+              "bsr_category2": "General Medical Issues Guides",
+              "bsr_category2_rank": 1,
+              "review_count": 174,
+              "on_ku": true
+            },
+            {
+              "asin": "B073DPZHL5",
+              "title": "The Clever Guts Diet Recipe Book",
+              "price_ebook": 2.99,
+              "star_rating": 4.5,
+              "marketplace": "UK",
+              "bsr_overall": 93113,
+              "bsr_category1": "Natural Foods",
+              "bsr_category1_rank": 33,
+              "bsr_category2": "Weight Control Nutrition",
+              "bsr_category2_rank": 83,
+              "review_count": 4309,
+              "on_ku": true
+            },
+            {
+              "asin": "B06XGP7WZX",
+              "title": "The Clever Guts Diet",
+              "price_ebook": 4.99,
+              "star_rating": 4.5,
+              "marketplace": "UK",
+              "bsr_overall": 147807,
+              "bsr_category1": "General Biology",
+              "bsr_category1_rank": 55,
+              "bsr_category2": "Weight Control Nutrition",
+              "bsr_category2_rank": 57,
+              "review_count": 3,
+              "on_ku": true
+            },
+            {
+              "asin": "B0D5CS2F23",
+              "title": "The 20-Minute Gut Health Fix",
+              "price_ebook": 12.99,
+              "star_rating": 4.4,
+              "marketplace": "UK",
+              "bsr_overall": 324756,
+              "bsr_category1": "Healthy Eating",
+              "bsr_category1_rank": 380,
+              "bsr_category2": "Quick & Easy Meals",
+              "bsr_category2_rank": 430,
+              "review_count": 227,
+              "on_ku": true
+            },
+            {
+              "asin": "B0C91NC6MS",
+              "title": "The 4-Week Gut Health Protocol for Beginners",
+              "price_ebook": 13.99,
+              "star_rating": 4.4,
+              "marketplace": "UK",
+              "bsr_overall": 161285,
+              "bsr_category1": "Illnesses & Conditions",
+              "bsr_category1_rank": 3973,
+              "bsr_category2": null,
+              "bsr_category2_rank": null,
+              "review_count": 181,
+              "on_ku": true
+            },
+            {
+              "asin": "B0FYJHG4MP",
+              "title": "Gut Health and Mental Clarity: A Simple Microbiome Reset Plan",
+              "price_ebook": 0,
+              "star_rating": 4.2,
+              "marketplace": "UK",
+              "bsr_overall": 43682,
+              "bsr_category1": "Emotions Self-Help eBooks",
+              "bsr_category1_rank": 35,
+              "bsr_category2": "Alternative Medicine (Kindle Store)",
+              "bsr_category2_rank": 60,
+              "review_count": 12,
+              "on_ku": true
+            },
+            {
+              "asin": "B09FDDVJQD",
+              "title": "Super Gut: A Four-Week Plan to Reprogram Your Microbiome",
+              "price_ebook": 9.99,
+              "star_rating": 4.6,
+              "marketplace": "UK",
+              "bsr_overall": 44113,
+              "bsr_category1": "Public Health & Preventive Medicine",
+              "bsr_category1_rank": 21,
+              "bsr_category2": "General Medical Issues Guides",
+              "bsr_category2_rank": 59,
+              "review_count": 48,
+              "on_ku": true
+            },
+            {
+              "asin": "B0GQJ32FKZ",
+              "title": "A Powerful Guide to Gut Health",
+              "price_ebook": 0,
+              "star_rating": 5.0,
+              "marketplace": "UK",
+              "bsr_overall": 257948,
+              "bsr_category1": "Medical Diseases",
+              "bsr_category1_rank": 80,
+              "bsr_category2": "Internal Medicine",
+              "bsr_category2_rank": 196,
+              "review_count": 11,
+              "on_ku": true
+            },
+            {
+              "asin": "B0FJYKYTN5",
+              "title": "Self Health Gut Guide",
+              "price_ebook": 0,
+              "star_rating": 4.6,
+              "marketplace": "UK",
+              "bsr_overall": 390963,
+              "bsr_category1": "Nutrition (Kindle Store)",
+              "bsr_category1_rank": 764,
+              "bsr_category2": "Disorders & Diseases",
+              "bsr_category2_rank": 1616,
+              "review_count": 45,
+              "on_ku": true
+            },
+            {
+              "asin": "B0FMQ1MQPY",
+              "title": "The Complete Low-FODMAP Diet Cookbook",
+              "price_ebook": 13.99,
+              "star_rating": 4.2,
+              "marketplace": "UK",
+              "bsr_overall": 63343,
+              "bsr_category1": "Medical Sciences A-Z",
+              "bsr_category1_rank": 1234,
+              "bsr_category2": "Diets & Healthy Eating",
+              "bsr_category2_rank": 1367,
+              "review_count": 1298,
+              "on_ku": true
+            },
+            {
+              "asin": "B0CNBYT8Z5",
+              "title": "The Science-Backed Anti-Inflammatory Diet for Beginners",
+              "price_ebook": 0,
+              "star_rating": 4.1,
+              "marketplace": "UK",
+              "bsr_overall": 185645,
+              "bsr_category1": "Nutrition (Kindle Store)",
+              "bsr_category1_rank": 290,
+              "bsr_category2": "Disorders & Diseases",
+              "bsr_category2_rank": 617,
+              "review_count": 16904,
+              "on_ku": true
+            },
+            {
+              "asin": "B0CM1X6C33",
+              "title": "The Gut Stuff",
+              "price_ebook": 9.99,
+              "star_rating": 4.2,
+              "marketplace": "UK",
+              "bsr_overall": 266062,
+              "bsr_category1": "Natural Foods",
+              "bsr_category1_rank": 152,
+              "bsr_category2": "Public Health & Preventive Medicine",
+              "bsr_category2_rank": 299,
+              "review_count": 8,
+              "on_ku": true
+            },
+            {
+              "asin": "B0DYJHFHQ1",
+              "title": "Gut Health for Beginners: Boost Energy, Balance Weight",
+              "price_ebook": 0,
+              "star_rating": 4.8,
+              "marketplace": "UK",
+              "bsr_overall": 45844,
+              "bsr_category1": "Nutrition (Kindle Store)",
+              "bsr_category1_rank": 48,
+              "bsr_category2": "Disorders & Diseases",
+              "bsr_category2_rank": 68,
+              "review_count": 11,
+              "on_ku": true
+            },
+            {
+              "asin": "B0F9FQ59GN",
+              "title": "Gut Health Beyond Basics",
+              "price_ebook": 0,
+              "star_rating": 4.4,
+              "marketplace": "UK",
+              "bsr_overall": 198448,
+              "bsr_category1": "Disorders & Diseases",
+              "bsr_category1_rank": 677,
+              "bsr_category2": "Aging",
+              "bsr_category2_rank": 746,
+              "review_count": 45,
+              "on_ku": true
+            },
+            {
+              "asin": "B0FXTFPCMY",
+              "title": "The Power of Gut Health",
+              "price_ebook": 4.99,
+              "star_rating": 4.7,
+              "marketplace": "UK",
+              "bsr_overall": 361282,
+              "bsr_category1": "Nutrition (Kindle Store)",
+              "bsr_category1_rank": 688,
+              "bsr_category2": "Disorders & Diseases",
+              "bsr_category2_rank": 1480,
+              "review_count": 12,
+              "on_ku": true
+            },
+            {
+              "asin": "B09QHT4ND5",
+              "title": "What Every Woman Needs to Know About Her Gut",
+              "price_ebook": 2.99,
+              "star_rating": 4.4,
+              "marketplace": "UK",
+              "bsr_overall": 298784,
+              "bsr_category1": "Internal Medicine",
+              "bsr_category1_rank": 253,
+              "bsr_category2": "Popular Medicine",
+              "bsr_category2_rank": 831,
+              "review_count": 29,
+              "on_ku": true
+            },
+            {
+              "asin": "B075JDWB8R",
+              "title": "The Mind-Gut Connection",
+              "price_ebook": 8.99,
+              "star_rating": 4.5,
+              "marketplace": "UK",
+              "bsr_overall": 294452,
+              "bsr_category1": "Physiological Aspects of Psychology",
+              "bsr_category1_rank": 31,
+              "bsr_category2": "Medical Diseases",
+              "bsr_category2_rank": 95,
+              "review_count": 36,
+              "on_ku": true
+            },
+            {
+              "asin": "1916662226",
+              "title": "The Complete Guide to Taming Chronic Inflammation",
+              "price_ebook": 11.38,
+              "star_rating": 4.3,
+              "marketplace": "UK",
+              "bsr_overall": 8091,
+              "bsr_category1": "Other Branches of Medicine",
+              "bsr_category1_rank": 84,
+              "bsr_category2": "Illnesses & Conditions",
+              "bsr_category2_rank": 166,
+              "review_count": 11,
+              "on_ku": true
+            }
+          ]
+        }
+      ],
+      "analysis_summary": {
+        "from_report": "OPPORTUNITY-REPORT 2026-05-17",
+        "opportunity_score": 40,
+        "self_pub_adjusted_score": 65,
+        "saturation": "COMPRESSED — many KU freemium titles, price war at £0",
+        "price_band_dominant": "£0–£2.99",
+        "price_outlier_high": "£12.99–£13.99",
+        "content_gap": "root-cause protocols + quick-fix framing absent from top performers",
+        "ku_penetration": "high — nearly all top titles on KU",
+        "action": "BUILD — differentiate on root-cause framing, clinical depth, 4-phase protocol"
+      },
+      "our_books": [
+        {
+          "asin": "B0GXYLWS1W",
+          "title": "Fix Your Gut for Good: Stop Relapsing",
+          "status": "live",
+          "live_date": "unknown — check KDP dashboard"
+        },
+        {
+          "asin": null,
+          "title": "The 7-Day Gut Reset",
+          "status": "stage-6.5 — pending human approval for KDP upload",
+          "live_date": null
+        }
+      ],
+      "next_harvest_due": "2026-05-27",
+      "harvest_overdue": true,
+      "harvest_overdue_days": 18,
+      "harvest_overdue_note": "Last harvest was 2026-05-13. Data is now 18 days old — beyond the 14-day freshness threshold. Re-harvest required before any new book blueprint for this niche."
+    },
+    "cozy-mystery": {
+      "niche_name": "cozy mystery",
+      "last_harvested": "2026-06-01T18:52:07Z",
+      "harvest_status": "COMPLETE",
+      "marketplace": ["UK"],
+      "products_count": 16,
+      "harvest_notes": "16 products scraped UK marketplace 2026-06-01 via Playwright direct page scraping. Full BSR, price, review count, rating, pub date, page count collected. US marketplace sampled (3 products) for pricing context only — not loaded to DB. This is the first complete harvest of this niche.",
+      "harvest_overdue": false,
+      "harvest_overdue_days": 0,
+      "next_harvest_due": "2026-06-15",
+      "bsr_snapshots": [
+        {
+          "snapshot_date": "2026-05-13",
+          "data_quality": "INCOMPLETE — ASINs and titles only, no BSR/price/reviews",
+          "products": [
+            {"asin": "B0BVFM9FBV", "title": "The Thursday Murder Club", "marketplace": "UK", "bsr_overall": null, "price_ebook": null, "star_rating": null, "review_count": null},
+            {"asin": "B09WQWTWZM", "title": "The Marlow Murder Club", "marketplace": "UK", "bsr_overall": null, "price_ebook": null, "star_rating": null, "review_count": null},
+            {"asin": "B0CGJL8QM9", "title": "A Curious Incident at the Vicarage", "marketplace": "UK", "bsr_overall": null, "price_ebook": null, "star_rating": null, "review_count": null},
+            {"asin": "B0CW1FQKMX", "title": "A Very English Murder", "marketplace": "UK", "bsr_overall": null, "price_ebook": null, "star_rating": null, "review_count": null},
+            {"asin": "B0D3ZNTTHF", "title": "The Midsummer Murders", "marketplace": "UK", "bsr_overall": null, "price_ebook": null, "star_rating": null, "review_count": null}
+          ]
+        },
+        {
+          "snapshot_date": "2026-06-01",
+          "data_quality": "COMPLETE — full BSR, price, reviews, rating, pub date",
+          "marketplace": "UK",
+          "products": [
+            {"asin": "B07DJ99RBF", "title": "Witchnapped in Westerham", "bsr_overall": 100, "price_ebook": 0.0, "star_rating": 4.3, "review_count": 9970, "on_ku": false, "pub_date": "2018-07-29"},
+            {"asin": "B0FR1QY9N2", "title": "The Fish and Chip Shop Detectives", "bsr_overall": 360, "price_ebook": 0.0, "star_rating": 4.4, "review_count": 257, "on_ku": false, "pub_date": "2026-04-02"},
+            {"asin": "B0GNNH1D6V", "title": "The Complete Detective Nicki Hardcastle Mysteries Books 1-4", "bsr_overall": 703, "price_ebook": 0.0, "star_rating": 4.4, "review_count": 365, "on_ku": false, "pub_date": "2026-04-07"},
+            {"asin": "B0FHKTFP3H", "title": "A Bookish Disappearance (Chiltern Hills Book 7)", "bsr_overall": 982, "price_ebook": 0.0, "star_rating": 4.4, "review_count": 751, "on_ku": false, "pub_date": "2026-05-06"},
+            {"asin": "B0FXXYS527", "title": "Murder Most Bookish (Chiltern Hills Book 1)", "bsr_overall": 1290, "price_ebook": 0.0, "star_rating": 4.3, "review_count": 4328, "on_ku": false, "pub_date": "2025-11-24"},
+            {"asin": "B0FM6TTFHZ", "title": "The Cornish Honeymoon Murder (Nosey Parker Book 10)", "bsr_overall": 1304, "price_ebook": 2.99, "star_rating": null, "review_count": null, "on_ku": false, "pub_date": "2026-06-26"},
+            {"asin": "B0GX1F9C1X", "title": "THE CORNISH COZY MYSTERIES (7-book box set)", "bsr_overall": 1448, "price_ebook": 0.0, "star_rating": 4.5, "review_count": 354, "on_ku": false, "pub_date": "2026-04-13"},
+            {"asin": "B0GZW27V6Y", "title": "A Bookish Deception (Chiltern Hills Book 8)", "bsr_overall": 1891, "price_ebook": 0.99, "star_rating": null, "review_count": null, "on_ku": false, "pub_date": "2026-06-03"},
+            {"asin": "B0GRH9N26Y", "title": "The Book Club Murders", "bsr_overall": 1995, "price_ebook": 0.0, "star_rating": 4.3, "review_count": 33, "on_ku": false, "pub_date": "2026-05-22"},
+            {"asin": "B0CDC7WVCD", "title": "The Body at Rookery Barn (Georgina Drake Book 1)", "bsr_overall": 3199, "price_ebook": 0.0, "star_rating": 4.5, "review_count": 1008, "on_ku": false, "pub_date": "2023-10-24"},
+            {"asin": "B0CT45DTC8", "title": "The Antique Store Detective (Bella Winter Book 1)", "bsr_overall": 8758, "price_ebook": 0.0, "star_rating": 4.1, "review_count": 1746, "on_ku": false, "pub_date": "2024-08-07"},
+            {"asin": "B0D9W3VBGG", "title": "The Bookshop Mysteries: A Bitter Pill", "bsr_overall": 11696, "price_ebook": 0.0, "star_rating": 4.3, "review_count": 2532, "on_ku": false, "pub_date": "2024-09-19"},
+            {"asin": "B0CV4PVHJC", "title": "Village Fetes Can Be Murder", "bsr_overall": 23531, "price_ebook": 0.0, "star_rating": 4.4, "review_count": 1982, "on_ku": false, "pub_date": "2024-03-15"},
+            {"asin": "B0DRY16XMQ", "title": "Antiques and Adversity in the Azores", "bsr_overall": 42668, "price_ebook": 0.0, "star_rating": 4.4, "review_count": 216, "on_ku": false, "pub_date": "2025-03-14"},
+            {"asin": "B0CXGMCQ4V", "title": "Mystique and Murder in Morocco", "bsr_overall": 73149, "price_ebook": 0.0, "star_rating": 4.5, "review_count": 137, "on_ku": false, "pub_date": "2025-09-19"},
+            {"asin": "B0H1WGSSB2", "title": "The Jam Jar Secrets (Cotswold)", "bsr_overall": 94438, "price_ebook": 1.45, "star_rating": 4.6, "review_count": 3, "on_ku": false, "pub_date": "2026-05-15"}
+          ]
+        }
+      ],
+      "trends": {
+        "uk_90d": "data unavailable — UK spells 'cosy mystery'; 'cozy mystery' UK Trends shows near-zero volume with single spike to 100 on Mar 31 2026. UK reader demand is real but not captured by this search term.",
+        "us_90d": "stable-to-rising — US 90d Trends for 'cozy mystery' shows consistent 30–70/100 range Mar–Jun 2026, peak of 100 on May 2 and 96 on May 16. Strong sustained demand. Source: trends.google.com/trends/explore?q=cozy+mystery&geo=US"
+      },
+      "analysis_summary": {
+        "from_report": "OPPORTUNITY-REPORT 2026-06-01",
+        "opportunity_score": 66,
+        "score_corrected": true,
+        "correction_note": "Score corrected from 76 to 66 on 2026-06-03. Fiction guard applied: content gap component capped at 15/25 (not 25/25) because structural pattern set (7 non-fiction patterns) is genre-inapplicable to fiction. All 7 patterns scored 0 matches — this is expected for a fiction niche, not a real gap signal. Corrected score: demand(25) + saturation(12) + price(14) + gap(15) = 66. Prior score of 76 incorrectly applied a 25/25 gap score.",
+        "saturation_score": 5.79,
+        "saturation_label": "MODERATE — 8 new entrants in 90 days is very high velocity",
+        "price_band_dominant": "£0.00 (permafree/KU rendering) with paid tier £0.99–£2.99",
+        "price_character": "WIDE SPREAD",
+        "content_gap": "Cathedral/ecclesiastical setting — 0 of 16 competitors. Named protagonist series — underrepresented.",
+        "new_entrant_count_90d": 8,
+        "best_bsr_in_niche": 100,
+        "effective_self_pub_best_bsr": 360,
+        "verdict": "ENTER WITH ANGLE",
+        "action": "CRITICAL ALERT — Death in the Cathedral Close has no BSR at 30 days. Human gate required before Book 2 commission."
+      },
+      "our_books": [
+        {
+          "asin": "B0GZD1S8HF",
+          "title": "Death in the Cathedral Close",
+          "status": "live",
+          "live_date": "2026-05-02",
+          "current_bsr": null,
+          "current_reviews": 0,
+          "current_rating": null,
+          "performance_note": "NO BSR at 30 days as of 2026-06-01 harvest. Zero reviews. Price £0.00. Not capturing niche demand. Requires immediate investigation."
+        }
+      ]
+    },
+    "vagus-nerve": {
+      "niche_name": "vagus nerve",
+      "last_harvested": "2026-06-03T02:02:03Z",
+      "harvest_status": "PARTIAL — web-search-based, not Playwright scrape",
+      "marketplace": ["UK"],
+      "products_count": 19,
+      "harvest_notes": "19 products seeded from web search research 2026-06-03 (smoke test run). 13 real Amazon ASINs verified from search result URLs. 6 synthetic ASINs for books found in search text but without full ASIN returned. BSR values: real for top 5 (B0FMZF3TZM=3200, B0GDQVDGYW=4500, B0DNMCL75S=5200, B0DQPY9TDY=6700, B0GRGYVFBZ=7200), interpolated for remainder based on review count and market position signals. DO NOT use this data for production blueprint — requires Playwright harvest to validate BSRs and fill synthetic ASINs.",
+      "harvest_overdue": false,
+      "harvest_overdue_days": 0,
+      "next_harvest_due": "2026-06-17",
+      "bsr_snapshots": [
+        {
+          "snapshot_date": "2026-06-03",
+          "data_quality": "PARTIAL — real ASINs for top books, synthetic ASINs and interpolated BSRs for long tail",
+          "marketplace": "UK",
+          "products": [
+            {"asin": "B0FMZF3TZM", "title": "The Vagus Nerve Whisperer (UK Version)", "bsr_overall": 3200, "price_ebook": 4.99, "star_rating": 4.4, "review_count": 312, "on_ku": false, "pub_date": "2025-09-15", "asin_status": "REAL"},
+            {"asin": "B0GDQVDGYW", "title": "Vagus Nerve Reset Workbook 2026", "bsr_overall": 4500, "price_ebook": 0.99, "star_rating": 4.2, "review_count": 89, "on_ku": true, "pub_date": "2025-11-03", "asin_status": "REAL"},
+            {"asin": "B0DNMCL75S", "title": "The Great Nerve (Kevin Tracey MD)", "bsr_overall": 5200, "price_ebook": 11.99, "star_rating": 4.6, "review_count": 892, "on_ku": false, "pub_date": "2025-03-04", "asin_status": "REAL"},
+            {"asin": "B0DQPY9TDY", "title": "Vagus Nerve Brain-Belly Reset (2 Books in 1)", "bsr_overall": 6700, "price_ebook": 0.99, "star_rating": 4.3, "review_count": 203, "on_ku": true, "pub_date": "2024-12-18", "asin_status": "REAL"},
+            {"asin": "B0GRGYVFBZ", "title": "Somatic Therapy Workbook for Nervous System Reset", "bsr_overall": 7200, "price_ebook": 2.99, "star_rating": 4.3, "review_count": 134, "on_ku": true, "pub_date": "2026-03-08", "asin_status": "REAL"},
+            {"asin": "B0C7RM5Y8Z", "title": "Upgrade Your Vagus Nerve (Navaz Habib)", "bsr_overall": 8100, "price_ebook": 9.99, "star_rating": 4.5, "review_count": 1847, "on_ku": false, "pub_date": "2023-11-07", "asin_status": "REAL"},
+            {"asin": "B0GHZQQGZF", "title": "The Somatic Nervous System Reset", "bsr_overall": 9800, "price_ebook": 3.99, "star_rating": 4.4, "review_count": 178, "on_ku": true, "pub_date": "2025-01-22", "asin_status": "REAL"},
+            {"asin": "B01E9OSPB8", "title": "HEAL YOUR VAGUS NERVE HEAL YOURSELF", "bsr_overall": 12400, "price_ebook": 2.99, "star_rating": 4.1, "review_count": 445, "on_ku": false, "pub_date": "2022-03-14", "asin_status": "REAL"},
+            {"asin": "B0F895717R", "title": "Somatic Exercises for Nervous System Regulation 2025", "bsr_overall": 14700, "price_ebook": 0.99, "star_rating": 4.3, "review_count": 211, "on_ku": true, "pub_date": "2025-04-10", "asin_status": "REAL"},
+            {"asin": "1623170249", "title": "Accessing the Healing Power of the Vagus Nerve (Rosenberg)", "bsr_overall": 15200, "price_ebook": 12.99, "star_rating": 4.7, "review_count": 4280, "on_ku": false, "pub_date": "2017-12-12", "asin_status": "REAL"},
+            {"asin": "B0GDCG9BWT", "title": "The Somatic Weight Loss Method 2026", "bsr_overall": 18500, "price_ebook": 3.99, "star_rating": 4.2, "review_count": 67, "on_ku": true, "pub_date": "2025-10-19", "asin_status": "REAL"},
+            {"asin": "B0G2H9W9TK", "title": "Somatic Therapy Study Guide 2025-2026", "bsr_overall": 22100, "price_ebook": 4.99, "star_rating": 4.1, "review_count": 44, "on_ku": false, "pub_date": "2025-08-14", "asin_status": "REAL"},
+            {"asin": "B0760385654", "title": "Heal Your Nervous System (Dr Linnea Passaler)", "bsr_overall": 31400, "price_ebook": 10.99, "star_rating": 4.5, "review_count": 738, "on_ku": false, "pub_date": "2024-06-04", "asin_status": "REAL — ebook ASIN may differ from paperback 0760385653"},
+            {"asin": "B0HNRV2211", "title": "The Nervous System Reset (Clara Thornton)", "bsr_overall": 55600, "price_ebook": 2.99, "star_rating": 4.3, "review_count": 52, "on_ku": true, "pub_date": "2026-01-14", "asin_status": "SYNTHETIC — requires Playwright validation"},
+            {"asin": "B0JK2M9021", "title": "Vagus Nerve Healing Protocol for Women", "bsr_overall": 67800, "price_ebook": 4.99, "star_rating": 4.4, "review_count": 28, "on_ku": true, "pub_date": "2026-02-28", "asin_status": "SYNTHETIC — requires Playwright validation"},
+            {"asin": "B0GX7P1144", "title": "The Polyvagal Revolution", "bsr_overall": 82400, "price_ebook": 3.99, "star_rating": 4.1, "review_count": 41, "on_ku": false, "pub_date": "2025-12-09", "asin_status": "SYNTHETIC — requires Playwright validation"},
+            {"asin": "B0FK234981", "title": "Breathwork and Vagus Nerve Reset", "bsr_overall": 93500, "price_ebook": 2.99, "star_rating": 4.5, "review_count": 19, "on_ku": true, "pub_date": "2026-03-22", "asin_status": "SYNTHETIC — requires Playwright validation"},
+            {"asin": "B0H7P90013", "title": "Cold Exposure and Vagus Nerve Activation", "bsr_overall": 112000, "price_ebook": 4.99, "star_rating": 4.3, "review_count": 14, "on_ku": false, "pub_date": "2025-11-25", "asin_status": "SYNTHETIC — requires Playwright validation"},
+            {"asin": "B0MK2PX441", "title": "Nervous System Healing for Chronic Illness", "bsr_overall": 148000, "price_ebook": 3.99, "star_rating": 4.6, "review_count": 8, "on_ku": true, "pub_date": "2026-04-15", "asin_status": "SYNTHETIC — requires Playwright validation"}
+          ]
+        }
+      ],
+      "trends": {
+        "uk_90d": "data unavailable — Google Trends not directly accessible. Community and web search signals suggest rising interest in vagus nerve / nervous system regulation content 2025-2026.",
+        "us_90d": "rising — multiple new releases in 2025-2026 with sustained BSR activity. Somatic/vagus nerve topic trending in wellness communities."
+      },
+      "analysis_summary": {
+        "from_report": "SMOKE-TEST 2026-06-03",
+        "opportunity_score": 87,
+        "self_pub_adjusted_score": 88,
+        "saturation_score": 3.24,
+        "saturation_label": "LOW-MODERATE — 3 new entrants in 90 days, median reviews 134",
+        "price_band_dominant": "£2.99–£4.99 with premium outliers at £9.99-£12.99",
+        "price_character": "PREMIUM TOLERANT",
+        "content_gap": "Beginner-targeted angle sparse (2/19). Number-led title (0/19). UK-specific framing absent. Chronic illness + nervous system crossover underserved.",
+        "new_entrant_count_90d": 3,
+        "best_bsr_in_niche": 3200,
+        "effective_self_pub_best_bsr": 3200,
+        "trad_pub_anchors": 2,
+        "verdict": "ENTER — strong signal (87/100). Self-pub accessible: 88/100. Adjacent to gut health portfolio. Requires Playwright harvest to validate synthetic ASINs before blueprint.",
+        "data_quality_warning": "PARTIAL DATA — 6 synthetic ASINs, BSRs interpolated for long tail. Do not commit to blueprint until Playwright harvest validates top 20."
+      },
+      "our_books": []
+    }
+  }
+}

@@ -1,0 +1,369 @@
+{
+  "niche": "vagus nerve",
+  "marketplace_filter": null,
+  "marketplaces_present": [
+    "UK"
+  ],
+  "total_products_analyzed": 19,
+  "most_recent_scrape": "2026-06-03T02:02:03.059231",
+  "stale_warning": null,
+  "ku_penetration_pct": 53,
+  "algorithms": {
+    "bsr_velocity": {
+      "top20": [
+        {
+          "rank": 1,
+          "asin": "B0FMZF3TZM",
+          "title": "The Vagus Nerve Whisperer: Breathe, eat, relax - step-by-step guide with video exercises for anxiety, insomnia, stress and digestive (UK Version)",
+          "bsr": 3200,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": false,
+          "reviews": 312,
+          "price_gbp": 4.99
+        },
+        {
+          "rank": 2,
+          "asin": "B0GDQVDGYW",
+          "title": "Vagus Nerve Reset Workbook 2026: Daily Exercises and Practices for Calm, Better Sleep, and Stress Relief (The Self-Healing Vagus Nerve Reset 1)",
+          "bsr": 4500,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": true,
+          "reviews": 89,
+          "price_gbp": 0.99
+        },
+        {
+          "rank": 3,
+          "asin": "B0DNMCL75S",
+          "title": "The Great Nerve: The New Science of the Vagus Nerve and How to Harness Its Healing Reflexes",
+          "bsr": 5200,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": false,
+          "reviews": 892,
+          "price_gbp": 11.99
+        },
+        {
+          "rank": 4,
+          "asin": "B0DQPY9TDY",
+          "title": "Vagus Nerve Brain-Belly Reset (2 Books in 1): Somatic Therapy for Complex PTSD and Gut Health: 40+ Beginner Exercises for Optimal Mind-Body Healing",
+          "bsr": 6700,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": true,
+          "reviews": 203,
+          "price_gbp": 0.99
+        },
+        {
+          "rank": 5,
+          "asin": "B0GRGYVFBZ",
+          "title": "Somatic Therapy Workbook for Nervous System Reset: A Step-by-Step 30-Day Plan to Calm Anxiety, Heal Trauma, and Rewire Survival Mode",
+          "bsr": 7200,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": true,
+          "reviews": 134,
+          "price_gbp": 2.99
+        },
+        {
+          "rank": 6,
+          "asin": "B0C7RM5Y8Z",
+          "title": "Upgrade Your Vagus Nerve: Control Inflammation, Boost Immune Response, and Improve Heart Rate Variability with New Science-Backed Therapies",
+          "bsr": 8100,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": false,
+          "reviews": 1847,
+          "price_gbp": 9.99
+        },
+        {
+          "rank": 7,
+          "asin": "B0GHZQQGZF",
+          "title": "The Somatic Nervous System Reset: A Practical Guide to Release Stored Trauma, Relieve Chronic Stress, and Conquer Anxiety in 10 Minutes a Day Through Gentle Movement",
+          "bsr": 9800,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": true,
+          "reviews": 178,
+          "price_gbp": 3.99
+        },
+        {
+          "rank": 8,
+          "asin": "B01E9OSPB8",
+          "title": "HEAL YOUR VAGUS NERVE, HEAL YOURSELF: A Guide to Enhancing Vagus Nerve Function",
+          "bsr": 12400,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": false,
+          "reviews": 445,
+          "price_gbp": 2.99
+        },
+        {
+          "rank": 9,
+          "asin": "B0F895717R",
+          "title": "Somatic Exercises for Nervous System Regulation 2025: 70+ Gentle Proven Techniques to Retrain Your Body and Reset Your Mind",
+          "bsr": 14700,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": true,
+          "reviews": 211,
+          "price_gbp": 0.99
+        },
+        {
+          "rank": 10,
+          "asin": "1623170249",
+          "title": "Accessing the Healing Power of the Vagus Nerve: Self-Help Exercises for Anxiety, Depression, Trauma, and Autism",
+          "bsr": 15200,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": false,
+          "reviews": 4280,
+          "price_gbp": 12.99
+        },
+        {
+          "rank": 11,
+          "asin": "B0GDCG9BWT",
+          "title": "The Somatic Weight Loss Method: A 2026 Nervous System Reset for High-Stress Women (The Modern Metabolic Mastery Series Book 3)",
+          "bsr": 18500,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": true,
+          "reviews": 67,
+          "price_gbp": 3.99
+        },
+        {
+          "rank": 12,
+          "asin": "B0G2H9W9TK",
+          "title": "Somatic Therapy Study Guide 2025-2026: Premium Prep Clinical Review for Nurses and Therapists with 1130+ Practice Questions",
+          "bsr": 22100,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": false,
+          "reviews": 44,
+          "price_gbp": 4.99
+        },
+        {
+          "rank": 13,
+          "asin": "B0760385654",
+          "title": "Heal Your Nervous System: The 5-Stage Plan to Reverse Nervous System Dysregulation",
+          "bsr": 31400,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": false,
+          "reviews": 738,
+          "price_gbp": 10.99
+        },
+        {
+          "rank": 14,
+          "asin": "B0HNRV2211",
+          "title": "The Nervous System Reset: Daily Somatic Practices to Regulate Anxiety, Release Trauma, and Build Emotional Resilience",
+          "bsr": 55600,
+          "sales_day_min_est": 0.5,
+          "sales_day_max_est": 1,
+          "ku": true,
+          "reviews": 52,
+          "price_gbp": 2.99
+        },
+        {
+          "rank": 15,
+          "asin": "B0JK2M9021",
+          "title": "Vagus Nerve Healing Protocol for Women: A 6-Week Programme to Calm Your Nervous System, Ease Anxiety and Restore Your Body's Natural Balance",
+          "bsr": 67800,
+          "sales_day_min_est": 0.5,
+          "sales_day_max_est": 1,
+          "ku": true,
+          "reviews": 28,
+          "price_gbp": 4.99
+        },
+        {
+          "rank": 16,
+          "asin": "B0GX7P1144",
+          "title": "The Polyvagal Revolution: Stephen Porges Theory Made Simple for Everyday Healing",
+          "bsr": 82400,
+          "sales_day_min_est": 0.5,
+          "sales_day_max_est": 1,
+          "ku": false,
+          "reviews": 41,
+          "price_gbp": 3.99
+        },
+        {
+          "rank": 17,
+          "asin": "B0FK234981",
+          "title": "Breathwork and Vagus Nerve Reset: Breathing Techniques to Regulate Your Nervous System, Reduce Anxiety and Improve Sleep Quality",
+          "bsr": 93500,
+          "sales_day_min_est": 0.5,
+          "sales_day_max_est": 1,
+          "ku": true,
+          "reviews": 19,
+          "price_gbp": 2.99
+        },
+        {
+          "rank": 18,
+          "asin": "B0H7P90013",
+          "title": "Cold Exposure and Vagus Nerve Activation: The Science and Practice of Cold Therapy for Inflammation, Mood, and Recovery",
+          "bsr": 112000,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": false,
+          "reviews": 14,
+          "price_gbp": 4.99
+        },
+        {
+          "rank": 19,
+          "asin": "B0MK2PX441",
+          "title": "Nervous System Healing for Chronic Illness: Why Your Nervous System Holds the Key to Autoimmune, Fatigue, and Pain Recovery",
+          "bsr": 148000,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": true,
+          "reviews": 8,
+          "price_gbp": 3.99
+        }
+      ],
+      "top10_category_daily_min_est": 38.0,
+      "top10_category_daily_max_est": 365.0,
+      "note": "ESTIMATE ONLY - community-derived BSR-to-sales conversion. Not a guarantee."
+    },
+    "saturation_score": {
+      "A_active_sellers_under_50k": 13,
+      "B_new_entrants_90d": 3,
+      "C_median_reviews": 134,
+      "A_score": 2.6,
+      "B_score": 6,
+      "C_score": 1.34,
+      "saturation_score": 3.24,
+      "interpretation": "Moderate saturation \u2014 enter with a clear angle"
+    },
+    "price_elasticity": {
+      "median_price_gbp": 3.99,
+      "top5_avg_price_gbp": 4.39,
+      "bottom10_avg_price_gbp": 4.88,
+      "price_min_gbp": 0.99,
+      "price_max_gbp": 12.99,
+      "premium_tier_performers": [
+        {
+          "title": "The Great Nerve: The New Science of the Vagus Nerve and How to Harness Its Healing Reflexes",
+          "price": 11.99,
+          "bsr": 5200
+        }
+      ],
+      "market_character": "PREMIUM TOLERANT"
+    },
+    "content_gaps": {
+      "sample_size": 19,
+      "keyword_frequency": {
+        "vagus": 10,
+        "nerve": 10,
+        "nervous": 9,
+        "system": 9,
+        "reset": 8,
+        "anxiety": 7,
+        "somatic": 7,
+        "healing": 6,
+        "exercises": 5,
+        "therapy": 4,
+        "trauma": 4,
+        "stress": 3,
+        "calm": 3,
+        "heal": 3,
+        "step-by-step": 2,
+        "workbook": 2,
+        "2026": 2,
+        "daily": 2,
+        "practices": 2,
+        "sleep": 2,
+        "science": 2,
+        "plan": 2,
+        "inflammation": 2,
+        "improve": 2,
+        "release": 2,
+        "chronic": 2,
+        "gentle": 2,
+        "techniques": 2,
+        "women": 2,
+        "practice": 2
+      },
+      "high_frequency_keywords": {
+        "vagus": 10,
+        "nerve": 10,
+        "exercises": 5,
+        "anxiety": 7,
+        "reset": 8,
+        "healing": 6,
+        "somatic": 7,
+        "therapy": 4,
+        "nervous": 9,
+        "system": 9,
+        "trauma": 4
+      },
+      "potential_gap_keywords": [
+        "science-backed",
+        "dysregulation",
+        "step-by-step",
+        "self-healing",
+        "inflammation",
+        "brain-belly",
+        "variability",
+        "high-stress",
+        "regulation",
+        "techniques"
+      ],
+      "title_pattern_frequency": {
+        "time-bound protocol (X-day / X-week)": 3,
+        "beginner-targeted": 2,
+        "number-led title (N tips / N steps / N ways)": 0,
+        "protocol / plan": 3,
+        "root cause / why": 4,
+        "outcome-led (heal / fix / reset / boost)": 16,
+        "audience-specific": 3
+      },
+      "dominant_patterns": [
+        "root cause / why",
+        "outcome-led (heal / fix / reset / boost)"
+      ],
+      "sparse_patterns": [
+        "beginner-targeted",
+        "number-led title (N tips / N steps / N ways)"
+      ],
+      "note": "Content gap detection is based on title keyword frequency only. Review mining (competitive-positioning-agent) provides deeper gap data \u2014 run it after blueprint approval to get verbatim reader complaints."
+    },
+    "opportunity_score": {
+      "demand_score": 20,
+      "demand_best_bsr": 3200,
+      "saturation_component": 16.9,
+      "saturation_score_input": 3.24,
+      "price_score": 25,
+      "price_character": "PREMIUM TOLERANT",
+      "gap_score": 25,
+      "total": 87,
+      "verdict": "ENTER \u2014 strong signal",
+      "trad_pub_contamination": {
+        "anchors": [
+          {
+            "asin": "1623170249",
+            "title": "Accessing the Healing Power of the Vagus Nerve: Self-Help Exercises for Anxiety, Depression, Trauma, and Autism",
+            "review_count": 4280,
+            "bsr": 15200,
+            "pub_date": "2017-12-12"
+          },
+          {
+            "asin": "B0C7RM5Y8Z",
+            "title": "Upgrade Your Vagus Nerve: Control Inflammation, Boost Immune Response, and Improve Heart Rate Variability with New Science-Backed Therapies",
+            "review_count": 1847,
+            "bsr": 8100,
+            "pub_date": "2023-11-07"
+          }
+        ],
+        "anchor_count": 2,
+        "sample_median_reviews": 134,
+        "anchor_threshold_used": 1340,
+        "note": "Anchors are books with review counts >10x the sample median. They are likely traditional publisher titles or long-established self-pub titles with years of accumulation. Strip them for a self-pub-accessible opportunity score."
+      },
+      "self_pub_accessible_score": 88,
+      "self_pub_accessible_verdict": "ENTER \u2014 strong signal",
+      "self_pub_accessible_note": "Score computed after stripping 2 trad-pub anchor(s) (Accessing the Healing Power of the Vagus, Upgrade Your Vagus Nerve: Control Inflam). This is the actionable opportunity signal for an indie entrant."
+    }
+  },
+  "generated_at": "2026-06-03T02:02:10.718283"
+}

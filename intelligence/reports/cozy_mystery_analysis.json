@@ -1,0 +1,322 @@
+{
+  "niche": "cozy mystery",
+  "marketplace_filter": null,
+  "marketplaces_present": [
+    "UK"
+  ],
+  "total_products_analyzed": 16,
+  "most_recent_scrape": "2026-06-01T18:52:07.133265",
+  "stale_warning": null,
+  "ku_penetration_pct": 0,
+  "algorithms": {
+    "bsr_velocity": {
+      "top20": [
+        {
+          "rank": 1,
+          "asin": "B07DJ99RBF",
+          "title": "Witchnapped in Westerham: A Fun Witch Cozy Mystery (Paranormal Investigation Bureau Cozy Mystery Book 1)",
+          "bsr": 100,
+          "sales_day_min_est": 300,
+          "sales_day_max_est": 500,
+          "ku": false,
+          "reviews": 9970,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 2,
+          "asin": "B0FR1QY9N2",
+          "title": "The Fish and Chip Shop Detectives: A brand-new and utterly addictive cozy crime British mystery",
+          "bsr": 360,
+          "sales_day_min_est": 50,
+          "sales_day_max_est": 300,
+          "ku": false,
+          "reviews": 257,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 3,
+          "asin": "B0GNNH1D6V",
+          "title": "The Complete Detective Nicki Hardcastle Mysteries Books 1-4: Four gripping British crime thrillers full of twists",
+          "bsr": 703,
+          "sales_day_min_est": 50,
+          "sales_day_max_est": 300,
+          "ku": false,
+          "reviews": 365,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 4,
+          "asin": "B0FHKTFP3H",
+          "title": "A Bookish Disappearance: a gripping English cozy mystery full of twists (The Chiltern Hills Mysteries Book 7)",
+          "bsr": 982,
+          "sales_day_min_est": 50,
+          "sales_day_max_est": 300,
+          "ku": false,
+          "reviews": 751,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 5,
+          "asin": "B0FXXYS527",
+          "title": "Murder Most Bookish: A gripping cozy English crime mystery full of twists (The Chiltern Hills Mysteries Book 1)",
+          "bsr": 1290,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": false,
+          "reviews": 4328,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 6,
+          "asin": "B0FM6TTFHZ",
+          "title": "The Cornish Honeymoon Murder: The brand new Cornish cozy crime for summer 2026 (A Nosey Parker Cozy Mystery Book 10)",
+          "bsr": 1304,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": false,
+          "reviews": null,
+          "price_gbp": 2.99
+        },
+        {
+          "rank": 7,
+          "asin": "B0GX1F9C1X",
+          "title": "THE CORNISH COZY MYSTERIES seven charming and addictive cozy crimes",
+          "bsr": 1448,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": false,
+          "reviews": 354,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 8,
+          "asin": "B0GZW27V6Y",
+          "title": "A Bookish Deception: a gripping English cozy mystery full of twists (The Chiltern Hills Mysteries Book 8)",
+          "bsr": 1891,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": false,
+          "reviews": null,
+          "price_gbp": 0.99
+        },
+        {
+          "rank": 9,
+          "asin": "B0GRH9N26Y",
+          "title": "The Book Club Murders: A completely unputdownable cozy murder mystery",
+          "bsr": 1995,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": false,
+          "reviews": 33,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 10,
+          "asin": "B0CDC7WVCD",
+          "title": "The Body at Rookery Barn: A totally gripping cozy mystery (A Georgina Drake Mystery Book 1)",
+          "bsr": 3199,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": false,
+          "reviews": 1008,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 11,
+          "asin": "B0CT45DTC8",
+          "title": "The Antique Store Detective: A completely unputdownable cozy murder mystery (A Bella Winter Mystery Book 1)",
+          "bsr": 8758,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": false,
+          "reviews": 1746,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 12,
+          "asin": "B0D9W3VBGG",
+          "title": "The Bookshop Mysteries: A Bitter Pill: A Small Town Cozy Mystery",
+          "bsr": 11696,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": false,
+          "reviews": 2532,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 13,
+          "asin": "B0CV4PVHJC",
+          "title": "Village Fetes Can Be Murder: A Saffron Weald Mystery",
+          "bsr": 23531,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": false,
+          "reviews": 1982,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 14,
+          "asin": "B0DRY16XMQ",
+          "title": "Antiques and Adversity in the Azores: A Travel Cozy Murder Mystery with a Female Amateur Sleuth",
+          "bsr": 42668,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": false,
+          "reviews": 216,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 15,
+          "asin": "B0CXGMCQ4V",
+          "title": "Mystique and Murder in Morocco: A Travel Cozy Mystery with a Female Amateur Sleuth",
+          "bsr": 73149,
+          "sales_day_min_est": 0.5,
+          "sales_day_max_est": 1,
+          "ku": false,
+          "reviews": 137,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 16,
+          "asin": "B0H1WGSSB2",
+          "title": "The Jam Jar Secrets: A Cotswold Cozy Mystery with Jam, Village Secrets, and an Amateur Sleuth",
+          "bsr": 94438,
+          "sales_day_min_est": 0.5,
+          "sales_day_max_est": 1,
+          "ku": false,
+          "reviews": 3,
+          "price_gbp": 1.45
+        }
+      ],
+      "top10_category_daily_min_est": 480.0,
+      "top10_category_daily_max_est": 1700.0,
+      "note": "ESTIMATE ONLY - community-derived BSR-to-sales conversion. Not a guarantee."
+    },
+    "saturation_score": {
+      "A_active_sellers_under_50k": 14,
+      "B_new_entrants_90d": 8,
+      "C_median_reviews": 558.0,
+      "A_score": 2.8,
+      "B_score": 10,
+      "C_score": 5.58,
+      "saturation_score": 5.79,
+      "interpretation": "Moderate saturation \u2014 enter with a clear angle"
+    },
+    "price_elasticity": {
+      "median_price_gbp": 0.0,
+      "top5_avg_price_gbp": 0.0,
+      "bottom10_avg_price_gbp": 0.24,
+      "price_min_gbp": 0.0,
+      "price_max_gbp": 2.99,
+      "premium_tier_performers": [],
+      "market_character": "WIDE SPREAD"
+    },
+    "content_gaps": {
+      "sample_size": 16,
+      "keyword_frequency": {
+        "cozy": 14,
+        "mystery": 14,
+        "murder": 7,
+        "mysteries": 6,
+        "gripping": 5,
+        "crime": 4,
+        "full": 4,
+        "twists": 4,
+        "bookish": 3,
+        "english": 3,
+        "chiltern": 3,
+        "hills": 3,
+        "amateur": 3,
+        "sleuth": 3,
+        "addictive": 2,
+        "british": 2,
+        "detective": 2,
+        "cornish": 2,
+        "completely": 2,
+        "unputdownable": 2,
+        "village": 2,
+        "travel": 2,
+        "female": 2,
+        "witchnapped": 1,
+        "westerham": 1,
+        "witch": 1,
+        "paranormal": 1,
+        "investigation": 1,
+        "bureau": 1,
+        "fish": 1
+      },
+      "high_frequency_keywords": {
+        "cozy": 14,
+        "mystery": 14,
+        "crime": 4,
+        "mysteries": 6,
+        "gripping": 5,
+        "full": 4,
+        "twists": 4,
+        "murder": 7
+      },
+      "potential_gap_keywords": [
+        "investigation",
+        "disappearance",
+        "unputdownable",
+        "witchnapped",
+        "paranormal",
+        "detectives",
+        "hardcastle",
+        "completely",
+        "westerham",
+        "brand-new"
+      ],
+      "title_pattern_frequency": {
+        "time-bound protocol (X-day / X-week)": 0,
+        "beginner-targeted": 0,
+        "number-led title (N tips / N steps / N ways)": 0,
+        "protocol / plan": 0,
+        "root cause / why": 0,
+        "outcome-led (heal / fix / reset / boost)": 0,
+        "audience-specific": 0
+      },
+      "dominant_patterns": [],
+      "sparse_patterns": [
+        "time-bound protocol (X-day / X-week)",
+        "beginner-targeted",
+        "number-led title (N tips / N steps / N ways)",
+        "protocol / plan",
+        "root cause / why",
+        "outcome-led (heal / fix / reset / boost)",
+        "audience-specific"
+      ],
+      "note": "Content gap detection is based on title keyword frequency only. Review mining (competitive-positioning-agent) provides deeper gap data \u2014 run it after blueprint approval to get verbatim reader complaints."
+    },
+    "opportunity_score": {
+      "demand_score": 25,
+      "demand_best_bsr": 100,
+      "saturation_component": 10.5,
+      "saturation_score_input": 5.79,
+      "price_score": 15,
+      "price_character": "WIDE SPREAD",
+      "gap_score": 15,
+      "total": 66,
+      "verdict": "ENTER WITH ANGLE \u2014 moderate signal, specific positioning required",
+      "trad_pub_contamination": {
+        "anchors": [
+          {
+            "asin": "B07DJ99RBF",
+            "title": "Witchnapped in Westerham: A Fun Witch Cozy Mystery (Paranormal Investigation Bureau Cozy Mystery Book 1)",
+            "review_count": 9970,
+            "bsr": 100,
+            "pub_date": "2018-07-29"
+          }
+        ],
+        "anchor_count": 1,
+        "sample_median_reviews": 558.0,
+        "anchor_threshold_used": 5580.0,
+        "note": "Anchors are books with review counts >10x the sample median. They are likely traditional publisher titles or long-established self-pub titles with years of accumulation. Strip them for a self-pub-accessible opportunity score."
+      },
+      "self_pub_accessible_score": 67,
+      "self_pub_accessible_verdict": "ENTER WITH ANGLE \u2014 moderate signal, specific positioning required",
+      "self_pub_accessible_note": "Score computed after stripping 1 trad-pub anchor(s) (Witchnapped in Westerham: A Fun Witch Co). This is the actionable opportunity signal for an indie entrant."
+    }
+  },
+  "generated_at": "2026-06-03T01:59:33.264596"
+}

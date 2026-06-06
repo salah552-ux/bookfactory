@@ -8,7 +8,7 @@
 Books checked:
 - `fix-your-gut-for-good` — Fix Your Gut for Good (SIBO, 12 chapters, complete)
 - `the-dust-between-seconds` — The Dust Between Seconds (1 draft chapter, no FACTS.md)
-- `untitled-cosy-mystery` — Death in the Cathedral Close (40 chapters, complete)
+- `death-in-the-cathedral-close` — Death in the Cathedral Close (40 chapters, complete)
 
 ---
 
@@ -23,7 +23,7 @@ No conflicts exist between "Death in the Cathedral Close" and "Fix Your Gut for 
 ## INTERNAL CONTINUITY — Death in the Cathedral Close
 
 See full report at:
-`c:\Users\salah\BookFactory\books\untitled-cosy-mystery\CONTINUITY-REPORT.md`
+`c:\Users\salah\BookFactory\books\death-in-the-cathedral-close\CONTINUITY-REPORT.md`
 
 ### Summary
 

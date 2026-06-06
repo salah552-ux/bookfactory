@@ -1,0 +1,50 @@
+{
+  "_schema": "failure-store v1.0",
+  "_description": "Structured log of agent failures. Agents read this before starting to avoid known failure modes. Orchestrator appends entries after each FAIL or RETRY-3.",
+  "_append_format": {
+    "timestamp": "ISO 8601 UTC",
+    "book_slug": "slug or 'global'",
+    "agent": "agent-name",
+    "stage": "00-10",
+    "failure_type": "rate_limit | off_track | character_error | task_too_large | wrong_tool_used | output_missing | rule1_violation | format_error | brief_error | build_failure",
+    "description": "One sentence — what went wrong",
+    "fix_applied": "What the orchestrator changed before retry",
+    "resolved": true,
+    "retry_count": 0
+  },
+  "failures": [
+    {
+      "timestamp": "2026-04-29T00:00:00Z",
+      "book_slug": "death-in-the-cathedral-close",
+      "agent": "health-writer",
+      "stage": "03",
+      "failure_type": "brief_error",
+      "description": "Helen briefed as 'early 40s' but BLUEPRINT.md locked her age as 70 — rewrites required after chapter was written",
+      "fix_applied": "brief-validator agent created and added as mandatory pre-flight before all writing agents",
+      "resolved": true,
+      "retry_count": 0
+    },
+    {
+      "timestamp": "2026-04-29T00:00:00Z",
+      "book_slug": "death-in-the-cathedral-close",
+      "agent": "epub-builder-agent",
+      "stage": "06",
+      "failure_type": "off_track",
+      "description": "Agent read settings.json instead of building the EPUB — phase completed with no artifact produced",
+      "fix_applied": "Replaced epub-builder-agent with build-manuscript.sh (Pandoc); quality-gate added between stages to catch missing artifacts",
+      "resolved": true,
+      "retry_count": 0
+    },
+    {
+      "timestamp": "2026-05-02T00:00:00Z",
+      "book_slug": "death-in-the-cathedral-close",
+      "agent": "kdp-upload-agent",
+      "stage": "07",
+      "failure_type": "off_track",
+      "description": "Agent published without waiting for PUBLISH confirmation, set wrong categories, skipped AI questionnaire",
+      "fix_applied": "kdp-upload-agent rewritten with mandatory draft-only mode, human gate enforced, AI questionnaire confirmation required",
+      "resolved": true,
+      "retry_count": 0
+    }
+  ]
+}

@@ -1,0 +1,75 @@
+AGENT: market-researcher
+BOOK: The 7-Day Gut Reset: Find Your Trigger and Calm Your Gut in One Week
+SLUG: the-7-day-gut-reset
+GENRE: health
+NICHE: gut health (Amazon UK)
+DATE: 2026-05-13
+
+AGENT-RULES.md RULE 1 APPLIES: Never output any number (£/$, sales estimate, rate, percentage, timeline, budget) without a source citation in parentheses immediately after. Format: [number] (source: [exact source]). If no real source exists, write: "We need real data for this before making a recommendation."
+
+YOUR TASK: Produce MARKET-INTELLIGENCE.md for this book. Save it to:
+C:/Users/salah/BookFactory/books/the-7-day-gut-reset/MARKET-INTELLIGENCE.md
+
+Minimum 500 words. Follow the output format in your agent spec exactly.
+
+REAL DATA ALREADY HARVESTED (use these — do not invent replacements):
+
+From intelligence/reports/gut_health_analysis.json (20 Amazon UK gut health products, scraped 2026-05-13):
+- BSR best: 403 (The Food For Life Cookbook)
+- BSR worst: 390,963
+- BSR average: 162,232 (source: gut_health_analysis.json)
+- BSR median: ~154,546 (source: gut_health_analysis.json arithmetic)
+- Pricing: min £1.99, max £13.99, mean £8.10, sweet spot £3.00 (source: gut_health_analysis.json)
+- Avg reviews across all 20 products: 1,171 (source: gut_health_analysis.json — poisoned by outliers)
+- Median reviews across self-pub field only: ~29 (source: PRODUCT-BLUEPRINT.md analysis)
+- Avg star rating: 4.45 (source: gut_health_analysis.json)
+- KU penetration reported: 100% (source: gut_health_analysis.json — note: likely partial detection artifact)
+- Opportunity score: 40/100 overall; ~65/100 self-pub adjusted (source: PRODUCT-BLUEPRINT.md)
+
+TOP 20 BOOKS BY BSR (source: gut_health_analysis.json):
+1. The Food For Life Cookbook — BSR 403 — 174 reviews — £1.99
+2. The Complete Guide to Taming Chronic Inflammation — BSR 8,091 — 11 reviews — £11.38
+3. Gut (Spector 8M-copy bestseller) — BSR 21,117 — 2 reviews — £5.99
+4. Gut Fix — BSR 37,505 — 50 reviews — £0 (KU)
+5. Gut Health and Mental Clarity — BSR 43,682 — 12 reviews — £0 (KU)
+6. Super Gut (Dr Davis 4-Week Plan) — BSR 44,113 — 48 reviews — £9.99
+7. Gut Health for Beginners — BSR 45,844 — 11 reviews — £0 (KU)
+8. The Complete Low-FODMAP Diet Cookbook — BSR 63,343 — 1,298 reviews — £13.99
+9. The Clever Guts Diet Recipe Book (Mosley) — BSR 93,113 — 4,309 reviews — £2.99
+10. The Clever Guts Diet (Mosley) — BSR 147,807 — 3 reviews — £4.99
+11. The 4-Week Gut Health Protocol for Beginners — BSR 161,285 — 181 reviews — £13.99
+12. The Science-Backed Anti-Inflammatory Diet for Beginners — BSR 185,645 — 16,904 reviews — £0 (KU)
+13. Gut Health Beyond Basics — BSR 198,448 — 45 reviews — £0 (KU)
+14. A Powerful Guide to Gut Health — BSR 257,948 — 11 reviews — £0 (KU)
+15. The Gut Stuff — BSR 266,062 — 8 reviews — £9.99
+16. The Mind-Gut Connection (Mayer) — BSR 294,452 — 36 reviews — £8.99
+17. What Every Woman Needs to Know About Her Gut — BSR 298,784 — 29 reviews — £2.99
+18. The 20-Minute Gut Health Fix — BSR 324,756 — 227 reviews — £12.99
+19. The Power of Gut Health — BSR 361,282 — 12 reviews — £4.99
+20. Self Health Gut Guide — BSR 390,963 — 45 reviews — £0 (KU)
+
+CONTENT GAPS IDENTIFIED (source: gut_health_analysis.json):
+1. Missing angle: root cause
+2. Missing angle: quick fix
+3. Missing angle: women specific
+
+BLUEPRINT POSITIONING (source: PRODUCT-BLUEPRINT.md, 2026-05-13):
+- Title: The 7-Day Gut Reset: Find Your Trigger and Calm Your Gut in One Week
+- Positioning: Every competitor jumps straight to "eat this, avoid that." This guide spends Days 1-2 helping reader identify their personal trigger (food, stress, sleep, gut-brain axis), then Days 3-7 deliver a tailored 5-day calm-down protocol. Diagnostic-first, then prescriptive.
+- Target: 5,500 words
+- Launch price: £0.99 after 5-day FREE KDP promo
+- KU: enrolled day one
+- KDP keywords (source: PRODUCT-BLUEPRINT.md): gut health reset / find your gut trigger / 7 day gut protocol / bloating relief plan / ibs diagnostic guide / low fodmap alternative / gut healing for beginners
+- KDP categories (source: PRODUCT-BLUEPRINT.md):
+  1. Books > Health, Family & Lifestyle > Diet & Nutrition > Digestive Health
+  2. Books > Health, Family & Lifestyle > Self-Help > Stress Management
+  3. Kindle Store > Kindle eBooks > Health, Family & Lifestyle > Diseases & Physical Ailments > Abdominal Disorders
+
+LAUNCH INTELLIGENCE REQUIRED IN OUTPUT:
+- Derive category rank thresholds from the BSR data above
+- Snowball price strategy: use the ladder from PRODUCT-BLUEPRINT.md (FREE → £0.99 → £1.99 → £2.99)
+- For also-bought seed targets, community seeding, promo site eligibility, newsletter pools: use web search to find real data. If data is unavailable, write "We need real data for this before making a recommendation."
+- Do NOT invent subscriber counts, review requirements, or BSR figures not in the provided data
+
+OUTPUT FILE: C:/Users/salah/BookFactory/books/the-7-day-gut-reset/MARKET-INTELLIGENCE.md
+Minimum 500 words. Use the exact format from the market-researcher agent spec.

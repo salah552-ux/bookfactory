@@ -1,8 +1,8 @@
 import sharp from 'sharp';
 import { mkdirSync, statSync } from 'fs';
 
-const SRC   = 'books/untitled-cosy-mystery/exports/cover-master.png';
-const OUT   = 'books/untitled-cosy-mystery/exports/final/cover-kdp.jpg';
+const SRC   = 'books/death-in-the-cathedral-close/exports/cover-master.png';
+const OUT   = 'books/death-in-the-cathedral-close/exports/final/cover-kdp.jpg';
 const W = 941, H = 1672;
 const GOLD  = '#C9A84C';
 
@@ -40,7 +40,7 @@ const withLabel = await sharp(withLabelRemoved)
   .toBuffer();
 
 // ── Step 3: Resize to KDP spec and save ──────────────────────────────────────
-mkdirSync('books/untitled-cosy-mystery/exports/final', { recursive: true });
+mkdirSync('books/death-in-the-cathedral-close/exports/final', { recursive: true });
 
 await sharp(withLabel)
   .resize(1600, 2560, { fit: 'fill' })

@@ -1,7 +1,7 @@
 const fs = require('fs');
 const path = require('path');
 
-const BOOK = 'books/untitled-cosy-mystery';
+const BOOK = 'books/death-in-the-cathedral-close';
 const MANUSCRIPT = path.join(BOOK, 'manuscript');
 const OUT_DIR = path.join(BOOK, 'exports/final');
 const OUT_HTML = path.join(OUT_DIR, 'manuscript-kdp.html');

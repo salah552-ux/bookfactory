@@ -46,3 +46,7 @@ Thumbs.db
 .vscode/
 *.swp
 *.swo
+
+# Automation runtime state (regenerated — not tracked)
+automation/.publish-approved
+automation/.commit-msg.tmp

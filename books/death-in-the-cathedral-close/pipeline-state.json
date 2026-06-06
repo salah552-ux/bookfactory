@@ -1,0 +1,149 @@
+{
+  "book_slug": "death-in-the-cathedral-close",
+  "book_title": "Death in the Cathedral Close",
+  "series": "The Cathedral Close Mysteries",
+  "series_number": 1,
+  "genre": "FICTION-MYSTERY",
+  "pipeline_version": "2.0",
+  "current_stage": 10,
+  "last_updated": "2026-05-28T00:00:00Z",
+  "last_agent_run": "pipeline-coordinator (slug rename: untitled-cosy-mystery → death-in-the-cathedral-close)",
+
+  "stages": {
+    "01-research":    { "status": "complete", "completed_at": "2026-04-27T00:00:00Z" },
+    "02-planning":    { "status": "complete", "completed_at": "2026-04-27T00:00:00Z" },
+    "03-writing":     { "status": "complete", "completed_at": "2026-04-27T00:00:00Z" },
+    "04-quality":     { "status": "complete", "completed_at": "2026-04-27T00:00:00Z" },
+    "05-optimisation":{ "status": "complete", "completed_at": "2026-04-27T00:00:00Z" },
+    "06-production":  { "status": "complete", "completed_at": "2026-05-02T00:00:00Z" },
+    "07-publishing":  { "status": "complete", "started_at": "2026-05-02T00:00:00Z", "completed_at": "2026-05-03T00:00:00Z" },
+    "08-products":    { "status": "not_started" },
+    "09-series":      { "status": "not_started" },
+    "10-postlaunch":  { "status": "in_progress", "started_at": "2026-05-03T00:00:00Z" }
+  },
+
+  "writing": {
+    "writer_agent": "murder-mystery-writer",
+    "target_chapters": 40,
+    "completed_chapters": 40,
+    "approved_chapters": 40,
+    "current_chapter": "complete",
+    "word_count_current": 58030,
+    "word_count_target": 85000
+  },
+
+  "quality_scores": {
+    "book_reviewer_avg": 120,
+    "final_approval_score": null,
+    "chapters_below_threshold": []
+  },
+
+  "human_gates": {
+    "market_intelligence_approved": true,
+    "blueprint_approved": true,
+    "cover_approved": true,
+    "final_approval_passed": true,
+    "ai_questionnaire_confirmed": true,
+    "published": true
+  },
+
+  "production": {
+    "epub_built": true,
+    "pdf_built": true,
+    "docx_built": true,
+    "cover_file": "exports/final/cover-kdp.jpg",
+    "epub_file": "exports/final/manuscript-kdp.epub"
+  },
+
+  "publishing": {
+    "asin": "B0GZD1S8HF",
+    "kdp_internal_id": "AT25QRT6FPTE6",
+    "kdp_status": "live",
+    "live_date": "2026-05-03",
+    "list_price_gbp": 6.99,
+    "list_price_usd": 6.99,
+    "royalty_pct": 70,
+    "kdp_select": true,
+    "countdown_deal_eligible_from": "2026-06-02"
+  },
+
+  "post_launch": {
+    "review_count": 0,
+    "avg_rating": null,
+    "ads_active": false,
+    "ads_start_date": null,
+    "countdown_deal_run": true,
+    "countdown_deal_start": "2026-06-02",
+    "countdown_deal_end": "2026-06-09",
+    "aplus_content_live": false,
+    "arc_emails_sent": 0,
+    "launch_tracker_created": "2026-05-31",
+    "bookfunnel_link_live": false,
+    "bookfunnel_gap_flagged": true,
+    "bsr_main_kindle": 1370902,
+    "bsr_sub_1": "Traditional Detective Mysteries (Kindle Store): #7,668",
+    "bsr_sub_2": "Traditional Detective Mysteries (Books): #8,186",
+    "bsr_sub_3": "Amateur Sleuths: #24,554",
+    "bsr_recorded_date": "2026-06-02",
+    "category_mismatch_flagged": true,
+    "category_mismatch_note": "Live categories (Trad Detective + Amateur Sleuth) do not match KDP-LISTING plan (Cozy + Amateur Sleuth + British & Irish). Cozy category never added. Category correction recommended today — see LAUNCH-TRACKER.md category audit.",
+    "weekly_log": [
+      {
+        "date": "2026-06-02",
+        "week": "W5",
+        "deal_day": 1,
+        "bsr_main": 1370902,
+        "bsr_sub_1_label": "Traditional Detective Mysteries (Kindle Store)",
+        "bsr_sub_1_rank": 7668,
+        "bsr_sub_2_label": "Traditional Detective Mysteries (Books)",
+        "bsr_sub_2_rank": 8186,
+        "bsr_sub_3_label": "Amateur Sleuths",
+        "bsr_sub_3_rank": 24554,
+        "review_count": 0,
+        "avg_rating": null,
+        "ku_pages": null,
+        "units_sold": null,
+        "source": "Architect — KDP dashboard"
+      }
+    ],
+    "tracker_note": "FIRST LIVE BSR DATA logged 2026-06-02 (Deal Day 1). Overall #1,370,902. CATEGORY MISMATCH CONFIRMED — Cozy not live. Fix categories in KDP today."
+  },
+
+  "agent_log": [
+    {
+      "timestamp": "2026-06-02T00:00:00Z",
+      "agent": "pipeline-orchestrator (Opus)",
+      "action": "Deal Day 1 BSR logged + category audit",
+      "result": "success",
+      "notes": "First live BSR data logged: overall #1,370,902, Trad Detective Mysteries (KS) #7,668, Trad Detective Mysteries (Books) #8,186, Amateur Sleuths #24,554. CATEGORY MISMATCH CONFIRMED: book is in Trad Detective + Amateur Sleuth instead of planned Cozy + Amateur Sleuth + British & Irish. Cozy category was never added at Day 30. Category correction recommended immediately while Countdown Deal is live. LAUNCH-TRACKER.md updated with deal table Day 1 entry, full category audit, and corrected milestone watch. pipeline-state.json updated with bsr fields, weekly_log entry, and category_mismatch_flagged."
+    },
+    {
+      "timestamp": "2026-06-01T00:00:00Z",
+      "agent": "pipeline-orchestrator (Opus)",
+      "action": "Countdown Deal scheduled — LAUNCH-TRACKER.md and COUNTDOWN-DEAL-PLAYBOOK.md created",
+      "result": "success",
+      "notes": "countdown_deal_run set to true. Deal dates: 2026-06-02 to 2026-06-09. COUNTDOWN-DEAL-PLAYBOOK.md produced with daily action plan and KDP setup checklist. LAUNCH-TRACKER.md updated with Countdown Deal section and daily tracking table. June 8 existing reminder repurposed as deal-end preparation alert."
+    },
+    {
+      "timestamp": "2026-05-31T00:00:00Z",
+      "agent": "pipeline-orchestrator",
+      "action": "6-gap system audit — GAP 1 fix: LAUNCH-TRACKER.md baseline created",
+      "result": "partial",
+      "notes": "LAUNCH-TRACKER.md baseline created. Countdown Deal window opens 2026-06-02 — URGENT. No live BSR/review/KU data logged. Run 'track launch death-in-the-cathedral-close' immediately. GAP 4 (series sync) also initiated this session."
+    },
+    {
+      "timestamp": "2026-05-02T00:00:00Z",
+      "agent": "kdp-upload-agent",
+      "action": "KDP eBook upload — Death in the Cathedral Close",
+      "result": "success",
+      "notes": "ASIN AT25QRT6FPTE6 assigned. Status: In Review. Price: £6.99 / $6.99. 70% royalty. KDP Select enrolled. Categories: Cozy > General + British & Irish > Contemporary."
+    },
+    {
+      "timestamp": "2026-05-03T00:00:00Z",
+      "agent": "pipeline-coordinator",
+      "action": "Book confirmed live on Amazon",
+      "result": "success",
+      "notes": "Live date: 2026-05-03. Countdown Deal eligible from: 2026-06-02. Stage moved to 10-postlaunch. UberReflex staging files pending deletion."
+    }
+  ]
+}

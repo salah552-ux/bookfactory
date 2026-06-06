@@ -1,0 +1,379 @@
+{
+  "niche": "gut health",
+  "marketplace_filter": null,
+  "marketplaces_present": [
+    "UK"
+  ],
+  "total_products_analyzed": 20,
+  "most_recent_scrape": "2026-05-13T21:07:29.481Z",
+  "stale_warning": "Data is 20 days old. Consider re-running the harvester.",
+  "ku_penetration_pct": 100,
+  "algorithms": {
+    "bsr_velocity": {
+      "top20": [
+        {
+          "rank": 1,
+          "asin": "B0CTCBR3VB",
+          "title": "The Food For Life Cookbook",
+          "bsr": 403,
+          "sales_day_min_est": 50,
+          "sales_day_max_est": 300,
+          "ku": true,
+          "reviews": 174,
+          "price_gbp": 1.99
+        },
+        {
+          "rank": 2,
+          "asin": "1916662226",
+          "title": "The Complete Guide to Taming Chronic Inflammation",
+          "bsr": 8091,
+          "sales_day_min_est": 5,
+          "sales_day_max_est": 50,
+          "ku": true,
+          "reviews": 11,
+          "price_gbp": 11.38
+        },
+        {
+          "rank": 3,
+          "asin": "B0GFX8K9GQ",
+          "title": "Gut: The 8-million-copy #1 bestseller",
+          "bsr": 21117,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": true,
+          "reviews": 2,
+          "price_gbp": 5.99
+        },
+        {
+          "rank": 4,
+          "asin": "B0C888GXWL",
+          "title": "Gut Fix: Discover the herbal remedies, diet tips, and supplements",
+          "bsr": 37505,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": true,
+          "reviews": 50,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 5,
+          "asin": "B0FYJHG4MP",
+          "title": "Gut Health and Mental Clarity: A Simple Microbiome Reset Plan",
+          "bsr": 43682,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": true,
+          "reviews": 12,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 6,
+          "asin": "B09FDDVJQD",
+          "title": "Super Gut: A Four-Week Plan to Reprogram Your Microbiome",
+          "bsr": 44113,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": true,
+          "reviews": 48,
+          "price_gbp": 9.99
+        },
+        {
+          "rank": 7,
+          "asin": "B0DYJHFHQ1",
+          "title": "Gut Health for Beginners: Boost Energy, Balance Weight",
+          "bsr": 45844,
+          "sales_day_min_est": 1,
+          "sales_day_max_est": 5,
+          "ku": true,
+          "reviews": 11,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 8,
+          "asin": "B0FMQ1MQPY",
+          "title": "The Complete Low-FODMAP Diet Cookbook",
+          "bsr": 63343,
+          "sales_day_min_est": 0.5,
+          "sales_day_max_est": 1,
+          "ku": true,
+          "reviews": 1298,
+          "price_gbp": 13.99
+        },
+        {
+          "rank": 9,
+          "asin": "B073DPZHL5",
+          "title": "The Clever Guts Diet Recipe Book",
+          "bsr": 93113,
+          "sales_day_min_est": 0.5,
+          "sales_day_max_est": 1,
+          "ku": true,
+          "reviews": 4309,
+          "price_gbp": 2.99
+        },
+        {
+          "rank": 10,
+          "asin": "B06XGP7WZX",
+          "title": "The Clever Guts Diet",
+          "bsr": 147807,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": true,
+          "reviews": 3,
+          "price_gbp": 4.99
+        },
+        {
+          "rank": 11,
+          "asin": "B0C91NC6MS",
+          "title": "The 4-Week Gut Health Protocol for Beginners",
+          "bsr": 161285,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": true,
+          "reviews": 181,
+          "price_gbp": 13.99
+        },
+        {
+          "rank": 12,
+          "asin": "B0CNBYT8Z5",
+          "title": "The Science-Backed Anti-Inflammatory Diet for Beginners",
+          "bsr": 185645,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": true,
+          "reviews": 16904,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 13,
+          "asin": "B0F9FQ59GN",
+          "title": "Gut Health Beyond Basics",
+          "bsr": 198448,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": true,
+          "reviews": 45,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 14,
+          "asin": "B0GQJ32FKZ",
+          "title": "A Powerful Guide to Gut Health",
+          "bsr": 257948,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": true,
+          "reviews": 11,
+          "price_gbp": 0.0
+        },
+        {
+          "rank": 15,
+          "asin": "B0CM1X6C33",
+          "title": "The Gut Stuff",
+          "bsr": 266062,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": true,
+          "reviews": 8,
+          "price_gbp": 9.99
+        },
+        {
+          "rank": 16,
+          "asin": "B075JDWB8R",
+          "title": "The Mind-Gut Connection",
+          "bsr": 294452,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": true,
+          "reviews": 36,
+          "price_gbp": 8.99
+        },
+        {
+          "rank": 17,
+          "asin": "B09QHT4ND5",
+          "title": "What Every Woman Needs to Know About Her Gut",
+          "bsr": 298784,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": true,
+          "reviews": 29,
+          "price_gbp": 2.99
+        },
+        {
+          "rank": 18,
+          "asin": "B0D5CS2F23",
+          "title": "The 20-Minute Gut Health Fix",
+          "bsr": 324756,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": true,
+          "reviews": 227,
+          "price_gbp": 12.99
+        },
+        {
+          "rank": 19,
+          "asin": "B0FXTFPCMY",
+          "title": "The Power of Gut Health",
+          "bsr": 361282,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": true,
+          "reviews": 12,
+          "price_gbp": 4.99
+        },
+        {
+          "rank": 20,
+          "asin": "B0FJYKYTN5",
+          "title": "Self Health Gut Guide",
+          "bsr": 390963,
+          "sales_day_min_est": 0.0,
+          "sales_day_max_est": 0.5,
+          "ku": true,
+          "reviews": 45,
+          "price_gbp": 0.0
+        }
+      ],
+      "top10_category_daily_min_est": 61.0,
+      "top10_category_daily_max_est": 377.5,
+      "note": "ESTIMATE ONLY - community-derived BSR-to-sales conversion. Not a guarantee."
+    },
+    "saturation_score": {
+      "A_active_sellers_under_50k": 7,
+      "B_new_entrants_90d": 0,
+      "C_median_reviews": 40.5,
+      "A_score": 1.4,
+      "B_score": 0,
+      "C_score": 0.41,
+      "saturation_score": 0.68,
+      "interpretation": "Low saturation \u2014 strong opportunity"
+    },
+    "price_elasticity": {
+      "median_price_gbp": 3.99,
+      "top5_avg_price_gbp": 3.87,
+      "bottom10_avg_price_gbp": 5.39,
+      "price_min_gbp": 0.0,
+      "price_max_gbp": 13.99,
+      "premium_tier_performers": [
+        {
+          "title": "The Complete Guide to Taming Chronic Inflammation",
+          "price": 11.38,
+          "bsr": 8091
+        }
+      ],
+      "market_character": "PREMIUM TOLERANT"
+    },
+    "content_gaps": {
+      "sample_size": 20,
+      "keyword_frequency": {
+        "health": 8,
+        "diet": 5,
+        "beginners": 3,
+        "cookbook": 2,
+        "microbiome": 2,
+        "plan": 2,
+        "clever": 2,
+        "guts": 2,
+        "food": 1,
+        "life": 1,
+        "taming": 1,
+        "chronic": 1,
+        "inflammation": 1,
+        "8-million-copy": 1,
+        "bestseller": 1,
+        "discover": 1,
+        "herbal": 1,
+        "remedies": 1,
+        "tips": 1,
+        "supplements": 1,
+        "mental": 1,
+        "clarity": 1,
+        "simple": 1,
+        "reset": 1,
+        "super": 1,
+        "four-week": 1,
+        "reprogram": 1,
+        "boost": 1,
+        "energy": 1,
+        "balance": 1
+      },
+      "high_frequency_keywords": {
+        "diet": 5,
+        "health": 8
+      },
+      "potential_gap_keywords": [
+        "anti-inflammatory",
+        "8-million-copy",
+        "science-backed",
+        "inflammation",
+        "supplements",
+        "bestseller",
+        "microbiome",
+        "low-fodmap",
+        "connection",
+        "four-week"
+      ],
+      "title_pattern_frequency": {
+        "time-bound protocol (X-day / X-week)": 2,
+        "beginner-targeted": 5,
+        "number-led title (N tips / N steps / N ways)": 0,
+        "protocol / plan": 3,
+        "root cause / why": 1,
+        "outcome-led (heal / fix / reset / boost)": 9,
+        "audience-specific": 3
+      },
+      "dominant_patterns": [
+        "beginner-targeted",
+        "outcome-led (heal / fix / reset / boost)"
+      ],
+      "sparse_patterns": [
+        "time-bound protocol (X-day / X-week)",
+        "number-led title (N tips / N steps / N ways)",
+        "root cause / why"
+      ],
+      "note": "Content gap detection is based on title keyword frequency only. Review mining (competitive-positioning-agent) provides deeper gap data \u2014 run it after blueprint approval to get verbatim reader complaints."
+    },
+    "opportunity_score": {
+      "demand_score": 25,
+      "demand_best_bsr": 403,
+      "saturation_component": 23.3,
+      "saturation_score_input": 0.68,
+      "price_score": 25,
+      "price_character": "PREMIUM TOLERANT",
+      "gap_score": 25,
+      "total": 98,
+      "verdict": "ENTER \u2014 strong signal",
+      "trad_pub_contamination": {
+        "anchors": [
+          {
+            "asin": "B0CNBYT8Z5",
+            "title": "The Science-Backed Anti-Inflammatory Diet for Beginners",
+            "review_count": 16904,
+            "bsr": 185645,
+            "pub_date": null
+          },
+          {
+            "asin": "B0FMQ1MQPY",
+            "title": "The Complete Low-FODMAP Diet Cookbook",
+            "review_count": 1298,
+            "bsr": 63343,
+            "pub_date": null
+          },
+          {
+            "asin": "B073DPZHL5",
+            "title": "The Clever Guts Diet Recipe Book",
+            "review_count": 4309,
+            "bsr": 93113,
+            "pub_date": null
+          }
+        ],
+        "anchor_count": 3,
+        "sample_median_reviews": 40.0,
+        "anchor_threshold_used": 405.0,
+        "note": "Anchors are books with review counts >10x the sample median. They are likely traditional publisher titles or long-established self-pub titles with years of accumulation. Strip them for a self-pub-accessible opportunity score."
+      },
+      "self_pub_accessible_score": 98,
+      "self_pub_accessible_verdict": "ENTER \u2014 strong signal",
+      "self_pub_accessible_note": "Score computed after stripping 3 trad-pub anchor(s) (The Science-Backed Anti-Inflammatory Die, The Complete Low-FODMAP Diet Cookbook, The Clever Guts Diet Recipe Book). This is the actionable opportunity signal for an indie entrant."
+    }
+  },
+  "generated_at": "2026-06-03T01:59:26.338800"
+}

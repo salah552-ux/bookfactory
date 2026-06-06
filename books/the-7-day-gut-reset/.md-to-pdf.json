@@ -1,0 +1,17 @@
+{
+  "stylesheet": "c:/Users/salah/BookFactory/books/the-7-day-gut-reset/pdf-style.css",
+  "pdf_options": {
+    "width": "6in",
+    "height": "9in",
+    "margin": {
+      "top": "0.85in",
+      "bottom": "0.85in",
+      "left": "0.875in",
+      "right": "0.5in"
+    },
+    "displayHeaderFooter": true,
+    "headerTemplate": "<style>* { margin: 0; padding: 0; } .hw { width: 100%; display: flex; justify-content: center; align-items: flex-end; padding: 0 0.5in 6px 0.875in; box-sizing: border-box; font-family: Georgia, 'Times New Roman', serif; font-size: 7pt; color: #aaa; letter-spacing: 0.18em; text-transform: uppercase; } </style><div class='hw'><span>The 7-Day Gut Reset</span></div>",
+    "footerTemplate": "<style>* { margin: 0; padding: 0; } .fw { width: 100%; display: flex; justify-content: flex-end; align-items: flex-start; padding: 6px 0.5in 0 0.875in; box-sizing: border-box; font-family: Georgia, 'Times New Roman', serif; font-size: 7pt; color: #aaa; letter-spacing: 0.08em; } </style><div class='fw'><span class='pageNumber'></span></div>",
+    "printBackground": true
+  }
+}

@@ -2,7 +2,7 @@ const fs   = require('fs');
 const path = require('path');
 const { execSync } = require('child_process');
 
-const BOOK     = 'books/untitled-cosy-mystery';
+const BOOK     = 'books/death-in-the-cathedral-close';
 const FINAL    = path.join(BOOK, 'exports/final');
 const BUILD    = path.join(BOOK, 'exports/epub-build');
 const OEBPS    = path.join(BUILD, 'OEBPS');
