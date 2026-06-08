@@ -1,8 +1,8 @@
 {
   "schema_version": "1.0",
   "description": "BookFactory Intelligence Layer — Opportunity Database. Accumulates niche data over time. Never wipe this file. BSR snapshots enable velocity tracking across harvest runs.",
-  "last_updated": "2026-06-03T03:00:00Z",
-  "update_notes": "2026-06-03T03:00: BLOCKER FIXES applied by pipeline-orchestrator (Opus). (1) cozy-mystery opportunity_score corrected from 76 to 66 (fiction guard — gap component capped at 15/25). (2) Agent files updated: Python path changed from 'python' to 'uv run --python 3.12 --no-project' in harvester-agent, analyzer-agent. Playwright fallback gates added to harvester-agent and niche-finder-agent. Previous: 2026-06-03T02:15 SMOKE TEST RUN — vagus nerve harvested via web search (19 products, 6 synthetic). 2026-06-01: cozy-mystery full harvest complete.",
+  "last_updated": "2026-06-07T00:00:00Z",
+  "update_notes": "2026-06-07: Added h-pylori-gut-health niche (score 78, MEDIUM confidence, BUILD). Stage 00 blueprint approved by Architect; Stage 01 market intelligence complete. BSR data BLOCKED — no Playwright harvest run for this niche. Previous: 2026-06-03T03:00: BLOCKER FIXES applied by pipeline-orchestrator (Opus). (1) cozy-mystery opportunity_score corrected from 76 to 66 (fiction guard — gap component capped at 15/25). (2) Agent files updated: Python path changed from 'python' to 'uv run --python 3.12 --no-project' in harvester-agent, analyzer-agent. Playwright fallback gates added to harvester-agent and niche-finder-agent. Previous: 2026-06-03T02:15 SMOKE TEST RUN — vagus nerve harvested via web search (19 products, 6 synthetic). 2026-06-01: cozy-mystery full harvest complete.",
   "niches": {
     "gut-health": {
       "niche_name": "gut health",
@@ -466,6 +466,45 @@
         "data_quality_warning": "PARTIAL DATA — 6 synthetic ASINs, BSRs interpolated for long tail. Do not commit to blueprint until Playwright harvest validates top 20."
       },
       "our_books": []
+    },
+    "h-pylori-gut-health": {
+      "niche_name": "h pylori",
+      "niche_id": "h-pylori-gut-health",
+      "last_harvested": "2026-06-07",
+      "harvest_status": "PARTIAL — web-search-based, no Playwright BSR scrape",
+      "marketplace": ["UK", "US"],
+      "products_count": null,
+      "harvest_notes": "Stage 01 market intelligence gathered via web search 2026-06-07. No structured Playwright BSR harvest run for this niche. Competitor titles, reader language, clinical landscape, and natural-intervention evidence captured in books/h-pylori-recovery-plan/MARKET-INTELLIGENCE.md. BSR data for the H. pylori / Abdominal Disorders / Digestive Health sub-cluster is BLOCKED pending a Playwright harvest. Recommend harvest before category lock at the human gate.",
+      "harvest_overdue": false,
+      "next_harvest_due": "2026-06-21",
+      "score": 78,
+      "confidence": "MEDIUM",
+      "recommendation": "BUILD",
+      "blueprint_file": "intelligence/blueprints/BLUEPRINT-2026-06-07-h-pylori.md",
+      "bsr_snapshots": [],
+      "analysis_summary": {
+        "from_report": "STAGE-00 BLUEPRINT 2026-06-07",
+        "opportunity_score": 78,
+        "confidence": "MEDIUM",
+        "confidence_reason": "BSR data partially blocked — no Playwright harvest for this niche. Competitor data from web search only.",
+        "score_breakdown": "demand 22/25 + saturation 14/25 + price 18/25 + gap 24/25 = 78",
+        "saturation_label": "THIN-LOW-QUALITY — field dominated by 'natural cure without antibiotics' titles, short AI-style guides, and probiotic-supplement-adjacent content. Few evidence-graded clinical guides.",
+        "price_band_dominant": "£4.99–£13.99 — premium tolerant for a credible clinical guide",
+        "content_gap": "'When antibiotics fail' rescue-treatment lane largely unoccupied despite ~28% failure rate. Proportionate evidence-based cancer-risk framing absent. No-supplement-sales-pitch trust positioning is a differentiator.",
+        "verdict": "BUILD",
+        "data_quality_warning": "BSR BLOCKED — run Playwright harvest of Abdominal Disorders / Digestive Health sub-categories before locking categories at the human gate."
+      },
+      "our_books": [
+        {
+          "asin": null,
+          "title": "The H. Pylori Recovery Plan",
+          "slug": "h-pylori-recovery-plan",
+          "series": "Fix Your Gut for Good",
+          "series_number": 3,
+          "status": "stage-01 — market intelligence complete, pending Architect approval of category selection",
+          "live_date": null
+        }
+      ]
     }
   }
 }

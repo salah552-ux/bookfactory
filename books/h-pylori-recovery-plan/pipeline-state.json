@@ -1,0 +1,104 @@
+{
+  "book_slug": "h-pylori-recovery-plan",
+  "book_title": "The H. Pylori Recovery Plan",
+  "series": "Fix Your Gut for Good",
+  "series_number": 3,
+  "genre": "HEALTH",
+  "pipeline_version": "2.0",
+  "current_stage": 1,
+  "created_at": "2026-06-07T00:00:00Z",
+  "last_updated": "2026-06-07T00:00:00Z",
+  "last_agent_run": "Stage 01 complete (market intelligence, SEO, categories) by pipeline-orchestrator (Opus)",
+
+  "stages": {
+    "00-intelligence": { "status": "complete", "completed_at": "2026-06-07T00:00:00Z", "notes": "Blueprint scored 78/100 (MEDIUM confidence, BSR partially blocked). Architect approved BUILD at Stage 00. Blueprint: intelligence/blueprints/BLUEPRINT-2026-06-07-h-pylori.md" },
+    "01-research":     { "status": "in_progress", "outputs": ["MARKET-INTELLIGENCE.md", "SEO-STRATEGY.md", "CATEGORY-SELECTION.md", "KDP-LISTING.md"], "notes": "Market intelligence, KDP SEO, and category selection produced. CATEGORY-SELECTION.md PENDING ARCHITECT APPROVAL. BSR data BLOCKED pending Playwright harvest." },
+    "02-planning":     { "status": "not_started" },
+    "03-writing":      { "status": "not_started" },
+    "04-quality":      { "status": "not_started" },
+    "05-optimisation": { "status": "not_started" },
+    "06-production":   { "status": "not_started" },
+    "07-publishing":   { "status": "not_started" },
+    "08-products":     { "status": "not_started" },
+    "09-series":       { "status": "not_started" },
+    "10-postlaunch":   { "status": "not_started" }
+  },
+
+  "intelligence_gate": {
+    "niche": "h-pylori-gut-health",
+    "harvested_at": "2026-06-07T00:00:00Z",
+    "opportunity_score": 78,
+    "confidence": "MEDIUM",
+    "blueprint_path": "intelligence/blueprints/BLUEPRINT-2026-06-07-h-pylori.md",
+    "blueprint_approved": true,
+    "blueprint_approved_at": "2026-06-07T00:00:00Z",
+    "gate_cleared": true,
+    "status": "approved",
+    "note": "Architect approved H. pylori book at Stage 00. Gate cleared — Stage 01 research authorised and in progress."
+  },
+
+  "writing": {
+    "writer_agent": null,
+    "target_chapters": 12,
+    "completed_chapters": 0,
+    "approved_chapters": 0,
+    "current_chapter": null,
+    "word_count_current": 0,
+    "word_count_target": 16000
+  },
+
+  "quality_scores": {
+    "book_reviewer_avg": null,
+    "final_approval_score": null,
+    "chapters_below_threshold": []
+  },
+
+  "human_gates": {
+    "market_intelligence_approved": false,
+    "blueprint_approved": true,
+    "category_selection_approved": false,
+    "cover_approved": false,
+    "final_approval_passed": false,
+    "ai_questionnaire_confirmed": false,
+    "published": false
+  },
+
+  "production": {
+    "epub_built": false,
+    "pdf_built": false,
+    "docx_built": false,
+    "cover_file": null,
+    "epub_file": null
+  },
+
+  "publishing": {
+    "asin": null,
+    "kdp_status": "not_started",
+    "live_date": null,
+    "list_price_gbp": 6.99,
+    "list_price_usd": 9.99,
+    "royalty_pct": 70,
+    "kdp_select": true,
+    "countdown_deal_eligible_from": null
+  },
+
+  "post_launch": {
+    "review_count": 0,
+    "avg_rating": null,
+    "ads_active": false,
+    "ads_start_date": null,
+    "countdown_deal_run": false,
+    "aplus_content_live": false,
+    "arc_emails_sent": 0
+  },
+
+  "agent_log": [
+    {
+      "timestamp": "2026-06-07T00:00:00Z",
+      "agent": "pipeline-orchestrator (Opus)",
+      "action": "Stage 01 executed",
+      "result": "success",
+      "notes": "Created book folder, opportunity-db.json entry, blueprint, MARKET-INTELLIGENCE.md, SEO-STRATEGY.md, CATEGORY-SELECTION.md, KDP-LISTING.md. Series string verified against Book 1/2. 7 backend keywords byte-verified <=50. BSR data BLOCKED — Playwright harvest required before category lock. CATEGORY-SELECTION.md pending Architect approval."
+    }
+  ]
+}
