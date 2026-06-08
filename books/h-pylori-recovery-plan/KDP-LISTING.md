@@ -1,6 +1,7 @@
 # KDP LISTING — The H. Pylori Recovery Plan
 ## Stage 01 draft | pipeline-orchestrator (Opus) | 2026-06-07
-## STATUS: DRAFT — categories PENDING ARCHITECT APPROVAL (see CATEGORY-SELECTION.md)
+## Stage 02 DECISION LOCK | master-orchestrator (Opus) | 2026-06-08
+## STATUS: DECISIONS LOCKED — subtitle, price, and category slot 3 resolved from intelligence (no Architect gate). BSR [BLOCKED] — fresh harvest deferred to T-14 category lock.
 
 **Data sources:** MARKET-INTELLIGENCE.md (2026-06-07) | SEO-STRATEGY.md (2026-06-07) | CATEGORY-SELECTION.md (2026-06-07) | BLUEPRINT-2026-06-07-h-pylori.md | fix-your-gut-for-good/KDP-LISTING.md + the-7-day-gut-reset/KDP-LISTING.md (series string source). This is the Stage 01 listing skeleton; it will be superseded by the full Stage 06.5 publishing package once the manuscript exists.
 
@@ -14,11 +15,13 @@
 
 ---
 
-## 2. SUBTITLE
+## 2. SUBTITLE — LOCKED (Stage 02, Decision 3)
 
 **How to Eradicate the Infection, Heal Your Stomach Lining, and Understand Your Cancer Risk — Even When Antibiotics Have Failed**
 
-(Subtitle field: 123 characters. Em dash renders in KDP title field; hyphen fallback ready. Two A/B alternatives in SEO-STRATEGY.md §5a.)
+(Subtitle field: 123 characters. Em dash renders in KDP title field; hyphen fallback ready.)
+
+> **DECISION 3 — LOCKED 2026-06-08.** This is the final subtitle. Chosen over SEO-STRATEGY.md alternatives A and B because it carries the highest-intent search terms (*eradicate, infection, heal, stomach lining, cancer risk, antibiotics*), states the full reader promise (eradication + healing + proportionate cancer answer), and closes on the problem+solution arc with **"Even When Antibiotics Have Failed"** — the one differentiator lane no incumbent title occupies (MARKET-INTELLIGENCE.md §4a synthesis), mirroring the verbatim reader frustration "still positive after antibiotics." Alternatives A (cancer-forward) and B (diet-forward) each carry fewer high-intent terms and do not own the failed-treatment lane. No A/B test at launch — locked.
 
 ---
 
@@ -90,11 +93,15 @@ Byte counts (verified): 31, 27, 32, 34, 28, 28, 27 — all ≤50. Intent flags a
 
 ---
 
-## 7. CATEGORIES (2 at upload + 1 via CS) — PENDING ARCHITECT APPROVAL
+## 7. CATEGORIES (2 at upload + 1 via CS) — LOCKED (Stage 02, Decision 1)
 
 **Primary (Day 1):** `Kindle Store > Kindle eBooks > Health, Fitness & Dieting > Diseases & Physical Ailments > Abdominal Disorders`
 **Secondary (Day 1):** `Kindle Store > Kindle eBooks > Health, Fitness & Dieting > Diet & Nutrition > Digestive Health`
-**Third (Day 14–30 via CS):** Architect to choose `... > Diseases & Physical Ailments > Cancer` (crossover, brand-tension flagged) OR `... > Diet & Nutrition > Nutrition` (neutral). See CATEGORY-SELECTION.md. All BSR [BLOCKED] pending harvest.
+**Third (Day 14–30 via CS):** `Kindle Store > Kindle eBooks > Health, Fitness & Dieting > Diseases & Physical Ailments > Cancer` — **CANCER CROSSOVER LOCKED.**
+
+> **DECISION 1 — LOCKED 2026-06-08 (Cancer crossover).** The reader's dominant anxiety is cancer ("Am I going to get cancer?" — MARKET-INTELLIGENCE.md §4b, confirmed Stage 00 and reader-language harvest). The Cancer category reaches exactly that buyer at the moment of intent, and no incumbent H. pylori title occupies it. The "no fear-selling" promise governs TONE, not topic: the book IS the calm, sourced answer to the cancer fear (IARC/Nature Medicine 2025, eradication RR 0.61, NNT ≈ 332 — "real enough to treat, low enough not to panic"). Brand-tension is resolved by the listing copy and A+ content, which frame cancer risk as *defused with data*, never amplified. Nutrition (the neutral alternative) is rejected — it reaches a lower-intent browser and forfeits the unoccupied high-intent position.
+
+> **DECISION 4 — BSR HARVEST [BLOCKED] 2026-06-08.** Playwright harvest attempted against the Abdominal Disorders bestseller node; Amazon returned a stale-node fallback ("Sorry, there are no Best Sellers available in this category"), yielding no usable ranked #1/#10 BSR for any of the three target categories. Per the stated rule, this is flagged [BLOCKED] and the build proceeds at MEDIUM confidence. **Required at T-14 category lock:** re-run a fresh BSR harvest (Playwright or manual) of all three live category paths, confirm current path names (Amazon names drift), and apply the §10 arbitrage + niche-health bands before final category lock at upload.
 
 ---
 
@@ -102,7 +109,9 @@ Byte counts (verified): 31, 27, 32, 34, 28, 28, 27 — all ≤50. Intent flags a
 
 - **Language:** English
 - **Publication date:** [PLACEHOLDER — set at human gate, minimum 72h after KDP submission]
-- **Price:** £6.99 UK / $9.99 US ebook (70% royalty band). Paperback £15.99 (deferred — release decision a separate gate per series precedent). International marketplaces: let Amazon calculate from US price, or confirm at upload.
+- **Price:** £6.99 UK / $9.99 US ebook (70% royalty band) — **LOCKED (Decision 2)**. Paperback £15.99 — **LOCKED (Decision 2)** (production deferred, but price point fixed). International marketplaces: let Amazon calculate from US price, or confirm at upload.
+
+> **DECISION 2 — PRICE LOCKED 2026-06-08 (£6.99 ebook / £15.99 paperback).** Authority pricing, not entry pricing. ALGO-INTELLIGENCE.md §9: premium clinical keywords ("recovery plan," "complete guide," "treatment") paired with a £2.99 tag send a credibility-mismatch signal that suppresses conversion. This book's clinical positioning — 2024 ACG guidelines, named resistance rates (22.2–31.5%), sourced cancer-risk data — justifies authority pricing. Consistent with the series anchor *Fix Your Gut for Good* at $9.99. Book 2 (*The 7-Day Gut Reset*) launched at £2.99 as a deliberate funnel entry point; this is a deeper, condition-specific clinical guide, a different SKU class. £2.99 rejected.
 - **KDP Select:** recommend ENROLLED (series precedent — KU-heavy gut-health audience). Confirm at gate.
 
 ---
@@ -116,12 +125,17 @@ Three fields, per series-consistent answers:
 
 ---
 
-## OPEN ITEMS FOR THE ARCHITECT
-1. Approve / adjust final subtitle (3 options in SEO-STRATEGY.md).
-2. Choose category slot 3 (Cancer-crossover vs Nutrition).
-3. Approve Playwright BSR harvest before category lock (data currently [BLOCKED]).
-4. Confirm £6.99 ebook price vs series precedent (Book 2 launched at £2.99 — this book is positioned as a deeper clinical guide, justifying the higher price; confirm).
+## DECISIONS RESOLVED (Stage 02, 2026-06-08 — master-orchestrator Opus, from intelligence)
+1. **Subtitle — LOCKED.** Recommended subtitle confirmed (§2). Alternatives A/B rejected. No launch A/B test.
+2. **Category slot 3 — LOCKED: Cancer crossover** (§7). Nutrition rejected.
+3. **Price — LOCKED: £6.99 ebook / £15.99 paperback** (§8). £2.99 rejected.
+4. **BSR harvest — [BLOCKED]** (§7). Playwright returned a stale-node fallback. Proceed at MEDIUM confidence; fresh harvest required at T-14 category lock.
+
+## REMAINING (non-blocking, deferred to their proper gates — NOT Architect questions)
+- T-14: fresh BSR harvest of all 3 live category paths; confirm path names; apply §10 bands before final category lock.
+- Upload: confirm em-dash renders in live KDP title field (hyphen fallback ready); confirm KDP Select enrolment at the publishing gate.
+- Post-density gate: run the 3+ occurrence keyword density check against the final manuscript (rows 5 and 7 flagged light).
 
 ---
 
-*Series string verified character-for-character against Book 1 and Book 2 KDP listings. All 7 keywords byte-verified ≤50. Zero invented BSR figures. Categories PENDING ARCHITECT APPROVAL.*
+*Series string verified character-for-character against Book 1 and Book 2 KDP listings. All 7 keywords byte-verified ≤50. Zero invented BSR figures. All 5 Stage-02 decisions resolved from intelligence — no Architect gate.*
