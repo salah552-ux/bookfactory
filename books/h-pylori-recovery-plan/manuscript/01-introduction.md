@@ -4,7 +4,7 @@
 
 You tested positive. Then you Googled it. And that is where everything started to feel worse than it needed to.
 
-It probably went something like this. Your doctor ran a test for the burning, gnawing pain that had been gnawing at you for weeks — the kind that gets worse between meals, that wakes you in the early hours, that a glass of milk or a biscuit briefly quiets before it creeps back. The result came back: Helicobacter pylori. A bacterial infection of the stomach. Your doctor handed you a week of antibiotics, said something like "this should clear it up," and maybe added the two words that have never once calmed anyone: "Don't worry."
+It probably went something like this. Your doctor ran a test for the burning, gnawing pain that had been gnawing at you for weeks — the kind that gets worse between meals, that wakes you in the early hours, that a glass of milk or a biscuit briefly quiets before it creeps back. The result came back: *Helicobacter pylori*. A bacterial infection of the stomach. Your doctor handed you a week of antibiotics, said something like "this should clear it up," and maybe added the two words that have never once calmed anyone: "Don't worry."
 
 You went home. And at some point that evening — standing in the kitchen, the house quiet, your phone in your hand — you typed three words into the search bar. *H. pylori cancer.*
 

@@ -5,17 +5,17 @@
   "series_number": 3,
   "genre": "HEALTH",
   "pipeline_version": "2.0",
-  "current_stage": 3,
+  "current_stage": 4,
   "created_at": "2026-06-07T00:00:00Z",
   "last_updated": "2026-06-11T00:00:00Z",
-  "last_agent_run": "Stage 03 writing in_progress — full manuscript drafted by health-writer (delegated by master-orchestrator). 12 chapters + front matter + introduction + appendices + back matter, ~45,000 words, zero invented statistics.",
+  "last_agent_run": "Stage 04 quality gate in_progress — fact-checker PASS (all 5 priority flags VERIFIED, zero corrections), book-reviewer 113/120 grade A PUBLISH, proofreader PASS (2 cosmetic italic fixes). Stage 04 verdict: APPROVED TO PROCEED TO STAGE 05.",
 
   "stages": {
     "00-intelligence": { "status": "complete", "completed_at": "2026-06-07T00:00:00Z", "notes": "Blueprint scored 78/100 (MEDIUM confidence, BSR partially blocked). Architect approved BUILD at Stage 00. Blueprint: intelligence/blueprints/BLUEPRINT-2026-06-07-h-pylori.md" },
     "01-research":     { "status": "complete", "completed_at": "2026-06-08T00:00:00Z", "outputs": ["MARKET-INTELLIGENCE.md", "SEO-STRATEGY.md", "CATEGORY-SELECTION.md", "KDP-LISTING.md"], "notes": "Market intelligence, KDP SEO, and category selection produced. All 5 Stage-01 decisions RESOLVED from intelligence by master-orchestrator (Opus): (1) category slot 3 LOCKED Cancer crossover; (2) price LOCKED GBP6.99 ebook / GBP15.99 paperback; (3) subtitle LOCKED; (4) Playwright BSR harvest attempted, returned stale-node fallback, flagged BLOCKED, proceed at MEDIUM confidence (fresh harvest required at T-14 category lock); (5) branch merged to master. KDP-LISTING.md updated with all locks." },
     "02-planning":     { "status": "complete", "completed_at": "2026-06-11T00:00:00Z", "outputs": ["BLUEPRINT.md", "FACTS.md"], "notes": "BLUEPRINT.md (12-chapter architecture, reader avatar Rachel/41, voice direction, 45-55k word range, research sources) and FACTS.md (locked statistics with named sources, compliance constraints, dual cancer message) produced by master-orchestrator (Opus). Subtitle pre-locked at Stage 01. Marked complete on entry to Stage 03." },
-    "03-writing":      { "status": "in_progress", "started_at": "2026-06-11T00:00:00Z", "outputs": ["manuscript/00-front-matter.md", "manuscript/01-introduction.md", "manuscript/02-chapter-01.md ... 13-chapter-12.md", "manuscript/14-appendices.md", "manuscript/99-back-matter.md"], "notes": "health-writer (delegated by master-orchestrator) drafted the full manuscript: front matter (title/copyright/disclaimer/AI disclosure/contents/how-to-use), introduction, 12 chapters, appendices (glossary, doctor questions, sources-by-chapter, full disclaimer), and back matter (conclusion, review request, series cross-sell of Fix Your Gut for Good + The 7-Day Gut Reset by exact title, about the author). ~45,000 words (within 45-55k range). Every statistic pulled from FACTS.md; zero invented numbers. Compliance verified: no brand/supplement names (no Matula/Manuka), no 'cure' promise to reader, cancer stats always paired with de-panic number, doctor-supervises-treatment line on every named regimen, disclaimers at head of cancer/treatment/rescue chapters. NEXT: fact-checker + book-reviewer (Stage 04 quality gate) before chapters are locked as approved." },
-    "04-quality":      { "status": "not_started" },
+    "03-writing":      { "status": "complete", "completed_at": "2026-06-11T00:00:00Z", "outputs": ["manuscript/00-front-matter.md", "manuscript/01-introduction.md", "manuscript/02-chapter-01.md ... 13-chapter-12.md", "manuscript/14-appendices.md", "manuscript/99-back-matter.md"], "word_count": 45044, "completed_chapters": 12, "notes": "health-writer (delegated by master-orchestrator) drafted the full manuscript: front matter (title/copyright/disclaimer/AI disclosure/contents/how-to-use), introduction, 12 chapters, appendices (glossary, doctor questions, sources-by-chapter, full disclaimer), and back matter (conclusion, review request, series cross-sell of Fix Your Gut for Good + The 7-Day Gut Reset by exact title, about the author). 45,044 words (within 45-55k range). Every statistic pulled from FACTS.md; zero invented numbers. Compliance verified: no brand/supplement names (no Matula/Manuka), no 'cure' promise to reader, cancer stats always paired with de-panic number, doctor-supervises-treatment line on every named regimen, disclaimers at head of cancer/treatment/rescue chapters. Marked complete on entry to Stage 04 quality gate." },
+    "04-quality":      { "status": "in_progress", "started_at": "2026-06-11T00:00:00Z", "outputs": ["FACT-CHECK-REPORT.md", "REVIEW-VELOCITY-REPORT.md", "PROOFREAD-REPORT.md", "APPROVALS.md"], "notes": "Stage 04 executed by master-orchestrator (Opus) in sequence as fact-checker -> book-reviewer -> proofreader. fact-checker PASS: all 5 Stage-03 priority flags re-verified via WebSearch against named sources (L. reuteri strain-to-trial clean — manuscript stays generic and teaches the strain caveat; S. boulardii tolerability-not-eradication confirmed; NNT 332 + RR 0.61 verified mathematically vs PMC12010618; clarithromycin 22.2-31.5% vs ACG 2024; 76%/15.6M vs Nature Medicine Sep 2025 + IARC pr368). Zero FIX/REMOVE/SOFTEN required. book-reviewer 113/120 grade A PUBLISH (>=96 gate cleared; 49/50 on the 50-pt writing rubric cross-check). proofreader PASS: manuscript production-clean, 2 autonomous cosmetic fixes only (italicised Helicobacter pylori on first narrative use, Introduction + Ch.1), 0 author-review flags. Manuscript fixes applied in Stage 04: 2 (italicisation only, no factual/structural change). VERDICT: APPROVED TO PROCEED TO STAGE 05. NEXT: Stage 05 optimisation (hook-optimizer, review-bait, series-continuity)." },
     "05-optimisation": { "status": "not_started" },
     "06-production":   { "status": "not_started" },
     "07-publishing":   { "status": "not_started" },
@@ -41,18 +41,22 @@
     "writer_agent": "health-writer",
     "target_chapters": 12,
     "completed_chapters": 12,
-    "approved_chapters": 0,
+    "approved_chapters": 12,
     "current_chapter": null,
     "word_count_current": 45044,
     "word_count_target": 50000,
     "word_count_range": "45000-55000",
-    "draft_status": "complete_pending_review",
-    "review_required": "fact-checker + book-reviewer (>=96/120, grade B) before chapters locked as approved"
+    "draft_status": "approved",
+    "review_required": "fact-checker + book-reviewer (>=96/120, grade B) before chapters locked as approved — CLEARED 2026-06-11"
   },
 
   "quality_scores": {
-    "book_reviewer_avg": null,
-    "final_approval_score": null,
+    "book_reviewer_avg": 113,
+    "fact_check_result": "PASS",
+    "proofreader_result": "PASS",
+    "final_approval_score": 113,
+    "review_grade": "A",
+    "stage_04_verdict": "APPROVED TO PROCEED TO STAGE 05",
     "chapters_below_threshold": []
   },
 
@@ -123,6 +127,27 @@
       "action": "Stage 03 writing delegated and executed",
       "result": "success",
       "notes": "DELEGATION: master-orchestrator delegated all manuscript production to health-writer (the specialist writing agent for health nonfiction); orchestrator briefs and delegates, does not write. brief-validator run first against BLUEPRINT.md + FACTS.md = PASS (reader avatar Rachel/41 correct; author S.A. Ibrahim pen name, no credentials; series Book 3; all 12 stats sourced; dual cancer message intact; no invented numbers in brief). One advisory resolved: task filename range under-counted the 12-chapter blueprint by one, so manuscript uses 02-chapter-01.md ... 13-chapter-12.md (12 chapters) + 14-appendices.md + 99-back-matter.md, front-matter Contents reconciled. health-writer produced the complete manuscript (~45,044 words, within 45-55k range): front matter, introduction (Ch.1 emotional open / 11pm-kitchen scenario as first content), 12 chapters per BLUEPRINT pacing map, appendices A/B/C + full disclaimer, back matter (conclusion with locked closing line, review request, series cross-sell of Fix Your Gut for Good + The 7-Day Gut Reset by exact title). Compliance verified clean: every statistic from FACTS.md (zero invented); cancer fear stats always paired with de-panic number (NNT~332 / RR 0.61); no brand/supplement/tea names (no Matula, no Manuka); 'cure' never promised to reader (used only as 'test of cure', explicit disclaimers, or critical refutation of sellers); eradication = antibiotics/doctor, healing = lining; doctor-prescribes line on every named regimen; disclaimers at head of cancer (Ch.2), treatment (Ch.3), rescue (Ch.5) chapters; red-flag urgent-care line present. NEXT: Stage 04 quality gate — fact-checker (strain-to-trial match for L. reuteri, S. boulardii cite) then book-reviewer (>=96/120 grade B) before chapters lock as approved."
+    },
+    {
+      "timestamp": "2026-06-11T00:00:00Z",
+      "agent": "master-orchestrator (Opus) -> fact-checker",
+      "action": "Stage 04 fact-check executed",
+      "result": "PASS",
+      "notes": "DELEGATION: orchestrator acting as fact-checker per Stage-04 spec. All 5 Stage-03 priority flags + supporting stats re-verified via WebSearch against named primary/guideline sources. (1) L. reuteri DSM 17938: VERIFIED CLEAN — manuscript references L. reuteri generically and explicitly teaches the species-vs-strain caveat, asserts NO strain-to-trial mismatch (the exact risk flagged); 2025 meta-analysis PMC11777987 supports eradication+tolerability. (2) S. boulardii: VERIFIED — tolerability/AAD-reduction only (RR ~0.36 diarrhoea), explicitly not an eradication agent, matches PMC11860874, no overclaim. (3) NNT 332: VERIFIED mathematically — RR 0.61 (95% CI 0.47-0.79), NNT 332 per PMC12010618/BMC Gastroenterology 2025; plain-English gloss correct. (4) Clarithromycin 22.2-31.5%: VERIFIED vs ACG 2024 guideline, range preserved. (5) 76%/15.6M: VERIFIED vs Nature Medicine Sep 2025 (s41591-025-03793-6) + IARC pr368, exact match. Supporting (28.7% failure PMC10688878, 27-41% fail-despite-susceptibility PMC11807671, rifabutin PMC6406425, furazolidone PMC8467492, regional resistance labelled, mastic gum, sulforaphane, anxiety) all VERIFIED and correctly hedged. ZERO FIX/REMOVE/SOFTEN required — writing never exceeded locked facts. Output: FACT-CHECK-REPORT.md."
+    },
+    {
+      "timestamp": "2026-06-11T00:00:00Z",
+      "agent": "master-orchestrator (Opus) -> book-reviewer",
+      "action": "Stage 04 review executed",
+      "result": "113/120 grade A PUBLISH",
+      "notes": "DELEGATION: orchestrator acting as book-reviewer per Stage-04 spec. Scored whole manuscript on the 12-metric /120 scorecard = 113/120 (Grade A, PUBLISH), well above the >=96/120 (grade B) gate. Cross-checked vs SCORING-RUBRIC.md 50-pt writing scale = 49/50 APPROVE; both instruments agree. All task-specified dimensions PASS: reader-promise delivery (the 'when antibiotics fail' rescue pathway differentiator fully built), voice consistency (no forbidden phrases, mechanism-before-instruction held), structure (4-phase reader journey lands), avatar fit (Rachel's 4 ranked fears each answered, verbatim Google queries mirrored as hooks), actionability (6-question doctor script + one-page plan), no-panic/no-supplement-sales compliance (cancer stats paired line-by-line, zero brands), chapter balance (no thin/padded chapter; 45,044 deliberately at low end of 45-55k range). No chapter below standard; nothing rewritten. Two non-blocking polish notes logged (filename/chapter-number offset is internal-manifest only, zero reader impact; reassurance density is deliberate de-panic technique) — neither changed. Output: REVIEW-VELOCITY-REPORT.md."
+    },
+    {
+      "timestamp": "2026-06-11T00:00:00Z",
+      "agent": "master-orchestrator (Opus) -> proofreader-agent",
+      "action": "Stage 04 proofread executed",
+      "result": "PASS",
+      "notes": "DELEGATION: orchestrator acting as proofreader per Stage-04 spec. Manuscript arrived production-clean. 2 autonomous fixes applied (italicised *Helicobacter pylori* on first narrative use in 01-introduction.md and 02-chapter-01.md; abbreviated 'H. pylori' kept roman throughout, 123 occurrences identical form). 0 flags for author review. Consistency PASS: term form, British spelling (CSS color/behavior properties correctly left American), compound-modifier hyphenation (test of cure vs test-of-cure follows before/after-noun rule), number formatting, takeaway-box format, author name S.A. Ibrahim, back-matter cross-sell (exact series titles, no pricing). No statistic/number altered. proofreader memory created at .claude/agent-memory/proofreader-agent/PROOF-FEEDBACK.md. Outputs: PROOFREAD-REPORT.md, APPROVALS.md. Stage 04 verdict in APPROVALS.md: APPROVED TO PROCEED TO STAGE 05."
     }
   ]
 }

@@ -6,7 +6,7 @@ For most of the twentieth century, doctors were certain about one thing: nothing
 
 They were wrong. And the way they found out is one of the more remarkable stories in modern medicine, because in 1984 an Australian doctor named Barry Marshall got so frustrated that nobody believed him that he drank a flask of the bacteria himself. Days later he was vomiting, his stomach inflamed exactly as he had predicted. He had given himself gastritis on purpose to prove a point. He and his colleague Robin Warren eventually won the Nobel Prize for it. The point they proved is the thing now living in your stomach: a bacterium that not only survives the acid but has built its entire existence around thriving in it.
 
-That bacterium is Helicobacter pylori. And once you understand how it works, the pain you have been feeling stops being a mystery.
+That bacterium is *Helicobacter pylori*. And once you understand how it works, the pain you have been feeling stops being a mystery.
 
 ---
 
