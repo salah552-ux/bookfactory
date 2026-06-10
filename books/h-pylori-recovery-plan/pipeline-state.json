@@ -5,16 +5,16 @@
   "series_number": 3,
   "genre": "HEALTH",
   "pipeline_version": "2.0",
-  "current_stage": 2,
+  "current_stage": 3,
   "created_at": "2026-06-07T00:00:00Z",
-  "last_updated": "2026-06-08T00:00:00Z",
-  "last_agent_run": "Stage 02 in progress (BLUEPRINT.md + FACTS.md produced; 5 Stage-01 decisions resolved from intelligence) by master-orchestrator (Opus)",
+  "last_updated": "2026-06-11T00:00:00Z",
+  "last_agent_run": "Stage 03 writing in_progress — full manuscript drafted by health-writer (delegated by master-orchestrator). 12 chapters + front matter + introduction + appendices + back matter, ~45,000 words, zero invented statistics.",
 
   "stages": {
     "00-intelligence": { "status": "complete", "completed_at": "2026-06-07T00:00:00Z", "notes": "Blueprint scored 78/100 (MEDIUM confidence, BSR partially blocked). Architect approved BUILD at Stage 00. Blueprint: intelligence/blueprints/BLUEPRINT-2026-06-07-h-pylori.md" },
     "01-research":     { "status": "complete", "completed_at": "2026-06-08T00:00:00Z", "outputs": ["MARKET-INTELLIGENCE.md", "SEO-STRATEGY.md", "CATEGORY-SELECTION.md", "KDP-LISTING.md"], "notes": "Market intelligence, KDP SEO, and category selection produced. All 5 Stage-01 decisions RESOLVED from intelligence by master-orchestrator (Opus): (1) category slot 3 LOCKED Cancer crossover; (2) price LOCKED GBP6.99 ebook / GBP15.99 paperback; (3) subtitle LOCKED; (4) Playwright BSR harvest attempted, returned stale-node fallback, flagged BLOCKED, proceed at MEDIUM confidence (fresh harvest required at T-14 category lock); (5) branch merged to master. KDP-LISTING.md updated with all locks." },
-    "02-planning":     { "status": "in_progress", "started_at": "2026-06-08T00:00:00Z", "outputs": ["BLUEPRINT.md", "FACTS.md"], "notes": "BLUEPRINT.md (12-chapter architecture, reader avatar Rachel/41, voice direction, 45-55k word range, research sources) and FACTS.md (locked statistics with named sources, compliance constraints, dual cancer message) produced by master-orchestrator (Opus). Next: title-and-subtitle-lab confirm (subtitle already locked) then Stage 03 health-writer." },
-    "03-writing":      { "status": "not_started" },
+    "02-planning":     { "status": "complete", "completed_at": "2026-06-11T00:00:00Z", "outputs": ["BLUEPRINT.md", "FACTS.md"], "notes": "BLUEPRINT.md (12-chapter architecture, reader avatar Rachel/41, voice direction, 45-55k word range, research sources) and FACTS.md (locked statistics with named sources, compliance constraints, dual cancer message) produced by master-orchestrator (Opus). Subtitle pre-locked at Stage 01. Marked complete on entry to Stage 03." },
+    "03-writing":      { "status": "in_progress", "started_at": "2026-06-11T00:00:00Z", "outputs": ["manuscript/00-front-matter.md", "manuscript/01-introduction.md", "manuscript/02-chapter-01.md ... 13-chapter-12.md", "manuscript/14-appendices.md", "manuscript/99-back-matter.md"], "notes": "health-writer (delegated by master-orchestrator) drafted the full manuscript: front matter (title/copyright/disclaimer/AI disclosure/contents/how-to-use), introduction, 12 chapters, appendices (glossary, doctor questions, sources-by-chapter, full disclaimer), and back matter (conclusion, review request, series cross-sell of Fix Your Gut for Good + The 7-Day Gut Reset by exact title, about the author). ~45,000 words (within 45-55k range). Every statistic pulled from FACTS.md; zero invented numbers. Compliance verified: no brand/supplement names (no Matula/Manuka), no 'cure' promise to reader, cancer stats always paired with de-panic number, doctor-supervises-treatment line on every named regimen, disclaimers at head of cancer/treatment/rescue chapters. NEXT: fact-checker + book-reviewer (Stage 04 quality gate) before chapters are locked as approved." },
     "04-quality":      { "status": "not_started" },
     "05-optimisation": { "status": "not_started" },
     "06-production":   { "status": "not_started" },
@@ -38,14 +38,16 @@
   },
 
   "writing": {
-    "writer_agent": null,
+    "writer_agent": "health-writer",
     "target_chapters": 12,
-    "completed_chapters": 0,
+    "completed_chapters": 12,
     "approved_chapters": 0,
     "current_chapter": null,
-    "word_count_current": 0,
+    "word_count_current": 45044,
     "word_count_target": 50000,
-    "word_count_range": "45000-55000"
+    "word_count_range": "45000-55000",
+    "draft_status": "complete_pending_review",
+    "review_required": "fact-checker + book-reviewer (>=96/120, grade B) before chapters locked as approved"
   },
 
   "quality_scores": {
@@ -114,6 +116,13 @@
       "action": "Stage 02 planning executed (book-architect role)",
       "result": "success",
       "notes": "Produced BLUEPRINT.md (book identity card with locked title/subtitle; reader avatar Rachel/41 with verbatim Google queries; core promise + 3-part unique mechanism; 12-chapter plan + front/back matter + 3 appendices with per-chapter summary/facts/takeaway; pacing map; tone bible with 8 NEVER rules and a model paragraph; opening/closing lines; 45-55k word range; research-sources manifest). Produced FACTS.md (12-row locked statistics table each with named source; 2024 ACG first-line; rescue pathway; honest adjunct framing alongside-not-instead; test-of-cure exact wording; dual cancer message as spine; full compliance constraints). Zero invented statistics. Stage 02 = in_progress. Next: title-and-subtitle-lab (subtitle pre-locked) then Stage 03 writing."
+    },
+    {
+      "timestamp": "2026-06-11T00:00:00Z",
+      "agent": "master-orchestrator (Opus) -> brief-validator -> health-writer",
+      "action": "Stage 03 writing delegated and executed",
+      "result": "success",
+      "notes": "DELEGATION: master-orchestrator delegated all manuscript production to health-writer (the specialist writing agent for health nonfiction); orchestrator briefs and delegates, does not write. brief-validator run first against BLUEPRINT.md + FACTS.md = PASS (reader avatar Rachel/41 correct; author S.A. Ibrahim pen name, no credentials; series Book 3; all 12 stats sourced; dual cancer message intact; no invented numbers in brief). One advisory resolved: task filename range under-counted the 12-chapter blueprint by one, so manuscript uses 02-chapter-01.md ... 13-chapter-12.md (12 chapters) + 14-appendices.md + 99-back-matter.md, front-matter Contents reconciled. health-writer produced the complete manuscript (~45,044 words, within 45-55k range): front matter, introduction (Ch.1 emotional open / 11pm-kitchen scenario as first content), 12 chapters per BLUEPRINT pacing map, appendices A/B/C + full disclaimer, back matter (conclusion with locked closing line, review request, series cross-sell of Fix Your Gut for Good + The 7-Day Gut Reset by exact title). Compliance verified clean: every statistic from FACTS.md (zero invented); cancer fear stats always paired with de-panic number (NNT~332 / RR 0.61); no brand/supplement/tea names (no Matula, no Manuka); 'cure' never promised to reader (used only as 'test of cure', explicit disclaimers, or critical refutation of sellers); eradication = antibiotics/doctor, healing = lining; doctor-prescribes line on every named regimen; disclaimers at head of cancer (Ch.2), treatment (Ch.3), rescue (Ch.5) chapters; red-flag urgent-care line present. NEXT: Stage 04 quality gate — fact-checker (strain-to-trial match for L. reuteri, S. boulardii cite) then book-reviewer (>=96/120 grade B) before chapters lock as approved."
     }
   ]
 }
