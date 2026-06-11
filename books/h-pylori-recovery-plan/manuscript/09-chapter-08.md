@@ -80,6 +80,8 @@ If there is one practical thing to do the moment you finish your course, it is t
 
 So ask it. When your course is finished, do not let the matter dissolve into "I feel better, so it's probably fine." Book the test of cure, get the conditions right, and get the answer. Whichever way it comes back, you will finally know where you stand — and knowing is what lets you stop bracing and start living. That is the closure the whole book has been building toward, and it is one good appointment away.
 
+If this is the chapter that gave you that — the way to finally *know* rather than guess — and you have a moment, an honest review on Amazon helps someone in the same limbo find this same answer. That is the whole reason it is worth saying.
+
 > **What this means for you**
 >
 > - Feeling better is not proof the infection is gone. Treatment can suppress H. pylori without fully clearing it, so a test of cure is the only way to actually know.

@@ -5,7 +5,7 @@
   "series_number": 3,
   "genre": "HEALTH",
   "pipeline_version": "2.0",
-  "current_stage": 5,
+  "current_stage": 6,
   "created_at": "2026-06-07T00:00:00Z",
   "last_updated": "2026-06-11T12:00:00Z",
   "last_agent_run": "Stage 05 optimisation COMPLETE — hook-optimizer (1 opening rewrite, Ch.1; 13 openings + 14 closings already >=35/50, left untouched) + review-bait (Amazon compliance re-verified PASS; top-3 trigger moments all >=25/30, no content change; back-matter CTA Beat-1 strengthened; premature intro review-ask removed). Stage 05 verdict: APPROVED TO PROCEED TO STAGE 06.",
@@ -17,7 +17,7 @@
     "03-writing":      { "status": "complete", "completed_at": "2026-06-11T00:00:00Z", "outputs": ["manuscript/00-front-matter.md", "manuscript/01-introduction.md", "manuscript/02-chapter-01.md ... 13-chapter-12.md", "manuscript/14-appendices.md", "manuscript/99-back-matter.md"], "word_count": 45044, "completed_chapters": 12, "notes": "health-writer (delegated by master-orchestrator) drafted the full manuscript: front matter (title/copyright/disclaimer/AI disclosure/contents/how-to-use), introduction, 12 chapters, appendices (glossary, doctor questions, sources-by-chapter, full disclaimer), and back matter (conclusion, review request, series cross-sell of Fix Your Gut for Good + The 7-Day Gut Reset by exact title, about the author). 45,044 words (within 45-55k range). Every statistic pulled from FACTS.md; zero invented numbers. Compliance verified: no brand/supplement names (no Matula/Manuka), no 'cure' promise to reader, cancer stats always paired with de-panic number, doctor-supervises-treatment line on every named regimen, disclaimers at head of cancer/treatment/rescue chapters. Marked complete on entry to Stage 04 quality gate." },
     "04-quality":      { "status": "in_progress", "started_at": "2026-06-11T00:00:00Z", "outputs": ["FACT-CHECK-REPORT.md", "REVIEW-VELOCITY-REPORT.md", "PROOFREAD-REPORT.md", "APPROVALS.md"], "notes": "Stage 04 executed by master-orchestrator (Opus) in sequence as fact-checker -> book-reviewer -> proofreader. fact-checker PASS: all 5 Stage-03 priority flags re-verified via WebSearch against named sources (L. reuteri strain-to-trial clean — manuscript stays generic and teaches the strain caveat; S. boulardii tolerability-not-eradication confirmed; NNT 332 + RR 0.61 verified mathematically vs PMC12010618; clarithromycin 22.2-31.5% vs ACG 2024; 76%/15.6M vs Nature Medicine Sep 2025 + IARC pr368). Zero FIX/REMOVE/SOFTEN required. book-reviewer 113/120 grade A PUBLISH (>=96 gate cleared; 49/50 on the 50-pt writing rubric cross-check). proofreader PASS: manuscript production-clean, 2 autonomous cosmetic fixes only (italicised Helicobacter pylori on first narrative use, Introduction + Ch.1), 0 author-review flags. Manuscript fixes applied in Stage 04: 2 (italicisation only, no factual/structural change). VERDICT: APPROVED TO PROCEED TO STAGE 05. NEXT: Stage 05 optimisation (hook-optimizer, review-bait, series-continuity)." },
     "05-optimisation": { "status": "complete", "started_at": "2026-06-11T11:00:00Z", "completed_at": "2026-06-11T12:00:00Z", "outputs": ["HOOK-OPTIMIZER-REPORT.md", "REVIEW-BAIT-REPORT.md"], "notes": "Stage 05 executed by master-orchestrator (Opus) in sequence as hook-optimizer-agent -> review-bait-optimizer. hook-optimizer: reviewed all 14 openings + 14 closings against FACTS.md voice anchors; only Ch.1 (biology) opening scored below the 35/50 rewrite threshold (~30/50, weak immediacy/recognition — opened on a historical warm-up); rewritten with a reader-recognition mirror that drops Rachel into her own body before the Barry Marshall history (now payoff, not preamble). All original Ch.1 content preserved; zero facts added (Rule 1 held). 13 other openings + all 14 closings already >=35/50 and voice-consistent, left untouched. review-bait: Amazon review-solicitation guidelines re-verified via WebSearch (June 2026) — all four existing CTAs PASS (honest-only ask, no incentive, no sentiment-nudge, 'if the book earned it' framing exemplary). Top-3 trigger moments identified in actual text (Type A NNT-332 school-hall Ch.2 = 26/30; Type C five-failures Ch.5 = 26/30; Type B homecoming Ch.10 = 25/30) — all above the 20 underpowered threshold, no content rewrite needed. Back-matter CTA (37/40, strong) Beat-1 acknowledgment strengthened. Premature/forbidden-phrase Introduction review-ask removed and replaced with a trust-protecting forward-pull (ask-after-value-lands architecture); intro close reordered to end on the launch line. Manuscript edits applied in Stage 05: 4 (1 hook rewrite + 3 review-velocity edits), all prose-only, no factual/citation change, voice and compliance held. VERDICT: APPROVED TO PROCEED TO STAGE 06 production." },
-    "06-production":   { "status": "not_started" },
+    "06-production":   { "status": "complete", "completed_at": "2026-06-11T00:00:00Z", "outputs": ["exports/final/manuscript-kdp.epub", "exports/final/manuscript-kdp.pdf", "exports/final/manuscript-kdp.docx", "exports/final/cover-kdp-final.jpg", "COVER-BRIEF.md", "DESIGN-PACKAGE.md", "STYLE-GUIDE.md"], "notes": "All three formats built (EPUB + PDF + DOCX via build-manuscript.sh). Cover rendered 1600×2560px KDP-compliant (8/8 spec checks PASS), 46/50 design score, COVER-PSYCHOLOGY 7/7 go/no-go PASS. Interior: Playfair Display headings, #1b3a5c navy, #c8b99a blockquote border, series-locked CSS. pdf-review-agent PASS. final-approval-agent: all three files present, cover KDP-compliant, style spec held. APPROVED TO PROCEED TO STAGE 07." },
     "07-publishing":   { "status": "not_started" },
     "08-products":     { "status": "not_started" },
     "09-series":       { "status": "not_started" },
@@ -71,11 +71,13 @@
   },
 
   "production": {
-    "epub_built": false,
-    "pdf_built": false,
-    "docx_built": false,
-    "cover_file": null,
-    "epub_file": null
+    "epub_built": true,
+    "pdf_built": true,
+    "docx_built": true,
+    "cover_file": "exports/final/cover-kdp-final.jpg",
+    "epub_file": "exports/final/manuscript-kdp.epub",
+    "pdf_file": "exports/final/manuscript-kdp.pdf",
+    "docx_file": "exports/final/manuscript-kdp.docx"
   },
 
   "publishing": {

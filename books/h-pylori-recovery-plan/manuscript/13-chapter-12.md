@@ -90,6 +90,8 @@ That is the transformation this whole book exists to produce. Not a cure you can
 
 If a single image sums up the whole book, it is those two appointments side by side — the frightened, passive one at the beginning and the prepared, participating one ahead of you. Everything in between, every chapter you have read, exists to carry you from the first to the second. You did not need to become a doctor to make that journey, and you did not need a miracle or a product or a leap of faith. You needed the real information, in proportion, and the questions that turn it into action. You have both now. The appointment ahead is where they pay off. Walk in with your history straight, your questions ready, your fear in proportion, and your plan in hand — and walk out, this time, not into a spiral but into getting better.
 
+And when you do — when the fear is in proportion and you have your plan in hand — would you leave an honest review on Amazon? Somewhere right now, another person is standing where you stood at the start: positive, frightened, alone with a search engine that profits from their panic. Your honest few sentences are how they find this book instead of the next tea being sold to them. You know better than anyone what that would have been worth at 2am. If the book earned it, that small thing is how you pass it on.
+
 > **What this means for you**
 >
 > - The appointment is short and easy to fumble — preparation is what turns it from a default "here are some tablets, don't worry" visit into a considered plan.

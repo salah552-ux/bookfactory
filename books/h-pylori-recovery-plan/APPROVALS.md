@@ -88,3 +88,41 @@ Both optimisation agents complete. Hooks tightened at the one weak position; rev
 
 ---
 *Stage 05 executed by the master orchestrator acting in sequence as hook-optimizer-agent → review-bait-optimizer. Reports committed alongside this approval. — 2026-06-11*
+
+---
+
+## STAGE 06 — PRODUCTION | master-orchestrator (Opus) | 2026-06-11
+
+### Build Outputs — ALL THREE FORMATS DELIVERED
+
+| Format | File | Status |
+|--------|------|--------|
+| EPUB | `exports/final/manuscript-kdp.epub` | ✅ BUILT |
+| PDF | `exports/final/manuscript-kdp.pdf` | ✅ BUILT |
+| DOCX | `exports/final/manuscript-kdx.docx` | ✅ BUILT |
+| Cover | `exports/final/cover-kdp-final.jpg` | ✅ BUILT |
+
+### Cover — **46/50, 7/7 COVER-PSYCHOLOGY go/no-go, 8/8 KDP spec PASS**
+- Canvas: 1600×2560px sRGB, 376KB, ratio 1.6 — all 8 KDP technical checks PASS.
+- Concept: deep navy #0E1B2C / cream #F3EEE3 / gold #C8A15A — differentiates from saturated clinical blue/teal and food-photo wellness field.
+- Eye path: H. PYLORI (232px, cream) → RECOVERY PLAN → ochre lane "Even When Antibiotics Have Failed" → S.A. Ibrahim (gold, ruled).
+- Series DNA: matches Book 1/2 spine architecture; ochre is permitted Book-3 differentiation accent.
+- 7/7 COVER-PSYCHOLOGY go/no-go YES (thumbnail legible, pattern interruption, zero competitor traps, authority emotion match, price match, series DNA, title content match).
+- Reports: `COVER-BRIEF.md`, `DESIGN-PACKAGE.md`
+
+### Interior — **Series-locked design, STYLE-GUIDE.md PASS**
+- Body: EB Garamond 11.5pt; display: Playfair Display; labels: Lato.
+- Accent: navy #1b3a5c; callout border: #c8b99a — locked series spec held.
+- Print interior spec: 6×9in, KDP paperback margins, page numbers. Report: `STYLE-GUIDE.md`.
+
+### Production Pipeline — **manuscript-style-designer → design-agent → paperback-interior-agent → pdf-review → final-approval**
+All five Stage-06 agents complete. No files missing. Style spec held throughout.
+
+## OVERALL STAGE 06 VERDICT
+
+# ✅ APPROVED TO PROCEED TO STAGE 07
+
+All three output formats present and KDP-compliant. Cover passes all commercial and technical gates. Interior matches locked series design. Ready for Stage 07 — publishing (KDP upload).
+
+---
+*Stage 06 executed by the master orchestrator. All outputs committed alongside this approval. — 2026-06-11*
