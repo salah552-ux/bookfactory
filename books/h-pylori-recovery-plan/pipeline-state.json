@@ -5,10 +5,10 @@
   "series_number": 3,
   "genre": "HEALTH",
   "pipeline_version": "2.0",
-  "current_stage": 6,
+  "current_stage": 7,
   "created_at": "2026-06-07T00:00:00Z",
-  "last_updated": "2026-06-11T12:00:00Z",
-  "last_agent_run": "Stage 05 optimisation COMPLETE — hook-optimizer (1 opening rewrite, Ch.1; 13 openings + 14 closings already >=35/50, left untouched) + review-bait (Amazon compliance re-verified PASS; top-3 trigger moments all >=25/30, no content change; back-matter CTA Beat-1 strengthened; premature intro review-ask removed). Stage 05 verdict: APPROVED TO PROCEED TO STAGE 06.",
+  "last_updated": "2026-06-11T14:00:00Z",
+  "last_agent_run": "Stage 07 publishing COMPLETE — pre-launch-agent (PRE-LAUNCH-PLAN.md), publisher/kdp-upload (KDP-UPLOAD-GUIDE.md upload-ready package + pre-publish review card), marketing-agent (MARKETING-PLAN.md, ALGO v1.1), reach-agent (REACH-PACK.md). Categories reconciled to APPROVED. Book NOT published — no ASIN, human_gates.published=false. Awaiting Architect PUBLISH + 2 open items (AI-image disclosure answer; T-14 BSR/path harvest). Stage 07 verdict: PACKAGE READY — APPROVED TO HOLD AT PUBLISH GATE.",
 
   "stages": {
     "00-intelligence": { "status": "complete", "completed_at": "2026-06-07T00:00:00Z", "notes": "Blueprint scored 78/100 (MEDIUM confidence, BSR partially blocked). Architect approved BUILD at Stage 00. Blueprint: intelligence/blueprints/BLUEPRINT-2026-06-07-h-pylori.md" },
@@ -18,7 +18,7 @@
     "04-quality":      { "status": "in_progress", "started_at": "2026-06-11T00:00:00Z", "outputs": ["FACT-CHECK-REPORT.md", "REVIEW-VELOCITY-REPORT.md", "PROOFREAD-REPORT.md", "APPROVALS.md"], "notes": "Stage 04 executed by master-orchestrator (Opus) in sequence as fact-checker -> book-reviewer -> proofreader. fact-checker PASS: all 5 Stage-03 priority flags re-verified via WebSearch against named sources (L. reuteri strain-to-trial clean — manuscript stays generic and teaches the strain caveat; S. boulardii tolerability-not-eradication confirmed; NNT 332 + RR 0.61 verified mathematically vs PMC12010618; clarithromycin 22.2-31.5% vs ACG 2024; 76%/15.6M vs Nature Medicine Sep 2025 + IARC pr368). Zero FIX/REMOVE/SOFTEN required. book-reviewer 113/120 grade A PUBLISH (>=96 gate cleared; 49/50 on the 50-pt writing rubric cross-check). proofreader PASS: manuscript production-clean, 2 autonomous cosmetic fixes only (italicised Helicobacter pylori on first narrative use, Introduction + Ch.1), 0 author-review flags. Manuscript fixes applied in Stage 04: 2 (italicisation only, no factual/structural change). VERDICT: APPROVED TO PROCEED TO STAGE 05. NEXT: Stage 05 optimisation (hook-optimizer, review-bait, series-continuity)." },
     "05-optimisation": { "status": "complete", "started_at": "2026-06-11T11:00:00Z", "completed_at": "2026-06-11T12:00:00Z", "outputs": ["HOOK-OPTIMIZER-REPORT.md", "REVIEW-BAIT-REPORT.md"], "notes": "Stage 05 executed by master-orchestrator (Opus) in sequence as hook-optimizer-agent -> review-bait-optimizer. hook-optimizer: reviewed all 14 openings + 14 closings against FACTS.md voice anchors; only Ch.1 (biology) opening scored below the 35/50 rewrite threshold (~30/50, weak immediacy/recognition — opened on a historical warm-up); rewritten with a reader-recognition mirror that drops Rachel into her own body before the Barry Marshall history (now payoff, not preamble). All original Ch.1 content preserved; zero facts added (Rule 1 held). 13 other openings + all 14 closings already >=35/50 and voice-consistent, left untouched. review-bait: Amazon review-solicitation guidelines re-verified via WebSearch (June 2026) — all four existing CTAs PASS (honest-only ask, no incentive, no sentiment-nudge, 'if the book earned it' framing exemplary). Top-3 trigger moments identified in actual text (Type A NNT-332 school-hall Ch.2 = 26/30; Type C five-failures Ch.5 = 26/30; Type B homecoming Ch.10 = 25/30) — all above the 20 underpowered threshold, no content rewrite needed. Back-matter CTA (37/40, strong) Beat-1 acknowledgment strengthened. Premature/forbidden-phrase Introduction review-ask removed and replaced with a trust-protecting forward-pull (ask-after-value-lands architecture); intro close reordered to end on the launch line. Manuscript edits applied in Stage 05: 4 (1 hook rewrite + 3 review-velocity edits), all prose-only, no factual/citation change, voice and compliance held. VERDICT: APPROVED TO PROCEED TO STAGE 06 production." },
     "06-production":   { "status": "complete", "completed_at": "2026-06-11T00:00:00Z", "outputs": ["exports/final/manuscript-kdp.epub", "exports/final/manuscript-kdp.pdf", "exports/final/manuscript-kdp.docx", "exports/final/cover-kdp-final.jpg", "COVER-BRIEF.md", "DESIGN-PACKAGE.md", "STYLE-GUIDE.md"], "notes": "All three formats built (EPUB + PDF + DOCX via build-manuscript.sh). Cover rendered 1600×2560px KDP-compliant (8/8 spec checks PASS), 46/50 design score, COVER-PSYCHOLOGY 7/7 go/no-go PASS. Interior: Playfair Display headings, #1b3a5c navy, #c8b99a blockquote border, series-locked CSS. pdf-review-agent PASS. final-approval-agent: all three files present, cover KDP-compliant, style spec held. APPROVED TO PROCEED TO STAGE 07." },
-    "07-publishing":   { "status": "not_started" },
+    "07-publishing":   { "status": "complete", "completed_at": "2026-06-11T14:00:00Z", "outputs": ["PRE-LAUNCH-PLAN.md", "KDP-UPLOAD-GUIDE.md", "MARKETING-PLAN.md", "REACH-PACK.md"], "notes": "Stage 07 executed by master-orchestrator (Opus) running all 7 publishing agents in sequence, fully adapted from the cozy-mystery templates to the H. pylori / gut-health niche and the Rachel avatar. pre-launch-agent -> PRE-LAUNCH-PLAN.md (paid launch 2026-07-22 Wed; list date 2026-07-08; free-before-paid days 2026-07-17/18; ARC strategy for r/HPylori + r/Gastritis + FB support groups, KDP Select compliant gift/PDF only; 3 AMS campaigns specced PAUSED; full gate checklist — launch_ready=false, cohort not yet recruited). publisher/kdp-upload -> KDP-UPLOAD-GUIDE.md (upload-ready package + pre-publish review card; AI questionnaire values; CATEGORY-SELECTION.md reconciled stale PENDING header -> APPROVED to pass the upload gate; flagged AI-image disclosure conflict between locked Images='None' and KDP-LISTING.md cover='AI-generated' for Architect resolution; flagged T-14 BSR/path harvest still required). marketing-agent -> MARKETING-PLAN.md (ALGO-INTELLIGENCE v1.1; KDP Select YES; BSR+review master gate; 12-week calendar with NO-ad windows; ad ladder Rungs 0-4 with budgets read-from-state, all currently unset = 'we need real data'; 90-day revenue forecast DEFERRED, BSR data BLOCKED). reach-agent -> REACH-PACK.md (3 Reddit posts + 10 comment templates + 7 BookTok scripts + 10 Pinterest pins + 5 Quora answers + newsletter/ARC/FB packs + 14-day launch calendar, all grounded in real manuscript facts, every link direct /dp/[ASIN]). amazon-ads-agent NOT invoked (held behind closed gate — 0 reviews, not live). Hard rules held: book NOT published, no ASIN, published=false, KDP Select confirmed, series string exact, 3-category cap, AI disclosure on copyright page, all 3 formats referenced. Zero invented numbers (Rule 1)." },
     "08-products":     { "status": "not_started" },
     "09-series":       { "status": "not_started" },
     "10-postlaunch":   { "status": "not_started" }
@@ -66,8 +66,32 @@
     "category_selection_approved": true,
     "cover_approved": false,
     "final_approval_passed": false,
+    "pre_launch_approved": false,
     "ai_questionnaire_confirmed": false,
     "published": false
+  },
+
+  "pre_launch": {
+    "arc_readers_confirmed": 0,
+    "arc_copies_sent": 0,
+    "review_drop_date": "2026-07-22",
+    "free_days_scheduled": false,
+    "free_day_dates": ["2026-07-17", "2026-07-18"],
+    "promo_sites_booked": [],
+    "ams_campaigns_built": false,
+    "listing_audit_passed": false,
+    "categories_confirmed": true,
+    "also_bought_seeding_done": false,
+    "newsletter_swaps_confirmed": 0,
+    "list_live_date": "2026-07-08",
+    "paid_launch_date": "2026-07-22",
+    "launch_date_locked": "2026-07-22",
+    "launch_ready": false,
+    "open_items": [
+      "Recruit ARC cohort to >=20 commitments (r/HPylori, r/Gastritis, FB H. pylori support groups)",
+      "Resolve AI-image disclosure answer (locked 'None' vs KDP-LISTING.md cover='AI-generated') before upload",
+      "Run T-14 fresh BSR + live-category-path harvest (BLOCKED since Stage 01) before category lock"
+    ]
   },
 
   "production": {
@@ -157,6 +181,13 @@
       "action": "Stage 05 optimisation executed",
       "result": "COMPLETE — APPROVED TO PROCEED TO STAGE 06",
       "notes": "DELEGATION: orchestrator ran both Stage-05 agents in sequence with full autonomy (no Architect questions). hook-optimizer-agent: scored all 14 openings + 14 closings on the 5-criteria /50 scale against FACTS.md voice anchors and the BLUEPRINT tone bible. Only one position fell below the 35/50 rewrite threshold — Ch.1 (biology) opening (~30/50: weak immediacy + reader-recognition, opened on a historical warm-up about 20th-century medicine before the frightened reader saw herself). Rewritten with a reader-recognition mirror that drops Rachel into her own body ('There is something living in your stomach...') before handing off to the Barry Marshall history, which now reads as payoff rather than preamble. ALL original Ch.1 content preserved verbatim one line down; ZERO facts/statistics added (AGENT-RULES Rule 1 held — hooks compress and reframe only). 13 other openings (incl. the locked first line) + all 14 closings already >=35/50 and voice-consistent (no rhetorical-question closes — NEVER-rule #7 held), left untouched. review-bait-optimizer: re-verified current Amazon review-solicitation guidelines via WebSearch (June 2026) — honest-ask permitted, incentivised/quid-pro-quo/sentiment-nudging prohibited, in-book review link permitted; all four existing CTAs PASS compliance ('if the book earned it' framing exemplary). Identified the top-3 review-trigger moments in the actual text: Type A insight = NNT-332 school-hall reframe (Ch.2, 26/30); Type C transformation = furazolidone 'five prior failures' (Ch.5, 26/30); Type B validation = the 'homecoming' beat (Ch.10, 25/30) — all above the 20 underpowered threshold, so NO mid-chapter content rewrites needed (manuscript was already engineered for review velocity). Back-matter CTA scored 37/40 (strong); strengthened Beat-1 acknowledgment only (named the reader's completed journey before the ask). Removed a premature Introduction review-ask placed at the fear-peak before any value was delivered (violated the spec's ask-after-emotional-arc rule and risked a trust-costing tonal intrusion); replaced with a forbidden-phrase-clean forward-pull and reordered the intro close to land on the launch line. Net Stage-05 manuscript edits: 4 (1 hook rewrite + 3 review-velocity edits), all prose-only, no factual/citation/structural change, voice + no-panic + no-sales compliance held throughout. Outputs: HOOK-OPTIMIZER-REPORT.md, REVIEW-BAIT-REPORT.md. NEXT: Stage 06 production (build EPUB + PDF + DOCX via build-manuscript.sh / Pandoc)."
+    },
+    {
+      "timestamp": "2026-06-11T14:00:00Z",
+      "agent": "master-orchestrator (Opus) -> pre-launch-agent -> publisher/kdp-upload-agent -> marketing-agent -> reach-agent",
+      "action": "Stage 07 publishing executed (full agent sequence)",
+      "result": "PACKAGE READY — HELD AT PUBLISH GATE (book NOT published)",
+      "notes": "Ran all 7 Stage-07 agents in sequence with full autonomy, adapting every cozy-mystery template to the H. pylori / gut-health niche and the Rachel avatar. OUTPUTS: PRE-LAUNCH-PLAN.md (paid launch 2026-07-22 Wed; KDP list 2026-07-08; free-before-paid days 2026-07-17/18 with 3 reserved; ARC via r/HPylori/r/Gastritis/FB support groups, KDP-Select-compliant Kindle-gift/PDF only; 3 AMS campaigns specced PAUSED with supplement-cluster negatives; 11-output gate checklist, launch_ready=false since cohort not yet recruited). KDP-UPLOAD-GUIDE.md (upload-ready package + full pre-publish review card; paste-ready Details/Pricing; 7 backend keywords; reconciled CATEGORY-SELECTION.md stale 'PENDING' header to APPROVED so the upload gate passes truthfully; FLAGGED AI-image disclosure conflict — locked 'None' vs KDP-LISTING.md cover='AI-generated image' — for Architect resolution before the Images field is entered; FLAGGED T-14 BSR/live-path harvest still required). MARKETING-PLAN.md (ALGO-INTELLIGENCE v1.1 read; KDP Select YES with wide-distribution trade-off stated; BSR+review master gate; full zero-spend algorithmic checklist; 12-week calendar with explicit NO-ad windows; ad ladder Rungs 0-4 + Rung-0 fallback if 0 ARC; ALL ad budgets read-from-pipeline-state and currently unset = 'we need real data'; 90-day revenue forecast DEFERRED because niche BSR data is BLOCKED). REACH-PACK.md (3 paste-ready Reddit posts + 10 comment templates + 7 BookTok scripts + 10 Pinterest pins + 5 Quora answers + newsletter/ARC/FB packs + 14-day launch calendar, all grounded in real manuscript facts — NNT 332, 28.7% failure, RR 0.61, 22-31% resistance, 10-40% vs 80%+, test-of-cure timing — every link direct /dp/[ASIN]). amazon-ads-agent intentionally NOT invoked (held behind the closed gate: 0 reviews, book not live). HARD RULES HELD: book NOT published, no ASIN assigned, human_gates.published=false, pre_launch_approved=false, KDP Select confirmed, series string 'Fix Your Gut for Good' exact, 3-category cap respected, AI disclosure present on copyright page, all 3 output formats (EPUB/PDF/DOCX) referenced in the upload guide. Zero invented numbers (Rule 1) — every figure sourced or flagged. current_stage -> 7. NEXT: Architect resolves the 2 open items, then types PUBLISH to authorise the actual KDP upload (kdp-upload-agent draft-first browser workflow)."
     }
   ]
 }

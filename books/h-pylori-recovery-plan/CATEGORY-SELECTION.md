@@ -1,6 +1,14 @@
 # CATEGORY SELECTION — The H. Pylori Recovery Plan
 ## Stage 01 | pipeline-orchestrator (Opus) | 2026-06-07
-## STATUS: PENDING ARCHITECT APPROVAL
+## STATUS: APPROVED — LOCKED at Stage 02 (Decision 1, Cancer crossover; master-orchestrator, 2026-06-08)
+
+> **APPROVAL RECONCILIATION (Stage 07, 2026-06-11).** The three categories below were
+> formally LOCKED at Stage 02 (KDP-LISTING.md §7, Decision 1) and `category_selection_approved`
+> is `true` in pipeline-state.json. This header is reconciled from the stale Stage-01
+> "PENDING" marker to APPROVED so the kdp-upload-agent's mandatory "Status = APPROVED" gate
+> passes against a truthful file. Category content is unchanged. The only open item is the
+> T-14 live BSR / path-name harvest (flagged below), which is a data-confirmation step, not a
+> category-selection decision.
 
 **Hard cap:** 3 categories maximum (Amazon policy, April 2026 — ALGO-INTELLIGENCE.md §15). KDP upload form accepts 2 paths; the 3rd is requested via KDP customer service immediately after upload. This selection contains exactly 3.
 
