@@ -18,9 +18,15 @@ The infection is treatable, the fear is answerable, and the plan is now yours �
 
 ## A Small, Honest Request
 
+You came to this book frightened, at 2am, with a search engine making everything worse — and you are leaving it with the fear in proportion, a plan in hand, and the questions that turn a diagnosis into a path forward. That is real work, and you did it. Before you close the book, there is one small thing only you can do.
+
 If this book helped you — if it took some of the fear out of a frightening diagnosis, or gave you the questions that made your next appointment a better one — would you consider leaving an honest review?
 
 I am not going to dress this up or pressure you. Reviews are simply how the next frightened person standing in their kitchen at 2am, googling "h pylori cancer," finds a book that will give them the real numbers instead of selling them a tea. Your honest words help them find the calm, sourced answer faster than you found it. That is the whole of it. If the book earned it, a few sentences would mean a great deal — and it would help someone exactly like you were at the start.
+
+It takes two minutes, and it can be as short as a line or two about what the book helped with. You can leave one here:
+
+**[REVIEW_URL_PLACEHOLDER — insert the Amazon review link for this title at publishing]**
 
 Thank you. Genuinely.
 

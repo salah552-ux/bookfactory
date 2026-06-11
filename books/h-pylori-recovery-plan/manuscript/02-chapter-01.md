@@ -2,7 +2,9 @@
 
 ## What H. Pylori Actually Is, and What It's Doing to Your Stomach
 
-For most of the twentieth century, doctors were certain about one thing: nothing could live in the human stomach. The logic seemed airtight. The stomach is a vat of hydrochloric acid, strong enough to strip paint, acidic enough to dissolve the meat you eat into liquid. No bacterium could survive in there. Ulcers, therefore, had to be caused by stress and spicy food and too much acid — and the treatment was to neutralise the acid and tell the patient to calm down.
+There is something living in your stomach. That is the part that unsettles you — not the word on the test result so much as the thought of a creature, an actual organism, that has made a home in the one place you assumed nothing could survive. You are right to find that strange. For most of the twentieth century, doctors found it impossible.
+
+They were certain of one thing: nothing could live in the human stomach. The logic seemed airtight. The stomach is a vat of hydrochloric acid, strong enough to strip paint, acidic enough to dissolve the meat you eat into liquid. No bacterium could survive in there. Ulcers, therefore, had to be caused by stress and spicy food and too much acid — and the treatment was to neutralise the acid and tell the patient to calm down.
 
 They were wrong. And the way they found out is one of the more remarkable stories in modern medicine, because in 1984 an Australian doctor named Barry Marshall got so frustrated that nobody believed him that he drank a flask of the bacteria himself. Days later he was vomiting, his stomach inflamed exactly as he had predicted. He had given himself gastritis on purpose to prove a point. He and his colleague Robin Warren eventually won the Nobel Prize for it. The point they proved is the thing now living in your stomach: a bacterium that not only survives the acid but has built its entire existence around thriving in it.
 

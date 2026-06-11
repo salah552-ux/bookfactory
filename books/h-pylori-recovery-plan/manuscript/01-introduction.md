@@ -88,6 +88,8 @@ One last practical thing, and then we begin. If at any point you have blood in y
 
 Now. Take a breath. Close the search tab — you can open it again later, but you will not need to.
 
+Nothing beyond the next page needs you tonight — not the appointment, not the treatment, not even this book. There is only one thing to do right now, and it is to keep reading. Everything else can wait until the fear is smaller, which it is about to be.
+
 Let's start with what is actually living in your stomach, and what it is really doing.
 
 > **What this means for you**
