@@ -219,3 +219,53 @@ All three Stage-08 agents complete. Three build-ready printables + a bundle, a f
 
 ---
 *Stage 08 executed by the master orchestrator acting in sequence as product-extractor → digital-product-designer → email-list-builder. All outputs committed alongside this approval. — 2026-06-11*
+
+---
+
+## STAGE 09 — SERIES | master-orchestrator (Opus) | 2026-06-11
+
+Executed in sequence as **series-manager → series-continuity-guardian → series-sync-agent → arc-manager-agent**, full autonomy, every decision from the data. Book remains **NOT published** — the publish gate and its 2 open items are untouched.
+
+### Deliverables — ALL PRODUCED
+
+| Agent | Output | Status |
+|-------|--------|--------|
+| series-manager | `../../SERIES-FACTS.md` (SERIES MASTER RECORD + Book 3 stats + RECURRING TROPES) | ✅ Updated |
+| series-continuity-guardian | `SERIES-CONTINUITY-2026-06-11.md` | ✅ Built — ZERO critical conflicts |
+| series-sync-agent | `SERIES-SYNC-REPORT.md`, `SERIES-KEYWORD-REALITY.md`, sync-agent memory | ✅ Built — nothing applied to live/unpublished siblings |
+| arc-manager-agent | `ARC-PROGRAMME.md` | ✅ Built — KDP-Select-compliant, policy re-verified June 2026 |
+
+### Series continuity verdict — CLEAN
+- **Zero critical conflicts.** Book 3 cross-sells **The 7-Day Gut Reset** and **Fix Your Gut for Good** by exact title (no paraphrase, no pricing). H. pylori prevalence, mechanism, causal-language discipline, the no-supplement-sales moat, disclaimers, and the Rachel-as-instance-of-Sarah voice all reconcile with the live Book 1 and the series canon.
+- **ONE major flag (M1 — ordering, not content):** Book 3 cross-sells *The 7-Day Gut Reset*, which is **NOT live** (Book 2 is at Stage 6.5, `published: false`, no ASIN). This is a premature reference if Book 3 ships first. **Recommended resolution: publish Book 2 before/with Book 3** (it is production-complete and only needs the publishing stages; this also completes the cross-sell funnel). Alternative: downgrade the Book-2 mention in Book 3 before Book 3's first upload.
+- **Minor:** Book 1's LIVE back matter has no "Also by" block and an orphaned forward-reference to a never-built "doctor relationship" book — needs a re-upload to fix (staged, not applied).
+
+### ⚠ CRITICAL CROSS-BOOK FINDING FOR THE ARCHITECT
+Contrary to the Stage-09 task framing ("Book 1/2 live"), **only Book 1 is live on Amazon** (ASIN B0GXYLWS1W). **Book 2 (The 7-Day Gut Reset) is NOT live** — it is at Stage 6.5 (`07-publishing: pending`, no ASIN). This is why the Book-3 cross-sell of Book 2 is flagged premature (M1). A publication-order decision is needed.
+
+### Sync — staged, nothing applied to live/unpublished books
+- Exact paste-ready "Also by" blocks produced for Books 1 and 2 (versioned by which siblings are live). **NOT applied:** Book 1 is a live KDP Select title (back-matter change = EPUB rebuild + re-upload); Book 2 applies at its own publishing stage.
+- `SERIES-KEYWORD-REALITY.md` created in **no-data placeholder** form — Book 1 has `weekly_log: []` and 0 reviews, so no keyword-performance inference is invented (Rule 1 + No-Assumptions lock).
+
+### ARC strategy — built, KDP-Select-compliant
+- Amazon ARC policy re-verified via WebSearch (June 2026): ARCs permitted **with free-copy disclosure**; prohibited = requiring/influencing reviews, quid-pro-quo, guaranteed ratings, incentives beyond the free book.
+- Delivery: **Kindle gift / direct PDF only** (no NetGalley/BookSirens/StoryOrigin/BookFunnel during the Select term). Reader profile (Rachel), 4 tiers (Tier-4 platforms excluded), timing calendar anchored to launch **2026-07-22**, three outreach pieces with the disclosure line baked in, full compliance checklist. **No compensation for reviews.** Consolidates the existing ARC copy in PRE-LAUNCH-PLAN.md / REACH-PACK.md (does not contradict it). 20-commitment gate floor not yet met (recruitment opens T-41).
+
+### Hard rules held
+- Series string **`Fix Your Gut for Good`** exact everywhere.
+- All cross-sells use **exact book titles**, no paraphrase.
+- **Live Book 1 and unpublished Book 2 manuscripts NOT modified** — required changes documented only.
+- ARC = Kindle gift / PDF only; no compensation for reviews.
+- Zero invented numbers (Rule 1).
+- Book **NOT published**; publish gate unchanged.
+
+## OVERALL STAGE 09 VERDICT
+
+# ✅ APPROVED — SERIES CONTINUITY CLEAN + ARC STRATEGY BUILT
+
+All four Stage-09 agents complete. The series master record now carries Book 3; continuity is clean with zero critical conflicts; the one major flag (M1) is a publication-ordering decision (publish Book 2 first), not a Book-3 defect; ARC programme is built and policy-compliant. `current_stage` advanced to 9.
+
+**Architect decisions surfaced (non-blocking for Stage 09):** (1) the existing 2 publish-gate items (AI-image disclosure answer; T-14 BSR harvest); (2) **NEW** — Book 2 vs Book 3 publication order, to make Book 3's *7-Day Gut Reset* cross-sell live rather than premature; (3) the staged Book 1 back-matter retrofit (next re-upload window).
+
+---
+*Stage 09 executed by the master orchestrator acting in sequence as series-manager → series-continuity-guardian → series-sync-agent → arc-manager-agent. All outputs committed alongside this approval. — 2026-06-11*

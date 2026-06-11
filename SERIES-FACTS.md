@@ -5,7 +5,58 @@ Read this before writing any book in the series.
 Never redefine a concept already defined here — reference it.
 Add new entries after each book is completed.
 
-**Last updated:** 2026-04-18 — corrected 3 conflicts against Book 1 FACTS.md (see CONTINUITY-REPORT.md)
+**Last updated:** 2026-06-11 — Book 3 (The H. Pylori Recovery Plan) entered into the series master record by series-manager (Stage 09). Prior update 2026-04-18 corrected 3 conflicts against Book 1 FACTS.md (see CONTINUITY-REPORT.md).
+
+> **NOTE ON FILE LOCATION (2026-06-11):** The Stage-09 agent specs reference a gut-health master at `BookFactory/SERIES-FACTS-GUT.md` and a fiction master at `books/death-in-the-cathedral-close/SERIES-FACTS.md`. In practice both series canons currently live in THIS file (`BookFactory/SERIES-FACTS.md`): the gut-health master above and the Cathedral Close canon appended at the foot. This is the authoritative master until the files are formally split. Do not cross-contaminate the two sections.
+
+---
+
+## SERIES MASTER RECORD — ACTUAL PUBLICATION STATUS (authoritative, 2026-06-11)
+
+This table is the single source of truth for the real publication state of every gut-health book. It supersedes any "planned" mapping elsewhere in this file (the CONDITIONS table below still reflects an older planned roadmap and is NOT a status record).
+
+| # | Title (exact) | Subtitle (exact) | Slug | Stage | Word count | KDP status | ASIN | KDP Select |
+|---|---------------|------------------|------|-------|-----------|-----------|------|-----------|
+| 1 | Fix Your Gut for Good: Stop Relapsing | The 4-Phase SIBO Protocol for Root Cause Recovery — What Your Doctor Didn't Tell You About Why You Keep Coming Back | fix-your-gut-for-good | 10-postlaunch | (live) | **LIVE** | B0GXYLWS1W | Yes |
+| 2 | The 7-Day Gut Reset | Find Your Trigger and Calm Your Gut in One Week | the-7-day-gut-reset | 6.5 (07-publishing pending) | — | NOT live (published=false) | — | (pending) |
+| 3 | The H. Pylori Recovery Plan | How to Eradicate the Infection, Heal Your Stomach Lining, and Understand Your Cancer Risk — Even When Antibiotics Have Failed | h-pylori-recovery-plan | 09-series (held at publish gate) | 45,044 | NOT live (published=false) | — | Yes (planned) |
+
+**Series string (KDP field — byte-identical across all three):** `Fix Your Gut for Good`
+**Series reading order:** Book 1 = full anchor (SIBO) · Book 2 = diagnostic short guide · Book 3 = condition-specific clinical guide (H. pylori).
+**Author (all titles):** S.A. Ibrahim (pen name; no clinical credentials claimed).
+
+> ⚠ STATUS CORRECTION FLAG: Only **Book 1 is live on Amazon.** Book 2 (The 7-Day Gut Reset) is at Stage 6.5 / `07-publishing: pending` and is NOT published. Any cross-sell that names *The 7-Day Gut Reset* as an available companion in a LIVE book is a PREMATURE REFERENCE until Book 2 has a confirmed ASIN. See series-continuity-guardian conflict report (SERIES-CONTINUITY-2026-06-11.md) and series-sync edits.
+
+### Book 3 — KEY FACTS ADDED TO SERIES CANON (H. pylori)
+
+H. pylori statistics now locked at series level by Book 3 (full table + sources in `books/h-pylori-recovery-plan/FACTS.md`). The series-critical ones:
+
+| Stat | Value (as sourced) | Source | Book |
+|------|--------------------|--------|------|
+| H. pylori global prevalence | ~50% of the world population | NCI fact sheet (cancer.gov) | Book 3, Ch.1 — RECONCILES with Book 1 Ch.4 "roughly half the global population" ✓ |
+| Gastric cancers attributable to H. pylori | ~76% of projected lifetime cases | Nature Medicine Sep 2025 (s41591-025-03793-6); IARC pr368 | Book 3, Ch.3 |
+| H. pylori carcinogen class | IARC Group 1 (definite) | IARC / WHO | Book 3, Ch.3 |
+| Eradication & cancer-risk reduction (the de-panic number) | RR 0.61 (95% CI 0.47–0.79); NNT ≈ 332 | PMC12010618 | Book 3, Ch.3 — ALWAYS paired with the attributable-risk number |
+| First-line treatment (2024) | Optimised bismuth quadruple therapy (PPI + bismuth + nitroimidazole + tetracycline) | ACG 2024 guideline | Book 3, Ch.4 |
+| Clarithromycin resistance (US) | 22.2%–31.5% (range) | ACG 2024 guideline | Book 3, Ch.4 |
+| First-line treatment failure (overall) | ~28.7% | PMC11807671 / PMC10688878 | Book 3, Ch.1/6 |
+| Test-of-cure timing | Stool antigen / urea breath test ≥4 weeks after last antibiotic; off PPI ~2 weeks; serology is NOT a test of cure | ACG 2024 guideline | Book 3, Ch.9 |
+
+**Dual cancer message (Book 3 spine — a series convention going forward):** every cancer reference holds both halves — *"The risk is real enough to treat. It is low enough not to panic."* No standalone fear stat. This is now a series-level compliance rule for any future cancer-adjacent title.
+
+### Book 3 — RECURRING TROPES / SERIES CONVENTIONS HONOURED
+
+(Non-fiction analogue of the RECURRING TROPES section. These are the committed brand conventions the H. pylori book carries — series-continuity-guardian dimension 3E/3F checks these.)
+
+| Convention | Level | Honour or subvert | Book 3 delivered |
+|-----------|-------|-------------------|------------------|
+| Second person ("you") throughout, contractions always | series voice | Honour | ✓ |
+| Plainspoken / unflinching / warm-but-unsentimental | series voice | Honour | ✓ |
+| Mechanism before instruction (explain *why* before *what*) | series convention | Honour | ✓ |
+| Doctor Communication Toolkit (scripted doctor questions) | series convention | Honour (Ch.12 + Appendix B doctor-question script) | ✓ |
+| No supplement sales / name every source | series brand moat | Honour (zero brands; named sources by chapter) | ✓ |
+| Author S.A. Ibrahim, no clinical credentials | series rule | Honour | ✓ |
+| 4-phase framework (Assess→Eradicate→Repair→Prevent Relapse) | Book 1 structure; spirit-not-letter for later books | Adapted (Book 3 maps the same arc to a single condition; does not use the literal phase labels — permitted per series rule) | ✓ adapted |
 
 ---
 
@@ -43,7 +94,7 @@ Add new entries after each book is completed.
 | Intestinal permeability (leaky gut) | Book 2 (planned) | SIBO, Candida, Parasite |
 | SIFO | Book 3 (planned) | SIBO, Candida |
 | Candida overgrowth | Book 4 (planned) | SIFO, Microbiome Reset |
-| H. pylori | Book 5 (planned) | Gut Inflammation |
+| H. pylori | **Book 3 (The H. Pylori Recovery Plan) — built, held at publish gate** (was provisionally mapped "Book 5 planned"; actual series slot is Book 3 per the SERIES MASTER RECORD above) | SIBO (Book 1 Ch.4 references H. pylori → low stomach acid → SIBO susceptibility) |
 
 ---
 
