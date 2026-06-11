@@ -1,0 +1,244 @@
+#!/usr/bin/env node
+/*
+ * validate-state.cjs — BookFactory pipeline state invariant checker.
+ *
+ * Reads the contract in .claude/agents/PIPELINE-MANIFEST.json ("gates" +
+ * "invariants") and validates each book's pipeline-state.json against it,
+ * cross-checked against the filesystem and git. Intent-independent: it checks
+ * the RESULT, so it catches corruption no matter how it got there (manual edit,
+ * agent bug, mid-stage crash).
+ *
+ * Usage:
+ *   node scripts/validate-state.cjs                 # scan all books, full report
+ *   node scripts/validate-state.cjs <book-slug>     # one book, full report
+ *   node scripts/validate-state.cjs --hook          # active books only, terse, for the Stop hook
+ *
+ * Exit code: 0 = clean (no CRITICAL). 1 = at least one CRITICAL violation.
+ */
+
+const fs = require("fs");
+const path = require("path");
+const { execSync } = require("child_process");
+
+const FACTORY = path.resolve(__dirname, "..");
+const MANIFEST_PATH = path.join(FACTORY, ".claude", "agents", "PIPELINE-MANIFEST.json");
+const BOOKS_DIR = path.join(FACTORY, "books");
+
+const args = process.argv.slice(2);
+const HOOK_MODE = args.includes("--hook");
+const targetBook = args.find((a) => !a.startsWith("--"));
+
+const C = { RED: "\x1b[31m", YEL: "\x1b[33m", GRN: "\x1b[32m", DIM: "\x1b[2m", BOLD: "\x1b[1m", OFF: "\x1b[0m" };
+
+function readJSON(p) {
+  return JSON.parse(fs.readFileSync(p, "utf8"));
+}
+
+// Minimal glob: supports `*` within the final path segment (e.g. manuscript/*chapter*.md).
+function globMatches(bookDir, pattern) {
+  if (pattern.includes(" ... ") || pattern.includes("..")) return null; // descriptive range — unverifiable
+  if (!pattern.includes("*")) {
+    return fs.existsSync(path.join(bookDir, pattern)) ? [pattern] : [];
+  }
+  const dir = path.dirname(pattern);
+  const fileGlob = path.basename(pattern);
+  const absDir = path.join(bookDir, dir);
+  if (!fs.existsSync(absDir)) return [];
+  const rx = new RegExp("^" + fileGlob.replace(/[.+^${}()|[\]\\]/g, "\\$&").replace(/\*/g, ".*") + "$", "i");
+  return fs.readdirSync(absDir).filter((f) => rx.test(f));
+}
+
+const manifest = readJSON(MANIFEST_PATH);
+const GATES = manifest.gates || {};
+
+// --- git: repo-level branch check (INV-4), evaluated once ---
+let branchInfo = { branch: null, ahead: 0 };
+try {
+  branchInfo.branch = execSync("git rev-parse --abbrev-ref HEAD", { cwd: FACTORY }).toString().trim();
+  if (/^stage-/.test(branchInfo.branch)) {
+    branchInfo.ahead = parseInt(
+      execSync("git rev-list --count master..HEAD", { cwd: FACTORY }).toString().trim() || "0", 10
+    );
+  }
+} catch (_) { /* not a git repo or no master — skip INV-4 */ }
+
+function stageOrder(stages) {
+  // Preserve the insertion order of the stages object as the canonical sequence.
+  return Object.keys(stages);
+}
+
+function validateBook(slug) {
+  const bookDir = path.join(BOOKS_DIR, slug);
+  const statePath = path.join(bookDir, "pipeline-state.json");
+  const v = []; // {level, code, msg}
+  let state;
+  try {
+    state = readJSON(statePath);
+  } catch (e) {
+    return { slug, violations: [{ level: "CRITICAL", code: "STATE", msg: `pipeline-state.json unreadable: ${e.message}` }] };
+  }
+
+  const stages = state.stages || {};
+  const order = stageOrder(stages);
+  const isComplete = (k) => stages[k] && stages[k].status === "complete";
+
+  // INV-1 monotonic completion
+  let lastCompleteIdx = -1;
+  order.forEach((k, i) => { if (isComplete(k)) lastCompleteIdx = i; });
+  for (let i = 0; i < lastCompleteIdx; i++) {
+    if (!isComplete(order[i])) {
+      v.push({ level: "CRITICAL", code: "INV-1", msg: `${order[i]} is '${stages[order[i]].status}' but a later stage (${order[lastCompleteIdx]}) is complete — pipeline ran past an open gate.` });
+    }
+  }
+
+  // INV-2 declared outputs exist + INV-2b required_outputs present (for each complete stage)
+  for (const k of order) {
+    if (!isComplete(k)) continue;
+    const declared = (stages[k].outputs || []);
+    for (const outRaw of declared) {
+      const out = String(outRaw).trim().split(/\s+/)[0]; // first path token; ignore descriptive annotations like "(FREE GIFT section)"
+      const m = globMatches(bookDir, out);
+      if (m === null) continue;            // descriptive/relative-range entry — unverifiable, skip
+      if (m.length === 0) {
+        v.push({ level: "CRITICAL", code: "INV-2", msg: `${k} marked complete but declared output missing on disk: ${out}` });
+      }
+    }
+    const gate = GATES[k];
+    if (gate && gate.required_outputs) {
+      for (const pat of gate.required_outputs) {
+        const m = globMatches(bookDir, pat);
+        if (m && m.length === 0) {
+          v.push({ level: "WARN", code: "INV-2b", msg: `${k} complete but contract output not found: ${pat}` });
+        }
+      }
+    }
+  }
+
+  // INV-3 current_stage agreement
+  if (typeof state.current_stage === "number" && lastCompleteIdx >= 0) {
+    const expected = parseInt(order[lastCompleteIdx].slice(0, 2), 10);
+    // allow current_stage to be the in-progress stage just past the last complete one
+    const inprog = order.find((k) => stages[k].status === "in_progress");
+    const inprogIdx = inprog ? parseInt(inprog.slice(0, 2), 10) : null;
+    if (state.current_stage !== expected && state.current_stage !== inprogIdx) {
+      v.push({ level: "WARN", code: "INV-3", msg: `current_stage=${state.current_stage} but furthest complete stage is ${order[lastCompleteIdx]}.` });
+    }
+  }
+
+  // INV-5 stale PENDING in a book whose stages are complete
+  if (lastCompleteIdx >= 0) {
+    try {
+      for (const f of fs.readdirSync(bookDir)) {
+        if (!f.endsWith(".md")) continue;
+        const txt = fs.readFileSync(path.join(bookDir, f), "utf8");
+        if (/PENDING[^\n]{0,40}APPROVAL/i.test(txt)) {
+          v.push({ level: "WARN", code: "INV-5", msg: `stale "PENDING ... APPROVAL" left in ${f} while stages are complete.` });
+        }
+      }
+    } catch (_) { /* ignore */ }
+  }
+
+  // INV-6 publish lock (the irreversible one)
+  const hg = state.human_gates || {};
+  const pub = state.publishing || {};
+  if (hg.published === true) {
+    if (!pub.asin) v.push({ level: "CRITICAL", code: "INV-6", msg: `human_gates.published=true but publishing.asin is not set — cannot be genuinely live.` });
+    if (hg.ai_questionnaire_confirmed !== true) v.push({ level: "CRITICAL", code: "INV-6", msg: `human_gates.published=true but ai_questionnaire_confirmed is not true.` });
+  }
+
+  // INV-7 quality before production.
+  // Absent proof (legacy/older state schema) => WARN (can't prove). A recorded
+  // failing score => CRITICAL (a real quality breach that still went to production).
+  if (isComplete("06-production")) {
+    const q = state.quality_scores || {};
+    const avg = q.book_reviewer_avg;
+    if (avg === undefined || avg === null) {
+      v.push({ level: "WARN", code: "INV-7", msg: `06-production complete but no book_reviewer_avg in state — cannot prove the >=96 quality gate was met (legacy schema?).` });
+    } else if (typeof avg !== "number" || avg < 96) {
+      v.push({ level: "CRITICAL", code: "INV-7", msg: `06-production complete but book_reviewer_avg (${avg}) < 96.` });
+    }
+    const fc = q.fact_check_result;
+    if (fc === undefined || fc === null) {
+      v.push({ level: "WARN", code: "INV-7", msg: `06-production complete but no fact_check_result in state — cannot prove fact-check PASS (legacy schema?).` });
+    } else if (fc !== "PASS") {
+      v.push({ level: "CRITICAL", code: "INV-7", msg: `06-production complete but fact_check_result is '${fc}', not PASS.` });
+    }
+  }
+
+  // INV-8 gate_in satisfied (WARN — prep-ahead permitted, publish locked by INV-6)
+  for (const k of order) {
+    const st = stages[k] && stages[k].status;
+    if (st !== "complete" && st !== "in_progress") continue;
+    const gate = GATES[k];
+    if (!gate || !gate.gate_in) continue;
+    for (const field of gate.gate_in) {
+      if (hg[field] !== true) {
+        v.push({ level: "WARN", code: "INV-8", msg: `${k} has begun but its entry gate '${field}' is not true.` });
+      }
+    }
+  }
+
+  return { slug, violations: v, published: hg.published === true };
+}
+
+// --- select books ---
+let slugs;
+if (targetBook) {
+  slugs = [targetBook];
+} else {
+  slugs = fs.readdirSync(BOOKS_DIR).filter((d) => fs.existsSync(path.join(BOOKS_DIR, d, "pipeline-state.json")));
+}
+
+let criticalCount = 0;
+const reports = [];
+for (const slug of slugs) {
+  const r = validateBook(slug);
+  if (HOOK_MODE && r.published) continue; // hook only polices in-flight books
+  const crit = r.violations.filter((x) => x.level === "CRITICAL");
+  criticalCount += crit.length;
+  if (HOOK_MODE) {
+    if (crit.length) reports.push({ slug: r.slug, violations: crit });
+  } else {
+    reports.push(r);
+  }
+}
+
+// --- INV-4 repo-level (attach to output once) ---
+const branchViol = branchInfo.ahead > 0
+  ? { level: "CRITICAL", code: "INV-4", msg: `${branchInfo.ahead} commit(s) stranded on unmerged branch '${branchInfo.branch}' (not in master).` }
+  : null;
+if (branchViol) criticalCount++;
+
+// --- render ---
+function tag(level) {
+  if (level === "CRITICAL") return `${C.RED}${C.BOLD}CRITICAL${C.OFF}`;
+  return `${C.YEL}WARN${C.OFF}`;
+}
+
+if (HOOK_MODE) {
+  if (criticalCount === 0) { process.exit(0); }
+  let out = `BookFactory state invariants FAILED — fix before ending the turn:\n`;
+  if (branchViol) out += `  [INV-4] ${branchViol.msg}\n`;
+  for (const r of reports) for (const x of r.violations) out += `  [${x.code}] (${r.slug}) ${x.msg}\n`;
+  process.stderr.write(out);
+  process.exit(1);
+}
+
+console.log(`\n${C.BOLD}BookFactory — Pipeline State Validation${C.OFF}`);
+console.log(`${C.DIM}contract: .claude/agents/PIPELINE-MANIFEST.json · ${slugs.length} book(s)${C.OFF}\n`);
+
+if (branchViol) console.log(`${C.BOLD}repo${C.OFF}  ${tag("CRITICAL")} [INV-4] ${branchViol.msg}\n`);
+
+for (const r of reports) {
+  if (r.violations.length === 0) {
+    console.log(`${C.GRN}✓${C.OFF} ${C.BOLD}${r.slug}${C.OFF} — clean`);
+    continue;
+  }
+  const crit = r.violations.filter((x) => x.level === "CRITICAL").length;
+  const warn = r.violations.filter((x) => x.level === "WARN").length;
+  console.log(`${crit ? C.RED + "✗" + C.OFF : C.YEL + "!" + C.OFF} ${C.BOLD}${r.slug}${C.OFF} — ${crit} critical, ${warn} warn`);
+  for (const x of r.violations) console.log(`    ${tag(x.level)} [${x.code}] ${x.msg}`);
+}
+
+console.log(`\n${criticalCount === 0 ? C.GRN + "PASS" + C.OFF : C.RED + C.BOLD + "FAIL" + C.OFF} — ${criticalCount} critical violation(s)\n`);
+process.exit(criticalCount === 0 ? 0 : 1);
