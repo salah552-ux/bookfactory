@@ -170,3 +170,52 @@ The full upload-ready package, pre-launch infrastructure, 90-day marketing plan,
 
 ---
 *Stage 07 executed by the master orchestrator acting in sequence as pre-launch-agent → publisher/kdp-upload-agent → marketing-agent → reach-agent. amazon-ads-agent correctly held behind the closed BSR gate. All outputs committed alongside this approval. — 2026-06-11*
+
+---
+
+## STAGE 08 — PRODUCTS | master-orchestrator (Opus) | 2026-06-11
+
+Executed in sequence as **product-extractor → digital-product-designer → email-list-builder**, full autonomy, every decision from the manuscript + FACTS.md + the Rachel avatar. Book remains **NOT published** — the publish gate is untouched.
+
+### Deliverables — ALL PRODUCED
+
+| Agent | Output | Status |
+|-------|--------|--------|
+| product-extractor | `product-candidates.md` | ✅ Built (3 printables + bundle; no course/high-ticket by design) |
+| digital-product-designer | `product-specs/` (4 specs) + `product-specs/etsy-listings.md` | ✅ Built (build-ready, locked design system) |
+| email-list-builder | `LEAD-MAGNET.md`, `EMAIL-SEQUENCE.md`, `ZERO-SUBSCRIBER-START.md` + back-matter Free Gift section | ✅ Built |
+
+### Products (all extracted from real manuscript content)
+1. **Doctor-Appointment Prep Sheet** — Ch.12 + Appendix B. Branched history tracker + question sets. ⭐
+2. **14-Day Treatment Tracker** — Ch.5 + Ch.9. Dose/PPI-timing/symptom log + test-of-cure date calculator. Serves the book's failure-prevention differentiator. ⭐
+3. **Stomach-Lining Food & Test-of-Cure Card** — Ch.6 + Ch.9. REDUCE/SUPPORT food list + confirmation timing.
+4. **The H. Pylori Recovery Toolkit** — the three bundled (£9, ≈30% saving).
+
+**Product ladder:** free lead magnet → £3–5 printables → £9 bundle → book (£6.99) → series. **No course / membership / high-ticket tier — deliberate:** a paid protocol course would undercut the no-supplement-sales trust moat and risk implying self-treatment on a prescription-only topic (FACTS.md §8).
+
+### Email list
+- **Lead magnet:** *The H. Pylori Doctor-Visit & Test-of-Cure Cheat Sheet* — written in full; the two most-fumbled tools (the questions + the test-of-cure timing) on one page. Voice matches the book; zero forbidden phrases.
+- **Welcome sequence:** 5 emails (delivery → "still positive" reframe → de-panic NNT-332 numbers → review ask at **day 7, only after value** → next-book preview + reply-engagement). The orchestrator brief specified 5 (vs the agent template's 3); honoured.
+- **Zero-subscriber start:** BookFunnel not live + 0 subscribers → MailerLite Option A hosted landing page as the interim `[BOOKFUNNEL_LINK]` (~30-min setup). Swap to BookFunnel at 50+ subs.
+- **Back matter:** *FREE GIFT FOR READERS* section inserted **before** the review CTA. Order now: Conclusion → Free Gift → Review CTA → Also By → About the Author.
+
+### Hard rules held
+- **Lead magnet NEVER enters KDP Select** — off-Amazon (MailerLite/BookFunnel) delivery only; called out in three files.
+- Every product/email claim **sourced from FACTS.md** — zero invented statistics.
+- **Review ask only after value** (ask-after-value rule) — lands at day 7, after three value touches.
+- **Zero brand/supplement/vendor names** across all products and emails (no Matula, no Manuka, no probiotic brands).
+- **Medical disclaimer on every digital product.**
+- `[BOOKFUNNEL_LINK]` and `[REVIEW_URL_PLACEHOLDER]` kept as placeholders — no real URLs invented.
+- All Etsy prices = BookFactory **taxonomy starting bands**, and all revenue/monthly-sales cells, **flagged NEEDS REAL DATA** — no Etsy or BSR harvest was run this session (No-Assumptions lock).
+- Book **NOT published**; publish gate and its 2 open items unchanged.
+
+## OVERALL STAGE 08 VERDICT
+
+# ✅ APPROVED — PRODUCTS + EMAIL LIST BUILT
+
+All three Stage-08 agents complete. Three build-ready printables + a bundle, a full lead magnet, a 5-email welcome sequence, the zero-subscriber start plan, and the back-matter Free Gift CTA (correctly placed before the review CTA) are all produced and internally consistent. The no-supplement-sales moat is preserved — no high-ticket tier, no brands, every claim sourced. `current_stage` advanced to 8.
+
+**Pre-go-live actions (not blockers for Stage 08):** build the products in Canva to spec; set up the MailerLite landing page; validate Etsy prices against live comparables (replace NEEDS REAL DATA); back-fill `[BOOKFUNNEL_LINK]` and `[REVIEW_URL_PLACEHOLDER]` once live/published.
+
+---
+*Stage 08 executed by the master orchestrator acting in sequence as product-extractor → digital-product-designer → email-list-builder. All outputs committed alongside this approval. — 2026-06-11*

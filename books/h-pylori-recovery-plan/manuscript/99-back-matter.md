@@ -16,6 +16,18 @@ The infection is treatable, the fear is answerable, and the plan is now yours �
 
 ---
 
+## Free Gift for Readers
+
+I've made you something to take into the part that's easiest to fumble.
+
+The H. Pylori Doctor-Visit & Test-of-Cure Cheat Sheet is a single page with two tools on it: the questions to ask your doctor — split for whether you're newly diagnosed or still positive — and the test-of-cure timing that's the one fact people most often forget (stool or breath test, at least four weeks after the antibiotics, off the acid tablets first). It isn't a summary of what you've read. It's the quick reference for the appointment and the confirmation, kept somewhere you can find it at the moment you need it.
+
+Download it free at: **[BOOKFUNNEL_LINK]**
+
+You did the hard part — turning a frightening diagnosis into understanding. The cheat sheet is there for the short, nervous few minutes across the desk, so the questions don't evaporate and the test that closes the loop actually gets done.
+
+---
+
 ## A Small, Honest Request
 
 You came to this book frightened, at 2am, with a search engine making everything worse — and you are leaving it with the fear in proportion, a plan in hand, and the questions that turn a diagnosis into a path forward. That is real work, and you did it. Before you close the book, there is one small thing only you can do.
