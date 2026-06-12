@@ -216,12 +216,14 @@ function tag(level) {
 }
 
 if (HOOK_MODE) {
-  if (criticalCount === 0) { process.exit(0); }
-  let out = `BookFactory state invariants FAILED — fix before ending the turn:\n`;
-  if (branchViol) out += `  [INV-4] ${branchViol.msg}\n`;
-  for (const r of reports) for (const x of r.violations) out += `  [${x.code}] (${r.slug}) ${x.msg}\n`;
-  process.stderr.write(out);
-  process.exit(1);
+  if (criticalCount === 0) { process.exit(0); } // clean: let the turn end silently
+  // Emit the Stop-hook block contract so the turn cannot end with the pipeline corrupt.
+  let reason = `BookFactory pipeline state has ${criticalCount} CRITICAL invariant violation(s) — resolve before ending the turn:\n`;
+  if (branchViol) reason += `  [INV-4] ${branchViol.msg}\n`;
+  for (const r of reports) for (const x of r.violations) reason += `  [${x.code}] (${r.slug}) ${x.msg}\n`;
+  reason += `\nRun \`node scripts/validate-state.cjs\` for the full report. Fix the state or merge the branch, then continue.`;
+  process.stdout.write(JSON.stringify({ decision: "block", reason }));
+  process.exit(0);
 }
 
 console.log(`\n${C.BOLD}BookFactory — Pipeline State Validation${C.OFF}`);
