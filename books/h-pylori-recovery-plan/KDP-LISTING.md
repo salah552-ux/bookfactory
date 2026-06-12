@@ -28,11 +28,13 @@
 ## 3. SERIES NAME (CHARACTER-FOR-CHARACTER MATCH — DO NOT ALTER)
 
 **Series:** `Fix Your Gut for Good`
-**Series number:** Book 3
+**Series number:** Book 2
 
-> CRITICAL (ALGO §7): this string must be byte-identical to Book 1 and Book 2. Source verified against fix-your-gut-for-good/KDP-LISTING.md ("Series: Fix Your Gut for Good | Book 1") and the-7-day-gut-reset/KDP-LISTING.md ("Series: Fix Your Gut for Good — Book 2"). Enter exactly `Fix Your Gut for Good` in the KDP Series field. Any variation in capitalisation, spacing, or punctuation creates a separate series page and permanently breaks the cross-book carousel.
+> CRITICAL (ALGO §7): this string must be byte-identical to Book 1 and Book 3. Source verified against fix-your-gut-for-good/KDP-LISTING.md ("Series: Fix Your Gut for Good | Book 1") and the-7-day-gut-reset/KDP-LISTING.md (now Book 3). Enter exactly `Fix Your Gut for Good` in the KDP Series field. Any variation in capitalisation, spacing, or punctuation creates a separate series page and permanently breaks the cross-book carousel.
 
-**Series order:** Book 1 = Fix Your Gut for Good: Stop Relapsing (full anchor). Book 2 = The 7-Day Gut Reset (diagnostic short guide). Book 3 = The H. Pylori Recovery Plan (condition-specific guide).
+> SERIES-NUMBER SWAP 2026-06-12: this book moved from Book 3 to **Book 2**, and The 7-Day Gut Reset moved to Book 3 — because H. pylori is production-complete and publishes first, completing the funnel. The series string is unchanged.
+
+**Series order:** Book 1 = Fix Your Gut for Good: Stop Relapsing (full anchor). Book 2 = The H. Pylori Recovery Plan (condition-specific guide). Book 3 = The 7-Day Gut Reset (diagnostic short guide).
 
 ---
 
@@ -47,7 +49,9 @@
 Length: ~2,950 characters (within the 4,000-char KDP limit). Only KDP-supported tags (h2, p, b, i, ul, li). Paste-ready.
 
 ```html
-<h2>You Tested Positive for H. Pylori. Then You Googled It. Now You're Scared.</h2>
+<h2>Scared of H. Pylori? You Can Clear It.</h2>
+
+<p><b>You tested positive. Then you Googled it. Now you're scared.</b></p>
 
 <p>You typed "H. pylori cancer" into your phone and found the headline: this infection causes around three out of four stomach cancers. Your heart dropped. Maybe your doctor handed you a week of antibiotics and said "don't worry." Maybe you finished them and the re-test came back <i>still positive</i>. Either way, you are standing in your kitchen with a burning, gnawing stomach, frightened, and not sure who to trust.</p>
 
@@ -66,14 +70,14 @@ Length: ~2,950 characters (within the 4,000-char KDP limit). Only KDP-supported 
 <li>How to confirm the infection is truly gone, prevent reinfection, and rebuild your gut after the antibiotics</li>
 </ul>
 
-<p>This is the third book in the <b>Fix Your Gut for Good</b> series, written for readers who learn better when someone explains the mechanism instead of just handing them instructions. If you have done what the doctor said and you are still not well, or you are simply tired of being sold fear and supplements, this is the plan that treats you like an adult.</p>
+<p>This is part of the <b>Fix Your Gut for Good</b> series, written for readers who learn better when someone explains the mechanism instead of just handing them instructions. If you have done what the doctor said and you are still not well, or you are simply tired of being sold fear and supplements, this is the plan that treats you like an adult.</p>
 
 <p>If you are ready to clear it, heal, and stop being afraid of your own stomach, <b>scroll up and get your copy.</b></p>
 
 <p><i>This book is not a substitute for medical advice. H. pylori treatment requires prescription medication; work with your doctor. Severe or persistent symptoms, blood, or unexplained weight loss require medical evaluation.</i></p>
 ```
 
-**Social-proof framing note:** No fabricated review block embedded (KDP policy). The series-credibility line ("third book in the Fix Your Gut for Good series") is the legitimate social proof. Once 50+ reviews are live, a real pull-quote may be added at the top of the description at a listing refresh.
+**Social-proof framing note:** No fabricated review block embedded (KDP policy). The series-credibility line ("part of the Fix Your Gut for Good series") is the legitimate social proof. Once 50+ reviews are live, a real pull-quote may be added at the top of the description at a listing refresh.
 
 ---
 
@@ -111,7 +115,7 @@ Byte counts (verified): 31, 27, 32, 34, 28, 28, 27 — all ≤50. Intent flags a
 - **Publication date:** [PLACEHOLDER — set at human gate, minimum 72h after KDP submission]
 - **Price:** £6.99 UK / $9.99 US ebook (70% royalty band) — **LOCKED (Decision 2)**. Paperback £15.99 — **LOCKED (Decision 2)** (production deferred, but price point fixed). International marketplaces: let Amazon calculate from US price, or confirm at upload.
 
-> **DECISION 2 — PRICE LOCKED 2026-06-08 (£6.99 ebook / £15.99 paperback).** Authority pricing, not entry pricing. ALGO-INTELLIGENCE.md §9: premium clinical keywords ("recovery plan," "complete guide," "treatment") paired with a £2.99 tag send a credibility-mismatch signal that suppresses conversion. This book's clinical positioning — 2024 ACG guidelines, named resistance rates (22.2–31.5%), sourced cancer-risk data — justifies authority pricing. Consistent with the series anchor *Fix Your Gut for Good* at $9.99. Book 2 (*The 7-Day Gut Reset*) launched at £2.99 as a deliberate funnel entry point; this is a deeper, condition-specific clinical guide, a different SKU class. £2.99 rejected.
+> **DECISION 2 — PRICE LOCKED 2026-06-08 (£6.99 ebook / £15.99 paperback).** Authority pricing, not entry pricing. ALGO-INTELLIGENCE.md §9: premium clinical keywords ("recovery plan," "complete guide," "treatment") paired with a £2.99 tag send a credibility-mismatch signal that suppresses conversion. This book's clinical positioning — 2024 ACG guidelines, named resistance rates (22.2–31.5%), sourced cancer-risk data — justifies authority pricing. Consistent with the series anchor *Fix Your Gut for Good* at $9.99. *The 7-Day Gut Reset* (now Book 3) is priced at £2.99 as a deliberate funnel entry point; this is a deeper, condition-specific clinical guide, a different SKU class. £2.99 rejected.
 - **KDP Select:** recommend ENROLLED (series precedent — KU-heavy gut-health audience). Confirm at gate.
 
 ---
@@ -138,4 +142,4 @@ Three fields, per series-consistent answers:
 
 ---
 
-*Series string verified character-for-character against Book 1 and Book 2 KDP listings. All 7 keywords byte-verified ≤50. Zero invented BSR figures. All 5 Stage-02 decisions resolved from intelligence — no Architect gate.*
+*Series string verified character-for-character against the sibling KDP listings (Fix Your Gut for Good and The 7-Day Gut Reset). All 7 keywords byte-verified ≤50. Zero invented BSR figures. All 5 Stage-02 decisions resolved from intelligence — no Architect gate.*

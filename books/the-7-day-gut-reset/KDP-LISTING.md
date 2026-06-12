@@ -25,14 +25,16 @@
 
 **Author name:** S.A. Ibrahim
 
-**Series:** Fix Your Gut for Good — Book 2
+**Series:** Fix Your Gut for Good — Book 3
+
+> SERIES-NUMBER SWAP 2026-06-12: this book moved from Book 2 to **Book 3**; The H. Pylori Recovery Plan is now Book 2 and publishes first to complete the funnel. The series string is unchanged.
 
 **Series setup on KDP:**
 - During upload, link to the existing *Fix Your Gut for Good* series page on Amazon (Author Central → Series → add to existing series, or create the series record if not yet set up).
-- Series order: Book 2.
-- Book 1 of the series is the existing full-length anchor *Fix Your Gut for Good*; this short guide is the diagnostic-first entry point.
+- Series order: Book 3.
+- Book 1 of the series is the existing full-length anchor *Fix Your Gut for Good*; Book 2 is *The H. Pylori Recovery Plan*; this short guide is the diagnostic-first entry point at Book 3.
 
-**Why a series listing matters:** the Amazon series page becomes a discoverability funnel — readers landing on Book 1 see Book 2 above the fold, and vice versa. Series-linked books carry compound BSR signals (a sale on either book registers as a series-level signal). This is one of the few free, structural pieces of cross-promotion Amazon provides.
+**Why a series listing matters:** the Amazon series page becomes a discoverability funnel — readers landing on Book 1 see the other books above the fold, and vice versa. Series-linked books carry compound BSR signals (a sale on any book registers as a series-level signal). This is one of the few free, structural pieces of cross-promotion Amazon provides.
 
 ---
 
@@ -313,7 +315,7 @@ The manuscript already contains:
 □ Title confirmed: "The 7-Day Gut Reset"
 □ Subtitle confirmed: "Find Your Trigger and Calm Your Gut in One Week"
 □ Author: S.A. Ibrahim
-□ Series: Fix Your Gut for Good — Book 2 (linked on KDP Author Central)
+□ Series: Fix Your Gut for Good — Book 3 (linked on KDP Author Central)
 □ Description (HTML) proofread and validated — copies cleanly from Section 5
 □ 7 keywords entered (one per slot, no title duplicates) — copy from Section 3
 □ Category 1: Kindle Store > … > Abdominal Disorders

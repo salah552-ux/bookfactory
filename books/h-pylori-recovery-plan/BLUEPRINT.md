@@ -1,5 +1,10 @@
-# The H. Pylori Recovery Plan — Full Book Blueprint
+# BLUEPRINT — The H. Pylori Recovery Plan
 ## book-architect role | master-orchestrator (Opus) | Stage 02 | 2026-06-08
+
+<!-- Machine-readable metadata for build-pdf.sh / build-manuscript.sh title-page generator. Do not remove. -->
+**Title:** The H. Pylori Recovery Plan
+**Subtitle:** How to Eradicate the Infection, Heal Your Stomach Lining, and Understand Your Cancer Risk — Even When Antibiotics Have Failed
+## Series: Fix Your Gut for Good — Book 2
 
 **Data sources:** MARKET-INTELLIGENCE.md (2026-06-07) | SEO-STRATEGY.md (2026-06-07) | KDP-LISTING.md (Stage 02 decision lock, 2026-06-08) | FACTS.md (2026-06-08) | series templates: the-7-day-gut-reset/BLUEPRINT.md.
 
@@ -11,8 +16,8 @@
 
 **Title (LOCKED):** The H. Pylori Recovery Plan
 **Subtitle (LOCKED — Decision 3):** How to Eradicate the Infection, Heal Your Stomach Lining, and Understand Your Cancer Risk — Even When Antibiotics Have Failed
-**Series:** Fix Your Gut for Good — Book 3
-**Series position:** Condition-specific guide. Sits below the full anchor (*Fix Your Gut for Good*) and the diagnostic short guide (*The 7-Day Gut Reset*) as the deep, single-condition clinical companion.
+**Series:** Fix Your Gut for Good — Book 2
+**Series position:** Book 2 of the series (series-number swap 2026-06-12: H. pylori moved 3 → 2, The 7-Day Gut Reset moved to Book 3, because this book is production-complete and publishes first to complete the funnel). The condition-specific clinical companion to the full anchor (*Fix Your Gut for Good*, Book 1); *The 7-Day Gut Reset* (Book 3) is the shorter diagnostic guide. The series string is unchanged.
 **Author:** S.A. Ibrahim (pen name — no clinical credentials claimed)
 
 **One-line premise:** The calm, evidence-grounded guide for the person who tested positive for H. pylori, got scared by what they read about cancer, and wants to actually clear the infection — even after antibiotics have already failed once.

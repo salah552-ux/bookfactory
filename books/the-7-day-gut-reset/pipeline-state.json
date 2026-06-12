@@ -1,6 +1,9 @@
 {
   "book_slug": "the-7-day-gut-reset",
   "book_title": "The 7-Day Gut Reset",
+  "series": "Fix Your Gut for Good",
+  "series_number": 3,
+  "series_number_note": "Set to 3 by the 2026-06-12 series-number swap (was implicitly Book 2). The H. Pylori Recovery Plan is now Book 2 and publishes first to complete the funnel; this book is Book 3. The series string 'Fix Your Gut for Good' is unchanged.",
   "genre": "health",
   "current_stage": 6.5,
   "created_at": "2026-05-13T00:00:00Z",

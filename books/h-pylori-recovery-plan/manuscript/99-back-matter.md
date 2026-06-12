@@ -50,9 +50,9 @@ This book is part of the *Fix Your Gut for Good* series — a set of honest, sou
 
 If clearing your H. pylori has turned into a wider interest in getting your gut genuinely well, two companion books continue where this one leaves off:
 
-**The 7-Day Gut Reset** — the shorter, more diagnostic guide. If you want to triage your symptoms, work out what your gut is actually doing, and follow a structured short plan to settle things down, this is the one to reach for. It is the quick way to sort the signal from the noise.
-
 **Fix Your Gut for Good** — the fuller anchor of the series. The deeper, complete guide to understanding and repairing gut health over the longer term, for the reader who wants to get their gut right and keep it right rather than lurching from one problem to the next.
+
+**The 7-Day Gut Reset** — the shorter, more diagnostic guide. If you want to triage your symptoms, work out what your gut is actually doing, and follow a structured short plan to settle things down, this is the one to reach for. It is the quick way to sort the signal from the noise.
 
 Both are written with the same refusal to sell you a supplement, the same insistence on naming every source, and the same respect for a reader who has already done the reading. Neither is required — if your goal was to clear H. pylori and move on, you already have everything you need. But if you want to go further, they are there, in the same honest register.
 

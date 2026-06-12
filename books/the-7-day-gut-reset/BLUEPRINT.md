@@ -9,8 +9,8 @@
 
 **Title:** The 7-Day Gut Reset
 **Subtitle:** Find Your Trigger and Calm Your Gut in One Week
-## Series: Fix Your Gut for Good, Book 1
-**Series position:** SKU #1 in the gut health short-guide line
+## Series: Fix Your Gut for Good — Book 3
+**Series position:** Book 3 of the series (series-number swap 2026-06-12: this book is now Book 3; The H. Pylori Recovery Plan is Book 2 and publishes first to complete the funnel). The diagnostic-first short guide — the entry point of the gut-health short-guide line. The series string is unchanged. (Prior label here read "Book 1", which was a stale mislabel — Book 1 of the series is the full-length anchor *Fix Your Gut for Good*.)
 **One-line premise:** Before any protocol begins, you figure out which type of gut problem you actually have — then the seven-day plan is built for that.
 **Core promise:** In seven days the reader will identify their personal gut trigger (food / stress / motility), complete a tailored calm-down protocol, and leave with a personal maintenance map they can use indefinitely — without needing a clinic, a specialist referral, or a permanent elimination diet.
 **Tone adjectives (exactly 5):** warm, direct, unhurried, credible, gently urgent
