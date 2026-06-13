@@ -235,6 +235,23 @@ Source: BSR velocity data from opportunity report + comp launch trajectories (if
 
 ---
 
+## PREDICTION LOGGING — CLOSE THE LEARNING LOOP
+
+The moment a BUILD decision is made, record this blueprint's prediction so the pipeline can grade it against reality later. This is what makes the system data-driven instead of guess-driven: every Stage-00 call is scored once real launch data exists, and the niche's BSR→units conversion is learned from actual outcomes rather than carried as a community estimate forever.
+
+Run (use ONLY the range the opportunity data actually supports — never invent it; if the report lacks comp #20/#100 BSR data, write "no BSR prediction — insufficient data" and skip the numeric range):
+
+```
+python intelligence/calibration_engine.py add-prediction <book-slug> <niche> <opportunity_score> <pred_bsr_low> <pred_bsr_high> <confidence>
+```
+
+- `pred_bsr_low/high` = the launch-window BSR band you expect IF the launch plan executes, taken from the comp BSR data in the opportunity report (label ESTIMATE in the blueprint prose).
+- `confidence` = LOW / MEDIUM / HIGH, matching this blueprint's data confidence.
+
+After launch, `post-launch-tracker` logs the real BSR via `calibration_engine.py add-observation`, and `calibration_engine.py accuracy` grades this prediction. Over time `calibration_engine.py report` replaces the community `[EST]` conversion table with the niche's real calibrated BSR→units curve. An unlogged prediction is a lesson the system can never learn from — do not skip this step.
+
+---
+
 ## RISK FACTORS
 
 **What could go wrong:**
