@@ -112,8 +112,9 @@
       "id": "07-publishing",
       "name": "Publishing Setup & Launch",
       "folder": "07-publishing/",
-      "agents": ["pre-launch-agent", "publisher-agent", "marketing-agent", "reach-agent", "kdp-upload-agent"],
-      "sequential_order": [["pre-launch-agent", "publisher-agent", "marketing-agent", "reach-agent"], "kdp-upload-agent"],
+      "agents": ["conversion-copywriter-agent", "pre-launch-agent", "publisher-agent", "marketing-agent", "reach-agent", "kdp-upload-agent"],
+      "sequential_order": [["conversion-copywriter-agent", "pre-launch-agent", "publisher-agent", "marketing-agent", "reach-agent"], "kdp-upload-agent"],
+      "agent_note": "conversion-copywriter-agent drafts the blurb/hook/A+/ad/email copy FIRST; publisher-agent places the recommended blurb in the KDP listing.",
       "outputs": ["KDP-LISTING.md", "LAUNCH-PLAN.md"],
       "human_gate_fields": ["ai_questionnaire_confirmed", "published"],
       "human_gate_instruction": "Review KDP draft. Complete AI questionnaire. Set ai_questionnaire_confirmed: true. Then type PUBLISH to trigger final click."
