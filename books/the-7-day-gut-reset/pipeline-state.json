@@ -5,9 +5,9 @@
   "series_number": 3,
   "series_number_note": "Set to 3 by the 2026-06-12 series-number swap (was implicitly Book 2). The H. Pylori Recovery Plan is now Book 2 and publishes first to complete the funnel; this book is Book 3. The series string 'Fix Your Gut for Good' is unchanged.",
   "genre": "health",
-  "current_stage": 6.5,
+  "current_stage": 9,
   "created_at": "2026-05-13T00:00:00Z",
-  "last_updated": "2026-05-29T00:00:00Z",
+  "last_updated": "2026-06-13T00:00:00Z",
   "last_agent_run": "Four pipeline enhancements built: post-launch-tracker agent (10-postlaunch/post-launch-tracker.md) — weekly metrics logger with hard-coded intervention rules, LAUNCH-TRACKER.md output; email-list-builder agent (08-products/email-list-builder.md) — lead magnet + 3-email sequence per book; new-book.sh upgrade — full pipeline-state.json schema, SERIES-FACTS cross-ref in FACTS.md, EMAIL-SEQUENCE.md template, upgraded setup checklist; aplus-content-agent spec upgraded (existing agent reviewed; APLUS-CONTENT.md generated for fix-your-gut-for-good). All three new agents added to sonnet-dispatcher-guide.md trigger table and agent roster.",
   "word_count": 12124,
   "writing": {
@@ -24,9 +24,32 @@
     "05-optimisation": { "status": "complete", "completed_at": "2026-05-14T16:01:00Z", "notes": "hook-optimizer-agent: 5 rewrites applied (Day 3 opening+closing, Day 4 opening, Day 5 closing, Day 7 opening). review-bait-optimizer: 3 review trigger moments inserted, back matter CTA rewritten with [AMAZON_REVIEW_LINK] placeholder. Both reports verified on disk." },
     "06-production": { "status": "complete", "completed_at": "2026-05-22T18:55:00Z", "notes": "APPROVED at 285/300 (final-approval-agent re-audit 2026-05-22 with cover in place + AI disclosure removed from front matter). Dimension 2 Cover 48/50 — cover-kdp-final.jpg (1600x2560 JPEG RGB, 165KB) passes all 7 COVER-PSYCHOLOGY Section 9 checks. Compliance 55/55. All 4 exports rebuilt fresh 18:54 from updated source; canonical manuscript-kdp.pdf overwrote cleanly (prior OS lock cleared). Non-blocking score-trim items remain (keyword dup, paperback price, ARC plan, long bio, stale HTML cleanup) — none block Stage 06 closure. Stage 06 gate cleared." },
     "06.5-pre-launch": { "status": "complete", "completed_at": "2026-05-23T12:00:00Z", "notes": "Pre-launch quartet complete. marketing-agent.md upgraded with Section 0 KDP Algorithm Mastery (subcategory BSR targeting, category arbitrage, launch velocity window, KU multiplier, also-bought seeding, free-BEFORE-paid mechanics, review velocity stagger, BSR-under-1000-in-subcategory math, A+ Content / Author Central / Editorial Reviews / Goodreads bypass moves). PRE-LAUNCH-PLAN.md, KDP-LISTING.md, MARKETING-PLAN.md, REACH-PLAN.md all written/refreshed to apply Section 0 — free days now scheduled BEFORE paid launch (T-5/T-4, paid T-3) per Section 0.6; also-bought seeding mandatory from three sources (publisher account, ARC readers who own competitor titles, community traffic); reviews staggered 5/5/5 across paid Days 1-3; Author Central UK+US live before paid-launch day; A+ Content submitted at T-14; Goodreads at T-42; editorial reviews loaded before paid launch. Subcategory BSR target: under 100 in Abdominal Disorders (top 5-10 books); under 1,000 in Digestive Health (top 20-50). Awaiting human gate pre_launch_approved before Stage 07." },
-    "07-publishing": { "status": "pending" },
-    "08-products": { "status": "pending" },
-    "09-series": { "status": "pending" },
+    "07-publishing": {
+      "status": "complete",
+      "completed_at": "2026-06-13T00:00:00Z",
+      "agents_completed": "conversion-copywriter-agent → publisher-agent (reconcile) → marketing-agent (ALGO v1.2 reconcile) → reach-agent (ALGO v1.2 reconcile). kdp-upload-agent NOT run to final click — published stays false, no ASIN.",
+      "outputs": [
+        "CONVERSION-COPY.md",
+        "KDP-UPLOAD-GUIDE.md",
+        "KDP-LISTING.md",
+        "MARKETING-PLAN.md",
+        "REACH-PLAN.md"
+      ],
+      "notes": "conversion-copywriter-agent produced CONVERSION-COPY.md: 3 scored blurb variants (A fear-first 47/50 = RECOMMENDED PRIMARY, B aspiration 45/50, C authority 46/50), hook bank, A+ copy, ad headlines, email subjects, also-by lines — all sourced to FACTS.md + reader language, exact sibling titles. publisher-agent reconciled: Variant A confirmed as the placed KDP description (same spine as existing §5, key phrase in first 200 chars); B/C retained for post-launch A/B. marketing-agent + reach-agent reconciled with ALGO-INTELLIGENCE v1.2 (semantic/intent layer LOW-confidence working hypothesis, lean ASCII byte-checked keywords, 3-category cap + auto-recategorization, read-through signal, direct dp/[ASIN] attribution URLs). KDP-UPLOAD-GUIDE.md produced: full manual runbook with 3-category cap, mandatory AI questionnaire, byte-checked keywords, byte-identical series string 'Fix Your Gut for Good' (Book 3), free-before-paid promo, published=false / no-ASIN lock. Stale PENDING-APPROVAL strings cleared in CATEGORY-SELECTION.md, SEO-STRATEGY.md, AGENT-LOG.md (categories/SEO approved 2026-06-13). NO publish click; ai_questionnaire_confirmed and published remain false. Zero invented numbers."
+    },
+    "08-products": {
+      "status": "complete",
+      "completed_at": "2026-06-13T00:00:00Z",
+      "agents_completed": "product-extractor + digital-product-designer (DIGITAL-PRODUCTS.md, reconciled) → email-list-builder (LEAD-MAGNET.md, EMAIL-SEQUENCE.md, ZERO-SUBSCRIBER-START.md)",
+      "outputs": [
+        "DIGITAL-PRODUCTS.md",
+        "LEAD-MAGNET.md",
+        "EMAIL-SEQUENCE.md",
+        "ZERO-SUBSCRIBER-START.md"
+      ],
+      "notes": "DIGITAL-PRODUCTS.md confirmed as the product-extractor + digital-product-designer output (Etsy specs, locked design system, pricing — all revenue figures labelled placeholders pending real data). email-list-builder produced the free lead magnet 'The Flare-Day Decision Card' (LEAD-MAGNET.md) — a one-page flare-day decision tool DISTINCT from the paid Etsy Trigger Log; the 3-email MailerLite welcome sequence + Free Gift back-matter CTA (EMAIL-SEQUENCE.md); and the interim zero-subscriber plan (ZERO-SUBSCRIBER-START.md). HARD RULE honoured: lead magnet is off-Amazon, NEVER in KDP Select. All claims sourced from FACTS.md. Back-matter Free-Gift CTA documented for insertion above the review CTA (no live manuscript edit this session). Zero invented subscriber/revenue numbers; [BOOKFUNNEL_LINK] placeholders retained until live."
+    },
+    "09-series": { "status": "complete", "completed_at": "2026-06-13T00:00:00Z", "agents_completed": "series-continuity-guardian → series-manager → series-sync-agent → arc-manager-agent", "outputs": ["SERIES-CONTINUITY-2026-06-13.md", "../../SERIES-FACTS.md (Book 3 canon block added)"], "notes": "Stage 09 verdict APPROVED — 0 critical conflicts. Book 3 cross-sells Book 1 by exact title in-manuscript; exact Book 1 + Book 2 Also-By block STAGED for Book 3 upload (activates once Book 2 is live, guaranteed by the publish-Book-2-first plan). SERIES-FACTS master record updated additively with Book 3 canon. Live Book 1 manuscript NOT modified. Continuity report was originally mis-written to repo root by the Stage-09 run and relocated here 2026-06-13; Book 3 09-series status reconciled from pending → complete at the same time (it had been left pending while the shared master already claimed completion — exactly the inconsistency the validator guards against). Book NOT published; publish gate ahead; no ASIN." },
     "10-post-launch": { "status": "pending" }
   },
   "human_gates": {
@@ -93,6 +116,7 @@
     "subcategory_bsr_target_secondary": "Digestive Health — BSR under 1,000 in sub (top 20-50)"
   },
   "quality_scores": {
+    "fact_check_result": "PASS",
     "book_reviewer_avg": 111.8,
     "book_reviewer_avg_pre_expansion": 101,
     "final_approval_score": 285,

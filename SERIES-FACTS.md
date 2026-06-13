@@ -5,7 +5,7 @@ Read this before writing any book in the series.
 Never redefine a concept already defined here — reference it.
 Add new entries after each book is completed.
 
-**Last updated:** 2026-06-12 — SERIES-NUMBER SWAP: The H. Pylori Recovery Plan is now **Book 2** and The 7-Day Gut Reset is now **Book 3** (H. pylori is production-complete and publishes first to complete the funnel). The series string `Fix Your Gut for Good` is unchanged. Prior 2026-06-11 — H. Pylori entered into the master record by series-manager (Stage 09, then numbered Book 3). Prior update 2026-04-18 corrected 3 conflicts against Book 1 FACTS.md (see CONTINUITY-REPORT.md).
+**Last updated:** 2026-06-13 — Book 3 (The 7-Day Gut Reset) Stage-09 series pass: series-manager added the Book 3 canon block (below); series-continuity-guardian persisted `SERIES-CONTINUITY-2026-06-13.md` (0 critical conflicts; authoritative post-swap record, replacing the never-written 2026-06-12 phantom file). Prior 2026-06-12 — SERIES-NUMBER SWAP: The H. Pylori Recovery Plan is now **Book 2** and The 7-Day Gut Reset is now **Book 3** (H. pylori is production-complete and publishes first to complete the funnel). The series string `Fix Your Gut for Good` is unchanged. Prior 2026-06-11 — H. Pylori entered into the master record by series-manager (Stage 09, then numbered Book 3). Prior update 2026-04-18 corrected 3 conflicts against Book 1 FACTS.md (see CONTINUITY-REPORT.md).
 
 > **NOTE ON FILE LOCATION (2026-06-11):** The Stage-09 agent specs reference a gut-health master at `BookFactory/SERIES-FACTS-GUT.md` and a fiction master at `books/death-in-the-cathedral-close/SERIES-FACTS.md`. In practice both series canons currently live in THIS file (`BookFactory/SERIES-FACTS.md`): the gut-health master above and the Cathedral Close canon appended at the foot. This is the authoritative master until the files are formally split. Do not cross-contaminate the two sections.
 
@@ -19,7 +19,7 @@ This table is the single source of truth for the real publication state of every
 |---|---------------|------------------|------|-------|-----------|-----------|------|-----------|
 | 1 | Fix Your Gut for Good: Stop Relapsing | The 4-Phase SIBO Protocol for Root Cause Recovery — What Your Doctor Didn't Tell You About Why You Keep Coming Back | fix-your-gut-for-good | 10-postlaunch | (live) | **LIVE** | B0GXYLWS1W | Yes |
 | 2 | The H. Pylori Recovery Plan | How to Eradicate the Infection, Heal Your Stomach Lining, and Understand Your Cancer Risk — Even When Antibiotics Have Failed | h-pylori-recovery-plan | 09-series (held at publish gate) | 45,044 | NOT live (published=false) | — | Yes (planned) |
-| 3 | The 7-Day Gut Reset | Find Your Trigger and Calm Your Gut in One Week | the-7-day-gut-reset | 6.5 (07-publishing pending) | — | NOT live (published=false) | — | (pending) |
+| 3 | The 7-Day Gut Reset | Find Your Trigger and Calm Your Gut in One Week | the-7-day-gut-reset | 09-series (Stages 07–09 complete 2026-06-13; publish gate ahead) | 12,124 | NOT live (published=false) | — | Yes (planned) |
 
 > **SERIES-NUMBER SWAP (2026-06-12):** The H. Pylori Recovery Plan moved from Book 3 → **Book 2**; The 7-Day Gut Reset moved from Book 2 → **Book 3**. Rationale: H. pylori is production-complete (through Stage 09) and its back matter already cross-sells The 7-Day Gut Reset by exact title, so publishing H. pylori as Book 2 first completes the funnel; The 7-Day Gut Reset is only at Stage 6.5. The series string is unchanged. Earlier references in this file to "Book 3 = H. pylori" / "Book 2 = The 7-Day Gut Reset" predate this swap.
 
@@ -61,6 +61,43 @@ H. pylori statistics now locked at series level by Book 2 (full table + sources 
 | No supplement sales / name every source | series brand moat | Honour (zero brands; named sources by chapter) | ✓ |
 | Author S.A. Ibrahim, no clinical credentials | series rule | Honour | ✓ |
 | 4-phase framework (Assess→Eradicate→Repair→Prevent Relapse) | Book 1 structure; spirit-not-letter for later books | Adapted (Book 2 maps the same arc to a single condition; does not use the literal phase labels — permitted per series rule) | ✓ adapted |
+
+---
+
+### Book 3 — KEY FACTS ADDED TO SERIES CANON (The 7-Day Gut Reset)
+
+*(This is The 7-Day Gut Reset, Book 3 of the series since the 2026-06-12 swap — the diagnostic-first short guide. Entered 2026-06-13 by series-manager. Full table + sources in `books/the-7-day-gut-reset/FACTS.md`. These are additive; nothing above is changed.)*
+
+| Concept / spec | Value (as sourced) | Source | Book |
+|----------------|--------------------|--------|------|
+| Three trigger profiles | Food-triggered · Stress-triggered · Motility-triggered (observational frameworks, NOT diagnoses) | book-architect specification (FACTS.md §1) | Book 3, Day 2 |
+| The Stress Bridge (vagal practice) | Four minutes — 2 min physiological sigh (double inhale + extended exhale) + 2 min low-frequency humming | book-architect spec; mechanism per Balban, *Cell Reports Medicine*, 2023 | Book 3, Day 5 |
+| Trigger Log | 5 columns (time / food-drink / stress 1–10 / symptom type / intensity 1–10); log within 15–30 min of eating | book-architect spec (FACTS.md §5) | Book 3, Day 1 |
+| Reintroduction window | One food category at a time; 48 hours between; a clear response = +3 points on the 1–10 scale within 48h | book-architect spec (FACTS.md §3) | Book 3, Day 6 |
+| Sensitivity review cadence | Revisit confirmed sensitivities every 8–12 weeks (not permanent prohibitions) | book-architect spec (FACTS.md §4) | Book 3, Day 7 |
+| Diet→microbiome timing | Bacterial shift within ~1 day, consolidating over 3–4 days | David LA et al., *Nature*, 2014 | Book 3, Intro/Day 3/Conclusion (shared with series — reconciles with Book 1) |
+| Post-infectious IBS (Book 3 usage) | ~1 in 10 after infectious gastroenteritis (different denominator from Book 1's "~1 in 7 bacterial" figure — both sourced, not a conflict) | Thabane meta-analysis | Book 3, Day 2 |
+
+**Honest-framing convention (Book 3 reinforces a series rule):** every reset/short-term claim holds the de-escalating half — *"Seven days changes the trajectory; it does not finish the work… not a cured gut."* No standalone over-promise. This mirrors the Book 2 dual-cancer-message discipline and is now a series-wide convention for any time-bound or condition-specific claim.
+
+### Book 3 — RECURRING TROPES / SERIES CONVENTIONS HONOURED
+
+| Convention | Honour or subvert | Book 3 delivered |
+|-----------|-------------------|------------------|
+| Second person ("you") throughout, contractions always | Honour | ✓ |
+| Mechanism before instruction (explain *why* before *what*) | Honour | ✓ |
+| No supplement sales / no brand names / name every source | Honour (zero brands; sources in RESEARCH NOTES blocks) | ✓ |
+| "Calm/reset," never "cure/heal/fix" (Book-3-specific: "Fix Your Gut" reserved for the series anchor title) | Honour | ✓ |
+| Author S.A. Ibrahim, no clinical credentials | Honour | ✓ |
+| 4-phase framework | Adapted — Book 3 uses a 7-day diagnostic-then-tailored-protocol arc, not the literal phase labels (permitted per series rule) | ✓ adapted |
+
+### Book 3 — CROSS-SELL MAP (exact titles only)
+
+| Direction | Names (exact) | State |
+|-----------|---------------|-------|
+| Book 3 → Book 1 | *Fix Your Gut for Good* | Present in Book 3 manuscript (Day 7, Conclusion, About the Author) — Book 1 is LIVE, so this cross-sell is correct today |
+| Book 3 → Book 2 | *The H. Pylori Recovery Plan* | NOT yet in Book 3 manuscript — staged Also-By block (see SERIES-CONTINUITY-2026-06-13.md STEP 3); activate at Book 3 upload once Book 2 is live |
+| Book 2 → Book 3 | *The 7-Day Gut Reset* | Already present in Book 2 manuscript by exact title (Ch.10 + back matter) — outbound funnel ready |
 
 ---
 
