@@ -1,0 +1,12 @@
+{
+  "_schema": "calibration-ledger v1.0",
+  "_description": "The BookFactory self-learning loop's data store. Two tables: predictions (what the Stage-00 opportunity scorer expected) and observations (real KDP dashboard data after launch). calibration_engine.py fits BSR->units conversions from real observations and measures prediction error so the scorer improves over time. NEVER hand-edit numbers in here that did not come from a real KDP report.",
+  "_rules": [
+    "Every observation row MUST carry a 'source' (e.g. 'KDP dashboard 2026-07-30').",
+    "PROMO rows (free days, Countdown) are excluded from the conversion baseline automatically.",
+    "A niche stays on the community [EST] table until it has >= 8 non-promo observations, then the engine writes a CALIBRATED rate.",
+    "No invented values. Empty is the correct state until real data is logged."
+  ],
+  "predictions": [],
+  "observations": []
+}

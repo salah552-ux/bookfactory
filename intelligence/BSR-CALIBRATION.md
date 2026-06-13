@@ -5,6 +5,21 @@
 **How to add an entry:** Run `calibrate bsr [book-slug] [week-number]` and paste the template
 from BSR-CALIBRATION-PROMPT.md. Or paste data directly to the post-launch-tracker agent.
 
+**Automated engine (2026-06-12):** the self-learning loop is now operational via
+`intelligence/calibration_engine.py`. Each weekly KDP reading is logged with:
+
+```
+python calibration_engine.py add-observation <book> <niche> <week> <bsr> <units_paid> <kenp> <price_gbp> <promo:0|1> "<source>"
+```
+
+Once a niche has >= 8 non-promo observations the engine fits the real BSR->units
+power law (with an R^2 fit-quality figure) and `python calibration_engine.py report`
+replaces the community [EST] table below with the CALIBRATED rate. `add-prediction`
+records the Stage-00 opportunity scorer's expectation so `accuracy` can later measure
+prediction error and improve the scorer. The engine never invents values — empty is
+correct until real data is logged. The post-launch-tracker agent should call
+`add-observation` every week, and opus-brain should call `add-prediction` at Stage 00.
+
 **Format:** Each entry is one row. PROMO entries are excluded from the conversion baseline.
 
 ---

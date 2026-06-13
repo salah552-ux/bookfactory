@@ -181,11 +181,20 @@ if (COMPLETE) {
   }
   const stamp = new Date().toISOString().slice(0, 19) + "Z";
   let updated = raw.replace(stageRe, `$1complete$3`);
-  // add completed_at right after the status if not already present in that block
-  updated = updated.replace(
-    new RegExp(`("${stageKey}"\\s*:\\s*\\{[^}]*?"status"\\s*:\\s*"complete")(\\s*,)`),
-    (m, p1, p2) => /completed_at/.test(m) ? m : `${p1}, "completed_at": "${stamp}"${p2 === "," ? "," : p2}`.replace('""', '"')
-  );
+  // Insert completed_at immediately after this stage's "status": "complete", if absent.
+  // [^}]* stays within the (single-level) stage object; status is the first key so it is always reached.
+  const afterStatusRe = new RegExp(`("${stageKey}"\\s*:\\s*\\{[^}]*?"status"\\s*:\\s*"complete")`);
+  const sm = updated.match(afterStatusRe);
+  if (sm) {
+    const blockEnd = updated.indexOf("}", sm.index);
+    const alreadyHas = blockEnd > -1 && /"completed_at"/.test(updated.slice(sm.index, blockEnd));
+    if (!alreadyHas) updated = updated.replace(afterStatusRe, `$1, "completed_at": "${stamp}"`);
+  }
+  // Guard: only write if the result still parses as JSON (never corrupt the ledger).
+  try { JSON.parse(updated); } catch (e) {
+    console.log(`${C.RED}${C.BOLD}REFUSED${C.OFF} — auto-flip would produce invalid JSON (${e.message}). No change written.`);
+    process.exit(1);
+  }
   fs.writeFileSync(statePath, updated);
 
   const v = validate();
