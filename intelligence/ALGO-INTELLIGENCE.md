@@ -1,7 +1,7 @@
 # ALGO-INTELLIGENCE.md
 ## Amazon Algorithm Intelligence — BookFactory Pipeline
 
-**CURRENT VERSION: v1.1 — 2026-06-03**
+**CURRENT VERSION: v1.2 — 2026-06-12**
 
 This document is the canonical algorithm knowledge source for all BookFactory discoverability agents.
 
@@ -769,3 +769,59 @@ command:       python -c "phrases=['phrase1','phrase2','phrase3','phrase4',
 | §17 Byte limit | Backend keyword fields are 50 bytes, not 50 characters | HIGH | Reproducible: practitioner testing confirms truncation at byte boundaries. Widely reported across KDP community simultaneously. |
 | §17 Byte limit | Em dash = 3 bytes in UTF-8 | HIGH | Unicode standard. Verified in Python: `len('—'.encode('utf-8'))` = 3. |
 | §10 BSR distribution | Niche-health bands (#1≈500/#100≈10k healthy; #100>50k dead; #100<1k hyper-competitive) | MEDIUM | Directional screening heuristic from practitioner observation of subcategory BSR shape. Not Amazon-published. Use as a screen, not a hard rule. |
+
+---
+
+## v1.2 — 2026-06-12
+**Updated by:** algo-intelligence-agent (run by master orchestrator, Fable 5)
+**Trigger:** Architect directive — "expert understanding of the Amazon algorithm; every book data-driven from launch."
+**Sources consulted this session (WebSearch, 2026-06-12):** Kindlepreneur (keyword rules, 7-keyword tactic, category selection), manuscriptreport.com (KDP category selection 2026), and 2026 practitioner write-ups (Medium/Neil Caley A10 survival guide, sfshaw.com A10 2026 series, vappingo A10 listing standards, Hidden Gems A10 optimization) on the A10/semantic shift; KU/KENP read-through guides (hmdpublishing, scribecount).
+**Changes from prior version:** Adds the 2026 semantic/intent + AI-assistant (Rufus / GSO) layer as a NEW mechanic; CONFIRMS and refines the lean-keyword and 3-category rules; promotes read-through to a first-class ranking signal. No prior claim CONTRADICTED.
+
+### SIGNAL VERIFICATION TABLE — 2026-06-12
+```
+Claim                                              | Status     | Confidence | Source
+---------------------------------------------------|------------|------------|---------------------------
+Title = highest-weight keyword field               | CONFIRMED  | MEDIUM     | Kindlepreneur (carried v1.0)
+Keyword-stuffed titles now risk SUPPRESSION        | NEW        | LOW-MED    | vappingo/sfshaw 2026 (blog)
+Backend keywords: do NOT repeat title words         | UPDATED    | MEDIUM     | Kindlepreneur keyword rules
+3-category cap + auto-recategorization on mismatch  | CONFIRMED  | MEDIUM     | manuscriptreport/Kindlepreneur
+Semantic/intent ranking via "Rufus" AI (GSO)        | NEW        | LOW        | 2026 practitioner blogs only
+Read-through / completion rate is a ranking signal  | UPDATED    | LOW-MED    | KU/KENP guides 2026
+Organic sales velocity + external traffic dominate  | CONFIRMED  | MEDIUM     | carried v1.0, re-affirmed 2026
+```
+Legend: CONFIRMED = a source this session supports it · UPDATED = refined · NEW = not in prior version · CONTRADICTED = none this session.
+
+### NEW — Semantic / Intent Layer (the 2026 A10 + Rufus shift)
+**CONFIDENCE: LOW** (community/blog-reported 2026; NOT an Amazon-published specification — treat as a working hypothesis, not a hard rule).
+
+Multiple 2026 practitioner sources report that discovery is moving from literal keyword-matching toward **semantic relevance** — does the book genuinely match the *intent* behind a search — and that Amazon's "Rufus" AI assistant increasingly surfaces titles by interpreting reader intent ("Generative Search Optimization" / GSO). If accurate, the strategic consequences are:
+
+- **Metadata must express real reader intent, and the book must actually deliver it.** Mismatched metadata (keywords the content does not earn) is reported to be penalised, and Amazon may auto-move a book out of a category whose intent its metadata/keywords do not match.
+- **Clean, human-readable titles beat keyword lists.** A title that reads like a search-term dump is reported to lose visibility. One strong key phrase in a natural title > five stuffed ones.
+- **The blurb/description carries semantic weight,** not just the first 200 indexed characters — copy that names the reader's real problem in their language helps an intent engine match it. (This is exactly what `conversion-copywriter-agent` is built to produce.)
+
+**How to use this without over-trusting it:** because confidence is LOW, do not abandon the verified phrase-match fundamentals (§1, § title/subtitle/series). Layer intent on top: pick ONE genuine key phrase per slot, write naturally, and let `calibration_engine.py` measure whether intent-led listings actually out-rank keyword-led ones once real launch data exists. Do not assert a GSO advantage as fact until our own data shows it.
+
+### UPDATED — Lean Backend Keywords
+Refines v1.0/v1.1: the 7 backend fields (≤50 chars each) remain phrase-match space, but **do not repeat words already in the title/subtitle** — those are already indexed, so repeating them wastes the slot. Fill slots with *additional* long-tail intent phrases a buyer actually types. (Source: Kindlepreneur keyword rules, 2026.) This reinforces the existing 50-BYTE discipline in the SEO agent — byte-count still governs; non-repetition is the new refinement.
+
+### CONFIRMED — 3-Category Cap + Auto-Recategorization
+The 3-category limit (already locked in this pipeline since April 2026) is re-confirmed for 2026, with an added mechanic: **if a book's metadata/keywords do not match the category, Amazon's system can move it to a different category automatically.** Strategic implication: category choice and keyword/blurb intent must agree. Slot 1 should be the best-fit, most-winnable specific sub-category (e.g. a specific condition, not "Health" broadly). (Source: manuscriptreport / Kindlepreneur 2026.)
+
+### UPDATED — Read-Through / Completion as a Ranking Signal
+KU/KENP guides report that **completion and read-through influence both earnings and momentum**, and that completion rates vary by genre (fiction generally completes higher than non-fiction). KENP per-page payout is monthly-variable — never quote a fixed rate; read the live figure from the KDP dashboard and log it via `calibration_engine.py`. Strategic implication for this pipeline's non-fiction: front-load value, keep chapters tight, and sustain read-through — which the existing `hook-optimizer-agent` and `review-bait-optimizer` already target. Page-one retention is a momentum lever, not just an earnings one.
+
+### DATA-DRIVEN LAUNCH POSTURE (how "good BSR from launch" is actually pursued — honestly)
+There is **no guaranteed-BSR move**; any agent claiming one violates the No-Assumptions lock. What the evidence supports is stacking the known momentum levers and then *measuring*:
+1. **Sales/borrow velocity in the launch window** (organic + external traffic) — the most-cited ranking driver.
+2. **Category fit** — win a specific, winnable sub-category for the badge, not a broad one.
+3. **Review velocity** — staggered, honest, ARC-seeded (compliant), never bought.
+4. **Read-through** — front-loaded value sustains rank after the launch spike.
+5. **Intent-matched metadata + blurb** — so the semantic layer (if real) works *for* the book.
+
+Every launch logs its prediction (`calibration_engine.py add-prediction`) and its real outcome (`add-observation`); the `accuracy` command then grades how well these levers predicted reality, and the model improves. We pursue good BSR by stacking levers and learning from data — not by guessing a number.
+
+### Verified vs. Unverified (this version)
+- **MEDIUM confidence (practitioner-verified, carried + re-affirmed):** title/subtitle/series weighting, phrase-match backend keywords, 3-category cap, velocity + external traffic dominance, no-keyword-repeat.
+- **LOW confidence (2026 blog/community, not Amazon-published — working hypotheses):** Rufus/GSO semantic ranking, title-stuffing suppression, completion-rate weighting. Carry as provisional; let pipeline data confirm or refute before any agent builds hard strategy on them alone.
