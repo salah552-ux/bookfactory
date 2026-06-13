@@ -28,6 +28,24 @@
       "amazon_category": "Mystery, Thriller & Suspense",
       "marketplaces": ["UK", "US"],
       "priority": 2
+    },
+    {
+      "name": "adjacent gut-health conditions (exploration)",
+      "_note": "Set as the current exploration target 2026-06-12 (Architect decision: 'adjacent health'). Neighbouring conditions where the Fix Your Gut for Good brand already has authority and shared medical facts. The harvester gathers REAL data; final selection stays driven by the opportunity score — this only sets where it looks first. No book is built on these terms until harvested data clears the Stage-00 score floor.",
+      "search_terms": [
+        "histamine intolerance book",
+        "anti-inflammatory diet book",
+        "gut brain connection book",
+        "bloating relief book",
+        "acid reflux GERD diet book",
+        "low FODMAP diet book",
+        "perimenopause gut health book",
+        "blood sugar balance gut book"
+      ],
+      "amazon_category": "Health, Fitness & Dieting",
+      "marketplaces": ["UK", "US"],
+      "priority": 1,
+      "exploration_target": true
     }
   ]
 }
