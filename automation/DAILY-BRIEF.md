@@ -1,69 +1,87 @@
-# BookFactory Daily Brief — 2026-06-13
+# BookFactory Daily Brief — 2026-06-14
 
 ---
 
-## ACTION REQUIRED (5 items)
+## ACTION REQUIRED — 5 items
 
-| # | Book | Issue | Days open | Reply to approve |
-|---|------|-------|-----------|-----------------|
-| 1 | Cathedral Close | **Post-deal price unverified** — Countdown Deal ended 2026-06-09; £6.99 restoration not confirmed | 4 | reply **PRICECHECK** to confirm you've verified in browser |
-| 2 | Cathedral Close | **Post-launch stuck 41 days** — no ads ever run, 0 ARC emails, 0 reviews; ranking window closing | 41 | reply **LAUNCH** to invoke `post-launch-agent` + `ams-optimizer-agent` |
-| 3 | Fix Your Gut | **State file unreconciled** — book live since 2026-04-21 (53 days) but `kdp_status: not_started`, `published: false`, ASIN null; all post-launch tracking blind | 53 | reply **RECONCILE** to fix state via agent-log |
-| 4 | Both books | **ASIN discrepancies** — Fix Your Gut: ASIN null in state; Cathedral Close: invalid 13-char ASIN `AT25QRT6FPTE6` (should be 10 chars) | 7 | reply **FIXASIN** after pulling correct values from KDP dashboard |
-| 5 | Both books | **BookFunnel links not live** — lead-magnet funnel inactive on both titles | standing | reply **FUNNEL** to activate |
+**1. 🔴 CRITICAL (Day 5) — Cathedral Close price NOT confirmed post-deal**
+Countdown Deal ended 2026-06-09. £6.99 restoration unconfirmed for 5 consecutive days. Open amazon.co.uk → search ASIN B0GZD1S8HF → confirm live price is £6.99. If wrong, fix in KDP → Pricing immediately.
+→ Reply **PRICE-OK** once confirmed, or **PRICE-WRONG** if manual correction needed.
+
+**2. 🔴 HIGH (Day 8) — Fix ASIN discrepancies in both pipeline-state.json files**
+| Book | State file currently | Must become |
+|---|---|---|
+| Fix Your Gut for Good | `asin: null`, `published: false`, `kdp_status: not_started` | ASIN B0GXYLWS1W; mark live (since 2026-04-21) |
+| Death in the Cathedral Close | `asin: AT25QRT6FPTE6` (invalid — 13 chars) | Correct 10-char ASIN — pull from KDP Bookshelf |
+→ Reply **ASINS-FIXED** to trigger agent-log MODE 2 corrections.
+
+**3. 🔴 HIGH (Day 8) — Amazon monitoring blind: 7 consecutive scrape failures (403)**
+All watchdog metrics (BSR, reviews, rating, price) unverifiable since 2026-06-07. Pick a resolution:
+- (A) Manual browser check today + paste metrics into pipeline-state.json
+- (B) Keepa API key for automated pulls
+- (C) Keepa Chrome extension one-off BSR export
+→ Reply **MANUAL**, **KEEPA-API**, or **KEEPA-EXT** to confirm resolution path.
+
+**4. 🔴 HIGH — 0 reviews on both books; Amazon Ads permanently locked (Gate 1 = 5 reviews)**
+Both books at 0 reviews. ARC emails sent: 0 on both titles. Cathedral Close is 42 days post-launch with zero review-generation activity. Gate 1 ETA: infinite at current velocity — ads cannot start.
+→ Reply **RUN-ARC** to fire arc-manager-agent for both books immediately.
+
+**5. 🟡 MEDIUM — Pipeline hygiene: two stale state files + Stage 10 stuck 42 days**
+- Fix Your Gut: pipeline-state.json is 56 days stale; all post-launch tracking blind
+- Cathedral Close: Stage 10-postlaunch `in_progress` since 2026-05-03 with zero logged agent runs
+→ Reply **UPDATE-STATE** to run agent-log MODE 2 (both books) + post-launch-agent (Cathedral Close).
 
 ---
 
 ## Live Book Status
 
-> Watchdog run 6 of 6 — Amazon.co.uk returned HTTP 403 on all attempts. No live metrics available for either book. Data below is last recorded only.
+*All scraped metrics SCRAPE FAILED — Amazon 403 Forbidden on every watchdog run since 2026-06-07 (7/7). Prior pipeline-state values shown.*
 
-| Book | ASIN (watchdog) | Rating | Reviews | BSR | Price | Note |
-|------|----------------|--------|---------|-----|-------|------|
-| Fix Your Gut for Good | B0GXYLWS1W | — | 0 (last recorded) | no baseline | — | State shows unpublished; likely live since 2026-04-21 |
-| Death in the Cathedral Close | B0GZD1S8HF | — | 0 (last recorded) | no baseline | 🔴 UNVERIFIED post-deal | Countdown Deal ended 2026-06-09 |
+| Book | ASIN | Reviews | Rating | BSR | Price |
+|---|---|---|---|---|---|
+| Fix Your Gut for Good | B0GXYLWS1W | 0 (unverified) | null | no baseline | UNVERIFIABLE |
+| Death in the Cathedral Close | B0GZD1S8HF | 0 (unverified) | null | no baseline | 🔴 £6.99 UNVERIFIED (deal ended 2026-06-09) |
 
-Monitoring is effectively blind until scraping is resolved. Options: (A) paste BSR/rating manually from browser into pipeline-state.json, (B) Keepa API, (C) Keepa Chrome extension one-off export.
-
-Missing watchdog run: 2026-06-11 — check scheduler config.
+*Monitoring gap: no watchdog report filed for 2026-06-11 — check scheduler config.*
 
 ---
 
-## Upcoming Deadlines (next 14 days)
+## Upcoming Deadlines — next 14 days
 
-Nothing hard-deadline fires in the next 14 days. Watch-list:
+*No hard deadlines in the literal next 14 days.*
 
-| Book | Event | Date | Days away |
-|------|-------|------|-----------|
-| Cathedral Close | Countdown Deal window is **open now** — schedule before term ends | 2026-08-01 term end | 49 days |
-| Fix Your Gut | KDP Select re-enroll **alert fires** (14-day warning) | 2026-07-05 | 22 days |
-| Cathedral Close | KDP Select re-enroll alert fires | 2026-07-18 | 35 days |
+| Date | Book | Event | Days out |
+|---|---|---|---|
+| 2026-07-05 | Fix Your Gut for Good | KDP Select 14-day renewal alert fires | 21 days |
+| 2026-07-18 | Cathedral Close | KDP Select 14-day renewal alert fires | 34 days |
+| 2026-07-19 | Fix Your Gut for Good | KDP Select term ends — renewal or exit decision | 35 days |
+| 2026-08-01 | Death in the Cathedral Close | KDP Select term ends | 47 days |
 
 ---
 
 ## Standing Gaps
 
-- [ ] **Both books** — BookFunnel lead-magnet link not live (`bookfunnel_link_live: false`)
-- [ ] **Fix Your Gut** — State file never reconciled after go-live (53 days); all KDP Select, ASIN, and post-launch fields missing
-- [ ] **Cathedral Close** — Countdown Deal June run status unknown; if it ran, update state; if not, schedule before 2026-08-01 (window open now)
-- [ ] **Cathedral Close** — Category mismatch unverified (`Cozy > General` may hurt discoverability); check KDP dashboard, open since 2026-06-10
-- [ ] **Cathedral Close** — Stage 10-postlaunch stuck 41 days with zero commercial activity
-- [ ] **Third book** — `the-dust-between-seconds` (Stage 03-writing `in_progress` 44 days) is not in sentinel scope; recommend adding
+| Gap | Book(s) | Status |
+|---|---|---|
+| BookFunnel capture link not live | Both | No email capture active — blocks all list-building |
+| Category mismatch (unconfirmed) | Cathedral Close | Unresolved — verify KDP shows Cozy > General + British & Irish > Contemporary |
+| ARC programme never activated | Both | `arc_emails_sent = 0` on both; root cause of 0-review stall |
+| `the-dust-between-seconds` | Third book | Not in sentinel scope; Stage 03-writing `in_progress` 45 days — consider adding to watchdog |
 
 ---
 
 ## Intelligence
 
-- **Job 3 (intel-freshness):** Report not found for today — weekly Monday report; next expected 2026-06-16.
-- **Job 5 (integrity):** Report not found for today — weekly Sunday report; next expected 2026-06-14.
-- **Job 4 (ALGO-INTELLIGENCE-CANDIDATE.md):** File not found — monthly; none issued yet or not committed.
+- **Job 3 (intel-freshness):** No reports found at all. Runs Mondays — first expected 2026-06-15.
+- **Job 5 (integrity):** No report found for today (Sunday — scheduled run day). No prior Sunday reports exist either. Likely a scheduling issue — check automation config.
+- **Job 4 (ALGO-INTELLIGENCE-CANDIDATE.md):** File not found. Monthly cadence — not yet due.
 
 ---
 
 ## All Clear
 
-Nothing is green. Five rules fired across two books; scraping has been blind for 7 days; most urgent item is Cathedral Close 41-day post-launch stall with zero revenue activity.
+Nothing confirmed green today. Monitoring has been blind for 8 days. The only items not in alert state: both KDP Select terms are >30 days from expiry; all Cathedral Close human publishing gates are true.
 
 ---
 
-*Sources: watchdog-2026-06-13.md · milestones-2026-06-13.md · intel-freshness: not found · integrity: not found · ALGO-INTELLIGENCE-CANDIDATE.md: not found*
+*Sources: watchdog-2026-06-14.md · milestones-2026-06-14.md · review-velocity-2026-06-12.md · intel-freshness: not found · integrity: not found · ALGO-INTELLIGENCE-CANDIDATE.md: not found*
