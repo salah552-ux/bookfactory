@@ -1,0 +1,16 @@
+{
+  "niches": {
+    "gut-health": {
+      "niche_name": "Gut Health",
+      "last_harvested": "2026-05-13"
+    },
+    "cozy-mystery": {
+      "niche_name": "Cozy Mystery",
+      "last_harvested": "2026-06-01"
+    },
+    "vagus-nerve": {
+      "niche_name": "Vagus Nerve",
+      "last_harvested": "2026-06-03"
+    }
+  }
+}
