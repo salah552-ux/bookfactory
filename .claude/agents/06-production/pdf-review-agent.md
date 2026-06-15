@@ -82,7 +82,7 @@ Append to `AGENT-LOG.md`.
 **A1 — Copyright page format**
 - Check: does `00-00-copyright.md` exist in manuscript/?
 - Check: is it written as a styled HTML `<div>` block (not raw markdown)?
-- Check: does it contain title, subtitle, copyright year, author name, all-rights-reserved text, medical disclaimer, AI disclosure?
+- Check: does it contain title, subtitle, copyright year, author name, all-rights-reserved text, medical disclaimer? (NOTE: in-book AI disclosure is NOT required and has been removed pipeline-wide — do NOT flag its absence. AI disclosure is made via the KDP questionnaire only.)
 - Raw markdown heading `# Title` in copyright file = FAIL — convert to HTML div styled to match Book 1 format.
 - Plain `---` rules without HTML styling = FAIL — these render as the ornament divider CSS, not as clean copyright dividers.
 - PASS criteria: file is fully HTML-styled, contains all required legal elements, no raw `#` headings, no raw `**bold**` labels.

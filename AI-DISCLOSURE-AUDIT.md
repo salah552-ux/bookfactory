@@ -54,7 +54,7 @@ The distinction matters. Category A ("created by AI") implies the human role was
 
 ## IN-BOOK DISCLOSURE STATUS
 
-Amazon does not require an in-book AI disclosure. However, having one demonstrates good faith and creates consistency between the book's copyright page and the KDP questionnaire answer.
+Amazon does not require an in-book AI disclosure. **DECISION (2026-06-15, Architect): the in-book "AI Disclosure" block is REMOVED from all books and from the pipeline (new-book.sh template + the final-approval / compliance / pdf-review / kdp-upload checkers). Reason: it is not required by Amazon and can soften buyer trust on an authority title. AI disclosure is now made via the KDP upload questionnaire ONLY. The table below is historical — it records the pre-decision state.**
 
 | Book | In-book disclosure present | Exact language used | Assessment |
 |------|---------------------------|---------------------|------------|
@@ -137,15 +137,7 @@ However: "ai_questionnaire_confirmed" means the Architect confirmed the values t
 
 ## CORRECT DISCLOSURE LANGUAGE — CANONICAL VERSION
 
-For all future BookFactory books, use this exact language in the copyright page:
-
-```
-AI Disclosure: This work was developed with AI assistance as a research, drafting,
-and editorial tool under the author's direction and editorial control. All content
-has been reviewed, verified, and approved by the author.
-```
-
-And in the KDP questionnaire:
+For all future BookFactory books: **do NOT print any AI disclosure in the copyright page or anywhere in the book.** The in-book block has been removed pipeline-wide (Architect decision 2026-06-15). Disclosure is made via the KDP upload questionnaire ONLY:
 - Text: "Some content was AI-generated and has been edited and revised by a human"
 - Tools: "Anthropic Claude"
 - Images: "None"

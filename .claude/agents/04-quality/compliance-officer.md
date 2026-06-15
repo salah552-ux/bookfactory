@@ -71,8 +71,8 @@ These are the approved templates for this pipeline. Use them verbatim when imple
 > Published by [IMPRINT NAME]
 >
 > First published [YEAR]
->
-> **AI Disclosure:** This work was developed with AI assistance as a research, drafting, and editorial tool under the author's direction and editorial control. All content has been reviewed, verified, and approved by the author.
+
+*(NOTE: NO in-book "AI Disclosure" block. Amazon does not require one; it is deliberately omitted pipeline-wide — Architect decision 2026-06-15, AI-DISCLOSURE-AUDIT.md. AI disclosure is made via the KDP upload questionnaire only.)*
 
 ### FTC Affiliate/Endorsement Disclosure (if product recommendations added)
 > *Disclosure: Some links or product recommendations in this book may be affiliate links. The author may receive a small commission at no additional cost to you if you purchase through these links. This does not influence recommendations — only products the author believes are genuinely useful are mentioned.*
@@ -144,7 +144,7 @@ Flag if missing. Block publication if missing from health content.
 #### Amazon KDP
 - **Prohibited:** content that promotes illegal activities, hate speech, pornographic material, content that infringes third-party rights, misleading metadata (title/subtitle/description must match book content exactly)
 - **Health content:** Must not make false health claims. Amazon will suppress listings that receive significant complaint volume about misleading health claims.
-- **AI content disclosure:** KDP now requires disclosure of AI-assisted content. Flag if manuscript uses AI-generated text without disclosure in metadata or copyright page. Note: AI-assisted ≠ AI-generated. Human direction and curation with AI assistance requires disclosure.
+- **AI content disclosure:** KDP requires AI disclosure via the upload **questionnaire (metadata) only** — NOT printed in the book. Amazon does not require an in-book disclosure, and the pipeline deliberately omits it (Architect decision 2026-06-15; AI-DISCLOSURE-AUDIT.md). Do NOT flag a missing in-book disclosure. The real check is that the KDP questionnaire is set correctly at upload (kdp-upload-agent: Text = "Some content AI-generated, human-edited"; Tools = "Anthropic Claude").
 - **Pen names:** Fully permitted. No legal requirement to disclose pen name on platform. Legal name required for tax/payment purposes (not visible to public).
 - **Category restrictions:** Health/medical categories require accurate categorization. Placing a general wellness book in a clinical medical category to manipulate rankings = policy violation.
 - **Pricing:** KDP Select exclusivity requires that ebook not be available cheaper elsewhere including author's own website.
@@ -263,7 +263,7 @@ Every book listing must be checked for:
 | Author name | Pen name is permitted; credential claims must be accurate |
 | Categories | Must genuinely fit the book — no gaming categories for ranking |
 | Keywords | Cannot include competitor names, misleading terms, or prohibited keywords |
-| AI disclosure | If AI-assisted, KDP requires disclosure in manuscript and/or metadata |
+| AI disclosure | KDP questionnaire (metadata) ONLY — never printed in the book |
 | Price | Must comply with platform-specific pricing rules; KDP Select exclusivity requires price parity |
 
 ---

@@ -165,9 +165,7 @@ Output this card before clicking Publish. Every field must be confirmed:
 ║ COMPLIANCE CHECK                                        ║
 ║ ─────────────────────────────────────────────────────── ║
 ║ Medical disclaimer:   Present in book ✓/✗               ║
-║ AI disclosure (book): Present in copyright page ✓/✗     ║
-║ AI disclosure text:   "developed with AI assistance...  ║
-║                        under author's direction" ✓/✗    ║
+║ AI disclosure (book): N/A — NOT printed in book ✓       ║
 ║ KDP AI — Text field:  "Some content AI-gen, human edit" ║
 ║ KDP AI — Tools field: "Anthropic Claude" ✓/✗            ║
 ║ KDP AI — Images:      "None" ✓/✗                        ║

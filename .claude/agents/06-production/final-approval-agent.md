@@ -131,10 +131,10 @@ Run this against SCORING-RUBRIC.md if available, otherwise score independently:
 - Medical disclaimer instructs readers to consult a physician → 7 pts
 - Medical disclaimer is in the front matter (before chapter 1) → 6 pts
 
-**4.2 AI Disclosure (15 pts)**
-- AI disclosure is present → 7 pts
-- AI disclosure accurately describes the nature of AI involvement (research/drafting tool, human editorial control) → 5 pts
-- AI disclosure does not overclaim or underclaim AI role → 3 pts
+**4.2 AI Disclosure — KDP questionnaire ONLY, NOT in the book (15 pts)**
+Per Architect decision (2026-06-15) and AI-DISCLOSURE-AUDIT.md, AI disclosure is made via the KDP upload questionnaire ONLY. Amazon does NOT require an in-book disclosure, and it is deliberately omitted (it can soften buyer trust on an authority title). Do NOT score the presence of an in-book block — score its ABSENCE plus questionnaire-readiness:
+- Copyright page contains NO in-book "AI Disclosure" block (it has been removed) → 7 pts
+- KDP-UPLOAD-GUIDE / kdp-upload-agent carries the correct questionnaire values (Text: "Some content was AI-generated and has been edited and revised by a human"; Tools: "Anthropic Claude"; Images: declared per the actual cover — AI if AI-generated; Translation: "None") → 8 pts
 
 **4.3 Factual Claim Safety (15 pts)**
 Grep the manuscript for these red-flag phrases and check they are properly qualified:

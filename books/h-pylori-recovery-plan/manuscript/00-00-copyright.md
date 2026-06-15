@@ -23,10 +23,4 @@
 
 <p style="margin: 0 0 0.5em 0;">Results described or implied in this book are not guaranteed and will vary by individual. If you are experiencing a medical emergency, contact emergency services immediately.</p>
 
-<div style="width: 1.2in; height: 0.5pt; background: #c8c0b4; margin: 1em 0;"></div>
-
-<p style="font-family: 'Lato', Helvetica, sans-serif; font-size: 7pt; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; color: #9aa3ad; margin: 0 0 0.5em 0;">AI Disclosure</p>
-
-<p style="margin: 0 0 0.5em 0;">This work was developed with AI assistance as a research, drafting, and editorial tool under the author's direction and editorial control. All content, claims, and recommendations have been reviewed, verified, and approved by the author. Every statistic is sourced to named, published research, listed by chapter in Appendix C.</p>
-
 </div>
