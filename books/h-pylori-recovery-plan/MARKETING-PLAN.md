@@ -7,10 +7,40 @@
 ```
 ALGO-INTELLIGENCE STATUS
 ═══════════════════════════════════════════════════════════════════════
-Version read: v1.1 — 2026-06-03 (CURRENT VERSION)
+Version read: v1.2 — 2026-06-12 (CURRENT VERSION as of reconciliation 2026-06-16)
 Section 0 mechanics contradicted/updated by ALGO-INTELLIGENCE.md: none material to this plan
-New mechanics not in this agent's Section 0: none requiring strategy change
-Operating on: ALGO-INTELLIGENCE.md v1.1 as primary source for algorithm mechanics
+New mechanics in v1.2 — reconciliation check (category-decision-agent, 2026-06-16):
+
+1. RUFUS/GSO SEMANTIC INTENT LAYER (LOW confidence — v1.2 NEW)
+   Check: Does metadata express real reader intent? Title/subtitle/description in natural
+   language with one strong key phrase per slot?
+   VERDICT: ALREADY COMPLIANT. Title is human-readable ("The H. Pylori Recovery Plan" —
+   single strong phrase, no stuffing). Subtitle names the reader's real problem in their
+   language. Description opens with verbatim reader language ("You tested positive. Then you
+   Googled it."). No keyword-stuffed title. No suppression risk identified.
+   NEW ACTION: None required.
+
+2. READ-THROUGH / COMPLETION AS RANKING SIGNAL (LOW-MED confidence — v1.2 UPDATED)
+   Check: Does completion architecture already cover front-loaded value and chapter
+   pull-through?
+   VERDICT: ALREADY COVERED by §0.10 (KU Completion Architecture — hook-optimizer Stage 05).
+   All 14 chapter openings + 14 closings scored; only Ch.1 opening fell below threshold and
+   was rewritten to a reader-recognition drop. All 14 closings strong with no rhetorical-
+   question closes (NEVER-rule #7). Completion architecture explicitly verified at Stage 05.
+   NEW ACTION: None required.
+
+3. LEAN NON-REPETITIVE BACKEND KEYWORDS (MEDIUM confidence — v1.2 UPDATED)
+   Check: Do the 7 backend keyword fields repeat words already in title/subtitle?
+   VERDICT: ALREADY COMPLIANT. SEO-STRATEGY.md §5b explicitly verified non-repetition per
+   the ALGO §17 byte-count discipline. The SEO agent's annotation confirmed: all 7 rows avoid
+   exact title/subtitle term duplication (the two partial overlaps — "stomach" in Row 6 and
+   "plan" in Row 7 — occur within distinct long-tail buyer phrases and are documented as
+   acceptable per the SEO agent's own rule). v1.2 non-repetition rule = already applied.
+   NEW ACTION: None required.
+
+SUMMARY: v1.2 adds three mechanics to the pipeline's knowledge base. All three are already
+implemented in this book's pipeline. No strategy changes to this plan are required.
+This plan now operates on ALGO-INTELLIGENCE.md v1.2 as confirmed current version.
 ═══════════════════════════════════════════════════════════════════════
 ```
 
@@ -319,3 +349,4 @@ No sales/day, download, or revenue figure is stated. A forecast with no source w
 - Builds on PRE-LAUNCH-PLAN.md (free dates, ARC, AMS pre-build) — no contradiction.
 
 *Marketing plan built by the master orchestrator acting as marketing-agent, operating on ALGO-INTELLIGENCE.md v1.1. — 2026-06-11*
+*ALGO v1.2 reconciliation applied by category-decision-agent, 2026-06-16: all three v1.2 mechanics (Rufus/GSO semantic intent, read-through signal, lean keywords) verified already compliant. No strategy changes required. Category 3 BSR harvest data now available (Nutrition #10 = BSR #9,878; Disorders & Diseases #10 = BSR #8,006). Category 3 locked to Nutrition. 90-day revenue forecast remains deferred pending BSR-to-sales conversion data from actual launch.*
