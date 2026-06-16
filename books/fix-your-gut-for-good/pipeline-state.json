@@ -3,8 +3,8 @@
   "genre": "health",
   "current_stage": 10,
   "created_at": "2026-04-13T00:00:00Z",
-  "last_updated": "2026-06-02T00:00:00Z",
-  "last_agent_run": "pipeline-orchestrator: four pipeline enhancements built (post-launch-tracker, email-list-builder, new-book.sh upgrade, aplus-content-agent). LEAD-MAGNET.md, EMAIL-SEQUENCE.md, APLUS-CONTENT.md created for this book.",
+  "last_updated": "2026-06-07T00:00:00Z",
+  "last_agent_run": "US marketplace verification completed for ASIN B0GXYLWS1W. Listing confirmed live at https://www.amazon.com/dp/B0GXYLWS1W. Publishing fields updated with US confirmation data.",
   "word_count": null,
   "writing": {
     "writer_agent": "health-writer",
@@ -20,10 +20,10 @@
     "05-optimisation": { "status": "complete", "completed_at": "2026-04-18T00:00:00Z", "notes": "REVIEW-VELOCITY-REPORT.md present on disk" },
     "06-production": { "status": "complete", "completed_at": "2026-04-19T00:00:00Z", "notes": "FINAL-APPROVAL.md and DESIGN-PACKAGE.md present on disk. Exports built." },
     "06.5-pre-launch": { "status": "complete", "completed_at": "2026-04-21T00:00:00Z", "notes": "MARKETING-PLAN.md present on disk" },
-    "07-publishing": { "status": "complete", "completed_at": null, "notes": "Book live — KDP status confirmed. ASIN not yet recorded in this file." },
+    "07-publishing": { "status": "complete", "completed_at": null, "notes": "Book live — KDP status confirmed in US and EU marketplaces. ASIN B0GXYLWS1W verified live on amazon.com." },
     "08-products": { "status": "in_progress", "completed_at": null, "notes": "LEAD-MAGNET.md and EMAIL-SEQUENCE.md created 2026-05-28. BookFunnel link pending." },
     "09-series": { "status": "pending", "completed_at": null, "notes": null },
-    "10-post-launch": { "status": "in_progress", "completed_at": null, "notes": "APLUS-CONTENT.md created 2026-05-28. Awaiting Brand Registry enrollment to submit." }
+    "10-postlaunch": { "status": "in_progress", "completed_at": null, "notes": "APLUS-CONTENT.md created 2026-05-28. Awaiting Brand Registry enrollment to submit." }
   },
   "human_gates": {
     "market_intelligence_approved": true,
@@ -33,12 +33,13 @@
     "pre_launch_approved": true,
     "ai_questionnaire_confirmed": true,
     "kdp_listing_confirmed": true,
-    "published": true
+    "published": true,
+    "us_marketplace_confirmed": true
   },
   "publishing": {
     "asin": "B0GXYLWS1W",
     "kdp_status": "live",
-    "list_price_gbp": null,
+    "list_price_gbp": 9.99,
     "list_price_usd": 9.99,
     "royalty_pct": 70,
     "kdp_select": true,
@@ -109,7 +110,20 @@
     "bookfunnel_link_live": false,
     "bookfunnel_gap_flagged": true,
     "weekly_log": [],
-    "tracker_note": "LAUNCH-TRACKER.md baseline created 2026-05-31. No live data logged yet — Architect must run 'track launch fix-your-gut-for-good' and paste KDP dashboard values to populate."
+    "tracker_note": "LAUNCH-TRACKER.md baseline created 2026-05-31. No live data logged yet — Architect must run 'track launch fix-your-gut-for-good' and paste KDP dashboard values to populate.",
+    "us_verification_evidence": {
+      "verified_at": "2026-06-07T00:00:00Z",
+      "amazon_url": "https://www.amazon.com/dp/B0GXYLWS1W",
+      "displayed_price": "$2.99",
+      "category_path": "Books > Medical Books > Medicine > Internal Medicine > Pathology > Diseases > Digestive Organs",
+      "author": "S.A. Ibrahim",
+      "format": "Kindle Edition",
+      "language": "English",
+      "print_length_equivalent": 236,
+      "file_size_mb": 1.1,
+      "customer_reviews_count": 0,
+      "notes": "US marketplace listing confirmed live for ASIN B0GXYLWS1W. Price shown $2.99 vs list_price_usd 9.99 configured in KDP; reflects Kindle promotional/discount price or variant-specific pricing. Categories, author, description, and language verified on amazon.com product page."
+    }
   },
   "agent_log": [
     {
@@ -132,6 +146,13 @@
       "action": "KDP dashboard data confirmed — publishing dates and Select term recorded",
       "result": "success",
       "notes": "live_date set 2026-04-21. KDP Select term 2026-04-21 to 2026-07-19. Countdown deal eligible from 2026-05-21 (already passed, not run). Both free promo slots used: Apr 25–27 and May 2–3. Countdown deal cannot run this term. Next eligible window ~2026-08-18 (next Select term re-enrollment + 30 days). Fields updated: publishing.live_date, publishing.kdp_select_term_start, publishing.kdp_select_term_end, publishing.countdown_deal_eligible_from, post_launch.countdown_deal_eligible_from, post_launch.countdown_deal_eligible_next_term, post_launch.countdown_deal_note."
+    },
+    {
+      "timestamp": "2026-06-07T00:00:00Z",
+      "agent": "pipeline-orchestrator",
+      "action": "US marketplace verification and KDP metadata confirmation for ASIN B0GXYLWS1W",
+      "result": "success",
+      "notes": "Verified ASIN B0GXYLWS1W live on amazon.com (https://www.amazon.com/dp/B0GXYLWS1W). Title, subtitle, and author match existing pipeline state. US category path confirmed: Books > Medical Books > Medicine > Internal Medicine > Pathology > Diseases > Digestive Organs. Displayed price on amazon.com $2.99. List price US configured in pipeline state remains $9.99. EPUB and cover remain unchanged."
     }
   ]
 }
