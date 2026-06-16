@@ -7,6 +7,8 @@ This file is the paste-ready organic content pack for the launch window (T−5 t
 
 All content is community-voice — written to be read, not sold. Direct promotional posts are kept to specific scheduled moments; the rest is value-led. This aligns with Reddit subreddit rules (no direct promo in r/ibs, r/guthealth, r/SIBO bodies — author is permitted to mention own work only in replies or context-relevant flair).
 
+> **STAGE 07 — ALGO v1.2 RECONCILIATION (reach-agent, 2026-06-13):** Re-checked against ALGO-INTELLIGENCE.md v1.2. The external-traffic attribution mechanic (v1.2 re-affirms §5: organic sales velocity + external traffic dominate) is the reason every promotional link in this pack uses a **direct `amazon.co.uk/dp/[ASIN]` / `amazon.com/dp/[ASIN]` URL** — never a Linktree or landing page, which would break the attribution chain. Voice-led posts seed the also-viewed/also-read graph (v1.2 §3) by driving product-page visits even without a purchase. The blurb/hook language here is drawn from CONVERSION-COPY.md (Variant A primary + hook bank) so on-platform and off-platform copy express the same reader intent (v1.2 semantic layer). No invented reach/engagement numbers — unknowns read "We need real data for this before making a recommendation."
+
 ---
 
 ## 1. TWITTER / X POSTS (5 posts, under 280 chars each)

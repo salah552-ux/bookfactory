@@ -1,7 +1,7 @@
 # CATEGORY SELECTION — The 7-Day Gut Reset
 **Produced by:** kdp-seo-agent
 **Date:** 2026-06-05
-**Status:** PENDING ARCHITECT APPROVAL
+**Status:** APPROVED — 2026-06-13 (Stage 07; categories reconciled into KDP-LISTING.md §4 and KDP-UPLOAD-GUIDE.md §3; 3-category cap held: Abdominal Disorders primary, Digestive Health secondary, Stress Management 3rd-via-support). Prior series-number conflict (Book 2 vs Book 1) resolved by the 2026-06-12 swap — this book is Book 3.
 **Authority:** This file is the binding category instruction for kdp-upload-agent.
               kdp-upload-agent reads this file and enters these exact categories.
               kdp-upload-agent does NOT make independent category decisions.
@@ -166,8 +166,8 @@ Amazon policy source: ALGO-INTELLIGENCE.md v1.1 §15 (April 2026 policy change).
 ```
 CATEGORY VERIFICATION — kdp-upload-agent must complete before entering categories
 ────────────────────────────────────────────────────────────────────────────────────────────
-□ Status field above reads APPROVED (not PENDING ARCHITECT APPROVAL)
-  → If not APPROVED: STOP. Alert the Architect. Do not upload.
+□ Status field above reads APPROVED (i.e. NOT still awaiting the Architect)
+  → If the Status is not APPROVED: STOP. Alert the Architect. Do not upload.
 
 □ Live #1 New Release BSR in Abdominal Disorders checked at T-14
   → If BSR of #1 NR > 150,000: proceed. Badge is achievable.

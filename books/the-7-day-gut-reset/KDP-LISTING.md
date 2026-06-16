@@ -1,5 +1,7 @@
 # KDP Listing — The 7-Day Gut Reset
-## publisher-agent | Stage 06.5 | 2026-05-23
+## publisher-agent | Stage 06.5 | 2026-05-23 · Stage 07 reconciled 2026-06-13
+
+> **STAGE 07 PUBLISHER RECONCILIATION (2026-06-13):** conversion-copywriter-agent produced `CONVERSION-COPY.md` with three scored blurb variants. RECOMMENDED PRIMARY = **Variant A (Fear-first, 47/50)**. Variant A shares the same spine as the Section 5 description already locked in this listing (same hook, same diagnosis-before-prescription mechanism, same 7-item benefit list), refined so the primary key phrase "The 7-Day Gut Reset" leads within the first 200 characters. **Action taken:** the Section 5 description below is confirmed as the placed blurb (Variant A); Variants B and C are retained in CONVERSION-COPY.md as post-launch A/B candidates (activate only with real CTR/conversion data via calibration_engine.py). No keyword, category, or pricing change at this step. Series/cross-sell rule honoured: only Book 1 (*Fix Your Gut for Good: Stop Relapsing*) is named as a LIVE companion; the Book 2 (*The H. Pylori Recovery Plan*) line is held until Book 2 has a confirmed ASIN.
 
 **Data sources:** MARKET-INTELLIGENCE.md (2026-05-13) | COMPETITIVE-ANALYSIS.md (2026-05-13) | BLUEPRINT.md (2026-05-14) | FACTS.md (2026-05-14) | manuscript/ (12,124 words) | APPROVALS.md (2026-05-21) | pipeline-state.json (2026-05-23) | KDP rate card | AGENT-RULES.md Rule 1
 

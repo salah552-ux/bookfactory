@@ -1,7 +1,19 @@
 # Marketing Plan — The 7-Day Gut Reset
 ## pipeline-orchestrator | 2026-05-24 | Algorithm-First Rebuild (5-Day Runway)
 
-**Data sources:** MARKET-INTELLIGENCE.md (2026-05-13) | KDP-LISTING.md (2026-05-23) | pipeline-state.json (2026-05-23) | marketing-agent spec (2026-05-23) | KDP rate card | AGENT-RULES.md Rule 1
+**Data sources:** MARKET-INTELLIGENCE.md (2026-05-13) | KDP-LISTING.md (2026-05-23) | pipeline-state.json (2026-05-23) | marketing-agent spec (2026-05-23) | KDP rate card | AGENT-RULES.md Rule 1 | ALGO-INTELLIGENCE.md v1.2 (2026-06-12, reconciled 2026-06-13)
+
+---
+
+## STAGE 07 — ALGO-INTELLIGENCE v1.2 RECONCILIATION (marketing-agent, 2026-06-13)
+
+This plan was built on marketing-agent Section 0 (KDP Algorithm Mastery). Re-checked against **ALGO-INTELLIGENCE.md v1.2 (2026-06-12)**. No prior claim is contradicted; these v1.2 refinements are layered on:
+
+1. **Semantic / intent layer (v1.2, LOW confidence — working hypothesis).** Discovery is reported to be shifting toward intent-matching (A10 + "Rufus"/GSO). Already satisfied: the placed blurb (CONVERSION-COPY.md Variant A) names the reader's real problem in their language, and the metadata intent (find-your-trigger, diagnostic-first) genuinely matches what the book delivers. Do NOT assert a GSO ranking advantage as fact — let calibration_engine.py confirm or refute on real data.
+2. **Lean backend keywords (v1.2, UPDATED).** The 7 keywords (KDP-LISTING.md §3) already avoid repeating title/subtitle words — confirmed. All 7 are ASCII, so character count = byte count, all ≤50 bytes.
+3. **3-category cap + auto-recategorization (v1.2, CONFIRMED).** Category 1 (Abdominal Disorders) is the specific, winnable sub-category; category/keyword/blurb intent agree, which is what prevents auto-recategorization. Optional 3rd slot (Stress Management) is earned by Day 5 vagal-tone content. Hold at the max of 3.
+4. **Read-through / completion (v1.2, UPDATED, LOW-MED).** Front-loaded value + tight chapters + per-chapter hooks (hook-optimizer applied 5 rewrites) support completion. KENP per-page payout is monthly-variable — never quote a fixed rate; read the live KDP figure and log via calibration_engine.py.
+5. **Data-driven launch posture (v1.2).** No guaranteed-BSR move exists. Stack the levers (velocity + external traffic, winnable sub-category, staggered honest reviews, read-through, intent-matched metadata) and measure. Unsourced numbers already read "We need real data for this before making a recommendation." No change required.
 
 ---
 

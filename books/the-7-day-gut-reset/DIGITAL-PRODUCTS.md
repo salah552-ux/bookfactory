@@ -1,5 +1,7 @@
 # Digital Product Candidates — The 7-Day Gut Reset
-## product-extractor | Stage 06-production | 2026-05-14
+## product-extractor + digital-product-designer | 2026-05-14 · Stage 08 reconciled 2026-06-13
+
+> **STAGE 08 RECONCILIATION (2026-06-13):** This file already carries the product-extractor candidate set AND the digital-product-designer build specs (Etsy listing copy, design briefs, locked-design-system fonts/colours, pricing). Confirmed as the Stage 08 product output — no duplicate file created. The email-list-builder run added three new Stage 08 files: `LEAD-MAGNET.md` (The Flare-Day Decision Card — a FREE list-building gift), `EMAIL-SEQUENCE.md` (3-email MailerLite welcome sequence + Free Gift back-matter CTA), and `ZERO-SUBSCRIBER-START.md` (interim MailerLite/Substack plan). **The free lead magnet is deliberately DISTINCT from the paid Etsy "Day 1 Trigger Log" printable below** — the lead magnet is a one-page flare-day *decision* tool (off-Amazon, never in KDP Select), while the Trigger Log is a paid standalone product. The two do not overlap or cannibalise. All product claims trace to FACTS.md; every revenue figure remains a labelled placeholder pending real Etsy/Amazon data.
 
 **Source content:** Full 9-chapter manuscript (5,645 words) — all files read.
 **Rule 1 compliance:** Revenue estimates require real Etsy/Amazon data. All estimates below are placeholder ranges based on conservative new-listing benchmarks only. We need real data from Publisher Rocket or Etsy search analytics before making final platform decisions.
