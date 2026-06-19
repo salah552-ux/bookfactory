@@ -8,10 +8,10 @@
   "pipeline_version": "2.0",
   "current_stage": 0,
   "created_at": "2026-06-19T00:00:00Z",
-  "last_updated": "2026-06-19T01:00:00Z",
-  "last_agent_run": "Master-orchestrator (Sonnet) 2026-06-19 — Gates 3+4 cleared. COMPETITIVE-INTELLIGENCE.md written. blueprint_approved set to true. All 4 pre-build gates cleared. Next: Gate 5 PDF style test build before writing agents fire.",
+  "last_updated": "2026-06-19T23:50:00Z",
+  "last_agent_run": "Master-orchestrator (Sonnet) 2026-06-19 — Gate 5 PDF style test COMPLETE. Stub manuscript (copyright + introduction) built. pdf-style.css + .md-to-pdf.json created for vagus-nerve-gut-reset-workbook (copied from h-pylori canonical, book header updated). bash build-pdf.sh produced exports/Vagus_Nerve_Gut_Reset_Workbook.pdf (329KB, 6 pages). Copied to exports/style-test.pdf. Header suppressed on 4 chapter-opener pages. Style confirmed: Playfair Display headings #1b3a5c, EB Garamond body, Lato labels, #c8b99a blockquote border, 6x9in KDP trim, locked margins. gate_5_pdf_style_test = DONE. Writing agents now cleared to fire.",
 
-  "status": "blueprint_approved",
+  "status": "gate_5_complete_writing_cleared",
 
   "stages": {
     "00-intelligence": {
@@ -49,7 +49,7 @@
       "gate_2_angle_title_confirmed": "DONE 2026-06-19 — Architect confirmed gut angle + title 'The Vagus Nerve Gut Reset Workbook' (Alternate A)",
       "gate_3_competitive_review_mining": "DONE 2026-06-19 — COMPETITIVE-INTELLIGENCE.md written. Top 5 gaps: no gut depth, vague exercises, too theoretical, no tracking tools, no citations. Payne (B0F8P8M3HC, KU, $9.99 Kindle, $14.99 PB) and Bennett (B0FXSTDD42, KU, $14.99 PB) fully profiled.",
       "gate_4_kindle_tier_confirmed": "DONE 2026-06-19 — KU penetration near-total in Kindle tier. Both indie leaders (Payne, Bennett) in KU. Decision: ENROL in KDP Select. PB $14.99, Kindle list $6.99, primary Kindle revenue via KU read-through.",
-      "gate_5_pdf_style_test": "PENDING — must verify PDF style with test build before writing agents fire (per workflow-order rule)"
+      "gate_5_pdf_style_test": "DONE 2026-06-19 — style-test.pdf built (329KB, 6 pages). CSS: book-local pdf-style.css (Playfair Display headings, #1b3a5c navy, #c8b99a blockquote border, EB Garamond body, Lato labels). Config: 6x9in, margins 0.85in/0.875in/0.5in, running header 'The Vagus Nerve Gut Reset Workbook', page numbers bottom-right. Header suppressed on 4 chapter-opener pages. Style confirmed matching locked design system. Writing agents cleared to fire."
     }
   },
 
@@ -124,6 +124,13 @@
       "action": "Book folder scaffolded — pending_production status set",
       "result": "success",
       "notes": "Folder created: books/vagus-nerve-gut-reset-workbook/. Files created: pipeline-state.json, AGENT-LOG.md, BLUEPRINT.md (sourced from intelligence/reports/vagus_nerve_blueprint_2026-06-19.md). SERIES-FACTS.md updated with Book 4 pending entry. Pre-build gates from blueprint §11 recorded in intelligence_gate.open_pre_build_gates. No writing agents may fire until blueprint_approved: true and open gates cleared."
+    },
+    {
+      "timestamp": "2026-06-19T23:50:00Z",
+      "agent": "master-orchestrator (Sonnet)",
+      "action": "Gate 5 PDF style test build — COMPLETE",
+      "result": "success",
+      "notes": "Stub manuscript created: manuscript/00-00-copyright.md + manuscript/01-introduction.md (cover page, TOC placeholder via build-pdf.sh, Introduction: Your Gut-Brain Connection). Book-specific pdf-style.css copied from h-pylori canonical (Playfair Display headings #1b3a5c, EB Garamond body, Lato labels, #c8b99a blockquote border, 6x9in). .md-to-pdf.json created with header 'The Vagus Nerve Gut Reset Workbook'. bash build-pdf.sh ran successfully: 329KB PDF, 6 pages, header suppressed on 4 chapter-opener pages, pre-render QA clean. Output: exports/Vagus_Nerve_Gut_Reset_Workbook.pdf + exports/style-test.pdf. Style confirmed matching locked design system. gate_5_pdf_style_test = DONE. Writing agents now cleared."
     },
     {
       "timestamp": "2026-06-19T01:00:00Z",
