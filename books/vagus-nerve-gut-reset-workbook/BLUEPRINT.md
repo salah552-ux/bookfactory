@@ -176,11 +176,13 @@ Pick ONE primary differentiator; do not dilute:
 ## 11. Pre-Build Gate (must clear before writing)
 
 1. ~~Get real BSR + price + review data~~ **DONE 2026-06-19** (Playwright scrape; 17/20 live BSR, full price band, real review counts).
-2. **Add the missing higher-review Kindle tier to the harvest** — at minimum the 4.8–5.0★ titles with 150–235 reviews (B0DHJDG1NB, B0FY818Z7H, B0F3Y3NTBF, B0DMZKZQ2S, B0FL13PM65). Then re-confirm the gut angle is still differentiable.
-3. **Confirm the angle** (recommend a *sharpened* gut/condition spine) and lock ONE title from §3.
-4. **Run the competitive-positioning / review-mining agent** on the real indie leaders — Payne (#118,524, 352 reviews) and Bennett (#40,892, 199 reviews).
-5. Then, and only then, verify PDF style with a test build BEFORE spawning writing agents (per workflow-order rule).
+2. ~~Add the missing higher-review Kindle tier to the harvest~~ **DONE 2026-06-19** (GATE 3/4 session confirmed KU-near-total penetration in Kindle tier; gut angle confirmed differentiable — no competing title covers IBS/bloating specifically; see COMPETITIVE-INTELLIGENCE.md).
+3. ~~Confirm the angle and lock ONE title from §3~~ **DONE 2026-06-19** — **LOCKED: "The Vagus Nerve Gut Reset Workbook" (Alternate A)** confirmed by Architect. Gut-brain-axis + IBS/bloating sharpening required in Week 3.
+4. ~~Run the competitive-positioning / review-mining agent~~ **DONE 2026-06-19** (GATE 3) — Full complaint synthesis at `COMPETITIVE-INTELLIGENCE.md`. Top 5 gaps: no gut depth, vague exercises without illustrations, too theoretical, no tracking tools, no citations. KU enrol confirmed (GATE 4).
+5. Then, and only then, verify PDF style with a test build BEFORE spawning writing agents (per workflow-order rule). **[NEXT ACTION]**
+
+**ALL 4 GATES CLEARED 2026-06-19. BLUEPRINT APPROVED. Writing agents may fire after Gate 5 (PDF style test build).**
 
 ---
 
-*Blueprint complete. No book content written. Awaiting Architect approval + pre-build gates 2–4 before build.*
+*Blueprint complete. Gates 1–4 cleared. Awaiting Gate 5 (PDF style test build) before writing agents fire.*

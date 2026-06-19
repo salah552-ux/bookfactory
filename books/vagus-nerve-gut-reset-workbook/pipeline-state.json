@@ -8,10 +8,10 @@
   "pipeline_version": "2.0",
   "current_stage": 0,
   "created_at": "2026-06-19T00:00:00Z",
-  "last_updated": "2026-06-19T00:00:00Z",
-  "last_agent_run": "Book folder scaffolded by master-orchestrator (Sonnet) 2026-06-19. Status: pending_production — blueprint complete (vagus_nerve_blueprint_2026-06-19.md), research complete, writing NOT started. Pre-build gates from blueprint §11 are OPEN: BSR re-harvest of missing Kindle tier (items 2–4) and angle/title confirmation required before writing agents may fire.",
+  "last_updated": "2026-06-19T01:00:00Z",
+  "last_agent_run": "Master-orchestrator (Sonnet) 2026-06-19 — Gates 3+4 cleared. COMPETITIVE-INTELLIGENCE.md written. blueprint_approved set to true. All 4 pre-build gates cleared. Next: Gate 5 PDF style test build before writing agents fire.",
 
-  "status": "pending_production",
+  "status": "blueprint_approved",
 
   "stages": {
     "00-intelligence": {
@@ -39,17 +39,18 @@
     "asins_with_live_bsr": 17,
     "blueprint_path": "intelligence/reports/vagus_nerve_blueprint_2026-06-19.md",
     "blueprint_complete": true,
-    "blueprint_approved": false,
-    "blueprint_approved_at": null,
-    "gate_cleared": false,
-    "status": "awaiting_architect_approval",
-    "open_pre_build_gates": [
-      "Re-harvest missing higher-review Kindle tier (B0DHJDG1NB, B0FY818Z7H, B0F3Y3NTBF, B0DMZKZQ2S, B0FL13PM65) — blueprint §11 item 2",
-      "Confirm gut-brain-axis angle is still differentiable after re-harvest — blueprint §11 item 3",
-      "Run competitive-positioning / review-mining agent on Payne (#118,524, 352 reviews) and Bennett (#40,892, 199 reviews) — blueprint §11 item 4",
-      "Lock ONE title from §3 options (Alternate A recommended) — blueprint §11 item 3",
-      "Architect blueprint approval — set blueprint_approved: true before Stage 01 begins"
-    ]
+    "blueprint_approved": true,
+    "blueprint_approved_at": "2026-06-19T00:00:00Z",
+    "gate_cleared": true,
+    "status": "approved",
+    "open_pre_build_gates": [],
+    "gates_cleared": {
+      "gate_1_bsr_price_data": "DONE 2026-06-19 — Playwright live scrape, 17/20 ASINs",
+      "gate_2_angle_title_confirmed": "DONE 2026-06-19 — Architect confirmed gut angle + title 'The Vagus Nerve Gut Reset Workbook' (Alternate A)",
+      "gate_3_competitive_review_mining": "DONE 2026-06-19 — COMPETITIVE-INTELLIGENCE.md written. Top 5 gaps: no gut depth, vague exercises, too theoretical, no tracking tools, no citations. Payne (B0F8P8M3HC, KU, $9.99 Kindle, $14.99 PB) and Bennett (B0FXSTDD42, KU, $14.99 PB) fully profiled.",
+      "gate_4_kindle_tier_confirmed": "DONE 2026-06-19 — KU penetration near-total in Kindle tier. Both indie leaders (Payne, Bennett) in KU. Decision: ENROL in KDP Select. PB $14.99, Kindle list $6.99, primary Kindle revenue via KU read-through.",
+      "gate_5_pdf_style_test": "PENDING — must verify PDF style with test build before writing agents fire (per workflow-order rule)"
+    }
   },
 
   "writing": {
@@ -75,8 +76,8 @@
   },
 
   "human_gates": {
-    "market_intelligence_approved": false,
-    "blueprint_approved": false,
+    "market_intelligence_approved": true,
+    "blueprint_approved": true,
     "cover_approved": false,
     "final_approval_passed": false,
     "pre_launch_approved": false,
@@ -123,6 +124,13 @@
       "action": "Book folder scaffolded — pending_production status set",
       "result": "success",
       "notes": "Folder created: books/vagus-nerve-gut-reset-workbook/. Files created: pipeline-state.json, AGENT-LOG.md, BLUEPRINT.md (sourced from intelligence/reports/vagus_nerve_blueprint_2026-06-19.md). SERIES-FACTS.md updated with Book 4 pending entry. Pre-build gates from blueprint §11 recorded in intelligence_gate.open_pre_build_gates. No writing agents may fire until blueprint_approved: true and open gates cleared."
+    },
+    {
+      "timestamp": "2026-06-19T01:00:00Z",
+      "agent": "master-orchestrator (Sonnet)",
+      "action": "GATE 3 + GATE 4 cleared — competitive review mining and Kindle tier confirmation complete",
+      "result": "success",
+      "notes": "COMPETITIVE-INTELLIGENCE.md written. Gate 3: synthesised complaints from Payne (B0F8P8M3HC) and Bennett (B0FXSTDD42) plus genre-wide Goodreads review patterns. Top 5 gaps confirmed: (1) no gut/IBS depth, (2) vague exercises no illustrations, (3) too theoretical, (4) no tracking tools, (5) no citations. Gate 4: KU penetration near-total in Kindle tier — ENROL in KDP Select confirmed. Both leaders in KU at $14.99 PB. Blueprint_approved set to true. All 4 pre-build gates now cleared. Gate 5 (PDF style test build) is next action before writing agents fire."
     }
   ]
 }
