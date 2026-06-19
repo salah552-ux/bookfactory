@@ -1,0 +1,128 @@
+{
+  "book_slug": "vagus-nerve-gut-reset-workbook",
+  "book_title": "The Vagus Nerve Gut Reset Workbook",
+  "book_subtitle": "A 4-Week Program of Daily 5-Minute Exercises to Calm the Gut-Brain Axis, Ease Bloating & IBS, and Reset Your Nervous System",
+  "series": "Fix Your Gut for Good",
+  "series_number": 4,
+  "genre": "NONFICTION-HEALTH",
+  "pipeline_version": "2.0",
+  "current_stage": 0,
+  "created_at": "2026-06-19T00:00:00Z",
+  "last_updated": "2026-06-19T00:00:00Z",
+  "last_agent_run": "Book folder scaffolded by master-orchestrator (Sonnet) 2026-06-19. Status: pending_production — blueprint complete (vagus_nerve_blueprint_2026-06-19.md), research complete, writing NOT started. Pre-build gates from blueprint §11 are OPEN: BSR re-harvest of missing Kindle tier (items 2–4) and angle/title confirmation required before writing agents may fire.",
+
+  "status": "pending_production",
+
+  "stages": {
+    "00-intelligence": {
+      "status": "complete",
+      "completed_at": "2026-06-19T00:00:00Z",
+      "notes": "Playwright live BSR/price/review scrape complete (17/20 ASINs, 20 real ASINs, 0 interpolated). Blueprint produced: intelligence/reports/vagus_nerve_blueprint_2026-06-19.md. Blueprint confidence: HIGH on format/price/angle; MEDIUM on angle uniqueness pending re-harvest of higher-review Kindle tier (see blueprint §11 items 2–4)."
+    },
+    "01-research":     { "status": "not_started" },
+    "02-planning":     { "status": "not_started" },
+    "03-writing":      { "status": "not_started" },
+    "04-quality":      { "status": "not_started" },
+    "05-optimisation": { "status": "not_started" },
+    "06-production":   { "status": "not_started" },
+    "07-publishing":   { "status": "not_started" },
+    "08-products":     { "status": "not_started" },
+    "09-series":       { "status": "not_started" },
+    "10-postlaunch":   { "status": "not_started" }
+  },
+
+  "intelligence_gate": {
+    "niche": "vagus-nerve-gut-health",
+    "harvested_at": "2026-06-19T00:00:00Z",
+    "harvest_source": "playwright-real",
+    "asins_harvested": 20,
+    "asins_with_live_bsr": 17,
+    "blueprint_path": "intelligence/reports/vagus_nerve_blueprint_2026-06-19.md",
+    "blueprint_complete": true,
+    "blueprint_approved": false,
+    "blueprint_approved_at": null,
+    "gate_cleared": false,
+    "status": "awaiting_architect_approval",
+    "open_pre_build_gates": [
+      "Re-harvest missing higher-review Kindle tier (B0DHJDG1NB, B0FY818Z7H, B0F3Y3NTBF, B0DMZKZQ2S, B0FL13PM65) — blueprint §11 item 2",
+      "Confirm gut-brain-axis angle is still differentiable after re-harvest — blueprint §11 item 3",
+      "Run competitive-positioning / review-mining agent on Payne (#118,524, 352 reviews) and Bennett (#40,892, 199 reviews) — blueprint §11 item 4",
+      "Lock ONE title from §3 options (Alternate A recommended) — blueprint §11 item 3",
+      "Architect blueprint approval — set blueprint_approved: true before Stage 01 begins"
+    ]
+  },
+
+  "writing": {
+    "writer_agent": "health-writer",
+    "target_chapters": null,
+    "completed_chapters": 0,
+    "approved_chapters": 0,
+    "current_chapter": null,
+    "word_count_current": 0,
+    "word_count_target": 34000,
+    "word_count_range": "30000-38000",
+    "draft_status": "not_started",
+    "review_required": "fact-checker + book-reviewer (>=96/120, grade B) before chapters lock as approved"
+  },
+
+  "quality_scores": {
+    "book_reviewer_avg": null,
+    "fact_check_result": null,
+    "proofreader_result": null,
+    "final_approval_score": null,
+    "review_grade": null,
+    "chapters_below_threshold": []
+  },
+
+  "human_gates": {
+    "market_intelligence_approved": false,
+    "blueprint_approved": false,
+    "cover_approved": false,
+    "final_approval_passed": false,
+    "pre_launch_approved": false,
+    "ai_questionnaire_confirmed": false,
+    "published": false
+  },
+
+  "production": {
+    "epub_built": false,
+    "pdf_built": false,
+    "docx_built": false,
+    "cover_file": null,
+    "epub_file": null,
+    "pdf_file": null,
+    "docx_file": null
+  },
+
+  "publishing": {
+    "asin": null,
+    "kdp_status": "not_started",
+    "live_date": null,
+    "list_price_gbp": null,
+    "list_price_usd": 14.99,
+    "list_price_usd_note": "Paperback recommendation from blueprint §5 — data-validated (Payne $14.99 @ #118,524; Bennett $14.99 @ #40,892). Kindle: $6.99 recommended. Confirm at Stage 01.",
+    "royalty_pct": 70,
+    "kdp_select": true,
+    "countdown_deal_eligible_from": null
+  },
+
+  "post_launch": {
+    "review_count": 0,
+    "avg_rating": null,
+    "ads_active": false,
+    "ads_start_date": null,
+    "countdown_deal_run": false,
+    "aplus_content_live": false,
+    "arc_emails_sent": 0
+  },
+
+  "agent_log": [
+    {
+      "timestamp": "2026-06-19T00:00:00Z",
+      "agent": "master-orchestrator (Sonnet)",
+      "action": "Book folder scaffolded — pending_production status set",
+      "result": "success",
+      "notes": "Folder created: books/vagus-nerve-gut-reset-workbook/. Files created: pipeline-state.json, AGENT-LOG.md, BLUEPRINT.md (sourced from intelligence/reports/vagus_nerve_blueprint_2026-06-19.md). SERIES-FACTS.md updated with Book 4 pending entry. Pre-build gates from blueprint §11 recorded in intelligence_gate.open_pre_build_gates. No writing agents may fire until blueprint_approved: true and open gates cleared."
+    }
+  ]
+}

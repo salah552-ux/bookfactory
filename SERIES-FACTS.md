@@ -20,6 +20,7 @@ This table is the single source of truth for the real publication state of every
 | 1 | Fix Your Gut for Good: Stop Relapsing | The 4-Phase SIBO Protocol for Root Cause Recovery — What Your Doctor Didn't Tell You About Why You Keep Coming Back | fix-your-gut-for-good | 10-postlaunch | (live) | **LIVE** | B0GXYLWS1W | Yes |
 | 2 | The H. Pylori Recovery Plan | How to Eradicate the Infection, Heal Your Stomach Lining, and Understand Your Cancer Risk — Even When Antibiotics Have Failed | h-pylori-recovery-plan | 09-series (held at publish gate) | 45,044 | NOT live (published=false) | — | Yes (planned) |
 | 3 | The 7-Day Gut Reset | Find Your Trigger and Calm Your Gut in One Week | the-7-day-gut-reset | 09-series (Stages 07–09 complete 2026-06-13; publish gate ahead) | 12,124 | NOT live (published=false) | — | Yes (planned) |
+| 4 | The Vagus Nerve Gut Reset Workbook | A 4-Week Program of Daily 5-Minute Exercises to Calm the Gut-Brain Axis, Ease Bloating & IBS, and Reset Your Nervous System | vagus-nerve-gut-reset-workbook | 00-intelligence (blueprint complete 2026-06-19; pending_production — pre-build gates open) | 0 (not started) | NOT live | — | Yes (planned) |
 
 > **SERIES-NUMBER SWAP (2026-06-12):** The H. Pylori Recovery Plan moved from Book 3 → **Book 2**; The 7-Day Gut Reset moved from Book 2 → **Book 3**. Rationale: H. pylori is production-complete (through Stage 09) and its back matter already cross-sells The 7-Day Gut Reset by exact title, so publishing H. pylori as Book 2 first completes the funnel; The 7-Day Gut Reset is only at Stage 6.5. The series string is unchanged. Earlier references in this file to "Book 3 = H. pylori" / "Book 2 = The 7-Day Gut Reset" predate this swap.
 
@@ -98,6 +99,30 @@ H. pylori statistics now locked at series level by Book 2 (full table + sources 
 | Book 3 → Book 1 | *Fix Your Gut for Good* | Present in Book 3 manuscript (Day 7, Conclusion, About the Author) — Book 1 is LIVE, so this cross-sell is correct today |
 | Book 3 → Book 2 | *The H. Pylori Recovery Plan* | NOT yet in Book 3 manuscript — staged Also-By block (see SERIES-CONTINUITY-2026-06-13.md STEP 3); activate at Book 3 upload once Book 2 is live |
 | Book 2 → Book 3 | *The 7-Day Gut Reset* | Already present in Book 2 manuscript by exact title (Ch.10 + back matter) — outbound funnel ready |
+
+---
+
+### Book 4 — PENDING PRODUCTION (The Vagus Nerve Gut Reset Workbook)
+
+**Added:** 2026-06-19 — blueprint complete, no writing started. Pre-build gates open (see `books/vagus-nerve-gut-reset-workbook/BLUEPRINT.md` §11).
+
+| Field | Value |
+|-------|-------|
+| Slug | vagus-nerve-gut-reset-workbook |
+| Title (locked candidate) | The Vagus Nerve Gut Reset Workbook |
+| Subtitle (locked candidate) | A 4-Week Program of Daily 5-Minute Exercises to Calm the Gut-Brain Axis, Ease Bloating & IBS, and Reset Your Nervous System |
+| Format | Workbook (4-week dated daily-program, thin theory front-end) |
+| Target word count | 30,000–38,000 words (~130–150 print pages, 6×9) |
+| Price target (data-validated) | $14.99 paperback / $6.99 Kindle (both indie leaders at $14.99; KU enrolled) |
+| Niche | Vagus nerve / nervous system reset with gut-brain-axis differentiation |
+| Blueprint source | `intelligence/reports/vagus_nerve_blueprint_2026-06-19.md` |
+| Series position | Book 4 of Fix Your Gut for Good (workbook extension into nervous-system-gut lane) |
+| Status | PENDING PRODUCTION — blueprint_approved: false. Writing agents BLOCKED. |
+| Open pre-build gates | (1) Re-harvest missing higher-review Kindle tier; (2) confirm gut angle differentiable; (3) run competitive review-mining on Payne+Bennett; (4) Architect title/angle approval |
+
+**Series fit:** The vagus nerve is the primary highway of the gut-brain axis — defined in Book 1, Chapter 2 as "Bidirectional communication network between gut and brain; primary highway = vagus nerve." This book takes that mechanism and builds a standalone workbook around it, cross-selling back to the prose anchor books in the series.
+
+**No facts locked yet** — FACTS.md will be created at Stage 01 research. Do not reference Book 4 statistics in any sibling book until FACTS.md is written and approved.
 
 ---
 
