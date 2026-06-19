@@ -269,3 +269,36 @@ All four Stage-09 agents complete. The series master record now carries Book 3; 
 
 ---
 *Stage 09 executed by the master orchestrator acting in sequence as series-manager → series-continuity-guardian → series-sync-agent → arc-manager-agent. All outputs committed alongside this approval. — 2026-06-11*
+
+---
+
+## FINAL APPROVAL — COVER GATE (ARCHITECT OVERRIDE) | master-orchestrator (Opus) | 2026-06-17
+
+**Scope:** COVER ONLY. The manuscript final approval already holds (113/120, proofread PASS, hooks PASS, approved 2026-06-11) and was NOT re-run.
+
+### New cover under review
+- File: `exports/final/cover-kdp-final.jpg`
+- Verified: 1600×2560px, JPEG, sRGB, KDP-compliant dimensions (1:1.6), 445KB — built 2026-06-17.
+- Concept: black / red ChatGPT-generated cover. **The cover is AI-generated imagery (ChatGPT / DALL-E), human-reviewed and approved.**
+
+### COVER-PSYCHOLOGY rubric result — 4/7 PASS
+The new cover passes 4 of the 7 go/no-go questions and fails 3:
+- **Q3 — Competitor trap test:** NO (anatomy / trap-list element present).
+- **Q5 — Price/length match test:** NO (reader-expectation / authority-signal mismatch).
+- **Q6 — Series DNA test:** NO (departs from the locked navy/cream/gold Fix Your Gut for Good spine).
+- Q1, Q2, Q4, Q7: PASS.
+
+### ARCHITECT OVERRIDE — FORMAL RECORD
+The Architect reviewed the COVER-PSYCHOLOGY rubric scores, **acknowledged the 3 NOs (Q3 anatomy trap, Q5 reader expectation, Q6 series DNA), and chose this cover anyway.** This is an explicit, documented override of the rubric for this book's cover. The 3 failing points are shipping under that override. The rubric remains the standard for all future covers; this is a one-book Architect decision, not a rule change.
+
+### Manuscript status (unchanged — for completeness)
+- Manuscript: APPROVED 2026-06-11 (book-reviewer 113/120 Grade A; fact-check PASS; proofread PASS; hooks PASS). Not re-run.
+
+## OVERALL FINAL-APPROVAL VERDICT (COVER GATE)
+
+# ✅ COVER APPROVED — ARCHITECT OVERRIDE (4/7 psychology, 3 NOs acknowledged)
+
+Cover gate cleared by Architect override. Combined with the manuscript approval (2026-06-11), the total package is cleared for KDP upload. `human_gates.cover_approved` and `human_gates.final_approval_passed` set true. The only remaining gate before PUBLISH is `ai_questionnaire_confirmed`, which the kdp-upload-agent sets during the live KDP session.
+
+---
+*Cover final-approval executed by the master orchestrator (cover-scoped) under explicit Architect override. — 2026-06-17*

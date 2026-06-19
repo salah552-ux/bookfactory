@@ -24,6 +24,7 @@ exports/
 # Build temps
 /tmp/
 *.tmp
+*.log
 
 # Frontend / backend build outputs
 frontend/dist/

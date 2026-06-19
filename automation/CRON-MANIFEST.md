@@ -89,6 +89,24 @@ State files:
 
 ---
 
+### JOB 7 — KDP Inbox Bridge + Drive Backup
+- **Schedule:** Monday 09:00 weekly (cron `0 9 * * 1`)
+- **Type:** CCR cloud agent + Gmail MCP + Google Drive MCP
+- **Reads:** Gmail inbox (last 8 days, KDP/Amazon-publishing mail only); all three `books/*/pipeline-state.json`; `automation/CRON-MANIFEST.md`; `automation/DAILY-BRIEF.md`
+- **Writes:** `automation/reports/kdp-inbox-<date>.md`; labels matched threads `BookFactory/KDP-Alerts` (Label_11); backs up the state files + manifest + brief to the Drive folder **BookFactory** (`1U6bceYXMcb3gMufzJwM1j0w0eVJieEK4`) as dated verbatim copies
+- **Reality note:** KDP does NOT email per-sale or per-review data — that lives only behind the KDP login. This job catches the KDP emails that DO arrive (royalty/payment, Select-term, content/policy/blocked-listing, ads billing) and provides off-machine state backup. Emits findings as STATE DELTA blocks; never edits state directly.
+- **Trigger ID:** `trig_01Gm98aEwW1xDgApoemWgnSM`
+
+### JOB 8 — Review Velocity Tracker
+- **Schedule:** Friday 09:00 weekly (cron `0 9 * * 5`)
+- **Type:** CCR cloud agent + WebFetch (public Amazon) + Gmail MCP (secondary)
+- **Reads:** both live `pipeline-state.json` (prior `review_count` + weekly_log); public `amazon.co.uk/dp/<ASIN>` pages
+- **Writes:** `automation/reports/review-velocity-<date>.md`; emits STATE DELTA for `post_launch.review_count` / `avg_rating` / new weekly_log entry (does not edit state directly, to avoid conflicting with the daily Watchdog)
+- **Reality note:** Amazon does NOT email on new customer reviews — the public product page is the only reliable review count. Computes reviews/week and ETA to each ad-activation gate (5/10/15/25/50). Flags "stalled — review generation needed" when velocity is 0.
+- **Trigger ID:** `trig_015xnnhTF3tvsUW4ajDQAFkY`
+
+---
+
 ## TIER 2 — Human-in-the-loop
 
 ### JOB 6 — Morning Briefing
@@ -125,6 +143,9 @@ from agent writes. `settings.local.json` is merged on top by Claude Code.
 | 4 Algo Sweep | `trig_01PgH7pMs2Vgr19v6En6xFMR` | `4 8 1 * *` | 2026-07-01 08:04 (1st) | enabled |
 | 5 Integrity | `trig_01G9ChcmxWx8UmWos1DYMHSG` | `0 23 * * 0` | 2026-06-07 23:02 (Sun) | enabled |
 | 6 Morning Briefing | `trig_01YR79mVRYA2chTaS6VqHfT7` | `28 7 * * *` | 2026-06-07 07:28 | enabled |
+| 7 KDP Inbox + Drive Backup | `trig_01Gm98aEwW1xDgApoemWgnSM` | `0 9 * * 1` | 2026-06-08 09:00 (Mon) | enabled |
+| 8 Review Velocity | `trig_015xnnhTF3tvsUW4ajDQAFkY` | `0 9 * * 5` | 2026-06-12 09:00 (Fri) | enabled |
+| Weekly Post-Launch Monitor | `trig_01WRDL6yyAWN9KVMxHthua6P` | `0 8 * * 1` | 2026-06-08 08:01 (Mon) | enabled — FIXED 2026-06-07 |
 
 **Note on time zone:** CCR cron is interpreted in UTC. The cron strings above
 were authored to read as the intended local clock times (07:00, 07:30, etc.) and
@@ -132,11 +153,40 @@ fire at those UTC minutes. In British Summer Time (UTC+1) the Architect will see
 them land ~1h later local. If exact local-clock timing matters, shift each cron
 hour back by 1 and `RemoteTrigger update` the trigger.
 
-**Do NOT touch these pre-existing triggers (not part of this system):**
+**Pre-existing one-shot / external triggers:**
 - `trig_01TB3c2cTEWyn1mPi3HxDHNR` — Cathedral Close category fix (one-shot, Jun 9)
 - `trig_013FrPUMfNB4ZqKc6GtPxYQi` — Cathedral Close £0.99 price (one-shot, Jun 8)
-- `trig_01WRDL6yyAWN9KVMxHthua6P` — Weekly Post-Launch Monitor (Mon)
 - `trig_019uZk9G94bE1nhUABBoNcAP` — Countdown Deal reminder (fired, disabled)
+
+**Weekly Post-Launch Monitor — now FIXED and folded into this system (2026-06-07):**
+- `trig_01WRDL6yyAWN9KVMxHthua6P` — was pointed at the non-existent slug
+  `books/untitled-cosy-mystery/` AND used the KDP internal id `AT25QRT6FPTE6`
+  as if it were the public ASIN. Both corrected: now reads
+  `books/death-in-the-cathedral-close/`, fetches the real public ASIN
+  `B0GZD1S8HF` on `amazon.co.uk`, and is aligned with current state
+  (Countdown Deal done, category fix scheduled, report-only with STATE DELTA).
+
+---
+
+## ⚠️ UNRESOLVED PRICING CONFLICT — Cathedral Close (flagged 2026-06-07, needs Architect decision)
+
+Two one-shot triggers give contradictory instructions for the same book, and the
+pipeline-state + Weekly Monitor assume a third value. This is a money decision —
+NOT auto-resolved.
+
+| Source | Instruction |
+|--------|-------------|
+| `trig_013FrPUMfNB4ZqKc6GtPxYQi` (fires Jun 8) | Set price **permanently to £0.99 / $0.99** — "series-starter price, do NOT raise back up" |
+| `trig_01TB3c2cTEWyn1mPi3HxDHNR` (fires Jun 9) | Says the deal "ran June 2–8 at £0.99"; category-fix context implies price returns to £6.99 |
+| `pipeline-state.json` + Weekly Monitor | Assume list price reverts to **£6.99** after the Countdown Deal |
+
+Also note the **dates disagree**: pipeline-state records the Countdown Deal as
+2026-06-02 → 2026-06-09, while the price trigger says it ran 06-02 → 06-08.
+
+**Architect must decide:** is Book 1's permanent price £0.99 (loss-leader series
+funnel) or £6.99 (standalone)? Whichever is chosen, update `pipeline-state.json`
+`publishing.list_price_gbp` and the Weekly Monitor prompt so all three agree.
+Until then the Watchdog may false-alarm on a price "mismatch."
 
 ---
 

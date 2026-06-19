@@ -63,7 +63,10 @@ The agent selected the wrong AI disclosure option. The correct values for this p
 [6] STOP → output AI questionnaire values for user review → wait for confirmation
 [7] Fill AI questionnaire with confirmed values only
     → Save as Draft
-[8] Fill Pricing tab: KDP Select, royalty, price, territories
+[8] Fill Pricing tab: KDP Select, royalty, territories
+    → Set Primary Marketplace to Amazon.com (USD) FIRST — never start from amazon.co.uk
+    → Enter the USD price first, then explicitly set the GBP (.co.uk) price and all other currencies
+    → Do NOT rely on auto-conversion for .co.uk — type the GBP price manually from KDP-LISTING.md
     → Save as Draft
 [9] OUTPUT FULL PRE-PUBLISH REVIEW CARD → wait for user to type "PUBLISH"
 [10] Only after user types exactly "PUBLISH": click Publish Your Kindle eBook
@@ -87,8 +90,8 @@ BookFactory produces AI-generated content that is directed, reviewed, and approv
   - Type exactly: Anthropic Claude. No abbreviations. No additional tools unless explicitly confirmed by the Architect in this session.
 
 **FIELD 2 — Images (cover and interior):**
-- Sub-field "How much of your book's images were created using AI tools?": **"None"**
-  - Reason: BookFactory covers use licensed photography or human-designed elements. No AI image generators (Midjourney, DALL-E, Stable Diffusion, Adobe Firefly, etc.) have been used on any BookFactory cover as of 2026-06-04. If this changes for a specific book, the Architect must confirm and update this agent before upload.
+- Sub-field "How much of your book's images were created using AI tools?": **"Yes — AI-generated image, human-reviewed and approved."**
+  - Reason: As of 2026-06-17, the H. Pylori Recovery Plan cover was generated via ChatGPT and is AI-generated imagery. All future books with AI-generated covers must declare Yes here. Books with human-designed covers declare None.
 - Sub-field "Which AI tool(s) did you use for the images?": **leave blank**
 
 **FIELD 3 — Translation:**
@@ -104,7 +107,7 @@ Before submitting the AI questionnaire, output this block and wait for user conf
 ━━━ AI QUESTIONNAIRE — CONFIRM BEFORE SUBMITTING ━━━
 Text:        "Some content was AI-generated and has been edited and revised by a human"
 AI tools:    "Anthropic Claude"
-Images:      "None"
+Images:      "Yes — AI-generated image, human-reviewed and approved."
 Image tools: [blank]
 Translation: "None"
 Checkbox:    Will check confirmation box after fields are filled
@@ -168,7 +171,7 @@ Output this card before clicking Publish. Every field must be confirmed:
 ║ AI disclosure (book): N/A — NOT printed in book ✓       ║
 ║ KDP AI — Text field:  "Some content AI-gen, human edit" ║
 ║ KDP AI — Tools field: "Anthropic Claude" ✓/✗            ║
-║ KDP AI — Images:      "None" ✓/✗                        ║
+║ KDP AI — Images:      "Yes — AI-generated image, human-reviewed and approved." ✓/✗ ║
 ║ KDP AI — Translation: "None" ✓/✗                        ║
 ║ KDP AI — Checkbox:    Checked ✓/✗                       ║
 ║ AI-DISCLOSURE-AUDIT:  Confirmed — Category B ✓          ║
@@ -210,6 +213,29 @@ Note: the previous upload placed this book in Traditional Detective Mysteries in
 ## PRICING — READ FROM KDP-LISTING.md
 
 **Do NOT use hardcoded prices.** Always read the active book's `KDP-LISTING.md` or `kdp-metadata.txt` for the correct pricing.
+
+### ⛔ HARD-LOCKED PRIMARY MARKETPLACE — AMAZON.COM (USD) — NON-NEGOTIABLE
+
+<!-- ════════════════════════════════════════════════════════════════════ -->
+<!-- ⚠ HARD RULE — DO NOT OVERRIDE, DO NOT REINTERPRET, DO NOT EXCEPTION ⚠ -->
+<!-- The PRIMARY marketplace for EVERY BookFactory title, on EVERY upload, -->
+<!-- now and forever, is AMAZON.COM (USD). It is NEVER amazon.co.uk and    -->
+<!-- NEVER any other marketplace. No book may EVER be uploaded with        -->
+<!-- .co.uk or any non-US marketplace set as primary. There are no         -->
+<!-- per-book exceptions. If KDP defaults the primary to .co.uk, you MUST  -->
+<!-- change it to Amazon.com before doing anything else on the Pricing     -->
+<!-- tab. If you cannot set Amazon.com as primary, STOP and alert the      -->
+<!-- Architect — do not proceed with any other marketplace as primary.     -->
+<!-- ════════════════════════════════════════════════════════════════════ -->
+
+**Amazon.com (USD) is the PERMANENT, HARD-LOCKED primary marketplace for ALL BookFactory titles — all books, all current and future uploads. This is a non-negotiable hard rule. amazon.co.uk (or any other marketplace) as primary is FORBIDDEN under all circumstances.**
+
+1. **ALWAYS set the Primary Marketplace to Amazon.com (USD) FIRST — before entering any number.** On the Pricing tab, confirm/change the Primary Marketplace to **Amazon.com** as the very first action. If KDP shows .co.uk or anything else as primary, switch it to Amazon.com immediately.
+2. **NEVER leave .co.uk or any non-US marketplace as primary.** No book is ever uploaded or saved with a non-US primary marketplace. If the form will not let you set Amazon.com as primary, STOP and alert the Architect — do not continue.
+3. **Enter the USD price first**, then set GBP (.co.uk) and all other currencies.
+4. The **.co.uk (GBP) price is secondary and must still be explicitly set** — type it in manually. Do NOT rely on KDP's auto-conversion from USD for the GBP price (or any other secondary currency that has a defined price in KDP-LISTING.md).
+5. Read every currency's price directly from KDP-LISTING.md. Never improvise or let auto-conversion stand in for a value the listing file specifies.
+6. **Verify before Save as Draft:** confirm the primary marketplace reads "Amazon.com (USD)". Record this in the pre-publish review card. If it does not, fix it before saving.
 
 For the current book (Death in the Cathedral Close — cosy mystery):
 - Royalty: **70%**

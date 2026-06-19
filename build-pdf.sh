@@ -86,14 +86,19 @@ fi
 # Fallback convention for nonfiction with numeric prefixes (01-*.md … 09-*.md):
 #   00-*.md  = front matter
 #   ch-*.md  = main chapters (cosy mystery / fiction)
-#   0[1-9]-*.md = main chapters (nonfiction day-by-day / numbered)  ← fallback
+#   0[1-9]-*.md / 1[0-9]-*.md = main chapters (nonfiction numbered)  ← fallback
 #   99-*.md  = back matter
+# NOTE (2026-06-11): main-chapter glob widened from 0[1-9]- to also match
+# 1[0-9]- so books with 10+ numbered chapters/appendices (e.g. 10-, 11-, 12-,
+# 13-, 14-) are not silently dropped from the PDF. Front matter (00-) and back
+# matter (99-) are still collected separately above/below.
 CHAPTERS=()
 while IFS= read -r -d '' f; do
   CHAPTERS+=("$f")
 done < <(find "$MANUSCRIPT" -maxdepth 1 -name "00-*.md" -print0 | sort -z)
 
-# Main chapters — try ch-*.md first (fiction), fall back to 0[1-9]-*.md (nonfiction)
+# Main chapters — try ch-*.md first (fiction), fall back to numbered
+# 0[1-9]-*.md + 1[0-9]-*.md (nonfiction, supports 10+ chapters/appendices)
 CH_MAIN=()
 while IFS= read -r -d '' f; do
   CH_MAIN+=("$f")
@@ -101,7 +106,7 @@ done < <(find "$MANUSCRIPT" -maxdepth 1 -name "ch-*.md" -print0 | sort -z)
 if [ ${#CH_MAIN[@]} -eq 0 ]; then
   while IFS= read -r -d '' f; do
     CH_MAIN+=("$f")
-  done < <(find "$MANUSCRIPT" -maxdepth 1 -name "0[1-9]-*.md" -print0 | sort -z)
+  done < <(find "$MANUSCRIPT" -maxdepth 1 \( -name "0[1-9]-*.md" -o -name "1[0-9]-*.md" \) -print0 | sort -z)
 fi
 CHAPTERS+=("${CH_MAIN[@]}")
 

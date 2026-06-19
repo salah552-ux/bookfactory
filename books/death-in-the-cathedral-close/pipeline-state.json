@@ -64,9 +64,10 @@
     "list_price_usd": 6.99,
     "royalty_pct": 70,
     "kdp_select": true,
-    "countdown_deal_eligible_from": "2026-06-02"
+    "countdown_deal_eligible_from": "2026-06-02",
+    "permanent_price_gbp": "TBD — awaiting Architect decision",
+    "permanent_price_usd": "TBD — awaiting Architect decision"
   },
-
   "post_launch": {
     "review_count": 0,
     "avg_rating": null,
@@ -86,7 +87,7 @@
     "bsr_sub_3": "Amateur Sleuths: #24,554",
     "bsr_recorded_date": "2026-06-02",
     "category_mismatch_flagged": true,
-    "category_mismatch_note": "Live categories (Trad Detective + Amateur Sleuth) do not match KDP-LISTING plan (Cozy + Amateur Sleuth + British & Irish). Cozy category never added. Category correction recommended today — see LAUNCH-TRACKER.md category audit.",
+    "category_mismatch_note": "2026-06-07 cleanse: metadata updated locally to Cantina-safe canonical values. KDP dashboard change requires login — blocked until user confirms live categories. Correct end state: Amateur Sleuth + Cozy + British & Irish > Mystery & Thrillers.",
     "weekly_log": [
       {
         "date": "2026-06-02",

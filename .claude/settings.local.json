@@ -21,6 +21,18 @@
           }
         ]
       }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node \"C:/Users/salah/BookFactory/scripts/validate-state.cjs\" --hook",
+            "timeout": 30,
+            "statusMessage": "Validating pipeline state..."
+          }
+        ]
+      }
     ]
   }
 }

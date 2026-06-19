@@ -152,3 +152,24 @@
 - design-agent wrote COVER-BRIEF.md and stopped — never generated the cover.
 - orchestrator accepted the brief as proof of completion — wrong threshold.
 - Both issues are now fixed in their respective spec files (pipeline-orchestrator.md verification table now requires JPG + 8-check; design-agent.md execution path is HTML+Playwright only).
+
+## SESSION: 2026-06-16 — The H. Pylori Recovery Plan (RASTER-COMPOSITE override)
+
+### Mode: composite onto a supplied ChatGPT cover (Architect override of HTML+Playwright)
+- The Architect supplied a finished ChatGPT cover and instructed RASTER-COMPOSITE mode: keep the artwork, composite the KDP title onto it. This is an explicit override of the locked HTML+Playwright-only path — do NOT generalise it.
+
+### sharp + SVG composite gotchas (learned this session)
+- **Composite at NATIVE resolution, THEN resize.** Resizing the SVG overlay (or the source) BEFORE compositing mis-maps SVG y-coordinates — text rendered ~0.62x up the canvas (the 992/1586 ratio). Correct order: `sharp(SRC).composite([{input: Buffer.from(svg), top:0, left:0}]).png().toBuffer()` first, then `.resize(1600,2560).flatten().jpeg()`.
+- **librsvg `dominant-baseline:middle` is unreliable** — use explicit `y` = baseline and compute it manually.
+- **Pixel-scan the source to find placement.** A row-by-row redness/brightness scan reliably located each element band (red hook line, dark gap, cream subtitle) so the inserted line sat in the true gap, not guesswork.
+
+### JFIF header fix for Pandoc EPUB cover embed (IMPORTANT, reusable)
+- libvips (sharp) writes JPEGs with NO JFIF APP0 segment (header `ffd8 ffdb`). This Pandoc build then can't read the image size and embeds the cover as `viewBox="0 0 0 0"` / `image width="0" height="0"` — the cover does NOT render in e-readers, with a build warning "Could not determine image size ... could not determine image type".
+- **Fix:** inject a standard 18-byte JFIF APP0 segment right after SOI (`FFD8`): `FF E0 00 10 4A464946 00 0101 00 0001 0001 0000`. Header becomes `ffd8 ffe0 JFIF`. After rebuild the cover embeds correctly (`viewBox="0 0 1600 2560"`). Sharp still reads the patched file fine; all 8 KDP checks still pass.
+
+### Result
+- Cover: black/red ChatGPT artwork + composited cream "The H. Pylori Recovery Plan" line. 8-point spec ALL PASS.
+- COVER-PSYCHOLOGY 7-point: 4 YES / 3 NO (Q3 stomach-anatomy trap, Q5 price/length signal, Q6 off-series navy/cream/gold DNA). Shipped as Architect override.
+- Score 38/50 vs the prior navy cover's 46/50 — lower on the rubric; retained only for a conversion test by Architect decision.
+- Byline flag: artwork reads "S. A. IBRAHIM" (spaced) vs canonical "S.A. Ibrahim"; baked into AI artwork, not safely editable — flagged, not altered.
+- AI-image disclosure: ChatGPT cover = AI-generated; KDP Images questionnaire must declare "Yes".

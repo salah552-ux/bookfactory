@@ -65,20 +65,27 @@ echo ""
 
 # ── Collect files in canonical order ─────────────────────────────────────────
 # Supports two naming conventions:
-#   ch-*.md + 99-*.md  (cosy mystery / fiction convention)
-#   00-*.md ... 09-*.md (numeric prefix convention — health guides)
-# Tries ch-*.md first; falls back to [0-9][0-9]-*.md if empty.
+#   ch-*.md + 99-*.md   (cosy mystery / fiction convention)
+#   [0-9][0-9]-*.md     (numeric prefix convention — health guides: 00-..99-)
+# Detects fiction (ch-*) first. If no ch-*.md exist, the book uses the numeric
+# convention, in which case a SINGLE [0-9][0-9]-*.md glob captures front matter
+# (00-), all main chapters (01-..NN-, incl. 10+), and back matter (99-) in
+# sorted order. The 99-*.md line must only run for the fiction convention —
+# otherwise it pre-populates FILES and suppresses the numeric branch, dropping
+# every 00-..NN- chapter from the EPUB/DOCX (bug fixed 2026-06-11).
 
 FILES=()
 while IFS= read -r -d '' f; do
   FILES+=("$f")
 done < <(find "$MANUSCRIPT" -maxdepth 1 -name "ch-*.md" -print0 | sort -z)
-while IFS= read -r -d '' f; do
-  FILES+=("$f")
-done < <(find "$MANUSCRIPT" -maxdepth 1 -name "99-*.md" -print0 | sort -z)
 
-# Fallback: numeric-prefix convention (00-intro.md, 01-day-one.md, etc.)
-if [ ${#FILES[@]} -eq 0 ]; then
+if [ ${#FILES[@]} -gt 0 ]; then
+  # Fiction convention: ch-*.md main chapters + 99-*.md back matter
+  while IFS= read -r -d '' f; do
+    FILES+=("$f")
+  done < <(find "$MANUSCRIPT" -maxdepth 1 -name "99-*.md" -print0 | sort -z)
+else
+  # Numeric convention: one glob captures 00-..99- in sorted order
   while IFS= read -r -d '' f; do
     FILES+=("$f")
   done < <(find "$MANUSCRIPT" -maxdepth 1 -name "[0-9][0-9]-*.md" -print0 | sort -z)
