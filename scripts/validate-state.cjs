@@ -103,13 +103,28 @@ function validateBook(slug) {
         v.push({ level: "CRITICAL", code: "INV-2", msg: `${k} marked complete but declared output missing on disk: ${out}` });
       }
     }
+    // INV-2b / INV-12: required contract outputs for a complete stage.
+    // Default severity is now CRITICAL (INV-12): a complete stage missing a
+    // contract output is a hard block. Severity is overridable per gate via
+    // required_outputs_severity (kept for forward-compat; CRITICAL is the floor).
     const gate = GATES[k];
     if (gate && gate.required_outputs) {
+      const sev = gate.required_outputs_severity === "WARN" ? "WARN" : "CRITICAL";
       for (const pat of gate.required_outputs) {
         const m = globMatches(bookDir, pat);
         if (m && m.length === 0) {
-          v.push({ level: "WARN", code: "INV-2b", msg: `${k} complete but contract output not found: ${pat}` });
+          v.push({ level: sev, code: sev === "CRITICAL" ? "INV-12" : "INV-2b", msg: `${k} complete but required contract output missing: ${pat}` });
         }
+      }
+    }
+
+    // Stage completion authority: only the orchestrator may close a stage.
+    const SCR = manifest.stage_completion_rule;
+    if (SCR && SCR.required_field) {
+      const actor = stages[k][SCR.required_field];
+      if (actor !== SCR.required_value) {
+        const sev = SCR.severity === "WARN" ? "WARN" : "CRITICAL";
+        v.push({ level: sev, code: "INV-13", msg: `${k} is complete but ${SCR.required_field}='${actor === undefined ? "(unset)" : actor}', not '${SCR.required_value}' — only the orchestrator may close a stage.` });
       }
     }
   }
@@ -162,6 +177,43 @@ function validateBook(slug) {
       v.push({ level: "WARN", code: "INV-7", msg: `06-production complete but no fact_check_result in state — cannot prove fact-check PASS (legacy schema?).` });
     } else if (fc !== "PASS") {
       v.push({ level: "CRITICAL", code: "INV-7", msg: `06-production complete but fact_check_result is '${fc}', not PASS.` });
+    }
+
+    // INV-9 final-approval score gate
+    const fa = q.final_approval_score;
+    if (fa === undefined || fa === null) {
+      v.push({ level: "CRITICAL", code: "INV-9", msg: `06-production complete but no final_approval_score in state — must be >= 270.` });
+    } else if (typeof fa !== "number" || fa < 270) {
+      v.push({ level: "CRITICAL", code: "INV-9", msg: `06-production complete but final_approval_score (${fa}) < 270.` });
+    }
+
+    // INV-10 EPUB built and sized
+    const epubPath = path.join(bookDir, "exports", "final", "manuscript-kdp.epub");
+    if (!fs.existsSync(epubPath)) {
+      v.push({ level: "CRITICAL", code: "INV-10", msg: `06-production complete but exports/final/manuscript-kdp.epub does not exist.` });
+    } else {
+      const kb = fs.statSync(epubPath).size / 1024;
+      if (kb < 500) {
+        v.push({ level: "CRITICAL", code: "INV-10", msg: `06-production complete but EPUB is ${kb.toFixed(0)}KB (< 500KB) — cover missing or build incomplete.` });
+      }
+    }
+  }
+
+  // INV-11 no AI disclosure in any copyright file (applies regardless of stage)
+  const AI_DISCLOSURE_RX = /AI Disclosure|drafted with the assistance of AI/i;
+  const manuscriptDir = path.join(bookDir, "manuscript");
+  for (const dir of [bookDir, manuscriptDir]) {
+    if (!fs.existsSync(dir)) continue;
+    let entries;
+    try { entries = fs.readdirSync(dir); } catch (_) { continue; }
+    for (const f of entries) {
+      if (!/copyright/i.test(f) || !f.endsWith(".md")) continue;
+      try {
+        const txt = fs.readFileSync(path.join(dir, f), "utf8");
+        if (AI_DISCLOSURE_RX.test(txt)) {
+          v.push({ level: "CRITICAL", code: "INV-11", msg: `AI disclosure language found in ${path.relative(bookDir, path.join(dir, f))} — must be stripped before publication.` });
+        }
+      } catch (_) { /* ignore */ }
     }
   }
 

@@ -85,7 +85,7 @@
       "folder": "05-optimisation/",
       "agents": ["hook-optimizer-agent", "review-bait-optimizer"],
       "parallel": true,
-      "outputs": ["HOOK-OPTIMIZER-REPORT.md", "REVIEW-BAIT-REPORT.md"],
+      "outputs": ["HOOK-OPTIMIZER-REPORT.md", "REVIEW-BAIT-REPORT.md", "CATEGORY-SELECTION.md"],
       "human_gate_field": null
     },
     {
@@ -212,9 +212,9 @@
     "01-research":     { "required_outputs": ["MARKET-INTELLIGENCE.md"], "gate_in": [] },
     "02-planning":     { "required_outputs": ["BLUEPRINT.md", "FACTS.md"], "gate_in": ["market_intelligence_approved"] },
     "03-writing":      { "required_outputs": ["manuscript/*chapter*.md"], "gate_in": ["blueprint_approved"] },
-    "04-quality":      { "required_outputs": ["FACT-CHECK-REPORT.md", "APPROVALS.md"], "gate_in": [] },
-    "05-optimisation": { "required_outputs": ["HOOK-OPTIMIZER-REPORT.md", "REVIEW-BAIT-REPORT.md"], "gate_in": [] },
-    "06-production":   { "required_outputs": ["exports/final/manuscript-kdp.epub", "exports/final/manuscript-kdp.pdf", "exports/final/manuscript-kdp.docx"], "gate_in": [] },
+    "04-quality":      { "required_outputs": ["FACT-CHECK-REPORT.md", "APPROVALS.md", "COMPLIANCE-REPORT.md", "PROOFREAD-REPORT.md"], "required_outputs_severity": "CRITICAL", "gate_in": [] },
+    "05-optimisation": { "required_outputs": ["HOOK-OPTIMIZER-REPORT.md", "REVIEW-BAIT-REPORT.md", "CATEGORY-SELECTION.md"], "required_outputs_severity": "CRITICAL", "gate_in": [] },
+    "06-production":   { "required_outputs": ["exports/final/manuscript-kdp.epub", "exports/final/manuscript-kdp.pdf", "exports/final/manuscript-kdp.docx", "FINAL-APPROVAL-REPORT.md"], "required_outputs_severity": "CRITICAL", "gate_in": [] },
     "07-publishing":   { "required_outputs": ["KDP-UPLOAD-GUIDE.md"], "gate_in": ["final_approval_passed", "cover_approved"] },
     "08-products":     { "required_outputs": [], "gate_in": [] },
     "09-series":       { "required_outputs": ["SERIES-FACTS.md"], "gate_in": [] },
@@ -231,6 +231,17 @@
     "INV-5": { "rule": "no_stale_pending", "severity": "WARN", "desc": "No 'PENDING ... APPROVAL' string in a doc whose stage is complete." },
     "INV-6": { "rule": "publish_lock", "severity": "CRITICAL", "desc": "human_gates.published may be true ONLY if publishing.asin is set AND ai_questionnaire_confirmed is true." },
     "INV-7": { "rule": "quality_before_production", "severity": "CRITICAL", "desc": "If 06-production is complete, quality_scores.book_reviewer_avg >= 96 AND fact_check_result == 'PASS'." },
-    "INV-8": { "rule": "gate_in_satisfied", "severity": "WARN", "desc": "A stage that has begun must have had all its gates.gate_in human_gates true. (WARN, not CRITICAL — prep-ahead is permitted; publish itself is locked by INV-6.)" }
+    "INV-8": { "rule": "gate_in_satisfied", "severity": "WARN", "desc": "A stage that has begun must have had all its gates.gate_in human_gates true. (WARN, not CRITICAL — prep-ahead is permitted; publish itself is locked by INV-6.)" },
+    "INV-9": { "rule": "final_approval_score", "severity": "CRITICAL", "desc": "If 06-production is complete, quality_scores.final_approval_score must be >= 270." },
+    "INV-10": { "rule": "epub_built_and_sized", "severity": "CRITICAL", "desc": "If 06-production is complete, exports/final/manuscript-kdp.epub must exist AND be >= 500KB." },
+    "INV-11": { "rule": "no_ai_disclosure", "severity": "CRITICAL", "desc": "No manuscript *copyright*.md may contain 'AI Disclosure' or 'drafted with the assistance of AI'." },
+    "INV-12": { "rule": "required_outputs_critical", "severity": "CRITICAL", "desc": "If a stage is complete but any of its gates.required_outputs is missing, that is CRITICAL (not WARN)." }
+  },
+
+  "stage_completion_rule": {
+    "_comment": "Only the pipeline-orchestrator may mark a stage complete. A stage object in pipeline-state.json with status 'complete' MUST carry executed_by: 'pipeline-orchestrator'. Any other value (or absence) means an unauthorised actor closed the stage.",
+    "required_field": "executed_by",
+    "required_value": "pipeline-orchestrator",
+    "severity": "CRITICAL"
   }
 }

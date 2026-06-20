@@ -116,11 +116,11 @@ trap "rm -rf '$TMPDIR_CLEAN'" EXIT
 # ── Cover image ───────────────────────────────────────────────────────────────
 COVER="$FINAL/cover-kdp.jpg"
 if [ ! -f "$COVER" ]; then
-  echo "  Warning: cover-kdp.jpg not found at $COVER — EPUB will have no cover"
-  COVER_FLAG=""
-else
-  COVER_FLAG="--epub-cover-image=$COVER"
+  echo "  ERROR: cover-kdp.jpg not found at $COVER — refusing to build a coverless EPUB."
+  echo "  Place the approved cover at $COVER and re-run."
+  exit 1
 fi
+COVER_FLAG="--epub-cover-image=$COVER"
 
 # ── Generate EPUB ─────────────────────────────────────────────────────────────
 echo "  Generating EPUB..."
@@ -136,6 +136,15 @@ echo "  Generating EPUB..."
 
 EPUB_SIZE=$(du -sh "$FINAL/manuscript-kdp.epub" | cut -f1)
 echo "  ✓ EPUB: $EPUB_SIZE — $FINAL/manuscript-kdp.epub"
+
+# ── Post-build assertion: EPUB must be >= 500KB ───────────────────────────────
+# A correctly built EPUB with embedded cover is comfortably over 500KB. An
+# undersized EPUB means the cover failed to embed or the build is incomplete.
+EPUB_BYTES=$(wc -c < "$FINAL/manuscript-kdp.epub")
+if [ "$EPUB_BYTES" -lt 512000 ]; then
+  echo "  ERROR: EPUB undersized — cover missing or build incomplete. ($EPUB_BYTES bytes, need >= 512000)"
+  exit 1
+fi
 
 # ── Generate DOCX ─────────────────────────────────────────────────────────────
 echo "  Generating DOCX..."
