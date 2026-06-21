@@ -4,7 +4,7 @@
 
 ### Your twelve tools, each in under a page
 
-This is the chapter you'll come back to. Over the next four weeks, every daily page will send you here for the full instructions on whatever exercise you're doing that day. Think of it as the reference shelf. You don't need to read it all at once or master everything today — skim it, get the shape of it, and return as needed.
+Twelve exercises. That's the entire toolkit — every calming lever you have on the vagus nerve, each one named, timed, and explained on a single page. This is the chapter every daily page will send you back to for the full instructions, so you don't need to master it today. Skim it, get the shape of it, and return as needed; the four-week program will tell you exactly which tool to pick up and when.
 
 Every exercise follows the same simple format: how long it takes, when to do it, why it works in one plain line, the numbered steps, and a way to adapt it if you have limited mobility or a health condition. None of them needs equipment. None takes more than five minutes.
 
@@ -30,7 +30,7 @@ Breath is the fastest, most reliable handle you have on the vagus nerve, because
 
 #### 2. Resonance Breathing
 **Time:** 5 minutes   **Do it:** once a day, ideally same time each day
-**Why it works:** breathing at about five to six breaths a minute matches your body's natural pressure rhythm and produces the biggest measurable jump in vagal tone of any breathing pattern studied.
+**Why it works:** breathing at about five to six breaths a minute matches your body's natural pressure rhythm and is the breathing pace most consistently shown in studies to raise the markers researchers use for vagal tone.
 
 1. Breathe in gently through your nose for a slow count of about 5.
 2. Breathe out, just as gently, for a slow count of about 5.

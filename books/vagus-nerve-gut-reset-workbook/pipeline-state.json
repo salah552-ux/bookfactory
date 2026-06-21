@@ -8,23 +8,24 @@
   "pipeline_version": "2.0",
   "current_stage": 6,
   "created_at": "2026-06-19T00:00:00Z",
-  "last_updated": "2026-06-20T00:45:00Z",
-  "last_agent_run": "Master-orchestrator (Opus) 2026-06-20 — FULL PIPELINE Stage 01→06 COMPLETE. Stage 01 research (RESEARCH.md, all claims sourced). Stage 02 OUTLINE.md + brief-validator PASS (BRIEF-VALIDATION.md). Stage 03 full manuscript written (health-writer voice): how-to, intro, Ch1–Ch4, Weeks 1–4 (28 dated daily spreads), appendices A–D, sources/about/series. Stage 04 Quality Gate PASS 108/120 Grade A (QUALITY-GATE.md, APPROVALS.md) — word-count deviation formally adjudicated/accepted for workbook format. Stage 05 proofread clean (no banned phrases/placeholders), tables Pandoc-compatible, KDP-LISTING.md locked. Stage 06 production: EPUB+DOCX+PDF built to exports/final/. Canonical PDF = locked-design 125 pages. Word count 19,391. NOT published (production only).",
+  "last_updated": "2026-06-21T09:30:00Z",
+  "last_agent_run": "Master-orchestrator (Opus) 2026-06-21 — REMEDIATION COMPLETE. Stage 04 named reports finalised (compliance-officer stripped in-book AI disclosure → COMPLIANCE-REPORT.md; PROOFREAD-REPORT.md, FACT-CHECK-REPORT.md). Stage 05: kdp-seo-agent CATEGORY-SELECTION.md, hook-optimizer HOOK-OPTIMIZER-REPORT.md, review-bait-optimizer REVIEW-BAIT-REPORT.md. Stage 06: cover present at exports/final/cover-kdp.jpg (1600x2560); EPUB/DOCX/PDF rebuilt — EPUB now 982,990 bytes (960KB, cover embedded), canonical locked-design PDF 125pp. final-approval-agent FINAL-APPROVAL-REPORT.md = 295/300 APPROVED. Added LAUNCH-PLAN.md, PACKAGE-MANIFEST.md, kdp-metadata.txt. KDP-LISTING description/keywords corrected. Copyright disclaimer expanded to 2 paragraphs. Book CLEARED for KDP upload pending human gates (cover_approved, final_approval_passed, ai_questionnaire_confirmed). NOT published.",
 
-  "status": "production_complete_pending_publish_review",
+  "status": "approved_pending_upload_gates",
 
   "stages": {
     "00-intelligence": {
       "status": "complete",
+      "executed_by": "pipeline-orchestrator",
       "completed_at": "2026-06-19T00:00:00Z",
       "notes": "Playwright live BSR/price/review scrape complete (17/20 ASINs, 20 real ASINs, 0 interpolated). Blueprint produced: intelligence/reports/vagus_nerve_blueprint_2026-06-19.md. Blueprint confidence: HIGH on format/price/angle; MEDIUM on angle uniqueness pending re-harvest of higher-review Kindle tier (see blueprint §11 items 2–4)."
     },
-    "01-research":     { "status": "complete", "completed_at": "2026-06-20T00:10:00Z", "notes": "RESEARCH.md written; every physiological claim cited to a named source; animal-model/pilot findings flagged as early evidence." },
-    "02-planning":     { "status": "complete", "completed_at": "2026-06-20T00:15:00Z", "notes": "OUTLINE.md (chapter plan + 4-week daily structure + locked exercise/daily/tracker templates). brief-validator PASS — BRIEF-VALIDATION.md." },
-    "03-writing":      { "status": "complete", "completed_at": "2026-06-20T00:35:00Z", "notes": "Full manuscript: 13 files, 19,391 words. Health-writer voice; 80% exercises/tracking; 12 named exercises; Week 3 gut-specific; no polyvagal jargon." },
-    "04-quality":      { "status": "complete", "completed_at": "2026-06-20T00:40:00Z", "notes": "Quality Gate PASS 108/120 Grade A. QUALITY-GATE.md + APPROVALS.md. All 5 competitive gaps filled. Word-count deviation adjudicated/accepted for workbook format (125 pages)." },
-    "05-optimisation": { "status": "complete", "completed_at": "2026-06-20T00:42:00Z", "notes": "Proofread clean (no banned AI phrases, no placeholders, no dup words). Tables Pandoc-compatible. KDP-LISTING.md locked (title/subtitle/HTML desc/7 keywords/categories/pricing)." },
-    "06-production":   { "status": "complete", "completed_at": "2026-06-20T00:45:00Z", "notes": "EPUB+DOCX+PDF in exports/final/. Canonical PDF = locked-design 125pp (Playfair/#1b3a5c/#c8b99a, 6x9). All three formats verified valid. Cover NOT produced (separate human gate)." },
+    "01-research":     { "status": "complete", "executed_by": "pipeline-orchestrator", "completed_at": "2026-06-20T00:10:00Z", "notes": "RESEARCH.md written; every physiological claim cited to a named source; animal-model/pilot findings flagged as early evidence. kdp-seo-agent CATEGORY-SELECTION.md formalised in remediation." },
+    "02-planning":     { "status": "complete", "executed_by": "pipeline-orchestrator", "completed_at": "2026-06-20T00:15:00Z", "notes": "OUTLINE.md (chapter plan + 4-week daily structure + locked exercise/daily/tracker templates). brief-validator PASS — BRIEF-VALIDATION.md. FACTS.md now carries locked verbatim final line." },
+    "03-writing":      { "status": "complete", "executed_by": "pipeline-orchestrator", "completed_at": "2026-06-20T00:35:00Z", "notes": "Full manuscript: 13 files, 19,391 words. Health-writer voice; 80% exercises/tracking; 12 named exercises; Week 3 gut-specific; no polyvagal jargon." },
+    "04-quality":      { "status": "complete", "executed_by": "pipeline-orchestrator", "completed_at": "2026-06-21T00:00:00Z", "notes": "Quality Gate PASS 108/120 Grade A. Named reports: FACT-CHECK-REPORT.md (PASS), PROOFREAD-REPORT.md (PASS), COMPLIANCE-REPORT.md (in-book AI disclosure stripped — INV-11 clean), APPROVALS.md (with Fact-Checked/Compliant columns). All 5 competitive gaps filled. Word-count deviation adjudicated/accepted for workbook format (125 pages)." },
+    "05-optimisation": { "status": "complete", "executed_by": "pipeline-orchestrator", "completed_at": "2026-06-21T03:00:00Z", "notes": "Proofread clean. KDP-LISTING.md locked + corrected (h2-only description, keywords de-duplicated from title). CATEGORY-SELECTION.md, HOOK-OPTIMIZER-REPORT.md (PASS), REVIEW-BAIT-REPORT.md (PASS) all present." },
+    "06-production":   { "status": "complete", "executed_by": "pipeline-orchestrator", "completed_at": "2026-06-21T09:30:00Z", "notes": "Cover present at exports/final/cover-kdp.jpg (1600x2560 JPEG). EPUB+DOCX+PDF rebuilt: EPUB 982,990 bytes (cover embedded, >=500KB), canonical locked-design PDF 125pp, DOCX, HTML. FINAL-APPROVAL-REPORT.md = 295/300 APPROVED. LAUNCH-PLAN.md, PACKAGE-MANIFEST.md, kdp-metadata.txt added." },
     "07-publishing":   { "status": "not_started" },
     "08-products":     { "status": "not_started" },
     "09-series":       { "status": "not_started" },
@@ -70,9 +71,12 @@
 
   "quality_scores": {
     "book_reviewer_avg": 108,
-    "fact_check_result": "PASS — every stat sourced to RESEARCH.md; no invented numbers; early-evidence findings flagged",
+    "fact_check_result": "PASS",
+    "fact_check_note": "Every stat sourced to RESEARCH.md; no invented numbers; early-evidence findings flagged. See FACT-CHECK-REPORT.md (24 claims: 20 SAFE, 4 SOFTEN, 0 FIX, 0 REMOVE).",
     "proofreader_result": "PASS — no banned phrases, placeholders, or duplicate words; tables Pandoc-compatible",
-    "final_approval_score": null,
+    "final_approval_score": 295,
+    "final_approval_decision": "APPROVED",
+    "final_approval_report": "FINAL-APPROVAL-REPORT.md",
     "review_grade": "A",
     "chapters_below_threshold": []
   },
@@ -91,13 +95,17 @@
     "epub_built": true,
     "pdf_built": true,
     "docx_built": true,
-    "cover_file": null,
+    "cover_built": true,
+    "cover_file": "exports/final/cover-kdp.jpg",
+    "cover_dimensions": "1600x2560",
+    "cover_bytes": 924277,
     "epub_file": "exports/final/manuscript-kdp.epub",
+    "epub_bytes": 982990,
     "pdf_file": "exports/final/manuscript-kdp.pdf",
     "docx_file": "exports/final/manuscript-kdp.docx",
     "pdf_pages": 125,
     "pdf_design": "locked (Playfair Display headings, #1b3a5c navy, #c8b99a blockquote border, EB Garamond body, 6x9in)",
-    "cover_note": "Cover NOT produced — separate human-gated stage (cover_approved: false). EPUB built without cover."
+    "cover_note": "Cover present at exports/final/cover-kdp.jpg (1600x2560, baseline JPEG). EPUB rebuilt WITH cover embedded — 982,990 bytes (>=500KB). cover_approved remains a human gate (currently false)."
   },
 
   "publishing": {

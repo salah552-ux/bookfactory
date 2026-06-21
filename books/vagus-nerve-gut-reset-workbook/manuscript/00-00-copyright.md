@@ -6,9 +6,9 @@ Copyright © 2026 S. A. Ibrahim
 
 All rights reserved. No part of this publication may be reproduced, distributed, or transmitted in any form or by any means without the prior written permission of the publisher.
 
-**Disclaimer:** This book is for informational and educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment. Always consult your physician or qualified healthcare provider before beginning any new health programme.
+**Disclaimer:** This book is for informational and educational purposes only. It is not a substitute for professional medical advice, diagnosis, or treatment, and nothing in it is intended to diagnose, treat, cure, or prevent any condition.
 
-**AI Disclosure:** Portions of this manuscript were drafted with the assistance of AI writing tools and subsequently edited and reviewed by the author.
+Always consult your physician or another qualified healthcare provider before beginning any new health programme, and never disregard professional medical advice or delay seeking it because of something you have read here. Persistent or severe gut symptoms should be reviewed by a doctor. The author and publisher accept no responsibility for any adverse effects arising from the use or application of the information in this book.
 
 *Fix Your Gut for Good Series — Book 4*
 

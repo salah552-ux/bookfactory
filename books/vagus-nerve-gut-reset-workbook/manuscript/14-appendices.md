@@ -80,6 +80,6 @@ No. The whole program works with a pen and five minutes. HRV tracking is optiona
 
 Some of the exercises — especially the breathing paces and the OM — are easier with a voice guiding the timing. A free companion audio set is available to walk you through them in real time.
 
-> **Scan the QR code on the final page (or visit the link printed there) to access the guided audio.** It's free with this book, no purchase required.
+> **Scan the QR code on the final page (or visit the link printed there) to access the guided audio.** It's free with this book, no purchase required, and nothing is asked of you in return.
 
-If you found this workbook useful, the single most helpful thing you can do is leave an honest review. It takes a minute and it genuinely helps another bloated, exhausted person find the one nerve their gut books never mention. Thank you.
+When you've finished the program, there's a short note at the very back of the book about one quiet way you can help the next reader. For now, keep going — the audio is there whenever a guided pace would help.

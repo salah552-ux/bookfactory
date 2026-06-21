@@ -4,7 +4,7 @@
 
 ### Score yourself today, so in 28 days you can see what changed
 
-Here is something almost no other book in this corner of the shelf bothers to do, and it's the difference between a program that works and a program that just feels nice for a week.
+Four weeks from now, on a good morning, you'll try to remember how rough today actually felt — and you won't be able to. You'll wonder if anything really changed or if you just caught a lucky week. That doubt is exactly what ends programs that were quietly working. So before you do a single exercise, you're going to do the one thing almost no other book on this shelf bothers with.
 
 You are going to measure where you start.
 

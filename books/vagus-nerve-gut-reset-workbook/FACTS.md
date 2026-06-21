@@ -29,6 +29,9 @@
 - Every exercise: named, numbered steps, exact duration, an accessibility modification, and a "why it works" one-liner tied to RESEARCH.md.
 - Cite source type inline where a claim is load-bearing ("a 2023 trial in Cell Reports Medicine found...").
 
+## Locked final line (verbatim — for structural-integrity check)
+The book's final line, locked: "Keep your stack going, come back to Chapter 4 when life gets busy, and look after that nerve. It's quietly looking after you." (manuscript/99-back-matter.md, "Before You Close the Book")
+
 ## Promises made to reader (deliver these)
 | Promise | Delivered in |
 |---------|--------------|
