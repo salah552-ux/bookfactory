@@ -8,8 +8,8 @@
   "pipeline_version": "2.0",
   "current_stage": 6,
   "created_at": "2026-06-19T00:00:00Z",
-  "last_updated": "2026-06-21T09:30:00Z",
-  "last_agent_run": "Master-orchestrator (Opus) 2026-06-21 — REMEDIATION COMPLETE. Stage 04 named reports finalised (compliance-officer stripped in-book AI disclosure → COMPLIANCE-REPORT.md; PROOFREAD-REPORT.md, FACT-CHECK-REPORT.md). Stage 05: kdp-seo-agent CATEGORY-SELECTION.md, hook-optimizer HOOK-OPTIMIZER-REPORT.md, review-bait-optimizer REVIEW-BAIT-REPORT.md. Stage 06: cover present at exports/final/cover-kdp.jpg (1600x2560); EPUB/DOCX/PDF rebuilt — EPUB now 982,990 bytes (960KB, cover embedded), canonical locked-design PDF 125pp. final-approval-agent FINAL-APPROVAL-REPORT.md = 295/300 APPROVED. Added LAUNCH-PLAN.md, PACKAGE-MANIFEST.md, kdp-metadata.txt. KDP-LISTING description/keywords corrected. Copyright disclaimer expanded to 2 paragraphs. Book CLEARED for KDP upload pending human gates (cover_approved, final_approval_passed, ai_questionnaire_confirmed). NOT published.",
+  "last_updated": "2026-06-21T15:00:00Z",
+  "last_agent_run": "kdp-seo-agent 2026-06-21 — SEO/KDP-ALGORITHM PACKAGE APPROVED FOR UPLOAD. Audited KDP-LISTING.md + CATEGORY-SELECTION.md against vagus_nerve_harvest_2026-06-19.json + COMPETITIVE-INTELLIGENCE.md + live web search. Title/subtitle confirmed (157 chars, all required terms). 7 keywords validated: all <50 chars, zero title/subtitle duplication, broad+long-tail mix, gut/IBS/digestion differentiator in slots 4-6. One refinement applied: keyword slot 5 'gut brain axis healing' -> 'vagus nerve exercises for digestion' (old slot self-duplicated subtitle's 'gut-brain axis'; replacement targets confirmed open 'digestion' search intent no indie leader owns). 3 Day-1 categories confirmed real selectable KDP nodes across 3 branches; Neuroscience/Neuroanatomy soft-competition bonus shelf validated by harvest top-20 data. Description: gut-reader hook, all 5 competitive gaps addressed, HTML-formatted, CTA present. seo_approved: true. Prior: Master-orchestrator (Opus) 2026-06-21 — REMEDIATION COMPLETE. Stage 04 named reports finalised (compliance-officer stripped in-book AI disclosure → COMPLIANCE-REPORT.md; PROOFREAD-REPORT.md, FACT-CHECK-REPORT.md). Stage 05: kdp-seo-agent CATEGORY-SELECTION.md, hook-optimizer HOOK-OPTIMIZER-REPORT.md, review-bait-optimizer REVIEW-BAIT-REPORT.md. Stage 06: cover present at exports/final/cover-kdp.jpg (1600x2560); EPUB/DOCX/PDF rebuilt — EPUB now 982,990 bytes (960KB, cover embedded), canonical locked-design PDF 125pp. final-approval-agent FINAL-APPROVAL-REPORT.md = 295/300 APPROVED. Added LAUNCH-PLAN.md, PACKAGE-MANIFEST.md, kdp-metadata.txt. KDP-LISTING description/keywords corrected. Copyright disclaimer expanded to 2 paragraphs. Book CLEARED for KDP upload pending human gates (cover_approved, final_approval_passed, ai_questionnaire_confirmed). NOT published.",
 
   "status": "approved_pending_upload_gates",
 
@@ -84,6 +84,7 @@
   "human_gates": {
     "market_intelligence_approved": true,
     "blueprint_approved": true,
+    "seo_approved": true,
     "cover_approved": false,
     "final_approval_passed": false,
     "pre_launch_approved": false,
@@ -117,7 +118,11 @@
     "list_price_usd_note": "Paperback recommendation from blueprint §5 — data-validated (Payne $14.99 @ #118,524; Bennett $14.99 @ #40,892). Kindle: $6.99 recommended. Confirm at Stage 01.",
     "royalty_pct": 70,
     "kdp_select": true,
-    "countdown_deal_eligible_from": null
+    "pricing_strategy_approved": true,
+    "pricing_strategy_note": "Architect-approved 2026-06-21. Upload prices: Kindle $6.99 / PB $14.99, Amazon.com (US) primary, KDP Select YES. Launch promo: KDP Countdown Deal $2.99 for 7 days from Day 1, auto-reverts to $6.99. Countdown Deal scheduled MANUALLY by Architect on KDP after publish. FLAG: KDP Select 30-day enrollment may delay Day-1 eligibility. Full plan: LAUNCH-PRICING-PLAN.md.",
+    "countdown_deal_plan": "$2.99 x 7 days from Day 1, then $6.99",
+    "countdown_deal_eligible_from": null,
+    "countdown_deal_eligibility_note": "Requires published + 30 days in KDP Select. May not be eligible on Day 1 if just published — Architect verifies on KDP dashboard at publish time."
   },
 
   "post_launch": {
