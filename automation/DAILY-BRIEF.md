@@ -1,90 +1,106 @@
-# BookFactory Daily Brief — 2026-06-16
+# BookFactory Daily Brief — 2026-06-22
 
 ---
 
-## ACTION REQUIRED (6 items — start with the price check)
+## ACTION REQUIRED — 6 items needing a decision
 
-### 1. 🔴 Verify £6.99 price on Cathedral Close — OVERDUE DAY 7 (revenue at risk)
-Countdown Deal ended 2026-06-09. Price restoration **not manually confirmed for 7 days**. 7 days of potential revenue collected at an unknown price.
-- Open amazon.co.uk → search ASIN `B0GZD1S8HF` → confirm price shows **£6.99**
-- If wrong: KDP → Pricing → correct immediately
-- Then update `books/untitled-cosy-mystery/pipeline-state.json` → `post_launch.countdown_deal_run: true`
-- **Reply PRICE-CONFIRMED when done**
+### 🔴 1. PRICE — Cathedral Close, post-Countdown-Deal (Day 13 — REVENUE RISK)
+Countdown Deal ended **2026-06-09**. Whether the price restored to £6.99 has **never been verified** — 13 days of sales at an unknown price. 5-minute fix.
+> Open amazon.co.uk → search `B0GZD1S8HF` → confirm £6.99 is live. If not, fix in KDP → Pricing.
+> Then reply **PRICE-CONFIRMED** (or describe what you found) to clear this alert.
 
-### 2. 🔴 Fix ASIN records — OVERDUE DAY 10
-| Book | Problem |
-|------|---------|
-| Fix Your Gut for Good | `publishing.asin = null` — book treated as unpublished in all reports |
-| Death in the Cathedral Close | `publishing.asin = AT25QRT6FPTE6` — 13 chars, **invalid ASIN** (must be 10 chars) |
-Log into KDP Bookshelf, copy correct 10-char ASINs for both titles, update both `pipeline-state.json` files.
-- **Reply ASINS-FIXED when done**
+### 🔴 2. MISSING FILES — Cathedral Close EPUB + cover may be gone
+`pipeline-state.json` says EPUB and cover are at `books/untitled-cosy-mystery/exports/final/` — that directory does not exist on disk. If KDP ever needs a re-upload or cover replacement, you have no source files.
+> Find the EPUB and cover (check `exports/`, `build/`, or any local drive backup). Restore to expected path, or update state file paths.
+> Reply **FILES-FOUND** once located.
 
-### 3. 🔴 Choose a scrape fix — OVERDUE DAY 10 (run 9 of 9 blocked; watchdog completely blind)
-Every automated monitoring run has failed. Amazon returns 403 on every attempt. Rating, reviews, BSR, price — unmonitorable for both books. Pick one:
-- **Reply MANUAL** — Open both ASINs in browser today, paste BSR/rating/reviews into `pipeline-state.json` (free, immediate)
-- **Reply KEEPA** — Use Keepa Chrome extension for one-off BSR history export (free)
-- **Reply ADD-API-KEY** — Subscribe to Keepa API or RainforestAPI for permanent automated fix
+### 🔴 3. ASINs — Both books have bad/missing ASINs in state files (Day 15)
+| Book | State file says | Problem |
+|------|----------------|---------|
+| Fix Your Gut for Good | `null` | Book treated as unpublished by all automation |
+| Death in Cathedral Close | `AT25QRT6FPTE6` | 13 characters — not a valid Amazon ASIN (must be 10) |
 
-### 4. 🟠 Run ARC + Ads for Cathedral Close — 44 days post-launch, 0 reviews, 0 ads
-`arc_emails_sent = 0`, `review_count = 0`, `ads_active = false`. Neither programme has been started. Run `arc-manager-agent` + `amazon-ads-agent` (can run in parallel).
-- **Reply LAUNCH-ARC-ADS to approve both**
+> Log into KDP Bookshelf → copy exact 10-char ASIN for each title → update both `pipeline-state.json` files.
+> Reply **ASINS-FIXED** to clear.
 
-### 5. 🟡 Update Fix Your Gut pipeline-state.json — 58 days stale
-File says `kdp_status = not_started`, `published = false` — book went live 2026-04-21. All downstream reports for this book are unreliable. Run `agent-log MODE 2` after fixing ASINs (item 2).
-- **Reply UPDATE-STATE to approve**
+### 🔴 4. MONITORING BLIND — Amazon blocking all scrapes (Day 15, 10/10 consecutive failures)
+Every automated watchdog run since 2026-06-07 has returned 403. No live metrics for either book. Pick one:
+- **Option A (5 min):** Check both ASINs in browser; paste current BSR, rating, review count into each `pipeline-state.json`. Watchdog will use these as baseline.
+- **Option B:** Add `RAINFOREST_API_KEY` or `KEEPA_API_KEY` to environment — watchdog switches automatically.
+- **Option C:** Keepa Chrome extension → export BSR history for both ASINs as one-off baseline.
+> Reply **MONITOR-A**, **MONITOR-B**, or **MONITOR-C** to choose path.
 
-### 6. 🟡 Cathedral Close — final_approval_score missing on a live book (integrity)
-`human_gates.final_approval_passed: true` but `quality_scores.final_approval_score: null`. The 300-point gate score cannot be verified for this already-published book. Retrieve original report or re-run `final-approval-agent` to produce a verifiable score (must be ≥ 270).
-- **Reply REGEN-SCORE to approve re-run**
+### 🟡 5. POST-LAUNCH — Cathedral Close stuck at Day 50, nothing running
+Stage 10-postlaunch has been `in_progress` since launch with zero recorded agent activity. **0 reviews, 0 ARC emails sent, ads inactive.** This book is flying blind.
+> Run `post-launch-agent` + `arc-manager-agent` + `amazon-ads-agent` for slug `untitled-cosy-mystery`.
+> Reply **POSTLAUNCH-GO** to authorise.
+
+### 🟡 6. KDP SELECT — Fix Your Gut renewal due 2026-07-19 (27 days)
+KDP Select term ends in 27 days. Auto-renews unless you opt out. Decide: stay in KU, or go wide (Apple Books, Kobo, etc.)?
+> Reply **RENEW-KU** or **GO-WIDE** to log the decision.
 
 ---
 
 ## Live Book Status
 
-*All scrapes failed — Amazon 403 (bot-block) on every attempt. Run 9 of 9 blocked (06-07 through 06-16; one missing run: 06-11). No metric values available. Last known values from pipeline-state.json:*
+Amazon scraping has been **100% blocked** for 15 days. No live metrics exist. Last known values:
 
-| Book | ASIN | Reviews | Rating | BSR | Price |
-|------|------|---------|--------|-----|-------|
-| Fix Your Gut for Good | B0GXYLWS1W (unconfirmed) | 0 | — | no baseline | SCRAPE FAILED |
-| Death in the Cathedral Close | B0GZD1S8HF (state ASIN invalid) | 0 | — | no baseline | 🔴 UNVERIFIED — £6.99 unconfirmed since 2026-06-09 |
+| Book | Reviews | Avg Rating | BSR | Price status |
+|------|---------|-----------|-----|-------------|
+| Fix Your Gut for Good (B0GXYLWS1W) | 0 (last recorded 2026-04-19) | n/a | no baseline | Unknown |
+| Death in Cathedral Close (B0GZD1S8HF) | 0 (last recorded 2026-05-03) | n/a | no baseline | **🔴 Unverified post-deal** |
 
----
-
-## Upcoming Deadlines (next 14 days: 2026-06-16 → 2026-06-30)
-
-**No calendar-triggered deadlines fire in this window.**
-
-| Date | Event |
-|------|-------|
-| 2026-07-19 | Fix Your Gut KDP Select term ends (33 days — renew or opt out) |
-| 2026-08-01 | Cathedral Close KDP Select term ends (46 days); next Countdown window ~2026-09-01 |
-
-*post-launch-agent for Cathedral Close is 44 days overdue — no hard date but treat as urgent.*
+*Note: 5-day gap in watchdog reports (06-17 → 06-21) — check automated scheduling.*
 
 ---
 
-## Standing Gaps (open until explicitly resolved)
+## Upcoming Deadlines (next 14 days)
 
-| Gap | Affects | Status |
+| Date | Item |
+|------|------|
+| 2026-07-05 | KDP Select renewal window opens for Fix Your Gut (act before 2026-07-19) |
+| **Overdue** | post-launch-agent for Cathedral Close (50 days in, should have run weekly) |
+| **Overdue** | ARC programme for Cathedral Close (0 emails sent, 0 reviews) |
+
+---
+
+## Standing Gaps (unresolved across multiple runs)
+
+| Gap | Book(s) | Status |
 |-----|---------|--------|
-| No BookFunnel capture link live | Both books | Unresolved — no reader emails being collected |
-| Category mismatch (Cozy > General?) | Cathedral Close | Unconfirmed — treat as flagged until KDP categories verified |
-| Missing watchdog run 2026-06-11 | Monitoring | Check automated scheduling config |
+| No BookFunnel capture link live | Both books | Unresolved — email list has zero captures |
+| Category mismatch possible (Cozy > General placement) | Cathedral Close | Unverified — check KDP category dashboard |
+| `fix-your-gut` pipeline-state.json 64 days stale | Fix Your Gut | Stage 07 shows `not_started` despite live 2026-04-21 |
+| Cover file path null (cover_approved = true) | Fix Your Gut | `production.cover_file` unpopulated |
+| Chapter count wrong (1 recorded, 3 completed) | The Dust Between Seconds | Needs `agent-log MODE 2` correction |
 
 ---
 
 ## Intelligence
 
-- **gut-health niche: STALE** — last harvested 2026-05-13 (33 days, 19 days overdue). Must run locally with Playwright: `harvest gut-health ; analyse opportunities gut-health`
-- **cozy-mystery:** Fresh (14 days). **vagus-nerve:** Fresh (12 days).
-- **ALGO-INTELLIGENCE-CANDIDATE.md:** Not found — Job 4 (monthly) has not filed a candidate.
+All **3 niches are STALE** (no fresh harvests). Must run from your local terminal — cloud cannot execute harvests directly.
+
+| Niche | Last harvest | Age |
+|-------|-------------|-----|
+| gut-health | 2026-05-13 | 40 days |
+| cozy-mystery | 2026-06-01 | 21 days |
+| vagus-nerve | 2026-06-03 | 19 days |
+
+```bash
+harvest gut-health ; analyse opportunities gut-health
+harvest cozy-mystery ; analyse opportunities cozy-mystery
+harvest vagus-nerve ; analyse opportunities vagus-nerve
+```
+
+**ALGO-INTELLIGENCE-CANDIDATE.md** — not found. No new algo candidate this cycle.
 
 ---
 
 ## All Clear
 
-Nothing is green today. 6 action items open, 3 escalated to day 7–10. Start with the price check — 2 minutes, protects 7 days of potentially wrong-priced revenue.
+Nothing is all clear today. Six action items open; two are revenue-critical.
 
 ---
 
-*Sources: watchdog-2026-06-16.md · milestones-2026-06-16.md · intel-freshness-2026-06-15.md · integrity-2026-06-14.md · ALGO candidate: not found. No metrics invented.*
+*Sources: watchdog-2026-06-22.md · milestones-2026-06-22.md · intel-freshness-2026-06-22.md · integrity-2026-06-21.md (yesterday — weekly run) · No ALGO-INTELLIGENCE-CANDIDATE found.*
+*Brief generated: 2026-06-22*
