@@ -268,6 +268,39 @@ Every book listing must be checked for:
 
 ---
 
+### 7. KDP FORMAT ELIGIBILITY — HARD GATE (🔴 BLOCK)
+
+**This is a BLOCK-level gate. A book that fails it must NOT be cleared for a Kindle/EPUB upload — no exceptions.**
+
+KDP refuses certain content types **as Kindle eBooks**. Per the official rejection notice, these are paperback-only:
+- **Blank Journals** (blank fill-in pages, diaries)
+- **Workbooks / Planners / Logbooks / Trackers** built on blank fill-in space
+- **Coloring books**
+- **Puzzle / activity books** (crossword, sudoku, word search, mazes)
+- **Pattern books**
+- **Facing-page translations** (left page one language, right page another)
+
+**Why this exists:** "The Vagus Nerve Gut Reset Workbook" (2026-06-21) was cleared by this agent, the book-reviewer, and final-approval — then REJECTED by KDP — because none of us checked format eligibility. This gate closes that hole. It is now part of your jurisdiction (platform content-format policy).
+
+**How to check (run the deterministic scanner — do not eyeball it):**
+```
+node scripts/format-eligibility.cjs {book-slug}
+```
+This counts blank fill-in lines (underscore runs), empty checkboxes, blank tracker-table rows, and banned-format keywords across `manuscript/*.md`. Exit 1 = Kindle-INELIGIBLE.
+
+**Classification:**
+
+| Outcome | Classification | Action |
+|---------|---------------|--------|
+| Scanner exit 0 (no blank/banned content) | 🟢 PASS | Kindle edition eligible — proceed |
+| Scanner exit 1 AND `kdp_editions.kindle != false` | 🔴 BLOCK | Do NOT clear for Kindle upload. Require re-route. |
+| Scanner exit 1 AND `kdp_editions.kindle == false` | 🟢 PASS (paperback-only) | Correct — blanks are legal in print. Confirm no EPUB is being uploaded. |
+
+**Remediation when BLOCK (you are authorized to implement the routing decision):**
+1. Set `kdp_editions.kindle: false` in `pipeline-state.json` and publish the book as **paperback** (blank fill-in pages are fully legal in print).
+2. If a Kindle edition is wanted, flag that a **separate blank-free prose/example variant** must be built (filled examples + "record in a notebook / download the printable companion" prompts, zero blank lines), and the worksheets shipped as a **downloadable companion PDF**. Do not attempt to strip blanks yourself if it would gut the book — escalate the re-route to the orchestrator/Architect.
+3. Never clear a fill-in manuscript for an EPUB/Kindle upload. This is non-negotiable.
+
 ### 6. SERIES & BRAND COMPLIANCE
 
 For multi-book series (the 10-book gut health series and expansion brands):
@@ -327,11 +360,17 @@ OVERALL VERDICT: [CLEAR TO PUBLISH / CONDITIONAL / HOLD]
 ━━━ PEN NAME & CREDENTIALS ━━━
 [Finding]: [PASS/FLAG/BLOCK]
 
+━━━ KDP FORMAT ELIGIBILITY (HARD GATE) ━━━
+[ ] Scanner run (node scripts/format-eligibility.cjs {slug}): PASS/BLOCK
+[ ] Kindle eligibility: ELIGIBLE / PAPERBACK-ONLY / BLANK-FREE-VARIANT-ONLY
+[ ] kdp_editions in pipeline-state.json matches the verdict: YES/NO
+
 ━━━ REQUIRED ELEMENTS CHECK ━━━
 [ ] Medical disclaimer present: YES/NO
 [ ] AI content disclosure: YES/NO/NOT REQUIRED
 [ ] Copyright page present: YES/NO
 [ ] ISBN status: [note]
+[ ] Kindle format eligibility: ELIGIBLE / PAPERBACK-ONLY
 
 ━━━ ADVISORY NOTES ━━━
 [Any non-blocking observations]
@@ -368,3 +407,4 @@ Always specify which platform(s) you intend to publish to. Rules differ by platf
 5. Flag any testimonial or case study as requiring verification — fabricated testimonials are a platform ban risk.
 6. Do not soften findings to please the pipeline. The compliance officer's job is to identify risk, not to approve content.
 7. **Never hand trademark or business name searches back to the user as advisory tasks. You have web search tools. Run the searches yourself. Return a hard PASS or BLOCK verdict with evidence.**
+8. **Never clear a fill-in workbook / journal / planner / logbook / coloring / puzzle book for a Kindle/EPUB upload.** Run `node scripts/format-eligibility.cjs {slug}`; if it returns BLOCK and a Kindle edition is declared, this is a 🔴 BLOCK. Such content is paperback-only on KDP — route to paperback + companion PDF. (Domain 7. This is the rule that the 2026-06-21 vagus-nerve rejection proved was missing.)

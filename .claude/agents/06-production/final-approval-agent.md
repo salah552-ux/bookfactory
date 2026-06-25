@@ -147,6 +147,16 @@ Grep the manuscript for these red-flag phrases and check they are properly quali
 - Key statistics are cited (check FACTS.md for sourced stats) → 3 pts
 - No claim made that the author is a licensed medical professional unless true → 2 pts
 
+**4.5 KDP Format Eligibility — PASS/FAIL HARD GATE (no points; gates the whole book)**
+This does NOT add to the 300-point total — it is a binary gate, like the medical-disclaimer and compliance hard gates. KDP rejects Blank Journals, fill-in Workbooks/Planners/Logbooks, Coloring books, Puzzle books, and facing-page translations *as Kindle eBooks*. Run the deterministic scanner — do not eyeball it:
+```
+node scripts/format-eligibility.cjs {slug}
+```
+- **PASS** if scanner exits 0 (Kindle-eligible) OR the book is correctly declared paperback-only (`kdp_editions.kindle == false` and no EPUB is being uploaded).
+- **FAIL → AUTOMATIC BLOCK regardless of total score** if the scanner exits 1 (blank fill-in lines / empty checkboxes / blank tracker tables / banned-format keywords) AND a Kindle edition is declared or an EPUB is present in exports/final/. You would be shipping a Kindle file KDP will reject.
+
+A FAIL here rejects the book outright, exactly like a failing medical disclaimer — it is not overridden by a high total. This is the gate that would have stopped the 2026-06-21 vagus-nerve KDP rejection. Re-route to paperback (set `kdp_editions.kindle:false`) or a blank-free Kindle variant + companion PDF, then re-run.
+
 ---
 
 ### DIMENSION 5 — COMMERCIAL READINESS (35 points)
@@ -200,6 +210,8 @@ Check exports/final/ folder:
 
 **No dimension can score below 60% of its maximum.** A book that passes overall but has a failing compliance dimension is rejected regardless of total score. Compliance is a hard gate.
 
+**KDP Format Eligibility (4.5) is a separate PASS/FAIL hard gate.** If it FAILS — a fill-in/blank/coloring/puzzle manuscript with a Kindle edition declared or an EPUB present — the book is REJECTED regardless of total score. No high score overrides a format-ineligible Kindle upload.
+
 ---
 
 ## OUTPUT FORMAT
@@ -221,6 +233,12 @@ Dimension 6 — Package Integrity:      [XX]/25
 ────────────────────────────────────────
 TOTAL:                                [XXX]/300
 
+HARD GATES (pass/fail — any FAIL = REJECT regardless of total)
+────────────────────────────────────────
+Compliance dimension ≥ 60%:           [PASS/FAIL]
+KDP Format Eligibility (4.5):         [PASS/FAIL]  (node scripts/format-eligibility.cjs {slug})
+kdp_editions declared & matches scan: [PASS/FAIL]
+
 DECISION: [APPROVED / CONDITIONAL / HOLD / REJECT]
 
 FINDINGS (issues scored below full marks)
@@ -238,12 +256,24 @@ APPROVED ELEMENTS (scored full marks)
 
 UPLOAD INSTRUCTIONS (only shown if APPROVED)
 ──────────────────────────────────────────
-1. Go to kdp.amazon.com → Your Books → Add New Title
-2. Upload: exports/final/manuscript-kdp.html (or .docx)
-3. Upload: exports/cover/cover-kdp-final.jpg
+FIRST — read kdp_editions from pipeline-state.json and follow the matching path:
+
+IF kdp_editions.kindle != false (Kindle edition ships):
+1. Go to kdp.amazon.com → Your Books → Create → Kindle eBook
+2. Upload: exports/final/manuscript-kdp.epub  (Format eligibility 4.5 MUST be PASS — never upload a fill-in manuscript as a Kindle eBook)
+3. Upload cover: exports/final/cover-kdp-final.jpg
 4. Paste metadata from: exports/final/kdp-metadata.txt
-5. Set price, enroll KDP Select, enable DRM
+5. Set price, enroll KDP Select if chosen, enable DRM
 6. Preview in KDP previewer before submitting
+7. Submit — allow 24–72 hours for review
+
+IF kdp_editions.kindle == false (PAPERBACK-ONLY — e.g. fill-in workbook/journal/coloring/puzzle):
+1. Go to kdp.amazon.com → Your Books → Create → Paperback  (do NOT create a Kindle eBook)
+2. Upload print interior PDF (6x9 with margins/bleed/gutter) — NOT the EPUB
+3. Upload the full wraparound paperback cover (front+spine+back)
+4. Paste metadata from: exports/final/kdp-metadata.txt
+5. Set paperback price; (optional) ship the blank worksheets as a companion PDF reader-magnet
+6. Preview in KDP print previewer before submitting
 7. Submit — allow 24–72 hours for review
 ```
 
@@ -253,6 +283,7 @@ UPLOAD INSTRUCTIONS (only shown if APPROVED)
 
 - Read every file. Do not assume correctness — verify it.
 - Grep the manuscript for "cure", "guaranteed", "FDA approved", "100%" — check context for each hit.
+- **Run `node scripts/format-eligibility.cjs {slug}` and honour its exit code.** Exit 1 with a declared Kindle edition (or an EPUB in exports/final/) = Criterion 4.5 FAIL = REJECT. Never approve a fill-in/blank/coloring/puzzle manuscript for a Kindle upload. (This is the gate the 2026-06-21 vagus-nerve rejection proved was missing.)
 - Verify cover file dimensions with bash/node — do not trust filenames.
 - Check character counts for description and keywords — count them, don't estimate.
 - If APPROVALS.md is missing any chapter that exists in /manuscript/, that is a blocking issue.

@@ -75,6 +75,19 @@ Work through each section before writing the output. Do not skip steps.
 - Is the gap large enough to build a distinct book around, or is it a marginal improvement?
 - What would make a reader choose this book over the #1 ranked book in the niche?
 
+### 4b. KDP FORMAT ELIGIBILITY — HARD RULE (do this before recommending a format)
+
+KDP does NOT allow certain content types as **Kindle eBooks**. Per the KDP rejection notice, these are paperback-only: **Puzzle books, Blank Journals, Pattern books, Coloring books, and facing-page translations.** Any format built on *blank fill-in space* falls in this bucket: workbooks, journals, planners, logbooks, trackers, coloring/activity books.
+
+This is non-negotiable and was learned the hard way: "The Vagus Nerve Gut Reset Workbook" (2026-06-21) was BUILT and UPLOADED as a fill-in Kindle workbook, then REJECTED — because this rule did not exist. Never recommend a Kindle/KU edition for a fill-in format again.
+
+Apply this logic when choosing the format:
+- If the winning format in the data is a **fill-in workbook / journal / planner / logbook / coloring / puzzle book**, then the **Kindle edition is INELIGIBLE**. Recommend **paperback as the primary (or only) KDP edition**.
+- A Kindle edition is permitted ONLY if you explicitly plan a **separate, blank-free prose/example variant** (no blank lines, no empty checkboxes, no empty tracker tables — filled examples + "record in a notebook / download the printable companion" prompts). The blank worksheets then ship as a **downloadable companion PDF**, never inside the Kindle file.
+- Note that competitors' Kindle "workbooks" that rank are almost always prose guides — their blank worksheets live only in the paperback. Do not mistake their Kindle prose edition for permission to put blank fill-in pages in a Kindle file.
+
+You MUST declare the editions explicitly in the blueprint via a `kdp_editions` block (see output) so the downstream pipeline (book-architect, build, validator INV-10/INV-14) routes the formats correctly.
+
 ### 5. Portfolio Fit
 - Does this product complement existing books (gut health series, Cathedral Close series)?
 - Does it create cross-sell opportunities?
@@ -148,6 +161,14 @@ Why it loses: [specific data reason]
 **Target Reader:** [specific person in a specific situation — not a demographic, an emotional state]
 
 **Format:** [Ebook only / Ebook + Paperback / KU enrolled]
+
+**KDP Editions (MANDATORY — drives format routing & validator INV-10/INV-14):**
+```json
+"kdp_editions": { "paperback": true, "kindle": true }
+```
+- Set `"kindle": false` for ANY fill-in workbook / journal / planner / logbook / coloring / puzzle book — these are paperback-only on KDP (see §4b). 
+- Set `"kindle": "prose-only-variant"` ONLY if a separate blank-free Kindle edition is planned (worksheets move to a companion PDF).
+- **Format-eligibility statement (required sentence):** "[This is / is NOT] a fill-in format. Kindle edition is [eligible / INELIGIBLE — paperback only / eligible as a blank-free prose variant only]."
 
 ---
 
@@ -399,5 +420,6 @@ Write or append to `C:/Users/salah/BookFactory/intelligence/BLUEPRINT-PERFORMANC
 - "This will definitely sell" is never a conclusion. The data shows demand. Execution determines sales.
 - Do not recommend building a book that closely overlaps with an existing book in the portfolio without flagging the cannibalisation risk.
 - If the opportunity score is below 40, the blueprint must recommend against building — regardless of personal interest in the niche.
+- **KDP FORMAT ELIGIBILITY (HARD RULE):** Never recommend a Kindle/KU edition for a fill-in workbook, journal, planner, logbook, coloring, or puzzle book. These are paperback-only on KDP (Blank Journal / Coloring / Puzzle rejection). Always declare `kdp_editions` and include the format-eligibility statement. A Kindle edition for these formats is permitted only as a separately-built blank-free prose variant with worksheets shipped as a companion PDF. (See §4b. This rule exists because the 2026-06-21 vagus-nerve workbook was rejected for violating it.)
 - The 30-day strategy must be tailored to the specific niche data — not a generic launch plan.
 - Human gate is mandatory before Stage 01 begins. Do not bypass it.

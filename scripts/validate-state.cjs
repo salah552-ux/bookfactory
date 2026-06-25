@@ -19,6 +19,7 @@
 const fs = require("fs");
 const path = require("path");
 const { execSync } = require("child_process");
+const { scanBook } = require("./format-eligibility.cjs");
 
 const FACTORY = path.resolve(__dirname, "..");
 const MANIFEST_PATH = path.join(FACTORY, ".claude", "agents", "PIPELINE-MANIFEST.json");
@@ -187,14 +188,43 @@ function validateBook(slug) {
       v.push({ level: "CRITICAL", code: "INV-9", msg: `06-production complete but final_approval_score (${fa}) < 270.` });
     }
 
-    // INV-10 EPUB built and sized
-    const epubPath = path.join(bookDir, "exports", "final", "manuscript-kdp.epub");
-    if (!fs.existsSync(epubPath)) {
-      v.push({ level: "CRITICAL", code: "INV-10", msg: `06-production complete but exports/final/manuscript-kdp.epub does not exist.` });
-    } else {
-      const kb = fs.statSync(epubPath).size / 1024;
-      if (kb < 500) {
-        v.push({ level: "CRITICAL", code: "INV-10", msg: `06-production complete but EPUB is ${kb.toFixed(0)}KB (< 500KB) — cover missing or build incomplete.` });
+    // INV-10 EPUB built and sized — only required when a Kindle edition is declared.
+    // kdp_editions.kindle === false => paperback-only book, no EPUB expected.
+    const editions = state.kdp_editions || {};
+    const kindleDeclared = editions.kindle !== false; // default true (legacy/standard)
+    if (kindleDeclared) {
+      const epubPath = path.join(bookDir, "exports", "final", "manuscript-kdp.epub");
+      if (!fs.existsSync(epubPath)) {
+        v.push({ level: "CRITICAL", code: "INV-10", msg: `06-production complete but exports/final/manuscript-kdp.epub does not exist (kdp_editions.kindle is not false).` });
+      } else {
+        const kb = fs.statSync(epubPath).size / 1024;
+        if (kb < 500) {
+          v.push({ level: "CRITICAL", code: "INV-10", msg: `06-production complete but EPUB is ${kb.toFixed(0)}KB (< 500KB) — cover missing or build incomplete.` });
+        }
+      }
+    }
+  }
+
+  // INV-14 Kindle format eligibility (applies whenever a Kindle/EPUB edition exists or is declared).
+  // Deterministic scan: blank fill-in lines / empty checkboxes / blank tracker tables / banned
+  // format keywords make the content a "Blank Journal/Workbook/Coloring/Puzzle" book — paperback-only
+  // on KDP. This is the check that would have caught the 2026-06-21 vagus-nerve rejection.
+  {
+    const editions = state.kdp_editions || {};
+    const epubOnDisk = fs.existsSync(path.join(bookDir, "exports", "final", "manuscript-kdp.epub"));
+    const kindleDeclared = editions.kindle !== false; // default true
+    // Only enforce if a Kindle edition is declared OR an EPUB was actually built.
+    if (kindleDeclared || epubOnDisk) {
+      let meta = { title: state.book_title, subtitle: state.book_subtitle, blueprintText: "" };
+      for (const bp of ["BLUEPRINT.md", "KDP-LISTING.md"]) {
+        const p = path.join(bookDir, bp);
+        if (fs.existsSync(p)) { try { meta.blueprintText += fs.readFileSync(p, "utf8"); } catch (_) {} }
+      }
+      let r;
+      try { r = scanBook(bookDir, meta); } catch (_) { r = null; }
+      if (r && !r.kindleEligible) {
+        const detail = r.reasons.join(" ");
+        v.push({ level: "CRITICAL", code: "INV-14", msg: `Kindle/EPUB edition declared or built, but manuscript is NOT Kindle-eligible: ${detail} Re-route to paperback-only (set kdp_editions.kindle:false) or build a blank-free Kindle variant + companion PDF.` });
       }
     }
   }

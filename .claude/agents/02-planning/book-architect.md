@@ -29,6 +29,11 @@ Take the market researcher's brief and build a complete book blueprint.
 - Tone adjectives (exactly 5 — e.g., "warm, direct, urgent, empathetic, occasionally funny")
 - Narrative voice (first person / second person / third person + explanation)
 - Comparable book voices to emulate
+- **KDP editions + format eligibility (MANDATORY).** Carry forward `kdp_editions` from the opus-brain blueprint (or decide it here if absent) and write it into BLUEPRINT.md and pipeline-state.json:
+  ```json
+  "kdp_editions": { "paperback": true, "kindle": true }
+  ```
+  **HARD RULE — Kindle format eligibility:** KDP rejects Blank Journals, Workbooks with blank fill-in pages, Planners, Logbooks, Coloring books, Puzzle books, and facing-page translations *as Kindle eBooks* (they are paperback-only). If this book is any fill-in format, set `"kindle": false` and design the manuscript so the blank worksheets live in the **paperback** and (optionally) a **companion PDF** — NEVER as blank fill-in pages inside a Kindle file. A Kindle edition for a fill-in format is allowed ONLY as a separately-designed blank-free prose/example variant (`"kindle": "prose-only-variant"`). This rule is enforced downstream by `scripts/format-eligibility.cjs`, validator INV-14, and the pre-stage gate — a fill-in Kindle build WILL be blocked. (Learned from the 2026-06-21 vagus-nerve KDP rejection.)
 
 ### 2. Reader Journey Map
 Map the emotional arc of the reader from page 1 to final page:

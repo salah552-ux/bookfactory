@@ -214,7 +214,7 @@
     "03-writing":      { "required_outputs": ["manuscript/*chapter*.md"], "gate_in": ["blueprint_approved"] },
     "04-quality":      { "required_outputs": ["FACT-CHECK-REPORT.md", "APPROVALS.md", "COMPLIANCE-REPORT.md", "PROOFREAD-REPORT.md"], "required_outputs_severity": "CRITICAL", "gate_in": [] },
     "05-optimisation": { "required_outputs": ["HOOK-OPTIMIZER-REPORT.md", "REVIEW-BAIT-REPORT.md", "CATEGORY-SELECTION.md"], "required_outputs_severity": "CRITICAL", "gate_in": [] },
-    "06-production":   { "required_outputs": ["exports/final/manuscript-kdp.epub", "exports/final/manuscript-kdp.pdf", "exports/final/manuscript-kdp.docx", "FINAL-APPROVAL-REPORT.md"], "required_outputs_severity": "CRITICAL", "gate_in": [] },
+    "06-production":   { "required_outputs": ["exports/final/manuscript-kdp.pdf", "FINAL-APPROVAL-REPORT.md"], "required_outputs_severity": "CRITICAL", "gate_in": [], "_note": "EPUB is enforced conditionally by INV-10 (only when kdp_editions.kindle != false) so paperback-only books are not false-blocked; PDF is universal (every edition has it). Format eligibility for any Kindle edition is enforced by INV-14." },
     "07-publishing":   { "required_outputs": ["KDP-UPLOAD-GUIDE.md"], "gate_in": ["final_approval_passed", "cover_approved"] },
     "08-products":     { "required_outputs": [], "gate_in": [] },
     "09-series":       { "required_outputs": ["SERIES-FACTS.md"], "gate_in": [] },
@@ -235,7 +235,14 @@
     "INV-9": { "rule": "final_approval_score", "severity": "CRITICAL", "desc": "If 06-production is complete, quality_scores.final_approval_score must be >= 270." },
     "INV-10": { "rule": "epub_built_and_sized", "severity": "CRITICAL", "desc": "If 06-production is complete, exports/final/manuscript-kdp.epub must exist AND be >= 500KB." },
     "INV-11": { "rule": "no_ai_disclosure", "severity": "CRITICAL", "desc": "No manuscript *copyright*.md may contain 'AI Disclosure' or 'drafted with the assistance of AI'." },
-    "INV-12": { "rule": "required_outputs_critical", "severity": "CRITICAL", "desc": "If a stage is complete but any of its gates.required_outputs is missing, that is CRITICAL (not WARN)." }
+    "INV-12": { "rule": "required_outputs_critical", "severity": "CRITICAL", "desc": "If a stage is complete but any of its gates.required_outputs is missing, that is CRITICAL (not WARN)." },
+    "INV-14": { "rule": "kindle_format_eligibility", "severity": "CRITICAL", "desc": "If a Kindle edition is declared (kdp_editions.kindle != false) or an EPUB exists, the manuscript must pass scripts/format-eligibility.cjs — no blank fill-in lines (>20), empty checkboxes (>10), blank tracker tables (>0), or banned-as-Kindle keywords (coloring/puzzle/blank-journal/etc). Blank-journal/workbook/coloring/puzzle content is PAPERBACK-ONLY on KDP. This is the rule that catches the 2026-06-21 vagus-nerve rejection. Re-route to paperback (kdp_editions.kindle:false) or build a blank-free Kindle variant + companion PDF. Implemented in validate-state.cjs (Stop-hook) and pre-stage-gate.cjs (pre-flight, stage >= 6)." }
+  },
+
+  "kdp_editions_schema": {
+    "_comment": "Optional object in each book's pipeline-state.json declaring which KDP editions ship. Drives INV-10 (EPUB required only if kindle != false) and INV-14 (format eligibility enforced whenever a Kindle edition is declared/built). If absent, kindle defaults to true (standard ebook+paperback). Set kindle:false for any fill-in workbook/journal/planner/log/coloring/puzzle book — these are paperback-only on KDP.",
+    "shape": { "paperback": "boolean (default true)", "kindle": "boolean | 'prose-only-variant' (default true)" },
+    "rule": "For any format built on blank fill-in space (workbook, journal, planner, log book, coloring, puzzle): kindle MUST be false unless a separate blank-free prose/example Kindle variant is built. The blank worksheets ship as a downloadable companion PDF, not inside the Kindle file."
   },
 
   "stage_completion_rule": {

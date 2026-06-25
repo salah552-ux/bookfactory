@@ -42,6 +42,23 @@ Every piece of specialist work Sonnet does itself is:
 
 ---
 
+## 🔒 RULE -0.5 — PRE-STAGE GATE: NO STAGE STARTS WITHOUT IT
+
+**Any agent or actor about to start work on a BookFactory book stage MUST first run:**
+
+```
+node scripts/pre-stage-gate.cjs <book-slug> <stage-number>
+```
+
+- Exit 0 / `CLEARED` → the stage may start.
+- Exit 1 / `⛔ BLOCKED` → STOP. Do not write to `books/`, do not run any build, do not dispatch any agent. Report the BLOCKED output to the Architect and resolve every failure first.
+
+This gate verifies the pipeline reached this stage legally: every prior stage was closed by `pipeline-orchestrator` (not self-executed by another agent), all prerequisite outputs exist and are sized, the stage's human entry gates are true, and no AI disclosure sits in any copyright file. It is the **last line of defence** if `pipeline-orchestrator` is ever bypassed — the gate fires regardless of who is running. The normal path is still RULE -1 (spawn the orchestrator, which runs this gate itself); this rule guarantees the check happens even when something goes wrong.
+
+**If you are about to touch a book stage and have not run this gate, run it now.**
+
+---
+
 ## ⛔ RULE 0A — ZERO TOLERANCE: NO INVENTED NUMBERS
 
 Before any output, read `.claude/agents/AGENT-RULES.md` Rule 1.

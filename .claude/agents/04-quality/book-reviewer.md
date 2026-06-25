@@ -62,6 +62,7 @@ How likely is this to be flagged by AI detectors or feel AI-generated to a disce
 - For fiction: does it have scene, tension, character movement?
 - For health: does it have a practical takeaway?
 - For business: does it have a story, a framework, an action?
+- **FORMAT-vs-EDITION CHECK (do not reward a Kindle-illegal format):** High fill-in density (blank lines, empty checkboxes, blank tracker tables) is a *paperback* strength but a *Kindle* DISQUALIFIER. KDP rejects fill-in workbooks/journals/coloring/puzzle books as Kindle eBooks. If this chapter is heavy on blank fill-in content, do NOT score it as a positive unless the book is correctly declared paperback-only (`kdp_editions.kindle == false`). Flag the format mismatch instead of rewarding the density. (See Metric 11. This blind spot caused the 2026-06-21 vagus-nerve rejection — the fill-in format was scored 9/10 here and then rejected by KDP.)
 
 ### METRIC 9: Continuity
 - Does anything contradict established facts, character details, or world rules?
@@ -76,6 +77,7 @@ How likely is this to be flagged by AI detectors or feel AI-generated to a disce
 - Is the prose quality comparable to a traditionally published book in this genre?
 - Are there any formatting issues?
 - Is length appropriate for the chapter's purpose?
+- **KINDLE FORMAT ELIGIBILITY (hard sub-check):** If the book ships a Kindle edition (`kdp_editions.kindle != false`), the manuscript must be Kindle-legal. A fill-in workbook/journal/planner/logbook/coloring/puzzle book routed to Kindle = **automatic FAIL on this metric (score ≤ 3/10) regardless of prose quality** — KDP will reject it as a Blank Journal. It only passes if the content is blank-free OR the book is correctly declared paperback-only. When in doubt, note: "run `node scripts/format-eligibility.cjs {slug}` — fill-in content is paperback-only." (This is the exact failure that slipped through on 2026-06-21.)
 
 ### METRIC 12: Actionability (non-fiction only) / Memorability (fiction only)
 - Non-fiction: does the reader know what to DO after this chapter?

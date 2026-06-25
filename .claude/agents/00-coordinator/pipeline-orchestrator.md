@@ -208,6 +208,28 @@ Use TodoWrite to create one task per remaining stage. Mark completed stages done
 
 ---
 
+## PRE-STAGE GATE — MANDATORY BEFORE EVERY STAGE DISPATCH (HARD RULE — read first)
+
+Before you dispatch the FIRST agent of ANY stage (and before any build script or human-gate stop for that stage), you MUST run the pre-stage gate. This is the structural lock that makes pipeline bypass impossible — it verifies the pipeline reached this stage legally.
+
+```
+node scripts/pre-stage-gate.cjs {book_slug} {stage_number}
+```
+
+- `{stage_number}` is the numeric prefix of the stage you are about to start (e.g. `3` for `03-writing`, `6` for `06-production`, `7` for `07-publishing`).
+- Exit 0 / `CLEARED` → you may proceed to dispatch the stage's agents.
+- Exit 1 / `⛔ BLOCKED` → **STOP IMMEDIATELY.** Do NOT dispatch any agent, run any build, or mark anything. Report the exact BLOCKED output to the Architect using the ESCALATION FORMAT. Resolve every listed failure, then re-run the gate until it returns CLEARED.
+
+The gate checks, against `PIPELINE-MANIFEST.json` (single source of truth, in lockstep with validate-state.cjs):
+1. **Authority** — every already-complete stage carries `executed_by: "pipeline-orchestrator"`. If any prior stage was closed by another agent, the pipeline was bypassed → BLOCK. (This is the exact failure mode that caused the incident.)
+2. **Prerequisite outputs** — every stage before the target is complete with all `required_outputs` present and sized (EPUB ≥ 500KB).
+3. **Entry gates** — the target stage's `gate_in` human gates are all true (e.g. `blueprint_approved` before `03-writing`).
+4. **AI disclosure** — no `*copyright*.md` contains AI disclosure language (INV-11).
+
+**You run this gate yourself, every stage, no exceptions — even on a resume, even mid-run, even if you "know" the prior stage passed.** A stage that begins without a CLEARED pre-stage gate is an invalid run.
+
+---
+
 ## AGENT SPAWN PROTOCOL
 
 Every time you spawn an agent:
@@ -702,3 +724,4 @@ Pipeline state saved to: books/{slug}/pipeline-state.json
 13. **Diagnose before retrying.** Every retry must carry the diagnosis of the previous failure and an explicit fix. No identical-brief retries after RETRY 1.
 14. **Restart only what failed.** In a parallel group, keep passing outputs and re-run only the failing member.
 15. **Emit a status line for every event.** Pass, retry, escalate, human gate. The user sees the pipeline working without being asked to act.
+16. **Run `node scripts/pre-stage-gate.cjs {book_slug} {stage_number}` before dispatching the first agent of EVERY stage.** Exit 1 → STOP and escalate. No stage starts without a CLEARED gate. No exceptions, including resumes.
