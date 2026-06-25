@@ -95,9 +95,9 @@ If `pipeline-state.json` does not exist for the book: copy `pipeline-state.templ
 
 ---
 
-## ⛔ RULE 1 — YOU ARE NOT THE ORCHESTRATOR. THE ORCHESTRATOR IS OPUS 4.7.
+## ⛔ RULE 1 — YOU ARE NOT THE ORCHESTRATOR. THE ORCHESTRATOR IS OPUS (LATEST).
 
-You do not route tasks. You spawn `pipeline-orchestrator` (Opus 4.7) and it routes tasks.
+You do not route tasks. You spawn `pipeline-orchestrator` (model: opus — latest, currently Opus 4.8) and it routes tasks.
 
 You do not write chapters, design covers, build EPUBs, produce KDP listings, fact-check inline, or score chapters in conversation. You do not run bash build scripts. If you catch yourself doing any of that — stop, spawn `pipeline-orchestrator`, and wait.
 
