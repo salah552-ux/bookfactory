@@ -6,9 +6,18 @@
   "series_number": 4,
   "genre": "NONFICTION-HEALTH",
   "pipeline_version": "2.0",
-  "current_stage": 6,
+  "current_stage": 2,
   "created_at": "2026-06-19T00:00:00Z",
-  "last_updated": "2026-06-21T15:00:00Z",
+  "last_updated": "2026-06-25T00:00:00Z",
+  "kdp_editions": { "paperback": true, "kindle": true },
+  "rebuild": {
+    "authorized_by": "Architect",
+    "authorized_at": "2026-06-25",
+    "reason": "KDP rejected the fill-in WORKBOOK as a Blank Journal (235 blank fill-in lines, 56 empty checkboxes; Kindle-ineligible). Converting from fill-in WORKBOOK to a readable PROSE BOOK to eliminate the Kindle format-eligibility problem. Folder slug stays 'vagus-nerve-gut-reset-workbook'; the BOOK TITLE changes (drop 'Workbook'). kdp_editions set to paperback+kindle. Stages 02-06 reset and re-run forward through the gated workflow.",
+    "folder_slug_unchanged": true,
+    "title_change_required": true,
+    "old_title": "The Vagus Nerve Gut Reset Workbook"
+  },
   "last_agent_run": "kdp-seo-agent 2026-06-21 — SEO/KDP-ALGORITHM PACKAGE APPROVED FOR UPLOAD. Audited KDP-LISTING.md + CATEGORY-SELECTION.md against vagus_nerve_harvest_2026-06-19.json + COMPETITIVE-INTELLIGENCE.md + live web search. Title/subtitle confirmed (157 chars, all required terms). 7 keywords validated: all <50 chars, zero title/subtitle duplication, broad+long-tail mix, gut/IBS/digestion differentiator in slots 4-6. One refinement applied: keyword slot 5 'gut brain axis healing' -> 'vagus nerve exercises for digestion' (old slot self-duplicated subtitle's 'gut-brain axis'; replacement targets confirmed open 'digestion' search intent no indie leader owns). 3 Day-1 categories confirmed real selectable KDP nodes across 3 branches; Neuroscience/Neuroanatomy soft-competition bonus shelf validated by harvest top-20 data. Description: gut-reader hook, all 5 competitive gaps addressed, HTML-formatted, CTA present. seo_approved: true. Prior: Master-orchestrator (Opus) 2026-06-21 — REMEDIATION COMPLETE. Stage 04 named reports finalised (compliance-officer stripped in-book AI disclosure → COMPLIANCE-REPORT.md; PROOFREAD-REPORT.md, FACT-CHECK-REPORT.md). Stage 05: kdp-seo-agent CATEGORY-SELECTION.md, hook-optimizer HOOK-OPTIMIZER-REPORT.md, review-bait-optimizer REVIEW-BAIT-REPORT.md. Stage 06: cover present at exports/final/cover-kdp.jpg (1600x2560); EPUB/DOCX/PDF rebuilt — EPUB now 982,990 bytes (960KB, cover embedded), canonical locked-design PDF 125pp. final-approval-agent FINAL-APPROVAL-REPORT.md = 295/300 APPROVED. Added LAUNCH-PLAN.md, PACKAGE-MANIFEST.md, kdp-metadata.txt. KDP-LISTING description/keywords corrected. Copyright disclaimer expanded to 2 paragraphs. Book CLEARED for KDP upload pending human gates (cover_approved, final_approval_passed, ai_questionnaire_confirmed). NOT published.",
 
   "status": "approved_pending_upload_gates",
@@ -21,11 +30,11 @@
       "notes": "Playwright live BSR/price/review scrape complete (17/20 ASINs, 20 real ASINs, 0 interpolated). Blueprint produced: intelligence/reports/vagus_nerve_blueprint_2026-06-19.md. Blueprint confidence: HIGH on format/price/angle; MEDIUM on angle uniqueness pending re-harvest of higher-review Kindle tier (see blueprint §11 items 2–4)."
     },
     "01-research":     { "status": "complete", "executed_by": "pipeline-orchestrator", "completed_at": "2026-06-20T00:10:00Z", "notes": "RESEARCH.md written; every physiological claim cited to a named source; animal-model/pilot findings flagged as early evidence. kdp-seo-agent CATEGORY-SELECTION.md formalised in remediation." },
-    "02-planning":     { "status": "complete", "executed_by": "pipeline-orchestrator", "completed_at": "2026-06-20T00:15:00Z", "notes": "OUTLINE.md (chapter plan + 4-week daily structure + locked exercise/daily/tracker templates). brief-validator PASS — BRIEF-VALIDATION.md. FACTS.md now carries locked verbatim final line." },
-    "03-writing":      { "status": "complete", "executed_by": "pipeline-orchestrator", "completed_at": "2026-06-20T00:35:00Z", "notes": "Full manuscript: 13 files, 19,391 words. Health-writer voice; 80% exercises/tracking; 12 named exercises; Week 3 gut-specific; no polyvagal jargon." },
-    "04-quality":      { "status": "complete", "executed_by": "pipeline-orchestrator", "completed_at": "2026-06-21T00:00:00Z", "notes": "Quality Gate PASS 108/120 Grade A. Named reports: FACT-CHECK-REPORT.md (PASS), PROOFREAD-REPORT.md (PASS), COMPLIANCE-REPORT.md (in-book AI disclosure stripped — INV-11 clean), APPROVALS.md (with Fact-Checked/Compliant columns). All 5 competitive gaps filled. Word-count deviation adjudicated/accepted for workbook format (125 pages)." },
-    "05-optimisation": { "status": "complete", "executed_by": "pipeline-orchestrator", "completed_at": "2026-06-21T03:00:00Z", "notes": "Proofread clean. KDP-LISTING.md locked + corrected (h2-only description, keywords de-duplicated from title). CATEGORY-SELECTION.md, HOOK-OPTIMIZER-REPORT.md (PASS), REVIEW-BAIT-REPORT.md (PASS) all present." },
-    "06-production":   { "status": "complete", "executed_by": "pipeline-orchestrator", "completed_at": "2026-06-21T09:30:00Z", "notes": "Cover present at exports/final/cover-kdp.jpg (1600x2560 JPEG). EPUB+DOCX+PDF rebuilt: EPUB 982,990 bytes (cover embedded, >=500KB), canonical locked-design PDF 125pp, DOCX, HTML. FINAL-APPROVAL-REPORT.md = 295/300 APPROVED. LAUNCH-PLAN.md, PACKAGE-MANIFEST.md, kdp-metadata.txt added." },
+    "02-planning":     { "status": "in_progress", "executed_by": null, "reset_at": "2026-06-25T00:00:00Z", "reset_reason": "PROSE-BOOK REBUILD: re-run title-and-subtitle-lab for a new prose title (drop 'Workbook') + book-architect for a prose-format BLUEPRINT declaring kdp_editions paperback+kindle. Prior workbook OUTLINE.md/BLUEPRINT.md superseded.", "prior_notes": "OUTLINE.md (chapter plan + 4-week daily structure + locked exercise/daily/tracker templates). brief-validator PASS. FACTS.md locked verbatim final line." },
+    "03-writing":      { "status": "not_started", "executed_by": null, "reset_at": "2026-06-25T00:00:00Z", "reset_reason": "PROSE REWRITE: convert every fill-in block, blank tracking page, and empty checkbox into readable prose (science + method + worked examples + narrated follow-along). ZERO blank fill-in lines / ZERO empty checkboxes / ZERO blank tracker tables. Tracking becomes an optional companion PDF referenced in back matter.", "prior_notes": "Workbook manuscript: 13 files, 19,391 words. 235 blank fill-in lines, 56 empty checkboxes — KDP-rejected Blank Journal." },
+    "04-quality":      { "status": "not_started", "executed_by": null, "reset_at": "2026-06-25T00:00:00Z", "reset_reason": "Re-run fact-checker, book-reviewer, compliance-officer (Domain 7 format gate MUST pass), proofreader on the prose manuscript." },
+    "05-optimisation": { "status": "not_started", "executed_by": null, "reset_at": "2026-06-25T00:00:00Z", "reset_reason": "Re-run hook-optimizer, review-bait-optimizer, kdp-seo (new CATEGORY-SELECTION.md + keywords vs NEW prose title)." },
+    "06-production":   { "status": "not_started", "executed_by": null, "reset_at": "2026-06-25T00:00:00Z", "reset_reason": "New cover brief for new title (current cover says WORKBOOK). Re-run manuscript-style-designer, design-agent, build EPUB (>=500KB, Kindle-eligible), final-approval-agent (>=270/300, criterion 4.5 format gate MUST pass)." },
     "07-publishing":   { "status": "not_started" },
     "08-products":     { "status": "not_started" },
     "09-series":       { "status": "not_started" },
@@ -83,13 +92,15 @@
 
   "human_gates": {
     "market_intelligence_approved": true,
-    "blueprint_approved": true,
-    "seo_approved": true,
+    "blueprint_approved": false,
+    "title_approved": false,
+    "seo_approved": false,
     "cover_approved": false,
     "final_approval_passed": false,
     "pre_launch_approved": false,
     "ai_questionnaire_confirmed": false,
-    "published": false
+    "published": false,
+    "_rebuild_note": "blueprint_approved + title_approved reset to false 2026-06-25 for the prose-book rebuild — Architect must approve the NEW prose title before Stage 03 writing begins. seo_approved reset (keywords must be re-verified against the new title)."
   },
 
   "production": {
