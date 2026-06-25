@@ -1,7 +1,7 @@
 ---
 name: book-reviewer
 description: Quality gate agent. Reviews any chapter or section against 12 metrics covering human voice, AI-risk, readability, structure, pacing, hook strength, market fit, emotional impact, continuity, genre conventions, KDP readiness, and actionability. Returns a scored report with exact fixes. Must be run before any chapter is approved.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "04-quality"
 input: ["books/{slug}/manuscript/<chapter-file>.md", "books/{slug}/BLUEPRINT.md", "books/{slug}/FACT-CHECK-REPORT.md (if exists)"]
 output: "books/{slug}/APPROVALS.md (append-or-replace per chapter, score /120)"

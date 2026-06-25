@@ -10,7 +10,7 @@
 For ANY pipeline work on a book — any stage, any agent task, any file write inside `books/` — your ONLY permitted action is:
 
 ```
-Spawn pipeline-orchestrator (model: Opus 4.7) with the book_slug.
+Spawn pipeline-orchestrator (model: Opus — latest, currently Opus 4.8 / claude-opus-4-8) with the book_slug.
 Then wait for it to return. Do not proceed until it does.
 ```
 
@@ -30,7 +30,7 @@ You MAY NOT under any circumstances:
 
 **If you catch yourself doing ANY of the above — stop immediately. Spawn pipeline-orchestrator instead.**
 
-The orchestrator runs on Opus 4.7. It has the reasoning to drive the pipeline. You do not.
+The orchestrator runs on the latest Opus (currently Opus 4.8 / claude-opus-4-8). It has the reasoning to drive the pipeline. You do not. Always dispatch pipeline work with `model: opus` — never a smaller or generic model. (Dispatching to a non-Opus generic agent is what caused the 2026-06-21 pipeline bypass.)
 
 Every piece of specialist work Sonnet does itself is:
 - Lower quality than Opus would produce

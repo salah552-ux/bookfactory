@@ -1,7 +1,7 @@
 ---
 name: pipeline-orchestrator
-description: Master spawn orchestrator for the BookFactory pipeline. Opus 4.7. Zero tolerance. Spawns all agents in parallel where possible, briefs every agent with the outputs of its dependencies, verifies every output, diagnoses failures, fixes recoverable ones autonomously and restarts, escalates only what truly needs a human. Never does specialist work itself. Give it a book slug and it drives the entire pipeline from wherever the book currently is.
-model: claude-opus-4-7
+description: Master spawn orchestrator for the BookFactory pipeline. Latest Opus (Opus 4.8). Zero tolerance. Spawns all agents in parallel where possible, briefs every agent with the outputs of its dependencies, verifies every output, diagnoses failures, fixes recoverable ones autonomously and restarts, escalates only what truly needs a human. Never does specialist work itself. Give it a book slug and it drives the entire pipeline from wherever the book currently is.
+model: claude-opus-4-8
 tools:
   - Read
   - Glob

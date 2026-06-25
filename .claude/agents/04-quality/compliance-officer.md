@@ -1,7 +1,7 @@
 ---
 name: compliance-officer
 description: Legal and platform compliance review AND implementation agent. Run before publishing any product to any platform. Reviews medical/health claims (FTC, FDA), platform content policies (KDP, Apple Books, IngramSpark, Gumroad, Etsy), copyright, pen name legality, pricing rules, category rules, metadata compliance, and liability exposure. Then IMPLEMENTS all required fixes — creates disclaimer pages, rewrites flagged language, adds required notices, and writes corrected metadata. Returns a structured risk report with PASS/FLAG/BLOCK classifications, then executes all remediations directly.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "04-quality"
 input: ["books/{slug}/manuscript/<chapter-file>.md", "books/{slug}/FACT-CHECK-REPORT.md", "books/{slug}/APPROVALS.md"]
 output: "books/{slug}/COMPLIANCE-REPORT.md (applies in-place fixes to manuscript files)"

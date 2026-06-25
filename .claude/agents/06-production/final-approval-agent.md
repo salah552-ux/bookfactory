@@ -1,7 +1,7 @@
 ---
 name: final-approval-agent
 description: The final quality gate before KDP upload. Scores every element of the book against a 300-point rubric across six dimensions — manuscript, cover, metadata, compliance, commercial readiness, and package integrity. Nothing ships without a score of 270/300 or higher. Any dimension below threshold triggers a targeted remediation report with the exact agent and action needed to fix it. The most powerful agent in the pipeline.
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - Read
   - Glob
