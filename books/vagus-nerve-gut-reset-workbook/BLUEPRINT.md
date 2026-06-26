@@ -1,188 +1,184 @@
-# BLUEPRINT — The Vagus Nerve Gut Reset Workbook
-
-**Source:** `intelligence/reports/vagus_nerve_blueprint_2026-06-19.md` (copied in at scaffold, 2026-06-19)
-**Status:** AWAITING ARCHITECT APPROVAL — do NOT begin writing until blueprint_approved: true is set in pipeline-state.json and all pre-build gates in §11 are cleared.
+# BLUEPRINT — The Vagus Nerve Gut Reset (PROSE REBUILD)
 
 ---
 
-# Vagus Nerve Workbook — Build Blueprint (US / Amazon.com)
+## ⚠️ REBUILD NOTE — READ FIRST (supersedes the workbook blueprint)
 
-**Generated:** 2026-06-19
-**Niche:** vagus nerve / nervous system reset
-**Marketplace:** Amazon.com (US)
-**Input harvest:** `vagus_nerve_harvest_2026-06-19.json` (20 real ASINs, 0 interpolated)
-**Status:** Blueprint only — do NOT begin writing until approved.
+**This blueprint REPLACES the prior "The Vagus Nerve Gut Reset Workbook" blueprint in full.**
 
----
+**Why:** The workbook edition was **REJECTED by KDP as a "Blank Journal"** (235 blank fill-in lines, 56 empty checkboxes, blank tracker tables). The Architect has authorised converting the book from a fill-in WORKBOOK into a readable PROSE BOOK — a guide you **READ**, not one you fill in. The science and prose already written are strong; the only problem was the interleaved blank fill-in apparatus. This rebuild keeps the science, voice, exercises, 4-week structure, pricing, audience, and series fit, and **converts every blank into prose**.
 
-## 0. Data Status Notice (read first)
+- **FORMAT = PROSE BOOK / readable guide.** Not a workbook, journal, planner, log, or tracker.
+- **kdp_editions:** `{ "paperback": true, "kindle": true }` — Kindle is now eligible because the manuscript will contain **ZERO** blank fill-in apparatus. (This is the exact condition KDP requires for Kindle eligibility per book-architect.md HARD RULE and validator INV-14.)
+- **THE ZERO-BLANKS RULE (absolute, enforced downstream):** The manuscript must contain **ZERO blank fill-in lines, ZERO empty checkboxes, ZERO blank tracker tables, ZERO "____" cells, ZERO blank "Notes & reflections" rule-lines** anywhere — front matter, daily entries, weekly trackers, baseline, recap, appendices, back matter. A single blank line re-triggers the rejection. If the writer cannot remove a blank, it must become prose, a worked example, or a pointer to the optional free companion PDF — never a blank in the book.
 
-**UPDATE 2026-06-19 — BSR/price/review data is now REAL.** A Playwright headless-browser pass scraped live Amazon.com product pages for all 20 ASINs. Live Amazon Best Sellers Rank, current prices, star ratings, and Amazon review counts were captured for 17 of 20 (the other 3 are brand-new 2025 releases not yet ranked). The Kindle "vagus nerve" review-rank search was also scraped, surfacing a second competitor tier. See `vagus_nerve_harvest_2026-06-19.json` (`"source": "playwright-real"`, `"bsr_harvest_date": "2026-06-19"`).
-
-What is now real and citable:
-- **Live Amazon BSR** — captured per ASIN (e.g., Rosenberg #14,078; Tracey #19,568; best indie Payne #118,524).
-- **Current Amazon prices** — captured per format (Kindle/paperback/hardcover) on 2026-06-19.
-- **Amazon review counts + star ratings** — captured live (supersede the prior Goodreads placeholders).
-
-Still flagged: Kindle search-result cards do not expose numeric prices (KU/instant badges only); a few older Kindle-only eBooks did not expose a clean price selector. These are noted, not invented. The format, angle, outline, and keyword recommendations below are unchanged in spirit but now **validated against real BSR**.
+**What carries forward unchanged from the workbook blueprint** (all still valid): niche, audience, pricing band, KU strategy, the gut-brain-axis differentiator, the 4-week / 12-exercise structure, the chapter list, categories. **What is overridden:** §2 format (workbook → prose), §3 title (new prose title), §4 word/page target (grows — see §4), and all fill-in apparatus (converted to worked examples per §8A).
 
 ---
 
-## 1. What the Real Data Shows (structural findings)
+## 1. Book Identity Card
 
-| Tier | Who | Count | Notes (all real, BSR live 2026-06-19) |
+- **Title:** The Vagus Nerve Gut Reset
+- **Subtitle:** Calm the Gut-Brain Axis and Ease Bloating, IBS & Anxiety in 4 Weeks — A Plan of Daily 5-Minute Exercises to Reset Your Nervous System
+  *(Working title from title-and-subtitle-lab 2026-06-25, score 46/50, RECOMMENDED, awaiting final Architect lock. No banned format word — "Plan" / "Reset" are prose-program words, not "workbook/journal/log".)*
+- **Series:** Fix Your Gut for Good, Book 4
+- **Author:** S. A. Ibrahim (pen name, no clinical credentials claimed)
+- **One-line premise:** A four-week, five-minutes-a-day prose plan that calms the gut-brain axis through evidence-based vagus-nerve exercises, narrated so the reader sees exactly how it works for someone like them.
+- **Core promise:** In four weeks of five-minute daily practices, you understand *why* your stressed nervous system is wrecking your gut and you have a calmer gut and a usable maintenance plan to prove it.
+- **Tone adjectives (5):** warm, plainspoken, direct, evidence-led, quietly reassuring.
+- **Narrative voice:** Second person ("you"), with a recurring third-person worked-example reader ("Maya") used to *show* what doing each day looks like — this is the engine that replaces the blanks (see §8A).
+- **Comparable voices to emulate:** Adele Payne *The Vagus Nerve Protocol* (the proven prose-program competitor) for accessible authority; the existing *Fix Your Gut for Good* series voice for continuity.
+- **KDP editions + format eligibility (MANDATORY):**
+  ```json
+  "kdp_editions": { "paperback": true, "kindle": true }
+  ```
+  Kindle is eligible **only because** the prose rebuild removes all blank fill-in apparatus. If any blank survives, set kindle:false — but the entire point of this rebuild is that none survive.
+
+---
+
+## 2. Recommended Format — PROSE (OVERRIDES the workbook decision)
+
+**PROSE BOOK / readable guide.** A book the reader *reads cover to cover and does* — not a book they write in.
+
+**Justification (data-backed, no invented numbers):** The proven ranking competitor in this exact niche is **Adele Payne, *The Vagus Nerve Protocol*** — a **prose** three-part program (theory → techniques → life plan), **BSR #118,524, 352 reviews, 4.7★** (source: COMPETITIVE-INTELLIGENCE.md / harvest 2026-06-19). Prose-program framing demonstrably ranks. The original workbook-lane argument is now moot: KDP rejected the fill-in format outright, so the only shippable, Kindle-eligible, KU-discoverable form is prose. The title-and-subtitle-lab confirms the prose-program lane ("Plan" / "Reset") is open and on-brand (source: TITLE-OPTIONS.md). We keep the workbook's content strengths (named exercises, daily cadence, tracking *concept*) but deliver them as narrated guidance.
+
+---
+
+## 3. Title + Subtitle (OVERRIDES §3 of the workbook blueprint)
+
+Use the title in §1 throughout. The string "The Vagus Nerve Gut Reset" preserves the verbatim primary keyword and the existing series/listing/cover metadata while dropping the single rejection-triggering word "Workbook." The subtitle carries every opportunity keyword (gut-brain axis, bloating, IBS) and signals readable content ("A Plan of Daily 5-Minute Exercises") not blanks-to-fill. (Full scoring: TITLE-OPTIONS.md.)
+
+---
+
+## 4. Word / Page Count Target (OVERRIDES §4 — grows for prose)
+
+**Recommended band: 30,000–36,000 words, ~150–180 print pages (6×9).**
+
+- **Current manuscript: 19,706 words** (measured 2026-06-25 across the 13 manuscript files; source: word-count pass this session). That total includes substantial *blank* space (the 235 fill-in lines, 56 checkboxes, blank tracker tables) which counts as near-zero words but consumes pages.
+- **Why it grows:** Converting each blank apparatus into a narrated worked example (§8A) replaces empty lines with real prose — every "Track it (fill in)" block becomes a short Maya vignette; every blank table becomes a narrated completed example; the baseline and 30-day recap become walk-throughs. The ~28 daily entries each gain roughly 80–150 words of worked-example prose, plus converted trackers and baseline.
+- **Justification vs. the comparable (no invented numbers):** the band positions the book as a *comprehensive* prose guide above the thin indie tier the niche is criticised for (the workbook blueprint already flagged Benson's 88pp as a quality gap; source: prior BLUEPRINT §1) and in the substantive range of the ranking prose competitor Payne (source: COMPETITIVE-INTELLIGENCE.md). We do not have Payne's exact word count harvested — **we need real data for a precise competitor word count** — so the band is set by content math (current 19.7k + worked-example conversion) and the page-depth gap, not by a borrowed figure.
+- **Structural risk flag:** Week 3 (gut-specific, the differentiator) and Week 4 may each exceed others once worked examples are added — that is acceptable and desirable; do not pad Weeks 1–2 to match. If any single week file exceeds ~3,500 words, that is fine for the gut week; flag only if a non-gut week balloons past the gut week.
+
+---
+
+## 5. Price Point (carried forward — unchanged)
+
+**$14.99 paperback / $6.99 Kindle list, enrolled in KU.** Both indie leaders (Payne, Bennett) price paperback at $14.99 (source: COMPETITIVE-INTELLIGENCE.md, harvest 2026-06-19). KU read-through is primary Kindle revenue; KU penetration in this Kindle niche is near-total (source: same). The prose format now makes the Kindle/KU edition fully eligible — previously blocked as a fill-in format.
+
+---
+
+## 6. Seven KDP Keywords — re-verified vs the NEW title
+
+The new **title** is "The Vagus Nerve Gut Reset"; the **subtitle** already contains: gut-brain axis, bloating, IBS, anxiety, daily 5-minute exercises, reset, nervous system, 4 weeks. KDP keyword fields should NOT duplicate words already in the title/subtitle (wasted SEO). Audit of the 7 locked keywords:
+
+| # | Keyword (from workbook blueprint) | Verdict vs new title/subtitle | Action |
 |---|---|---|---|
-| Trad-pub prose anchors | Tracey, Ferguson, Rosenberg, Maguire, Habib | 5 | Long-form; Amazon 4.2–4.7 stars. **Real BSR: Rosenberg #14,078 (2,632 reviews), Tracey #19,568 (262), Ferguson #33,274 (415), Maguire #42,026 (125), Habib #150,716 (56).** These are the true velocity drivers. NOT workbooks. |
-| Indie workbooks/guides | Nicholson, Bennett, Benson, Cole, Walters, Stone, Gillette, Payne, Warren, Daniele ACG, Clement, Whitman, Sterling, LifeQuest | 15 | All self-published, almost all 2025–2026. Enterable lane, but most sit at DEEP BSR (#1M–#5.8M). **Real indie leaders: Payne #118,524 (352 reviews / 4.7) and Bennett #40,892 (199 / 4.7).** |
+| 1 | vagus nerve reset **workbook** | **MUST CHANGE** — contains banned format word "workbook"; could re-flag the book and duplicates "vagus nerve reset" already in title | **REPLACE** → suggest `vagus nerve reset book` or better, a non-duplicating phrase e.g. `gut directed nervous system regulation` |
+| 2 | nervous system regulation exercises | Keep — "regulation" not in title/subtitle | Keep (kdp-seo to confirm) |
+| 3 | somatic exercises for anxiety and stress | Keep — "somatic" adds new surface | Keep |
+| 4 | polyvagal theory for beginners | Keep — distinct term, not in title | Keep |
+| 5 | gut brain axis healing | Partial overlap ("gut-brain axis" is in subtitle) — but "healing" adds surface; flagged as the under-targeted gap term | Keep but flag to kdp-seo (consider `gut brain axis diet`/`gut brain connection` to reduce overlap) |
+| 6 | vagus nerve exercises for sleep and digestion | Keep — "sleep"/"digestion" not verbatim in title/subtitle | Keep |
+| 7 | 30 day nervous system reset program | **REVIEW** — book is **4-week** not 30-day; "reset"/"nervous system" overlap subtitle | **CHANGE** → align to `4 week nervous system reset` or pivot to non-duplicating `ibs and bloating relief` |
 
-**Format split (real):** 5 trade prose / 4 explicit workbooks / 1 hybrid bible+workbook / 10 guide-programs.
-
-**Live BSR reality check (the key new finding):**
-- **Best indie = Adele Payne "The Vagus Nerve Protocol," BSR #118,524, 352 reviews, 4.7★** — the indie to beat on both rank and social proof.
-- **Second = Casey Bennett workbook, BSR #40,892 (paperback), 199 reviews, 4.7★.** A *workbook* outranking most prose — validates the workbook lane.
-- **Most indies are low-velocity:** BSR #1M–#5.8M (Benson #1.34M, Cole #2.19M, Clement #2.58M, Warren #4.99M, Stone #5.15M, Whitman #5.81M). Reviews ≠ rank: Stone has 61 reviews but BSR #5.1M.
-- **Neuroanatomy is the soft category to chart in:** indies hit top-20 there despite weak overall BSR (Payne #4, Walters #14, Nicholson #19, Clement #103).
-- **A second, higher-review Kindle tier exists** that the 20-ASIN list missed: "The Vagus Nerve Solution" (235 reviews), "The Vagus Nerve Switch" (230, 8-min/digestion), "Unlock The Power of Your Vagus Nerve" (211, gut-health). Add to next harvest.
-
-**Confirmed patterns in winning indie titles:**
-- **Time-bound hooks are universal:** 10-Minute, 20-Minute, 28-Day, 30-Day, 4-Week, 42-Day. → A number/time hook is *table stakes*, not a differentiator.
-- **Audience segmentation is emerging, not saturated:** "For Women" (Warren), "50+" (Daniele ACG). Men, perimenopause, and condition-specific (gut/IBS) angles look underused.
-- **Thin content is common:** Benson's workbook is 88pp. A genuinely comprehensive 120–160pp workbook is a quality gap.
-- **Video/QR companions appearing:** Warren bundles a "Guided Daily 5-Minute Video." Matches the prior UK leader's "video exercises" hook — a credible differentiator.
-- **Reader complaint signal (real, from Ferguson Goodreads reviews):** trade titles are "wordy and repetitive," "lacking … tricks to actually reset." → Demand for a low-theory, do-this-now practical format.
+**Flag to kdp-seo (Stage 05, who finalises):** Keyword #1 MUST lose "workbook." Keyword #7 should drop "30 day" (book is 4-week) and de-duplicate "reset/nervous system." Both are the only hard problems; the rest are minor overlap to optimise.
 
 ---
 
-## 2. Recommended Format
+## 7. KDP Categories (carried forward — unchanged)
 
-**WORKBOOK (primary), structured as a dated daily-program workbook with a thin theory front-end.**
-
-Justification from data: the 4 explicit workbooks plus the hybrid all sit in the indie lane that an indie entrant can realistically rank in (the 5 prose anchors are trad-pub and review-entrenched — Rosenberg alone has 2,457 Goodreads ratings). The recurring time-bound program structure (28/30/42-day) is what indie buyers are choosing. Prose is a saturated, authority-gated lane; workbook-program is the open lane.
-
----
-
-## 3. Recommended Title + Subtitle
-
-The niche is crowded with "Vagus Nerve Reset Workbook" near-duplicates (Nicholson AND Bennett use almost the identical main title). To avoid being one of three identical spines, lead with a number + a slightly differentiated promise, and claim an under-served audience or benefit.
-
-**Primary recommendation (men/general, comprehensive-quality angle):**
-> **The Vagus Nerve Reset Workbook**
-> *A 30-Day Step-by-Step Program — 60+ Daily 5-Minute Exercises to Calm Anxiety, Improve Sleep & Digestion, and Regulate Your Nervous System (No Polyvagal Jargon)*
-
-**Alternate A (gut/digestion condition angle — fits the BookFactory gut-health brand, see §9) — RECOMMENDED FOR THIS PUBLISHER:**
-> **The Vagus Nerve Gut Reset Workbook**
-> *A 4-Week Program of Daily 5-Minute Exercises to Calm the Gut-Brain Axis, Ease Bloating & IBS, and Reset Your Nervous System*
-
-**Alternate B (50+ audience — Daniele ACG validated demand, weak indie competition):**
-> **The Gentle Vagus Nerve Reset Workbook for Adults 50+**
-> *A 42-Day Plan of 5–10 Minute Calm Routines for Better Sleep, Less Stress, and Steady Energy*
-
-Title is number-led and outcome-led, which the data supports. The "(No Polyvagal Jargon)" parenthetical directly answers the verified "wordy and repetitive" complaint.
+1. Books > Health, Fitness & Dieting > Mental Health > Anxiety Disorders
+2. Books > Health, Fitness & Dieting > Diseases & Physical Ailments > Nervous System (or Medical > Basic Sciences > Neuroscience)
+3. Books > Self-Help > Stress Management
+(Request the Neuroanatomy/Neuroscience shelf via KDP additional-categories.)
 
 ---
 
-## 4. Word Count / Page Count Target
+## 8. Content Outline (prose — same structure, no blanks)
 
-**Target: 30,000–38,000 words, ~130–150 print pages (6×9).**
+- **Front matter:** copyright; "How to Read This Book" (replaces "How to Use This Workbook"); thin-theory chapters (≤20% of content).
+- **Chapters 1–3 (foundations & baseline):** the 90-second no-jargon vagus explainer; the gut-brain-axis chapter; the **baseline self-assessment rewritten as a prose walk-through with a worked example** (§8A).
+- **Weeks 1–4 (the core):** one named exercise per day, the 5-minute routine, the science one-liner, and a **narrated worked example** instead of fill-in lines. Weekly themes unchanged: **Week 1 foundations, Week 2 sleep & evening down-regulation, Week 3 gut / gut-brain axis (the differentiator — keep gut-specific and deepest), Week 4 stress resilience.**
+- **Chapter 4 / Make It Stick:** personal 5-minute stack, plateau troubleshooting, maintenance plan, flare plan.
+- **Appendices:** exercise quick-reference index (prose/reference, no blanks).
+- **Back matter:** sources & further reading; about the author; series cross-promo; review CTA; **free companion-PDF pointer** (§8B).
 
-Justification: positions above the thin indie tier (Benson 88pp) while staying in true workbook territory (vs. LifeQuest's 170pp guide). Comprehensive enough to defend a mid-tier price and earn "thorough/worth it" reviews — directly countering the low-content complaints in the niche.
+### 8A. THE CONVERSION METHOD (the critical instruction for the Stage 03 writer)
 
----
+Convert every fill-in element to prose using the persona **Maya** (IBS/bloating, tried diets and probiotics, stressed, wants 5 minutes not a lecture — FACTS.md). **Rule of thumb: anywhere the reader was asked to WRITE, instead SHOW a believable reader doing it, in prose, then invite the reader to notice the same thing in their own head — never on a blank line.**
 
-## 5. Recommended Price Point — DATA-VALIDATED (2026-06-19)
+| Existing fill-in element (workbook) | Convert to (prose book) |
+|---|---|
+| **"Track it (fill in)" block** (Did it? ☐Yes ☐No / Gut __ / Stress __ / One thing I noticed ____ / Win ____) — appears in every daily entry | A short narrated **worked example** of Maya doing that day. e.g.: *"On Day 1, Maya sat down before her morning coffee and ran the physiological sigh for five minutes. By the third round her shoulders dropped; she noticed her gut sat at about a 6 that morning, down from its usual 8, and counted 'did it before coffee' as the day's small win."* Narrate the doing, the noticing, and the win as prose. Then a one-sentence prose reflection prompt the reader holds in mind (e.g. *"See if your own shoulders drop before your gut does."*). **No checkboxes, no blank lines, no "____".** |
+| **Checkboxes** (☐ Yes ☐ No) | Remove entirely. Fold into the worked example ("Maya did it before coffee") or a prose nudge ("make a mental note of whether you actually did it"). |
+| **"Notes & reflections:" blank rule-lines** (3 blank lines per day) | **Delete the blank lines.** Replace with a single prose reflection prompt the reader thinks about — e.g. *"Tonight, ask yourself which part of the breath you felt most."* No lines to write on. |
+| **"circle one: worse · same · better"** inline | Convert to prose: narrate Maya's trend in the worked example, and prompt the reader to notice their own ("most people feel the gut shift before the mood — watch for that"). No circling. |
+| **Chapter 2 "Score yourself" baseline table** with ____ cells (Gut Score /30, RHR ___ bpm, HRV ___, "What I want to change: ____") | A **prose walk-through of how to self-assess**, WITH a worked example of a filled-in baseline using a named example reader's numbers — e.g. *"Maya's first morning: bloating 8, cramping 6, unpredictable bowels 7 — a Gut Score of 21 out of 30; resting heart rate 74; and one honest sentence: 'get through an afternoon at work without my stomach ruining it.'"* Explain how to read it. Then point readers who want to record their own numbers to the **free companion PDF** (§8B). **No "____" cells in the book.** |
+| **Weekly Tracker table** (blank Day 1–7 rows) + "average Gut score: ____" + "Three quick reflections: ____" | A **narrated example of a completed week**: show what Maya's seven days looked like (a believable set of scores trending gently down), and teach the reader how to *read the trend* ("one rough day means nothing; you're looking for the shape"). Replace the three blank reflection lines with prose reflection prompts. Point to the companion PDF for readers who want to log their own. **The table in the book is a filled-in EXAMPLE, never blank cells.** |
+| **30-day recap** (re-score baseline, compare) in Week 4 | A narrated worked example: Maya re-scores at Day 28 (e.g. Gut Score 21 → 13), and the prose teaches the reader how to compare against their Chapter-2 starting point and what a realistic change looks like. Companion-PDF pointer for self-recording. **No blank recap grid.** |
+| **Appendix progress charts / blank logs** | Convert to a reference exercise index (prose). Any blank chart → removed; pointed to companion PDF if a chart is wanted. |
 
-**Recommended: $14.99 paperback / $6.99 Kindle (enrolled in KU).**
+**Hard constraints on the conversion:** Worked-example tables (the week example, the baseline example) must show *real numbers filled in* so a KDP reviewer sees content, not a template. Use varied, believable Maya numbers (gently improving, not perfectly linear). Keep the second-person voice for instruction; use third-person for the Maya vignettes. Do not invent science — every "why it works" one-liner still maps to RESEARCH.md (Maya's *experience* is illustrative narrative, which is allowed; her *physiology claims* must still cite RESEARCH.md). Maya's numbers are illustrative narrative, clearly framed as one reader's example, not data or a study result (AGENT-RULES Rule 1 — these are not market/sales/clinical statistics).
 
-**Real competitive price band (live, Playwright-scraped 2026-06-19):**
+### 8B. The optional tracking COMPANION PDF
 
-| Format | Observed live range | Cluster / mode | Source examples |
-|---|---|---|---|
-| Indie workbook paperback | $12.99 – $18.99 | **$14.90 – $15.99** | Bennett $14.99, Walters $14.91, Warren $14.90, Cole $15.98, Stone $15.99, Payne $14.99 |
-| Indie Kindle | $0.99 – $9.99 | $4.99 – $9.99 (with $0.99 loss-leaders) | Cole $4.99, Gillette $5.99, Benson/Payne/Warren/Whitman $9.99; Walters/Stone/Clement $0.99 |
-| Trade paperback | $10.31 – $19.99 | n/a (different tier) | Ferguson $10.31, Tracey $13.20, Rosenberg $13.85, Maguire $19.99 |
-
-**Justification (now data-derived, not assumed):**
-- The two real indie leaders both price paperback at **$14.99** (Payne #118,524/352 reviews; Bennett #40,892/199 reviews). Matching $14.99 places us exactly in the proven winning band.
-- **Avoid the $0.99 Kindle race to the bottom.** The $0.99 Kindle titles sit at deep BSR (#283K–#5.8M) — cutting price did not buy rank. $6.99 Kindle keeps healthy 70% royalty and signals quality; KU read-through is where Kindle revenue actually comes from in this lane.
-- Paperback is where indie revenue concentrates; $14.99 paperback at a comprehensive 130–150pp defends margin and earns "thorough/worth it" reviews.
-
----
-
-## 6. Seven KDP Keywords
-
-1. vagus nerve reset workbook
-2. nervous system regulation exercises
-3. somatic exercises for anxiety and stress
-4. polyvagal theory for beginners
-5. gut brain axis healing (gap term — under-targeted)
-6. vagus nerve exercises for sleep and digestion
-7. 30 day nervous system reset program
+A **free downloadable companion PDF** (the printable tracker: baseline sheet, weekly tracker grids, 30-day recap) is referenced **in the back matter as a free download**, consistent with the series reader-magnet pattern. It is the home for anyone who *wants* to write their numbers down. **It lives outside the book. The book itself contains ZERO blank pages or fill-in space.** Back matter gets a one-line pointer (e.g. "Want to track your own numbers? Grab the free printable companion at [link] — kept off these pages on purpose, so this stays a book you read, not one you fill in"). The link/placeholder is finalised downstream (reader-magnet / back-matter stage); the writer inserts the pointer, not blanks.
 
 ---
 
-## 7. KDP Categories (2–3)
+## 9. Unique Angle / Differentiation (carried forward)
 
-1. **Books > Health, Fitness & Dieting > Mental Health > Anxiety Disorders**
-2. **Books > Health, Fitness & Dieting > Diseases & Physical Ailments > Nervous System** (or **Books > Medical Books > Basic Sciences > Neuroscience**)
-3. **Books > Self-Help > Stress Management**
-
-(Use KDP's "request additional categories" to also land in the Neuroanatomy/Neuroscience bestseller shelf where the indie reset workbooks currently chart.)
+**Gut-brain-axis lens, sharpened to IBS/bloating.** No ranking competitor substantiates gut/IBS depth (Hayden criticised: "barely scratched the surface"; source: COMPETITIVE-INTELLIGENCE.md). Week 3 stays entirely gut-specific and is the deepest week. Plus: real citations (answers the "no science" complaint), no-jargon translation (answers "too theoretical/wordy"), and now — uniquely for the prose lane — **narrated worked examples** that show the program working on a real reader, which is the prose-native way to answer the "no tracking tools" complaint without any blanks.
 
 ---
 
-## 8. Content Outline
+## 10. Tone Bible (carried forward from FACTS.md — writer must obey)
 
-**Front matter (thin theory — answer the "too wordy" complaint in ≤15 pages):**
-- How to use this workbook (set expectations: 5–10 min/day, X days)
-- The 90-second vagus nerve explainer (no jargon)
-- Self-assessment: rate your baseline (sleep, digestion, anxiety, HRV-by-proxy) — gives before/after the reviews love
-
-**Part 1 — Foundations (Week 1):** breath-based vagal activation, physiological sigh, humming/gargling/cold exposure basics — one technique introduced per day with a fill-in log.
-
-**Part 2 — Daily Reset Program (Weeks 2–4, the core):**
-- Dated daily spreads: today's exercise + 5-minute routine + reflection/tracking lines + a one-line "win."
-- Weekly themes: Week 2 sleep & evening down-regulation; Week 3 digestion / gut-brain axis; Week 4 stress resilience & emotional regulation.
-
-**Part 3 — Make It Stick:** building a personal 10-minute stack, troubleshooting plateaus, a maintenance schedule, relapse/flare plan.
-
-**Back matter:** quick-reference exercise index, progress charts, 30-day recap, **QR code to companion guided audio/video**, and a reader-magnet CTA (cross-promo).
+- Second person, warm, plainspoken, contractions always; third person only for Maya vignettes.
+- Sentence law: default 12–18 words; a long science sentence (≤25) must be followed by a short landing sentence (≤8 words).
+- Never moralise about food; never use "healing journey," "clean eating," "wellness."
+- No polyvagal jargon — translate every mechanism to plain English.
+- Theory ≤20%; the rest is exercises, narrated examples, and program.
+- Every exercise: named, numbered steps, exact duration, an accessibility modification, a "why it works" one-liner tied to RESEARCH.md.
+- **Five "never do this" rules specific to this book:** (1) never leave a blank line, checkbox, or "____" anywhere; (2) never tell the reader to "write/jot/fill in" on the page — show Maya doing it instead; (3) never present Maya's numbers as study data; (4) never open a daily entry with "Today you will…" boilerplate twice the same way — vary the hook; (5) never let a non-gut week out-depth Week 3.
 
 ---
 
-## 9. Unique Angle / Differentiation (from real gaps)
+## 11. File / Chapter Plan — same 13 files, same slugs (prose-converted)
 
-Pick ONE primary differentiator; do not dilute:
-
-1. **"No polyvagal jargon" comprehensive workbook** — directly exploits the verified Ferguson "wordy/repetitive/no real tricks" complaint and the thin-content gap (Benson 88pp).
-2. **Gut-brain axis lens (recommended for this publisher, but must be sharpened)** — UPDATE 2026-06-19: the live Kindle review-rank scrape shows the gut angle is being claimed by the *higher-review* Kindle tier the original harvest missed. **"Gut" alone is no longer open.** It still dovetails with the existing gut-health series — the strategic fit is real — but the *spine must be sharper than generic gut*: own a specific condition (IBS/bloating/perimenopause-gut) or a specific mechanism (gut-brain-axis + a named protocol), not just "gut health."
-3. **Audience claim (50+ or men)** — Warren owns "Women," Daniele ACG owns "50+" weakly; "Men" is open.
-
-**Decision recommendation:** Go with **Alternate A (Gut Reset angle)** title + the gut-brain-axis spine, sharpened to own a specific condition (IBS/bloating). It is simultaneously (a) a real content gap, (b) defensible against the jargon complaint, and (c) aligned with the existing brand portfolio for cross-sell.
-
----
-
-## 10. Cover Brief
-
-- **Style:** clean, calm, "clinical-soft" — wellness-medical, not woo. Sans-serif or restrained serif; lots of whitespace.
-- **Colour:** calming blues/teals and sage greens (nervous-system/calm semantics). For the gut-brain angle, a teal→warm-sage palette signals both calm and gut. Avoid loud reds/oranges.
-- **Imagery:** abstract nerve/vagus line motif, a single calm botanical, or a simple body/breath line illustration — NOT stock anxious-person photography.
-- **Typography:** number/time hook ("4-WEEK" / "5-MINUTE") set large and high.
-- **Badge:** "60+ Exercises" or "Includes Guided Audio" sticker-style callout to telegraph depth.
-- **Must read at thumbnail size:** title legible at 200px; the number is the hook.
-- Keep consistent with locked BookFactory design system (Playfair Display headings, #1b3a5c navy, #c8b99a accent).
+| File (slug — unchanged) | Workbook form | Prose-converted form |
+|---|---|---|
+| 00-00-copyright.md | Copyright | Unchanged (update "Workbook"→book title if it appears) |
+| 00-how-to-use.md | "How to Use This Workbook" — describes filling in lines | Retitle "How to Read This Book"; remove all references to "fill in / pen / twenty seconds to fill in / lines at the bottom"; reframe as reading + doing + companion-PDF pointer |
+| 01-introduction.md | Intro | Light edit: remove any "you'll write/fill in" promises; keep the hook |
+| 02-chapter-01.md | 90-sec vagus explainer | Unchanged in substance (verify no fill-in) |
+| 03-chapter-02.md | **Baseline "Score yourself" with ____ cells** | **Prose walk-through + Maya worked-example baseline + companion-PDF pointer** (§8A) |
+| 04-chapter-03.md | Gut-brain axis chapter | Verify prose; no blanks (likely already clean) |
+| 05-week-01.md | 7 daily entries w/ Track-it blocks, checkboxes, Notes lines, Week 1 Tracker, 3 reflections | **All 7 days → worked examples; tracker → completed Maya-week example; reflections → prose prompts** (§8A) |
+| 06-week-02.md | Same pattern (sleep) | Same conversion |
+| 07-week-03.md | Same pattern (**GUT — differentiator**) | Same conversion; **keep deepest, most gut-specific; IBS/bloating worked examples** |
+| 08-week-04.md | Same pattern + **30-day recap** | Same conversion; **recap → narrated Maya re-score example** |
+| 09-chapter-04.md | Make It Stick / maintenance | Verify prose; convert any "design your stack" blanks to a worked example stack |
+| 14-appendices.md | Exercise index + any blank charts | Prose reference index; remove any blank chart (→ companion PDF) |
+| 99-back-matter.md | Sources, author, series, review CTA | Keep; **add the free companion-PDF pointer**; replace the word "workbook" where it appears (e.g. "This workbook is Book 4" → "This book is Book 4") |
 
 ---
 
-## 11. Pre-Build Gate (must clear before writing)
+## 12. Opening & Closing
 
-1. ~~Get real BSR + price + review data~~ **DONE 2026-06-19** (Playwright scrape; 17/20 live BSR, full price band, real review counts).
-2. ~~Add the missing higher-review Kindle tier to the harvest~~ **DONE 2026-06-19** (GATE 3/4 session confirmed KU-near-total penetration in Kindle tier; gut angle confirmed differentiable — no competing title covers IBS/bloating specifically; see COMPETITIVE-INTELLIGENCE.md).
-3. ~~Confirm the angle and lock ONE title from §3~~ **DONE 2026-06-19** — **LOCKED: "The Vagus Nerve Gut Reset Workbook" (Alternate A)** confirmed by Architect. Gut-brain-axis + IBS/bloating sharpening required in Week 3.
-4. ~~Run the competitive-positioning / review-mining agent~~ **DONE 2026-06-19** (GATE 3) — Full complaint synthesis at `COMPETITIVE-INTELLIGENCE.md`. Top 5 gaps: no gut depth, vague exercises without illustrations, too theoretical, no tracking tools, no citations. KU enrol confirmed (GATE 4).
-5. Then, and only then, verify PDF style with a test build BEFORE spawning writing agents (per workflow-order rule). **[NEXT ACTION]**
-
-**ALL 4 GATES CLEARED 2026-06-19. BLUEPRINT APPROVED. Writing agents may fire after Gate 5 (PDF style test build).**
+- **First line:** keep the existing introduction hook (verify it makes no "you'll fill in" promise).
+- **Last line (LOCKED, FACTS.md):** *"Keep your stack going, come back to Chapter 4 when life gets busy, and look after that nerve. It's quietly looking after you."* — still valid for prose (no contradiction). **One flag:** the surrounding back-matter paragraph currently calls the book "this workbook" twice; the writer must change "workbook" → "book" there, but the locked final line itself is unchanged.
 
 ---
 
-*Blueprint complete. Gates 1–4 cleared. Awaiting Gate 5 (PDF style test build) before writing agents fire.*
+## 13. Pre-Build Gate (rebuild)
+
+1. ~~Title locked~~ — new prose title recommended (TITLE-OPTIONS.md), **awaiting final Architect lock**.
+2. Blueprint declares PROSE + kdp_editions paperback+kindle + zero-blanks rule + worked-example method — **DONE (this file)**.
+3. FACTS.md title/subtitle/format language updated — **DONE (this session)**.
+4. Stage 03 health-writer converts all 13 files per §8A/§11 — **NEXT**.
+5. Validator INV-14 / format-eligibility.cjs must pass (zero blanks) before any Kindle build — **enforced downstream**.
+
+---
+
+*Prose-rebuild blueprint complete. Supersedes the workbook blueprint. FORMAT = PROSE. kdp_editions = paperback + kindle. ZERO blanks. Worked-example conversion method specified per section. Every competitive figure cites the 2026-06-19 harvest via COMPETITIVE-INTELLIGENCE.md (AGENT-RULES Rule 1); no numbers invented.*
