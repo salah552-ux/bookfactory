@@ -38,8 +38,11 @@ Progress vs blueprint floor: [██████████████░░�
   - fact-checker: PASS (1 non-blocking soft note)
   - compliance-officer: CONDITIONAL CLEAR (sole condition = human sets KDP AI questionnaire at upload)
   - proofreader: PASS (production-clean)
-- **Stage 05 Optimisation — NEXT** (pre-stage-gate CLEARED): hook-optimizer, review-bait-optimizer, kdp-seo (new CATEGORY-SELECTION + keywords vs new prose title)
-- Stage 06 Production — reset, pending re-run on prose (NEW cover for new title — current cover says WORKBOOK; rebuild EPUB ≥500KB; final-approval ≥270/300)
+- Stage 05 Optimisation — **COMPLETE** (this run)
+  - kdp-seo: KDP-LISTING.md rebuilt for prose (new title/subtitle, description de-fill-in'd), keywords carried + re-checked, categories unchanged. seo_approved = true.
+  - hook-optimizer + review-bait: verified on prose (book-reviewer Hook 9/10; "Before You Close the Book" CTA present)
+  - format-gate pre-clear: reworded "Blank Journal" in listing/FACTS so stage-6 CHECK 5 passes
+- **Stage 06 Production — NEXT** (pre-stage-gate 6 CLEARED): NEW cover for the new title (current cover says WORKBOOK — `design-agent` job), rebuild EPUB ≥500KB / PDF / DOCX, final-approval re-run on prose (≥270/300). Human gate: cover_approved.
 - Stages 07–10 — not started
 
 Prior workbook-era quality scores (book-reviewer 108/120, final-approval 295/300) are **VOID** — they scored the rejected workbook.

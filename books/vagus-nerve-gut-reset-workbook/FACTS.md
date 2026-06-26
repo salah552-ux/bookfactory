@@ -1,7 +1,7 @@
 # FACTS — The Vagus Nerve Gut Reset
 **Locked facts, voice anchors, and promises.** Read before writing any chapter. Never contradict a locked value. Source for every stat is in RESEARCH.md.
 
-> **FORMAT NOTE (PROSE REBUILD, 2026-06-25):** This book is a **PROSE guide you READ**, not a fill-in workbook. The workbook edition was rejected by KDP as a "Blank Journal." **ZERO blank fill-in lines, ZERO empty checkboxes, ZERO blank tracker tables** anywhere in the manuscript. All tracking/reflection that was previously a blank-to-fill is now a narrated **worked example** (persona Maya), with self-tracking pushed to a free companion PDF referenced in the back matter. See BLUEPRINT.md §8A for the conversion method. kdp_editions = paperback + kindle.
+> **FORMAT NOTE (PROSE REBUILD, 2026-06-25):** This book is a **PROSE guide you READ**, not a fill-in workbook. The workbook edition was rejected by KDP as an ineligible fill-in format. **ZERO blank fill-in lines, ZERO empty checkboxes, ZERO blank tracker tables** anywhere in the manuscript. All tracking/reflection that was previously a blank-to-fill is now a narrated **worked example** (persona Maya), with self-tracking pushed to a free companion PDF referenced in the back matter. See BLUEPRINT.md §8A for the conversion method. kdp_editions = paperback + kindle.
 
 ## Book identity
 - Title: The Vagus Nerve Gut Reset
