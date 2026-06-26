@@ -1,4 +1,4 @@
-# LAUNCH PLAN — The Vagus Nerve Gut Reset Workbook
+# LAUNCH PLAN — The Vagus Nerve Gut Reset
 **Series:** Fix Your Gut for Good — Book 4 | **Author:** S. A. Ibrahim
 **Stage:** 06→07 commercial-readiness package | Compiled 2026-06-21
 **Rule 1 note:** No projected sales figures, BSR estimates, or revenue claims appear here. All pricing/format decisions trace to BLUEPRINT §5 and the locked KDP-LISTING.md. Where live data is needed before action, it is flagged "needs live data" rather than invented.
@@ -15,7 +15,7 @@
 | Kindle list | $6.99 | 70% royalty tier ($2.99–$9.99). Below PB to drive Kindle + KU pickup. |
 | Kindle launch promo | see §3 | Free-day run, then steady at $6.99. |
 
-Steady-state: hold Kindle at $6.99 after the launch promo window. No permanent discount — the workbook's value sits in the daily structure, not in being cheap.
+Steady-state: hold Kindle at $6.99 after the launch promo window. No permanent discount — the book's value sits in the daily structure, not in being cheap.
 
 ## 3. Free promotion / Countdown days (planned)
 KDP Select gives 5 free-promo days OR Kindle Countdown per 90-day term. Plan:
@@ -39,7 +39,7 @@ A+ Content to be built from the locked HTML description and cover system (not ye
 - Design DNA: locked navy / cream / gold series palette (COVER-BRIEF.md). Clinical-calm, not spa.
 
 ## 6. Author Central bio (long version)
-> S. A. Ibrahim writes practical, evidence-led health guides for people who are tired of being handed vague advice and expensive supplements. The *Fix Your Gut for Good* series grew out of a simple conviction: that ordinary people deserve to understand the mechanisms behind their symptoms, in plain English, with every claim traceable to a real source — and without anything being sold to them along the way. The books are educational companions, written to be read alongside (never instead of) professional medical care; the author holds no clinical credentials and offers no medical advice. *The Vagus Nerve Gut Reset Workbook* is Book 4 in the series — a four-week, five-minutes-a-day program for calming the gut-brain axis.
+> S. A. Ibrahim writes practical, evidence-led health guides for people who are tired of being handed vague advice and expensive supplements. The *Fix Your Gut for Good* series grew out of a simple conviction: that ordinary people deserve to understand the mechanisms behind their symptoms, in plain English, with every claim traceable to a real source — and without anything being sold to them along the way. The books are educational companions, written to be read alongside (never instead of) professional medical care; the author holds no clinical credentials and offers no medical advice. *The Vagus Nerve Gut Reset* is Book 4 in the series — a four-week, five-minutes-a-day program for calming the gut-brain axis.
 
 ## 7. Series consistency (documented)
 - This title is **Book 4** of *Fix Your Gut for Good* (SERIES-FACTS.md, byte-identical series field "Fix Your Gut for Good").

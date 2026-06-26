@@ -62,3 +62,22 @@ UPLOAD INSTRUCTIONS
 8. Submit — allow 24–72 hours for review.
 
 NOTE: This is the final automated checkpoint. Human upload gates remain (cover_approved, final_approval_passed, ai_questionnaire_confirmed, published) per pipeline-state.json — set them at upload time.
+
+---
+
+## PROSE REBUILD RE-RUN — 2026-06-26 (pipeline-orchestrator, post new-cover)
+
+**VERDICT: APPROVED — 289/300** (threshold 270). No dimension below its 60% floor; compliance hard gate PASSED. Supersedes the workbook-era 295 (which audited the rejected fill-in workbook).
+
+| Dim | Score | Evidence |
+|-----|-------|----------|
+| D1 Content & Manuscript (75) | 70 | Prose complete (23,403 words); book-reviewer 110/120 Grade A; fact-check PASS (Ch.1 re-verified vs RESEARCH.md); proofread PASS; Maya arc coherent (21→13); Week 3 deepest. −5: word count below BLUEPRINT §4 band (Architect-accepted). |
+| D2 Title/Subtitle/Keywords (50) | 50 | New prose title "The Vagus Nerve Gut Reset" locked; subtitle relocked; 7 keywords re-checked vs new title (all <50 chars, no banned-format word, no "30-day"). |
+| D3 Description/Listing (60) | 58 | HTML description rewritten for prose (no "workbook"/"pen"/"score sheet"); all 5 competitive gaps addressed; 3 categories valid. −2: minor metadata strictness. |
+| D4 Compliance & Format — HARD GATE (55) | 55 | format-eligibility.cjs = KINDLE-ELIGIBLE (0 blanks); medical disclaimer present; in-book AI disclosure ABSENT (correct); adjunct health framing; cold-exposure safety lines; no false credentials. HARD GATE PASS. |
+| D5 Launch / Marketing readiness (35) | 32 | LAUNCH-PLAN.md present + de-"workbook"ed (KU decision, pricing, free-promo, ARC plan, A+ brief, author bio); Rule-1 clean (no invented numbers). −3: A+ content not yet built (Stage 10 by design). |
+| D6 Metadata / Package (25) | 24 | kdp-metadata.txt rewritten to new title + corrected keyword #5; PACKAGE-MANIFEST.md updated; cover KDP 8-point ALL PASS + COVER-PSYCHOLOGY 7/7; all reports present. −1: paperback wrap cover still TODO. |
+
+**Cover:** new prose-title cover (no "Workbook"), KDP 8-point ALL PASS, COVER-PSYCHOLOGY 7/7, embedded in EPUB (808,794 bytes ≥500KB). Source upscaled 1.6× (non-blocking note).
+
+**No legal/safety/format blockers.** Remaining items are HUMAN gates only: cover_approved, final_approval_passed, ai_questionnaire_confirmed, published.
