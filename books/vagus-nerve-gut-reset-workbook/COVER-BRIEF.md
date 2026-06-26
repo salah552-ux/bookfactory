@@ -1,8 +1,8 @@
-# Cover Brief — The Vagus Nerve Gut Reset Workbook
+# Cover Brief — The Vagus Nerve Gut Reset
 **Series:** Fix Your Gut for Good — Book 4
 **Author:** S.A. Ibrahim
-**Stage:** 06 — Production | kdp-cover-designer | 2026-06-20
-**Status:** Brief + generation-ready ChatGPT/DALL-E prompt. Awaiting Architect generation.
+**Stage:** 06 — Production | kdp-cover-designer | brief 2026-06-20, PROSE-REBUILD title update 2026-06-26
+**Status:** REGENERATION REQUIRED. The shipped cover (`exports/final/cover-kdp.jpg`) still reads "GUT RESET WORKBOOK" with the word "WORKBOOK" baked into the AI art — it MUST be regenerated for the new prose title "The Vagus Nerve Gut Reset" (drop "WORKBOOK"). All text below updated to the new title. Regenerate via `node scripts/generate-cover.mjs vagus-nerve-gut-reset-workbook` (needs OPENAI_API_KEY) or the design tools. Everything else on the cover (4-WEEK hook, gut-brain motif, CALM THE GUT-BRAIN AXIS, DAILY 5-MINUTE EXERCISES badge, subtitle, author) stays valid.
 
 ---
 
@@ -81,7 +81,7 @@ Books 1 and 3 each took a different warm accent.
    with a number; ours is the dial of the motif so it reads first at thumbnail.
 2. **"VAGUS NERVE"** — largest cream serif keyword block; the search term the
    right reader is typing.
-3. **"GUT RESET WORKBOOK"** — completes the title; "WORKBOOK" signals the format.
+3. **"GUT RESET"** — completes the title (no "WORKBOOK" — this is a prose book; format/genre is now signalled by the "DAILY 5-MINUTE EXERCISES" badge, the "4-WEEK" hook, and the faint daily-log grid texture, NOT by the word "workbook").
 4. **Gut-brain nerve-line motif** (centre) — a single clean cream/teal line from a
    small brain/head form curving down the body to a calm gut/belly form; the
    visual proof of the gut-brain-axis angle no competitor shows.
@@ -117,7 +117,7 @@ calm-teal-background trap and the COVER-PSYCHOLOGY trap list.
 | # | Criterion | Score | Why |
 |---|---|---|---|
 | 1 | **Thumbnail readability** | PASS | Navy/cream max contrast; "VAGUS NERVE" in Libre Baskerville Bold + the "4-WEEK" dial decode at 100px. |
-| 2 | **Genre signal** | PASS | "WORKBOOK" in title + daily-log grid texture + "DAILY 5-MINUTE EXERCISES" badge = unmistakably a health workbook. |
+| 2 | **Genre signal** | PASS | "4-WEEK" hook + "DAILY 5-MINUTE EXERCISES" badge + faint daily-log grid texture = unmistakably a practical daily health program (prose, not a fill-in workbook). |
 | 3 | **Audience signal** | PASS | "GUT-BRAIN AXIS" + gut motif speaks directly to the IBS/bloating/gut reader (women 35–60); not the trauma/anxiety register Bennett owns. |
 | 4 | **Colour psychology** | PASS | Calm-but-authoritative: navy = trust/depth, cream = warmth, muted teal accent = nervous-system calm. Not clinical-cold, not woo-spa. |
 | 5 | **Typography hierarchy** | PASS | Number hook → keyword "VAGUS NERVE" → format → differentiator → badge, in descending size. Title dominant, subtitle readable. |
@@ -132,7 +132,7 @@ actual rendered image before the human gate.
 ## 8. ChatGPT / DALL-E image generation prompt (copy-paste ready)
 
 ```
-A bold, editorial, illustration-led book cover for a health workbook, portrait
+A bold, editorial, illustration-led book cover for a practical health guide, portrait
 orientation, 1600 x 2560 pixels, aspect ratio 1.6:1, sRGB colour. Flat, clean,
 confident design like a modern nonfiction jacket — NOT a wellness, spa, or pastel
 aesthetic.
@@ -157,7 +157,7 @@ TYPOGRAPHY (all crisp, legible, centred):
 - Top, small, gold (#C8A15A), wide letter-spacing, all caps: FIX YOUR GUT FOR GOOD
 - The hook "4-WEEK" large in gold, condensed sans-serif, below the series line
 - Below that, very large cream (#F3EEE3) serif all caps (Libre Baskerville Bold
-  style), stacked on two lines: "VAGUS NERVE" then "GUT RESET WORKBOOK"
+  style), stacked on two lines: "VAGUS NERVE" then "GUT RESET" (NO "WORKBOOK")
 - A small calm-teal (#3E9B8E) all-caps line: "CALM THE GUT-BRAIN AXIS"
 - A small gold sticker-style rounded badge with cream text: "DAILY 5-MINUTE
   EXERCISES"
