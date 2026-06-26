@@ -32,9 +32,14 @@ Progress vs blueprint floor: [██████████████░░�
 - Stage 00 Intelligence — complete
 - Stage 01 Research — complete
 - Stage 02 Planning — complete (new prose title + prose BLUEPRINT approved 2026-06-26)
-- **Stage 03 Writing — COMPLETE (prose rewrite, this run)**
-- **Stage 04 Quality — NEXT** (re-run fact-checker, book-reviewer, compliance Domain 7, proofreader on the prose)
-- Stages 05 Optimisation / 06 Production — reset, pending re-run on prose
+- Stage 03 Writing — **COMPLETE** (prose rewrite)
+- Stage 04 Quality — **COMPLETE** (all 4 agents re-run on prose, this run)
+  - book-reviewer: PASS 110/120 Grade A
+  - fact-checker: PASS (1 non-blocking soft note)
+  - compliance-officer: CONDITIONAL CLEAR (sole condition = human sets KDP AI questionnaire at upload)
+  - proofreader: PASS (production-clean)
+- **Stage 05 Optimisation — NEXT** (pre-stage-gate CLEARED): hook-optimizer, review-bait-optimizer, kdp-seo (new CATEGORY-SELECTION + keywords vs new prose title)
+- Stage 06 Production — reset, pending re-run on prose (NEW cover for new title — current cover says WORKBOOK; rebuild EPUB ≥500KB; final-approval ≥270/300)
 - Stages 07–10 — not started
 
-Prior workbook-era quality scores (book-reviewer 108/120, final-approval 295/300) are **VOID** — they scored the rejected workbook. Stage 04 regenerates them on the prose.
+Prior workbook-era quality scores (book-reviewer 108/120, final-approval 295/300) are **VOID** — they scored the rejected workbook.

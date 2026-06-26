@@ -33,3 +33,14 @@ Run type: Remediation — formalising the original clean proofread pass into the
 - Chapters with most issues: None
 
 **Verdict:** CLEAN. The manuscript meets the Fix Your Gut for Good house style on spelling, punctuation, number formatting, capitalisation, and hyphenation. No line-level errors required correction. This confirms and formalises the original pipeline proofread result.
+
+---
+
+## PROSE REBUILD RE-RUN — 2026-06-26 (pipeline-orchestrator)
+
+**Verdict: PASS — production-clean.**
+
+- **Automated sweep across all 13 files:** 0 placeholders/TODO/lorem (the single intentional `[COMPANION-PDF LINK]` in back matter is the designed downstream insertion point), 0 doubled words, 0 double spaces, 0 banned phrases.
+- **Read passes:** how-to-read, Ch.1, Ch.2 baseline, Week 1, Week 2, Week 4, appendices, back matter read in full — British spelling, contractions, em-dash parentheticals, en-dash ranges, sentence-law cadence all consistent; Maya vignettes vary their openers (no two days alike).
+- **Fixes applied this run (carried from book-reviewer + orchestrator):** Week 2 Day 11 "Baseline page" continuity slip corrected; appendix "a pen" residual removed; Week 3 Day 19 three write-prompts converted to mental-noticing + companion pointer. Post-fix re-scan: no on-page write-prompts remain (only the intentional off-page companion pointer).
+- **Tables:** all tracker tables are filled Maya examples, Pandoc pipe-table compatible (blank line before each table preserved).

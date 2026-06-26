@@ -302,3 +302,15 @@ No REMOVE items. No invented studies. No fabricated statistics.
 **3. What a peer reviewer at a major medical journal would say:** They would note this is a consumer self-help book, not a clinical paper, and judge it on whether it overclaims or risks reader harm — and on both counts it holds up. They would approve the IBS framing (correct Rome IV classification, no "all in your head"), the adjunct-not-replacement positioning, the cold-exposure cardiovascular gating, and the red-flag "see a doctor" list. They would specifically commend the HRV handling, which actively teaches readers NOT to over-interpret a consumer-device number — a discipline most popular books abandon. Their only margin notes would be that the laryngeal/gargle/voo mechanisms rest on anatomy plus experience rather than outcome trials (which the book already signals by phrasing them as "many people feel" rather than "studies prove") and that polyvagal language, even translated, carries more theoretical weight than the prose admits. None of these rise to a print-blocker. The book is accurate, well-hedged, and safe to publish.
 
 **VERDICT: PASS.** Maya's illustrative numbers are correctly framed as narrative (not data) throughout; two internal-consistency fixes applied; one soften already satisfied in-text; all safety lines present.
+
+---
+
+## PROSE REBUILD RE-RUN — 2026-06-26 (pipeline-orchestrator)
+
+**Verdict: PASS.** Re-verified against the prose manuscript after the fill-in→prose conversion.
+
+- **Scope of re-check:** Chapter 1 (the densest science chapter) re-verified claim-by-claim against RESEARCH.md; FACTS.md locked stats spot-checked across chapters; the prose conversion changed fill-in apparatus to narrative only — no physiological claim, exercise spec, or safety line was altered (health-writer logs + book-reviewer confirm).
+- **Ch.1 claims all map to RESEARCH.md:** ~80% afferent / ~20% efferent (Agostoni 1957, replicated); 200–600M enteric neurons (Furness 2012); vagus = principal parasympathetic nerve / longest cranial nerve (Berthoud & Neuhuber 2000); inflammatory reflex + cholinergic anti-inflammatory pathway (Tracey, *Nature*, 2002 — author/year/journal correct); adjunct-not-replacement framing (RESEARCH safety caveats).
+- **Hedging intact:** "by the best current estimates", "associated with", "supports" — no cure/causation overreach. Early-evidence items (OM-chant pilot, microbiome-vagus animal model) remain flagged as such.
+- **Maya's numbers (Gut Score 21→13, RHR 74→68, daily 0–10 ratings):** illustrative narrative for one example reader, framed as such throughout — NOT study/clinical data (AGENT-RULES Rule 1 carve-out). No invented statistics.
+- **1 SOFT note (non-blocking):** "more [enteric neurons] than you have in your spinal cord" (02-chapter-01) is a widely-repeated gut-brain popular-science claim but is not explicitly sourced in RESEARCH.md. Defensible in genre; flagged for awareness, not corrected.

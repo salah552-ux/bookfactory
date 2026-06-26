@@ -114,3 +114,17 @@ Same FTC standards met. If sold direct to EU customers, a VAT mechanism and a st
 ═══════════════════════════════════════════════════
 END OF REPORT — compliance-officer, 2026-06-21
 ═══════════════════════════════════════════════════
+
+---
+
+## PROSE REBUILD RE-RUN — 2026-06-26 (pipeline-orchestrator)
+
+**Verdict: CONDITIONAL CLEAR** (same single condition as before: human sets the KDP AI questionnaire at upload).
+
+- **Domain 7 — Kindle format eligibility (the rejection cause):** PASS. `format-eligibility.cjs` = KINDLE-ELIGIBLE (0 blank lines / 0 checkboxes / 0 blank tracker rows / 0 banned-format keywords). The fill-in apparatus that triggered the KDP "Blank Journal" rejection is gone; kdp_editions kindle:true is now valid.
+- **Medical disclaimer:** PRESENT (copyright page + reinforced in how-to-read, Ch.2, Week 3, Ch.4, appendices).
+- **In-book AI disclosure:** correctly ABSENT (grep zero) — per house rule, AI disclosure is the KDP questionnaire only, never inside the book.
+- **Health claims:** PASS — adjunct/"supports" framing, no cure/diagnosis claims; "not a substitute for medical care" stated; IBS framed as needing clinician diagnosis.
+- **Safety lines:** PRESENT — cold-exposure cardiovascular/pregnancy caution at every cold exercise (Week 1 Day 5, Week 4 Day 24) and in RESEARCH scope caveats.
+- **Credentials:** none falsely claimed (author = pen name, "no clinical credentials"). Imprint/trademark gate N/A (pen name, no new imprint).
+- **Banned voice phrases** ("healing journey"/"clean eating"/"wellness"): none.
