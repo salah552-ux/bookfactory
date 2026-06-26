@@ -153,11 +153,13 @@ realistic organs, no veins, no medical textbook detail — a clean modern line m
 THE TIME HOOK: a bold "4-WEEK" rendered high on the cover in heavy condensed
 sans-serif (like Bebas Neue), gold (#C8A15A), as the dominant number hook.
 
-TYPOGRAPHY (all crisp, legible, centred):
+TYPOGRAPHY (all crisp, legible, centred) — render this EXACT text, nothing else:
 - Top, small, gold (#C8A15A), wide letter-spacing, all caps: FIX YOUR GUT FOR GOOD
 - The hook "4-WEEK" large in gold, condensed sans-serif, below the series line
 - Below that, very large cream (#F3EEE3) serif all caps (Libre Baskerville Bold
-  style), stacked on two lines: "VAGUS NERVE" then "GUT RESET" (NO "WORKBOOK")
+  style), stacked on two lines: "VAGUS NERVE" on the first line, "GUT RESET" on the
+  second line. The title is exactly "VAGUS NERVE GUT RESET" — do NOT add the word
+  "Workbook" or any other word.
 - A small calm-teal (#3E9B8E) all-caps line: "CALM THE GUT-BRAIN AXIS"
 - A small gold sticker-style rounded badge with cream text: "DAILY 5-MINUTE
   EXERCISES"
