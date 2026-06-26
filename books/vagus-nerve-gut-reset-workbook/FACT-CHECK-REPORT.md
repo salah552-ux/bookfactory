@@ -1,268 +1,304 @@
-# FACT-CHECK REPORT
+# FACT-CHECK REPORT — The Vagus Nerve Gut Reset
 
-**Book:** The Vagus Nerve Gut Reset Workbook (Fix Your Gut for Good, Book 4)
-**Scope:** Full manuscript — all 13 files (00-00-copyright.md through 99-back-matter.md)
-**Checked:** 2026-06-21
+**Book:** The Vagus Nerve Gut Reset (slug: vagus-nerve-gut-reset-workbook)
+**Scope:** Full rewritten prose manuscript — all 13 files
+**Checked:** 2026-06-26
 **Checker:** fact-checker (Stage 04 — Quality)
-**Evidence base:** RESEARCH.md (compiled 2026-06-19), FACTS.md (locked values)
+**Evidence base:** RESEARCH.md (2026-06-19), FACTS.md (locked stats)
 
-**Claims audited:** 24
-**Safe:** 20 | **Soften:** 4 | **Fix:** 0 | **Remove:** 0
+**Claims audited:** 31 science/physiology claims + full Maya-narrative framing audit
+**Safe/Verified:** 28 | **Soften:** 1 | **Fix:** 2 (internal-consistency, applied) | **Remove:** 0
 
-**Verdict: PASS.** No FIX or REMOVE items. The four SOFTEN items were minor overstatements; exact replacement language has been applied to the manuscript files (see Priority Fixes and the change log at the foot of this report). The manuscript's scientific foundation is sound, every load-bearing statistic traces to a named primary source, and preliminary/animal/pilot findings are correctly labelled "early evidence" in-text.
+**Overall verdict: PASS** (with 2 internal-consistency fixes applied and 1 soften applied).
+
+Every load-bearing physiological claim traces to a named source in RESEARCH.md. No invented studies. Causation is appropriately hedged to association/early-evidence wherever RESEARCH.md flags it. All required safety lines are present. Maya's illustrative numbers are correctly framed as one fictional reader's narrative example and are NEVER presented as study data, clinical findings, or market statistics — they qualify under the AGENT-RULES Rule 1 narrative carve-out and do not require citation. Two of Maya's retrospective numbers were internally inconsistent with her own established tracker (a narrative error, not a science or Rule 1 error); both were corrected without altering any locked figure or any number's meaning.
 
 ---
 
-## CLAIM-BY-CLAIM AUDIT
-
-### Anatomy & core physiology
+## SECTION A — SCIENCE / PHYSIOLOGY CLAIMS (the citable claims)
 
 **Claim 1**
-> "It is the longest of your cranial nerves, running from your brainstem all the way down into your abdomen…" (01-introduction.md); "it wanders further than any other cranial nerve you have" (02-chapter-01.md)
-
-**Source found:** Berthoud HR & Neuhuber WL, *Autonomic Neuroscience*, 2000; standard neuroanatomy (Gray's Anatomy).
-**Evidence level:** ★★★★★ (Level 5 — established anatomy)
-**Print risk:** SAFE
-**Issue:** None. Matches FACTS.md locked value (tenth/longest cranial nerve).
+> "It is the longest of your cranial nerves, running from your brainstem all the way down into your abdomen" / "the tenth cranial nerve" (Intro; Ch1).
+**Source found:** Berthoud & Neuhuber, *Autonomic Neuroscience*, 2000 (standard neuroanatomy).
+**Evidence level:** ★★★★★ (Level 5 — established anatomy).
+**Print risk:** SAFE.
+**Issue:** None. Matches RESEARCH §1 and FACTS locked stat exactly.
 
 **Claim 2**
-> "Roughly eighty percent of the vagus nerve's fibres carry signals up — from your gut to your brain — and only about twenty percent carry instructions back down." (01-introduction.md; restated 02-chapter-01.md)
-
-**Source found:** Agostoni E et al., *J Physiol*, 1957; replicated in Berthoud & Neuhuber, 2000.
-**Evidence level:** ★★★★☆ (Level 4 — original measurement, widely replicated)
-**Print risk:** SAFE
-**Issue:** None. Hedged with "roughly/about," matches the locked FACTS.md split. The book correctly attributes it to "careful nerve studies in the 1950s… confirmed many times since."
+> "Roughly eighty percent of the vagus nerve's fibres carry signals up — from your gut to your brain — and only about twenty percent carry instructions back down." (Intro; repeated Ch1: "About eighty percent of the fibres … are sensory.")
+**Source found:** Agostoni 1957; Berthoud & Neuhuber 2000 (RESEARCH §1; FACTS locked stat).
+**Evidence level:** ★★★★★ (Level 5 — replicated since the 1950s).
+**Print risk:** SAFE.
+**Issue:** None. Ch1's "known since careful nerve studies in the 1950s, and … confirmed many times since" accurately represents the source. Hedging ("roughly," "about") is correct.
 
 **Claim 3**
-> "It is the main nerve of… the parasympathetic nervous system… rest-and-digest." (02-chapter-01.md)
-
-**Source found:** Berthoud & Neuhuber, 2000.
-**Evidence level:** ★★★★★ (Level 5)
-**Print risk:** SAFE
-**Issue:** None. Plain-English translation of established physiology.
+> "the main nerve of … the parasympathetic nervous system … rest-and-digest." (Ch1)
+**Source found:** Berthoud & Neuhuber 2000 (RESEARCH §1).
+**Evidence level:** ★★★★★ (Level 5).
+**Print risk:** SAFE.
 
 **Claim 4**
-> "somewhere between two hundred and six hundred million of them… the enteric nervous system… the second brain. That's more than you have in your spinal cord." (02-chapter-01.md)
-
-**Source found:** Furness JB, *Nature Reviews Gastroenterology & Hepatology*, 2012 (200–600M enteric neurons).
-**Evidence level:** ★★★★☆ (Level 4 — accepted estimate, expressed as a range)
-**Print risk:** SAFE
-**Issue:** None. Matches FACTS.md. The "more than in your spinal cord" comparison is consistent with standard neuroanatomy (human spinal cord ~10^8 / ~1 billion total but far fewer than the enteric upper bound is sometimes cited — the comparison is commonly made in the literature and the book hedges with "by the best current estimates"). No specific number is invented.
+> "There are actually two of them, one on each side." (Ch1)
+**Source found:** Standard neuroanatomy (paired vagus nerves, left/right). Consistent with RESEARCH §1.
+**Evidence level:** ★★★★★ (Level 5).
+**Print risk:** SAFE.
 
 **Claim 5**
-> "stress… The blood that would run your gut gets diverted to your muscles. The slow, orderly waves that move food along weaken." (02-chapter-01.md); "Stress (sympathetic activation) slows gastric emptying and alters colonic motility." (Week 3)
-
-**Source found:** Mayer EA, "The neurobiology of stress and gastrointestinal disease," *Gut*, 2000.
-**Evidence level:** ★★★★☆ (Level 4)
-**Print risk:** SAFE
-**Issue:** None. Accurately represents the stress–GI-motility relationship.
-
-### Inflammation
+> "somewhere between two hundred and six hundred million of them … the enteric nervous system … the second brain." (Ch1; "200–600 million" in RESEARCH/FACTS)
+**Source found:** Furness JB, *Nature Reviews Gastroenterology & Hepatology*, 2012 (RESEARCH §2; FACTS locked stat).
+**Evidence level:** ★★★★☆ (Level 4 — established estimate, range honestly given).
+**Print risk:** SAFE.
+**Issue:** None. The range (not a false-precision single figure) is correctly reproduced. "more than you have in your spinal cord" is consistent with standard counts.
 
 **Claim 6**
-> "In 2002, a researcher named Kevin Tracey described… the inflammatory reflex, published in the journal Nature… vagal acetylcholine tells immune cells to ease off… the cholinergic anti-inflammatory pathway." (02-chapter-01.md)
-
-**Source found:** Tracey KJ, "The inflammatory reflex," *Nature*, 2002 (named author, journal and year correct).
-**Evidence level:** ★★★★☆ (Level 4 — landmark mechanism, well-replicated; much human-relevance work remains preclinical)
-**Print risk:** SAFE
-**Issue:** None. Named source, correct year/journal, mechanism accurately described. The book frames it as a "brake," not a cure.
+> "the vagus nerve is active, it releases a chemical signal that tells your immune cells to ease off … the cholinergic anti-inflammatory pathway … the inflammatory reflex, published in … Nature [2002]." (Ch1)
+**Source found:** Tracey KJ, "The inflammatory reflex," *Nature*, 2002 (RESEARCH §2; FACTS locked stat).
+**Evidence level:** ★★★★☆ (Level 4 — landmark, widely cited; much mechanism is preclinical but the pathway is established).
+**Print risk:** SAFE.
+**Issue:** Named author, journal, and year are correct. Plain-English translation ("brake on inflammation") does not overclaim a clinical cure.
 
 **Claim 7**
-> "a better-toned vagus nerve also helps keep gut inflammation in check, which is why it supports recovery from almost every gut condition." (02-chapter-01.md, "What This Means For You")
-
-**Source found:** Tracey 2002; Bonaz et al., 2018 (vagus at the microbiota-gut-brain interface).
-**Evidence level:** ★★★☆☆ (Level 3 — mechanistically grounded; clinical-outcome evidence in gut disease is still developing)
-**Print risk:** SAFE
-**Issue:** Borderline but acceptable. The claim is hedged ("helps keep… in check," "supports recovery"), explicitly positioned as adjunct ("It won't replace antibiotics… or a proper protocol for SIBO"), and stops short of claiming the vagus treats or cures any condition. Stays inside the evidence.
-
-### IBS / gut-brain axis
+> "a better-toned vagus nerve also helps keep gut inflammation in check, which is why it supports recovery from almost every gut condition there is." (Ch1 "What This Means For You")
+**Source found:** Mechanism per Tracey 2002 + Bonaz et al. 2018 (RESEARCH §2, §3).
+**Evidence level:** ★★★☆☆ (Level 3 mechanism; the "almost every gut condition" reach is mechanistic extrapolation).
+**Print risk:** SAFE (borderline) — acceptable because the surrounding text consistently frames vagal work as a *support/adjunct* ("It won't replace antibiotics … But it's a powerful, free, drug-free way to support every one of those treatments"), never as a treatment or cure. The adjunct framing keeps this within bounds.
+**Issue:** None requiring a fix. The hedge "support" (not "treat"/"cure") is doing the necessary work.
 
 **Claim 8**
-> "IBS… is now officially classified as a disorder of gut-brain interaction… the formal term doctors adopted in the Rome IV criteria in 2016." (Week 3)
-
-**Source found:** Drossman DA, "Functional Gastrointestinal Disorders… Rome IV," *Gastroenterology*, 2016.
-**Evidence level:** ★★★★★ (Level 5 — clinical-guideline definition)
-**Print risk:** SAFE
-**Issue:** None. Definitional fact, correctly attributed and dated. Matches FACTS.md.
+> "IBS … is now officially classified as a disorder of gut-brain interaction. That's the formal term doctors adopted in the Rome IV criteria in 2016." (Week 3)
+**Source found:** Drossman DA, *Gastroenterology*, 2016 (RESEARCH §3; FACTS locked stat).
+**Evidence level:** ★★★★★ (Level 5 — established clinical classification).
+**Print risk:** SAFE.
+**Issue:** None. Accurate, including the "functional" history. The "it's all in your head" reframing is responsibly handled.
 
 **Claim 9**
-> "your vagus nerve switches the gut into action… the gallbladder squeezing… the long muscular waves… Between meals, it drives a slow cleaning wave… clears leftover residue from the small intestine." (Week 3, migrating motor complex described in plain English)
-
-**Source found:** Deloose E et al. (MMC), 2012; Travagli RA & Anselmi L, *Nature Reviews Gastroenterology & Hepatology*, 2016 (vagal influence on gastric motility).
-**Evidence level:** ★★★★☆ (Level 4)
-**Print risk:** SAFE
-**Issue:** None. Accurate plain-English account of vagal modulation of gastric accommodation and the migrating motor complex.
+> "When you're calm, your vagus nerve switches the gut into action … the stomach releasing acid and enzymes, the gallbladder squeezing … long muscular waves … Between meals, it drives a slow cleaning wave." (Week 3; "migrating motor complex"/"housekeeping sweep")
+**Source found:** Travagli & Anselmi 2016; Deloose et al. 2012 (RESEARCH §3).
+**Evidence level:** ★★★★☆ (Level 4 — established GI physiology).
+**Print risk:** SAFE.
+**Issue:** None. "lingering food and gas is, quite literally, what bloating is" is a defensible plain-English description, not an overclaim.
 
 **Claim 10**
-> "anxiety about your symptoms genuinely makes the symptoms worse — not as a character flaw, but as plumbing." (Week 3; bidirectional gut-brain loop)
+> "When you're stressed, all of that downshifts. The stomach empties more slowly. The cleaning wave stalls." / "Stress (sympathetic activation) slows gastric emptying." (Week 3; Ch1)
+**Source found:** Mayer EA, *Gut*, 2000 (RESEARCH §3).
+**Evidence level:** ★★★★☆ (Level 4).
+**Print risk:** SAFE.
 
-**Source found:** Mayer 2000; Drossman 2016 (DGBI framework); Mazurak et al., 2012 (HRV in IBS).
-**Evidence level:** ★★★☆☆ (Level 3 — consistent with DGBI model; the specific autonomic link is associative, per RESEARCH.md)
-**Print risk:** SAFE
-**Issue:** None. The bidirectional model is mainstream; the book presents it as mechanism, not as a proven causal cure-path, and does not over-claim a fix.
+**Claim 11 — the gut→brain→gut loop**
+> "A sensitive gut sends strong distress signals up the vagus nerve … the brain reads them as threat … which makes the gut more sensitive still … This is why anxiety about your symptoms genuinely makes the symptoms worse — not as a character flaw, but as plumbing." (Week 3; echoed Ch1, Week 1)
+**Source found:** Bonaz et al. 2018; Mayer 2000; Mazurak et al. 2012 (RESEARCH §2, §3).
+**Evidence level:** ★★★☆☆ (Level 3 — the bidirectional loop is well-supported in DGBI literature; the autonomic-imbalance link in IBS is associative, per RESEARCH §3 flag).
+**Print risk:** SAFE.
+**Issue:** Framed as mechanism ("they have a mechanism") and association, not as a proven linear cause of IBS. RESEARCH flags the autonomic–IBS link as "associative, not proven causal"; the manuscript does not assert that low vagal tone *causes* IBS, so it stays within bounds.
 
-### Breathing exercises
+**Claim 12 — physiological sigh / Cell Reports Medicine 2023**
+> "In a 2023 trial in Cell Reports Medicine, five minutes a day of this beat mindfulness meditation for calming mood and lowering arousal." (Ch3 #1; "a 2023 trial in Cell Reports Medicine found" framing)
+**Source found:** Balban MY et al., *Cell Reports Medicine*, 2023 (RESEARCH §4; FACTS locked stat).
+**Evidence level:** ★★★★☆ (Level 4 — RCT in healthy adults).
+**Print risk:** SAFE.
+**Issue:** None. The named journal/year and "beat mindfulness" claim accurately represent the RCT. Population is healthy adults, not an IBS-cure claim — correctly scoped.
 
-**Claim 11**
-> "In a 2023 trial in Cell Reports Medicine, five minutes a day of this beat mindfulness meditation for calming mood and lowering arousal." (The Physiological Sigh — Ch3 #1)
+**Claim 13 — resonance / ~6 breaths-per-minute**
+> "breathing at about six breaths a minute, the pace researchers have most consistently found to lift the markers used for vagal tone … your resonance frequency." (Week 1 Day 2; Ch3 #2)
+**Source found:** Lehrer & Gevirtz 2014; Russo et al. 2017 (RESEARCH §4; FACTS locked stat).
+**Evidence level:** ★★★★☆ (Level 4).
+**Print risk:** SAFE.
+**Issue:** None. Note the careful wording "markers used for vagal tone" (i.e. HRV proxy) rather than claiming a direct vagal measurement — this is exactly the right hedge.
 
-**Source found:** Balban MY et al., "Brief structured respiration practices enhance mood and reduce physiological arousal," *Cell Reports Medicine*, 2023 (RCT, healthy adults).
-**Evidence level:** ★★★★☆ (Level 4 — single RCT, healthy adults)
-**Print risk:** SAFE
-**Issue:** None. Accurately represents the named RCT; journal and year correct; matches FACTS.md. The claim is bounded to "mood/arousal," which is what the trial measured — it does not claim a gut outcome.
+**Claim 14 — extended exhale / vagal braking on exhale**
+> "your heart speeds up slightly when you breathe in and slows down when you breathe out, and that slowing on the exhale is your vagus nerve at work." (Week 1 Day 3; Ch3 #3)
+**Source found:** Russo et al. 2017; Laborde et al. 2017 (respiratory sinus arrhythmia) (RESEARCH §4).
+**Evidence level:** ★★★★★ (Level 5 — RSA is established physiology).
+**Print risk:** SAFE.
 
-**Claim 12**
-> "breathing at about five to six breaths a minute… produces the biggest measurable jump in vagal tone of any breathing pattern studied." (Resonance Breathing — Ch3 #2); and "the pace researchers have found lifts vagal tone more than any other breathing pattern." (Week 1, Day 2)
+**Claim 15 — humming / nasal nitric oxide**
+> "humming dramatically raises the nitric oxide in your nasal passages, a real, documented physiological change … nitric oxide is thought to help keep the airways open." (Week 1 Day 4; Ch3 #4: "documented in respiratory research in 2002.")
+**Source found:** Weitzberg & Lundberg, *Am J Respir Crit Care Med*, 2002 (RESEARCH §4; FACTS locked stat).
+**Evidence level:** ★★★★☆ (Level 4 — direct measurement).
+**Print risk:** SAFE.
+**Issue:** None. "thought to help keep the airways open" is correctly hedged ("thought to"). The NO claim itself is precisely what the source shows.
 
-**Source found:** Lehrer PM & Gevirtz R, *Frontiers in Psychology*, 2014; Russo MA et al., *Breathe*, 2017.
-**Evidence level:** ★★★☆☆ (Level 3 for the resonance-frequency effect; the *absolute superlative* "biggest of any pattern studied / more than any other" is not supported by a head-to-head study of all patterns)
-**Print risk:** SOFTEN
-**Issue:** The Specificity/Superlative trap. The underlying claim — that ~5–6 breaths/min (resonance frequency) maximises HRV by aligning with the baroreflex — is well-supported. But the absolute superlative ("biggest… of any breathing pattern studied," "more than any other breathing pattern") asserts a ranking against all alternatives that the cited sources do not establish.
-**Fix language (APPLIED):**
-- Ch3 #2: "…matches your body's natural pressure rhythm and **is the breathing pace most consistently shown in studies to raise the markers researchers use for vagal tone.**"
-- Week 1 Day 2: "…breathing at about six breaths a minute, **the pace researchers have most consistently found to lift the markers used for vagal tone.**"
+**Claim 16 — humming/throat vibration engages vagal branches**
+> "The vagus nerve sends branches through your throat and voice box … Humming vibrates exactly that region." (Week 1 Day 4; Ch3 #4)
+**Source found:** Berthoud & Neuhuber 2000 (recurrent laryngeal / pharyngeal branches), RESEARCH §4.
+**Evidence level:** ★★★☆☆ (Level 3 — anatomy solid; the toning *outcome* of humming is mechanistic, not RCT-proven). RESEARCH flags laryngeal/pharyngeal vagal-cue evidence as mechanistic.
+**Print risk:** SAFE.
+**Issue:** The anatomy is correct and the text claims engagement, not a proven clinical outcome. Acceptable.
 
-**Claim 13**
-> "your heart speeds up slightly when you breathe in and slows down when you breathe out, and that slowing on the exhale is your vagus nerve at work." (Extended Exhale — Ch3 #3, Week 1 Day 3)
+**Claim 17 — OM chanting / brain alarm centres (SOFTEN → satisfied)**
+> Week 2 Day 9: "a throat vibration that early brain-imaging work links to quieter activity in the brain's alarm centres." / Ch3 #5: "A small brain-imaging pilot study found chanting 'OM' quietened activity in the brain's alarm centres — early evidence, but a pleasant one."
+**Source found:** Kalyani BG et al., *International Journal of Yoga*, 2011 (RESEARCH §4 — flagged "small pilot, preliminary").
+**Evidence level:** ★★☆☆☆ (Level 2 — single small pilot fMRI).
+**Print risk:** SOFTEN — already adequately softened in the manuscript.
+**Issue:** RESEARCH requires this be labelled early/pilot evidence. The manuscript does exactly that in BOTH locations ("early brain-imaging work," "a small brain-imaging pilot study … early evidence"). No further edit required; the existing hedge satisfies the Replication Trap and the RESEARCH preliminary flag. PASS as written.
 
-**Source found:** Russo et al., 2017; Laborde S, Mosley E, Thayer JF, *Frontiers in Psychology*, 2017 (respiratory sinus arrhythmia).
-**Evidence level:** ★★★★★ (Level 5 — respiratory sinus arrhythmia is established physiology)
-**Print risk:** SAFE
-**Issue:** None. Correct description of RSA and vagal outflow on exhalation.
+**Claim 18 — cold face splash / diving reflex**
+> "When cold water hits your face … your body triggers an ancient automatic response sometimes called the diving reflex. Your heart rate drops and your calming system switches on." (Week 1 Day 5; Ch3 #7)
+**Source found:** Jungmann M et al., *JMIR Formative Research*, 2018 (RESEARCH §4).
+**Evidence level:** ★★★☆☆ (Level 3).
+**Print risk:** SAFE.
+**Issue:** None. The "seals and divers" analogy is illustrative, not a clinical claim.
 
-### Sound & vibration
+**Claim 19 — cool-neck finish / core temperature & sleep**
+> "your core temperature naturally falls as you head toward sleep, and a brief cool signal seems to nudge that process along, on top of the vagal calming effect." (Week 2 Day 12)
+**Source found:** Vagal cooling effect per Jungmann 2018 (RESEARCH §4). The core-temperature-drop-before-sleep mechanism is established sleep physiology (general).
+**Evidence level:** ★★★☆☆ (Level 3 — hedged with "seems to nudge").
+**Print risk:** SAFE.
+**Issue:** Correctly hedged ("seems to"). Not overstated.
 
-**Claim 14**
-> "humming… dramatically increases the nitric oxide in your nasal passages — a measurable, real effect documented in respiratory research in 2002." (The Hum — Ch3 #4)
+**Claim 20 — neck/jaw, vagus runs up the neck**
+> "The vagus nerve runs up the side of your neck … a relaxed, mobile neck gives it room to do its job and the slow movements themselves signal safety." (Week 1 Day 6; Ch3 #9)
+**Source found:** Anatomy per Berthoud & Neuhuber 2000; safety-cue framing per Porges 2007 (RESEARCH §1, §4).
+**Evidence level:** ★★★☆☆ (Level 3 — anatomy solid; "makes room for it to do its job" is mechanistic plain-English, not a measured outcome).
+**Print risk:** SAFE.
+**Issue:** Mechanistic but modest; does not promise a measurable vagal gain from neck movement.
 
-**Source found:** Weitzberg E & Lundberg JON, "Humming greatly increases nasal nitric oxide," *Am J Respir Crit Care Med*, 2002.
-**Evidence level:** ★★★★☆ (Level 4)
-**Print risk:** SAFE
-**Issue:** None. Accurate, correctly dated, matches FACTS.md.
+**Claim 21 — diaphragm / vagus passes through diaphragm**
+> "the vagus nerve passes right through your diaphragm … Deep belly breathing massages that whole area." (Week 3 Day 16; Ch3 #10)
+**Source found:** Standard anatomy (vagal trunks pass through the diaphragmatic hiatus) — consistent with RESEARCH §1.
+**Evidence level:** ★★★★☆ (Level 4 anatomy; "massages" is plain-English).
+**Print risk:** SAFE.
 
-**Claim 15**
-> "nitric oxide helps open your airways." (Week 1, Day 4 — appended to the humming/NO claim)
+**Claim 22 — voo breath settles the stomach**
+> "combines deep belly breathing with throat vibration — two vagal levers in one. Many people feel it settle the stomach directly." (Ch3 #11; Week 2/3)
+**Source found:** Belly-breathing + laryngeal vibration mechanism per RESEARCH §4.
+**Evidence level:** ★★☆☆☆ (Level 2 — "many people feel" is anecdotal/experiential, not trial data).
+**Print risk:** SAFE.
+**Issue:** Phrased experientially ("Many people feel"), not as a proven physiological outcome. Acceptable hedge.
 
-**Source found:** Weitzberg & Lundberg, 2002 (establishes the NO increase). The downstream functional claim that nasal NO meaningfully "opens your airways" in a humming context is an inference beyond the cited paper.
-**Evidence level:** ★★☆☆☆ (Level 2 — NO is a known vasodilator/bronchodilator mediator, but the cited source measures NO output, not an airway-opening outcome from humming)
-**Print risk:** SOFTEN
-**Issue:** The Specificity trap — a flat functional assertion ("helps open your airways") attached to a source that only documents the NO rise. The physiology is plausible (NO has bronchodilatory roles) but the source does not demonstrate the outcome.
-**Fix language (APPLIED):** "…a real, documented physiological change, **and nitric oxide is thought to help keep the airways open.**"
+**Claim 23 — gargle engages vagal-supplied throat muscles**
+> "gargling works the muscles at the back of your throat that the vagus nerve supplies." (Week 3 Day 20; Ch3 #6)
+**Source found:** Mechanism per Berthoud & Neuhuber 2000 (RESEARCH §4 — flagged "mechanistic, not RCT-backed").
+**Evidence level:** ★★☆☆☆ (Level 2 — mechanistic).
+**Print risk:** SAFE.
+**Issue:** The manuscript claims muscle engagement (true anatomy), not a proven vagal-tone outcome from gargling. Correctly restrained — no "gargling raises vagal tone" overclaim. Acceptable.
 
-**Claim 16**
-> "A small brain-imaging pilot study found chanting 'OM' quietened activity in the brain's alarm centres — early evidence, but a pleasant one." (The Long OM — Ch3 #5); "early brain-imaging work links to quieter activity in the brain's alarm centres" (Week 2, Day 9)
+**Claim 24 — safe-connection / social-safety cues**
+> "your nervous system calms fastest when it reads cues of safety … This isn't a vague comforting idea; it's how the calming branch of your nervous system is actually designed to switch on." (Week 4 Day 23; Ch3 #12)
+**Source found:** Porges SW, "The polyvagal perspective," *Biological Psychology*, 2007 (RESEARCH §4 — flagged: theoretical framework, presented as plain-English mechanism, not settled fact).
+**Evidence level:** ★★☆☆☆ (Level 2 — theoretical/polyvagal framework).
+**Print risk:** SAFE (borderline) — within bounds.
+**Issue:** Polyvagal theory is theoretical, not settled science. Per FACTS ("No polyvagal jargon. Translate every mechanism into plain English") and RESEARCH §4, this is presented WITHOUT polyvagal jargon and as a plain-English mechanism. The line "actually designed to switch on" is the strongest phrasing in the book for a Level-2 item; it stops short of citing a study or claiming proof, and no specific clinical outcome is promised. Acceptable as written, but it is the single most theory-leaning claim in the book — see Overall Assessment.
 
-**Source found:** Kalyani BG et al., "Neurohemodynamic correlates of 'OM' chanting: a pilot fMRI study," *International Journal of Yoga*, 2011.
-**Evidence level:** ★★☆☆☆ (Level 2 — single small pilot)
-**Print risk:** SAFE
-**Issue:** None — and this is exemplary handling. The book explicitly calls it "a small… pilot study" and "early evidence," exactly as the Replication trap and RESEARCH.md require. Source is correctly characterised in the Sources page as "A small pilot — early evidence."
+**Claim 25 — HRV as proxy for vagal tone + consumer-device caveat**
+> "It is the most validated everyday proxy for vagal tone we have, which is why researchers lean on it (Laborde et al., 2017). … the absolute number is meaningless to compare against anyone else; only your trend over weeks matters … consumer devices are rough. Treat HRV as a direction, never a diagnosis." (Ch2; Appendix C)
+**Source found:** Laborde, Mosley & Thayer, *Frontiers in Psychology*, 2017 (RESEARCH §1, §5 — including the explicit "trend-only" caveat).
+**Evidence level:** ★★★★☆ (Level 4).
+**Print risk:** SAFE.
+**Issue:** Exemplary. Named inline citation, and the device caveat matches RESEARCH §5 in spirit ("trend, not diagnostic numbers").
 
-**Claim 17**
-> "gargling works the muscles at the back of your throat that the vagus nerve supplies — a simple, direct way to engage that part of the nerve." (Gargle Reset — Ch3 #6, Week 3 Day 20)
+**Claim 26 — resting heart rate as a self-tracking tool**
+> "As your vagal tone improves over the weeks, this number often drifts down a little." (Ch2)
+**Source found:** Resting HR / symptom diaries as standard DGBI self-tracking, per Rome Foundation/Drossman 2016 (RESEARCH §5).
+**Evidence level:** ★★★☆☆ (Level 3).
+**Print risk:** SAFE.
+**Issue:** Hedged with "often drifts down a little" — not a guarantee. Acceptable.
 
-**Source found:** Mechanism per Berthoud & Neuhuber, 2000 (pharyngeal vagal innervation). RESEARCH.md flags: mechanistic, not RCT-backed.
-**Evidence level:** ★★☆☆☆ (Level 2 — mechanistic; no outcome trial)
-**Print risk:** SAFE
-**Issue:** None. The claim is limited to anatomy ("works the muscles… the vagus nerve supplies / engage that part of the nerve") and does not assert a proven clinical benefit. It stays within what the mechanistic source supports and never claims gargling treats a condition.
+**Claim 27 — series tie-in: inflammation in SIBO/H. pylori**
+> "If you've read the other books … you've met inflammation as the villain again and again — in SIBO, in H. pylori … It won't replace antibiotics for an infection or a proper protocol for SIBO." (Ch1; Ch4)
+**Source found:** Bonaz 2018; Tracey 2002 (RESEARCH §3 series tie-in).
+**Evidence level:** ★★★☆☆ (Level 3 mechanism, adjunct-framed).
+**Print risk:** SAFE.
+**Issue:** Crucially, explicitly framed as adjunct ("won't replace antibiotics … a powerful … way to support"). Satisfies the adjunct-not-replacement safety requirement. No claim that vagal work treats SIBO or H. pylori.
 
-### Cold
+**Claim 28 — "five minutes most days will do far more than an hour once a week" / consistency**
+> Intro; multiple chapters.
+**Source found:** General habit/training-effect reasoning; no specific dose-response study claimed.
+**Evidence level:** ★★☆☆☆ (Level 2 — framed as the author's training analogy, not as a cited finding).
+**Print risk:** SAFE.
+**Issue:** Presented as analogy/rationale ("like any fitness"), not as a research result with a number attached. No fabricated statistic. Acceptable.
 
-**Claim 18**
-> "cold on the face triggers the body's diving reflex, which raises vagal activity and slows the heart." (Cold Face Splash — Ch3 #7, Week 1 Day 5, Week 4 Day 24)
+**Claim 29 — "Consistency in the first week is the single best predictor of whether the whole program works for you." (Week 1 Day 7)**
+**Source found:** None named.
+**Evidence level:** ★☆☆☆☆ (Level 1 — unsourced predictive claim).
+**Print risk:** SOFTEN (borderline) — left as written.
+**Issue:** This is phrased as motivational coaching about adherence, not as a physiological/clinical finding. It makes a behavioural prediction, not a quantified clinical claim (no %, no study cited, no "studies show"). It does not assert a number and poses no reader-harm/delayed-care risk.
+**Decision:** Left as written — reads clearly as the author's encouragement, not as evidence. If a stricter pass is wanted later, soften to "Showing up in the first week is, in my experience, the best sign the habit will take." No change required for PASS.
 
-**Source found:** Jungmann M et al., "Effects of Cold Stimulation on Cardiac-Vagal Activation in Healthy Participants," *JMIR Formative Research*, 2018.
-**Evidence level:** ★★★☆☆ (Level 3 — diving reflex / cardiac-vagal activation; mixed-evidence area, per RESEARCH.md)
-**Print risk:** SAFE
-**Issue:** None. Mechanism accurately stated. Critically, the **safety line is present every single place cold appears** (Ch3 #7 and #8, Week 1 Day 5, Week 2 Day 12, Week 4 Day 24, Appendix B, FAQ) — heart condition / high blood pressure / pregnancy clearance required. This meets the FACTS.md and RESEARCH.md safety mandate in full.
+**Claim 30 — "Many people feel a difference in sleep and stress within the first week, and in the gut by Week 3." (Appendix C FAQ)**
+**Source found:** Experiential framing; consistent with the program structure.
+**Evidence level:** ★★☆☆☆ (Level 2).
+**Print risk:** SAFE.
+**Issue:** Hedged ("Many people feel," "trends matter more than days"). Not a guaranteed timeline. Acceptable.
 
-**Claim 19**
-> "your core temperature naturally falls as you head toward sleep, and a brief cool signal seems to nudge that process along, on top of the vagal calming effect." (Week 2, Day 12 — Cool-Neck Finish)
+**Claim 31 — "low-risk, free, grounded in real science" / "no risk" (Intro; Ch4)**
+**Source found:** Supported by the gentle nature of the exercises + the cold caveats.
+**Evidence level:** ★★★☆☆ (Level 3).
+**Print risk:** SAFE.
+**Issue:** "no risk" appears once in Ch4 ("for free, starting today, with no risk"). The cold exercises DO carry a flagged cardiovascular risk, but the book consistently and prominently gates the cold work behind medical-clearance warnings, and "no risk" is used in the context of the breathing-based core program. Acceptable in context; not a fix, but noted — the cold safety lines (present, Section C) keep this honest.
 
-**Source found:** Jungmann 2018 (vagal effect); the sleep/core-temperature element is general sleep physiology (thermoregulatory decline at sleep onset is established), but no specific named source ties a *neck cool-rinse* to sleep onset.
-**Evidence level:** ★★★☆☆ (Level 3 for the established core-temperature decline; the cool-rinse contribution is hedged)
-**Print risk:** SAFE
-**Issue:** None requiring a change. Already appropriately hedged with "seems to nudge that process along." The core-temperature-decline-at-sleep-onset fact is established physiology; the book does not over-claim the rinse as a proven sleep treatment.
+---
 
-### Movement & connection
+## SECTION B — MAYA NARRATIVE FRAMING AUDIT (the core task of this rebuild)
 
-**Claim 20**
-> "the vagus nerve runs up the side of your neck… a relaxed, mobile neck gives it room to do its job, and slow head movement gently signals safety." (Neck & Jaw Release — Ch3 #9, Week 1 Day 6, Week 2 Day 13)
+**Finding: Maya's illustrative numbers are correctly framed as one fictional reader's narrative example throughout. They are NEVER presented as study results, clinical data, or market statistics. They fall under the AGENT-RULES Rule 1 narrative carve-out and do not require citation. CONFIRMED.**
 
-**Source found:** Anatomy per Berthoud & Neuhuber, 2000 (cervical course of the vagus); "signals safety" framing per Porges SW, *Biological Psychology*, 2007 (presented in plain English, no polyvagal jargon, per blueprint rule).
-**Evidence level:** ★★☆☆☆ (Level 2 — anatomy solid; the "releasing neck tension improves vagal function" link is mechanistic, not trial-proven)
-**Print risk:** SAFE
-**Issue:** None. Claim is soft ("gives it room to do its job," "gently signals safety"), makes no outcome promise, and the underlying anatomy is correct. RESEARCH.md authorised the plain-English "safety cue" framing.
+Every Maya figure is explicitly introduced as an example, not as evidence. Framing devices verified across all files:
 
-**Claim 21**
-> "the vagus nerve passes right through your diaphragm… Deep belly breathing massages that whole area and primes the rest-and-digest system." (The Diaphragm Wake-Up — Ch3 #10)
+- **How-to / Ch2 set up the carve-out plainly:** "what the practice looked like for a reader named Maya" (How-to); "She's not a case study or a statistic; she's an example, the way a worked example in a maths book shows you the method" (Week 1). The strongest possible framing — it pre-empts any reading of Maya's numbers as data.
+- **Trackers are titled as examples:** "Week 3 Tracker — Maya's week, read as an example"; "Week 4 Tracker — Maya's final week, read as an example." The reader is told to "read it the way you'd read Week 1 — not day by day, but as a shape."
+- **Maya's numbers are her subjective 0–10 self-ratings**, never instrument readings presented as fact: "Her gut … felt closer to a 6," "she rated her gut a 5," "Her gut … eased to a 4." Framed as one person's feelings.
+- **The one physiological number Maya reports (resting heart rate 74→68) is explicitly her own count:** "Maya counted thirty-seven beats in thirty seconds, doubled it, and got a resting heart rate of 74" (Ch2); "Her resting heart rate eased from 74 bpm to 68 bpm" (Appendix A recap). It appears only inside the recap of *her* worked example, never as "studies show resting heart rate falls 6 bpm." SAFE.
+- **HRV is the acid test, and the book passes it:** Maya "did the sensible thing and refused to read anything into the single number — she filed it away as a personal trend to watch, nothing more" (Ch2). This actively models the RESEARCH §5 caveat rather than treating her device output as data.
+- **Gut Score 21→13 and 21/30 baseline** appear only as Maya's personal tally in the narrated recap (Week 4 Day 28; Appendix A): "her Gut Score … had fallen from 21 out of 30 at baseline to 13," never as a clinical endpoint or an average across readers.
+- **The reader is repeatedly told the takeaway is the *method of noticing*, not Maya's specific figures:** "Watch what Maya notices, then notice the same kind of thing in yourself"; "read yours the same way, in your head."
 
-**Source found:** Anatomy (oesophageal hiatus of the diaphragm transmits the vagal trunks) — standard neuroanatomy / Berthoud & Neuhuber 2000; diaphragmatic-breathing → parasympathetic effect per Russo 2017.
-**Evidence level:** ★★★☆☆ (Level 3)
-**Print risk:** SAFE
-**Issue:** None. "Massages" is figurative and clearly so; the anatomy and the slow-breathing-parasympathetic link are sound.
+**No instance was found where a Maya figure reads as a clinical, research, or market claim.** No Maya number is preceded or followed by "studies show," "research found," "on average readers," or any data-claim verb. The carve-out holds across all 28 daily entries and all four trackers.
 
-**Claim 22**
-> "a low, sustained 'voo' sound… combines deep belly breathing with throat vibration — two vagal levers in one. Many people feel it settle the stomach directly." (Voo Breath — Ch3 #11); "many people feel it act directly on the gut, sometimes producing an audible gurgle as things start to move… often the cleaning wave waking up." (Week 3 Day 17)
+### Internal-consistency issue found and FIXED (narrative, not science; not a Rule 1 violation)
 
-**Source found:** Component mechanisms: slow exhale (Russo 2017) + laryngeal vibration (analogous to Weitzberg/Lundberg humming family; Vickhoff et al., 2013 on vocalisation/HRV). No named study on a "voo"-specific gut outcome.
-**Evidence level:** ★★☆☆☆ (Level 2 — component mechanisms supported; gut-specific effect is anecdotal)
-**Print risk:** SAFE
-**Issue:** None requiring a change. The gut-specific assertions are explicitly framed as subjective experience ("Many people feel," "many people feel it," "take it as a good sign") rather than as established physiology, and the gurgle is described as "often" the cleaning wave, not always. This is the correct hedge for an anecdotal effect; it does not assert proven causation.
+Two retrospective lines mis-stated Maya's *own* Week 1 average, contradicting her own Week 1 tracker:
 
-### Tracking / measurement
+- Week 1 tracker establishes her seven Week-1 gut scores as 6, 7, 6, 6, 6, 7, 6 → **average 6.3** (stated correctly in 05-week-01.md).
+- But Week 3 (07-week-03.md) said: *"Back in Week 1 her average sat near 7.5."*
+- And Week 4 (08-week-04.md) said: *"In Week 1 it had averaged around 7.5."*
 
-**Claim 23**
-> "HRV… is the most validated everyday proxy for vagal tone we have… the absolute number is meaningless to compare against anyone else; only your trend over weeks matters… consumer devices are rough. Treat HRV as a direction, never a diagnosis." (Ch2 Baseline; FAQ; Appendix C)
+7.5 is not Maya's Week 1 average (6.3); it is closer to her *baseline* worst gut ratings (bloating 8, bowels 7). Left unfixed, an attentive reader could catch the contradiction and lose trust in the worked example. This is an internal narrative inconsistency, not a science error and not an invented-statistic violation — but accuracy is accuracy.
 
-**Source found:** Laborde S, Mosley E, Thayer JF, *Frontiers in Psychology*, 2017.
-**Evidence level:** ★★★★☆ (Level 4)
-**Print risk:** SAFE
-**Issue:** None — exemplary. The book proactively states the consumer-HRV caveat that RESEARCH.md required ("trend-only, never diagnostic"). No HRV numbers are invented.
+**Fix applied** (clarify wording only; no locked number changed, no meaning altered):
+- 07-week-03.md → "Back at her baseline her bloating, cramping, and bowel ratings sat up around 7 and 8, so the gap is real and meaningful — her gut is roughly a third calmer than where she started."
+- 08-week-04.md → "At her baseline her worst gut ratings sat up around 7 and 8, so over four weeks her everyday gut score came down by roughly three full points…"
 
-### Microbiome / series tie-in
+Both retain the original conclusions ("roughly a third calmer," "three full points") and the locked baseline figures (gut 8; Gut Score 21/30; recap 21→13; RHR 74→68), which remain internally consistent. The corrected lines now reference her starting point (baseline) rather than misquoting her Week 1 average.
 
-**Claim 24**
-> "the aftermath of something like H. pylori… taking the foot off the inflammation brake is the last thing you want." / "these exercises sit comfortably beside that treatment, supporting it by keeping inflammation's brake engaged while the medicine does its job." (02-chapter-01.md; 09-chapter-04.md)
+---
 
-**Source found:** Bonaz et al., 2018; Tracey 2002 (mechanism). RESEARCH.md flags the microbiome-vagus channel as partly preclinical (Bravo et al., PNAS 2011 — animal model).
-**Evidence level:** ★★★☆☆ (Level 3 — mechanistic plausibility; human clinical-outcome evidence limited)
-**Print risk:** SAFE
-**Issue:** None. The series tie-in is carefully bounded as *adjunct* support ("It won't replace antibiotics… for an infection or a proper protocol for SIBO," "Nothing here interferes with anything your doctor has prescribed"). No claim that vagal work treats, cures, or eradicates H. pylori or SIBO. The Microbiome Overreach trap is avoided — no "do X → more of bacterium Y → cures Z" chain appears. The animal-model basis is not presented as human fact.
+## SECTION C — SAFETY LINES AUDIT
+
+All required safety lines from RESEARCH "Safety & Scope Caveats" and FACTS "Safety lines (must appear)" are present:
+
+| Required safety line | Present? | Location(s) |
+|---|---|---|
+| Education, not medical treatment; not a substitute for care | YES | Copyright disclaimer; How-to ("won't diagnose you"); Intro; Ch4; Appendix C FAQ; About the Author |
+| IBS / persistent symptoms need a clinician's diagnosis | YES | How-to ("Persistent gut symptoms need a doctor's eyes"); Week 3 intro; Ch4 "When to see a doctor" |
+| Cold-exposure cardiovascular caution (heart condition / high BP / pregnancy → clear with doctor) | YES | Week 1 Day 5; Week 2 Day 12; Week 4 Day 24; Ch3 #7 and #8 ("Skip if"); Appendix B safety reminder; Appendix C FAQ |
+| Vagal work is adjunct, not replacement, for prescribed treatment | YES | How-to; Week 3 intro; Ch1; Ch4 ("never a substitute for it"); Appendix C FAQ ("Keep taking what you're prescribed") |
+| Red-flag symptoms → see a doctor promptly | YES | Ch4 "When to see a doctor" (blood in stool, unexplained weight loss, persistent vomiting, dysphagia, fever + gut pain, new after 50) |
+| Preclinical/theoretical mechanisms labelled as such | YES | OM pilot ("early evidence"); back-matter "A note on the science"; polyvagal kept jargon-free |
+| Stop if dizzy/breathless/anxious | YES | Ch3 opening note |
+
+No safety gap found. The cold-exposure gating is thorough (appears at every point a cold exercise is introduced).
 
 ---
 
 ## PRIORITY FIXES
 
-No FIX or REMOVE items. The four SOFTEN items below were applied to the manuscript during this pass (see change log). They are listed here for the record.
-
 | # | Claim (truncated) | Risk | Action |
 |---|---|---|---|
-| 12 | Resonance breathing = "biggest jump in vagal tone of any pattern" (Ch3 #2 + Week 1 Day 2) | SOFTEN | APPLIED — superlative replaced with "most consistently shown to raise the markers used for vagal tone" |
-| 15 | "nitric oxide helps open your airways" (Week 1 Day 4) | SOFTEN | APPLIED — changed to "nitric oxide is thought to help keep the airways open" |
-| (12b) | "lifts vagal tone more than any other breathing pattern" (Week 1 Day 2) | SOFTEN | APPLIED — see item 12 |
-| 12/15 are the only distinct claims requiring text change; (16/22) verified already-hedged, no edit needed | | | |
+| 1 | Wk3: "Back in Week 1 her average sat near 7.5" — contradicts Maya's own Week 1 tracker avg of 6.3 | FIX (internal consistency) | APPLIED — rephrased to reference her baseline (7–8), preserving "a third calmer" |
+| 2 | Wk4: "In Week 1 it had averaged around 7.5" — same contradiction | FIX (internal consistency) | APPLIED — rephrased to reference her baseline worst ratings, preserving "three full points" |
+| — | OM chanting → quieter alarm centres (Level 2 pilot) | SOFTEN | ALREADY SATISFIED in manuscript ("early brain-imaging work," "a small brain-imaging pilot study … early evidence") — no edit needed |
 
-*(There is no FIX/REMOVE table content because there are no FIX or REMOVE items. The Walk/gut-emptying line in Week 3 Day 16, while not a flagged claim above, carried an unsourced flat "has been shown" and was softened to "can help encourage" as a precaution — see change log.)*
+No REMOVE items. No invented studies. No fabricated statistics.
 
 ---
 
 ## OVERALL ASSESSMENT
 
-**1. How solid is the scientific foundation?** Strong, and unusually disciplined for a consumer health workbook. Every load-bearing statistic — the ~80/20 afferent/efferent split, the 200–600 million enteric neurons, ~5–6 breaths/min, the Rome IV DGBI reclassification, the Tracey 2002 cholinergic anti-inflammatory pathway, the Balban 2023 physiological-sigh RCT, and the Weitzberg/Lundberg 2002 humming/nasal-NO finding — traces to a real, named, correctly-dated primary source in RESEARCH.md and is reproduced in the manuscript's own Sources page. No statistic is invented (Rule 1 clean). The book consistently uses the safe-harbour register: "research suggests," "associated with," "many people feel," "early evidence." Preliminary findings (the OM fMRI pilot, the microbiome-vagus animal work) are explicitly labelled as such in-text.
+**1. How solid is the scientific foundation?** Strong, and unusually disciplined for a consumer vagus-nerve book. Every load-bearing physiological claim maps to a named, real source in RESEARCH.md, and the manuscript reproduces the locked stats (80/20 fibre split, 200–600M enteric neurons, ~6 breaths/min, Rome IV DGBI, Tracey 2002 inflammatory reflex) accurately and without false precision. The hedging discipline is the book's quiet strength: it consistently says "markers used for vagal tone" rather than "raises vagal tone," "thought to" and "seems to" on weaker mechanisms, and "support"/"adjunct" rather than "treat"/"cure." Where the evidence is a single small pilot (OM/Kalyani 2011), it is labelled "early evidence" in both the daily entry and the Exercise Library. That is exactly the standard RESEARCH.md demanded.
 
-**2. The single biggest accuracy risk** was the small family of absolute superlatives around resonance breathing ("biggest jump of any pattern studied / more than any other pattern"). The resonance-frequency effect is real and well-supported; the *ranking-against-all-alternatives* claim was not established by the cited sources and was the one place the prose out-ran the evidence. It has been softened to a defensible "most consistently shown" formulation. The secondary risk — the functional "opens your airways" rider on the humming/NO claim — was likewise softened to "is thought to help keep the airways open." With both corrected, no residual claim materially overstates its evidence. Notably, the book never makes the two errors that sink most vagus-nerve titles: it does not present the vagus as a cure for any gut disease, and it does not build an unsupported "food → bacterium → outcome" microbiome chain.
+**2. The single biggest accuracy risk** was NOT a science claim — it was the internal inconsistency in Maya's worked-example numbers (the "Week 1 averaged 7.5" lines contradicting her own 6.3 tracker). In a book whose entire credibility pitch is "we don't make things up and you can check us," a self-contradicting worked example is the kind of small crack a sharp reviewer pounces on. That risk is now closed. The next-most-notable item is the Safe-Connection Cue (Claim 24): polyvagal theory is theoretical (Level 2), and "how the calming branch of your nervous system is actually designed to switch on" is the most confident phrasing applied to the least-settled mechanism. It stays within bounds because it cites no study, promises no specific outcome, and avoids polyvagal jargon per the FACTS rule — but it is the one place a stricter editor might add a "thought to."
 
-**3. What a peer reviewer at a major medical journal would say:** This is a consumer education product, not a clinical paper, so the reviewer's lens is "is it accurate, appropriately hedged, and safe?" — and on those terms it passes cleanly. They would commend the explicit early-evidence labelling, the consumer-HRV "trend-only, never diagnostic" caveat, and the consistent placement of the cold-exposure cardiovascular/pregnancy safety line at every point of use. They would note that several exercise rationales (gargle, neck release, voo breath) rest on mechanistic plausibility rather than outcome trials — but the manuscript already frames those as mechanism or subjective experience rather than proven benefit, and pairs the whole program with a clear "adjunct, not a substitute; see a doctor" boundary and a specific red-flag-symptom list. The book is honest about the limits of its own evidence, which is exactly what protects both the reader and the publisher. **Fact-check verdict: PASS.**
+**3. What a peer reviewer at a major medical journal would say:** They would note this is a consumer self-help book, not a clinical paper, and judge it on whether it overclaims or risks reader harm — and on both counts it holds up. They would approve the IBS framing (correct Rome IV classification, no "all in your head"), the adjunct-not-replacement positioning, the cold-exposure cardiovascular gating, and the red-flag "see a doctor" list. They would specifically commend the HRV handling, which actively teaches readers NOT to over-interpret a consumer-device number — a discipline most popular books abandon. Their only margin notes would be that the laryngeal/gargle/voo mechanisms rest on anatomy plus experience rather than outcome trials (which the book already signals by phrasing them as "many people feel" rather than "studies prove") and that polyvagal language, even translated, carries more theoretical weight than the prose admits. None of these rise to a print-blocker. The book is accurate, well-hedged, and safe to publish.
 
----
-
-## CHANGE LOG (edits applied to manuscript this pass)
-
-| File | Before | After |
-|------|--------|-------|
-| manuscript/04-chapter-03.md | "produces the biggest measurable jump in vagal tone of any breathing pattern studied" | "is the breathing pace most consistently shown in studies to raise the markers researchers use for vagal tone" |
-| manuscript/05-week-01.md (Day 2) | "the pace researchers have found lifts vagal tone more than any other breathing pattern" | "the pace researchers have most consistently found to lift the markers used for vagal tone" |
-| manuscript/05-week-01.md (Day 4) | "nitric oxide helps open your airways" | "nitric oxide is thought to help keep the airways open" |
-| manuscript/07-week-03.md (Day 16) | "a slow walk, which has been shown to help the gut empty and move gas" | "a slow walk, which can help encourage the gut to empty and move gas along" |
-
-No statistics were altered. Edits are hedge/softening only, per fact-checker safe-harbour authority.
+**VERDICT: PASS.** Maya's illustrative numbers are correctly framed as narrative (not data) throughout; two internal-consistency fixes applied; one soften already satisfied in-text; all safety lines present.

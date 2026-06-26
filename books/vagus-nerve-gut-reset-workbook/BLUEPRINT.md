@@ -6,7 +6,7 @@
 
 **This blueprint REPLACES the prior "The Vagus Nerve Gut Reset Workbook" blueprint in full.**
 
-**Why:** The workbook edition was **REJECTED by KDP as a "Blank Journal"** (235 blank fill-in lines, 56 empty checkboxes, blank tracker tables). The Architect has authorised converting the book from a fill-in WORKBOOK into a readable PROSE BOOK — a guide you **READ**, not one you fill in. The science and prose already written are strong; the only problem was the interleaved blank fill-in apparatus. This rebuild keeps the science, voice, exercises, 4-week structure, pricing, audience, and series fit, and **converts every blank into prose**.
+**Why:** The workbook edition was **REJECTED by KDP under its fill-in/journal format policy** (235 blank fill-in lines, 56 empty checkboxes, blank tracker tables — i.e. classified as a non-reflowable, write-in product not eligible for Kindle). The Architect has authorised converting the book from a fill-in WORKBOOK into a readable PROSE BOOK — a guide you **READ**, not one you fill in. The science and prose already written are strong; the only problem was the interleaved blank fill-in apparatus. This rebuild keeps the science, voice, exercises, 4-week structure, pricing, audience, and series fit, and **converts every blank into prose**.
 
 - **FORMAT = PROSE BOOK / readable guide.** Not a workbook, journal, planner, log, or tracker.
 - **kdp_editions:** `{ "paperback": true, "kindle": true }` — Kindle is now eligible because the manuscript will contain **ZERO** blank fill-in apparatus. (This is the exact condition KDP requires for Kindle eligibility per book-architect.md HARD RULE and validator INV-14.)

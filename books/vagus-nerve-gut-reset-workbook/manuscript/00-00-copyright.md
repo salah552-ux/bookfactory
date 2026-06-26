@@ -1,6 +1,6 @@
 <div style="page-break-after: always; font-family: 'EB Garamond', Georgia, serif; font-size: 9pt; color: #444; padding-top: 0.5in; line-height: 1.7;">
 
-*The Vagus Nerve Gut Reset Workbook*
+*The Vagus Nerve Gut Reset*
 
 Copyright © 2026 S. A. Ibrahim
 

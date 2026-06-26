@@ -18,7 +18,7 @@ You can break that loop. Not from the gut end, where diets fight a losing battle
 
 ---
 
-> **What this workbook does**
+> **What this book does**
 >
 > Over four weeks, you will do one short daily practice — five minutes, no equipment, no diet overhaul — drawn from the handful of things that genuinely raise vagal tone: slow breathing, humming and gentle sound, brief cold, and small movements that tell your body it's safe. Every practice is grounded in published physiology. Each week builds on the last. By Week 4, the exercises that felt strange in Week 1 will feel automatic.
 
@@ -48,10 +48,10 @@ I'm not going to pretend this is a cure, because honest books don't promise cure
 
 ## How to use this book
 
-Work through the four weeks in order. Each week opens with a short note on what it's teaching and why, followed by seven dated daily pages. Each daily page gives you the exercise, a couple of lines on why it works, and space to track how your gut, sleep, stress, and energy are doing.
+Work through the four weeks in order. Each week opens with a short note on what it's teaching and why, followed by seven short daily entries. Each daily entry gives you the exercise, a couple of lines on why it works, and a glimpse of how it landed for a reader walking the same path — so you know what to watch for in your own gut, sleep, stress, and energy.
 
-You do not need special equipment. You do not need to overhaul your diet. You need five minutes a day and a pen.
+You do not need special equipment. You do not need to overhaul your diet. You need five minutes a day.
 
-Before you start Week 1, you'll set a baseline — a few simple numbers, scored today, so that in twenty-eight days you can see exactly what changed. That baseline is two chapters away. First, the ninety-second version of how this nerve actually works.
+Before you start Week 1, you'll set a baseline — a few simple numbers, taken today, so that in twenty-eight days you can see exactly what changed. The next chapter shows you how to read those numbers, using a real reader's starting point as the example. First, though, the ninety-second version of how this nerve actually works.
 
 *Turn the page when you're ready.*

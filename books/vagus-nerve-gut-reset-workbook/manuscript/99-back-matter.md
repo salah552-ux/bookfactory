@@ -44,7 +44,7 @@ The author holds no clinical credentials and offers no medical advice; these boo
 
 # Also in the *Fix Your Gut for Good* Series
 
-This workbook is Book 4 in the *Fix Your Gut for Good* series — a set of practical, root-cause guides to taking back control of your digestion.
+This book is Book 4 in the *Fix Your Gut for Good* series — a set of practical, root-cause guides to taking back control of your digestion.
 
 - **Fix Your Gut for Good: Stop Relapsing** — the four-phase SIBO protocol for root-cause recovery.
 - **The H. Pylori Recovery Plan** — how to eradicate the infection, heal your stomach lining, and understand your cancer risk.
@@ -54,10 +54,18 @@ This workbook is Book 4 in the *Fix Your Gut for Good* series — a set of pract
 
 ---
 
+# Want to Track Your Own Numbers?
+
+Throughout this book you watched one reader, Maya, score her gut, sleep, stress, and energy as she went — and you saw how reading the *trend* matters more than any single day. If you'd like to record your own numbers the same way, grab the free printable companion at **[COMPANION-PDF LINK]**. It has the baseline sheet, the weekly tracker grids, and the 30-day recap, ready to print and use.
+
+It's kept off these pages on purpose — so this stays a book you read, not one you write in. It's free with this book, no purchase and nothing asked in return.
+
+---
+
 # Before You Close the Book
 
 You came to this book with a gut that had been shouting for a long time, and you spent four weeks learning to turn the alarm down five minutes at a time. Whatever your tracker says today — a big drop, a quiet one, or simply more ordinary days than rough ones — you did the work most people never get around to. You trained a nerve you didn't know you had.
 
-There's one small thing that helps the next person, and it costs you a couple of minutes. Somewhere out there is another bloated, exhausted reader scrolling through the same crowded shelf you once stood in front of, trying to work out which of these books is honest and which is two hundred pages of jargon with no real exercises. Your review is what helps them decide. If this workbook earned its place for you, a few honest sentences on Amazon — what it was actually like to use, what changed, what didn't — is the most direct way to put it in front of someone who needs it. Say exactly what you found; an honest account helps far more than a glowing one.
+There's one small thing that helps the next person, and it costs you a couple of minutes. Somewhere out there is another bloated, exhausted reader scrolling through the same crowded shelf you once stood in front of, trying to work out which of these books is honest and which is two hundred pages of jargon with no real exercises. Your review is what helps them decide. If this book earned its place for you, a few honest sentences on Amazon — what it was actually like to use, what changed, what didn't — is the most direct way to put it in front of someone who needs it. Say exactly what you found; an honest account helps far more than a glowing one.
 
 That's it. No upsell, no catch — the same deal as the whole book. Keep your stack going, come back to Chapter 4 when life gets busy, and look after that nerve. It's quietly looking after you.

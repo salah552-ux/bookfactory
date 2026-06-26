@@ -1,27 +1,25 @@
 # Appendices
 
-## Appendix A — Your 30-Day Recap
+## Appendix A — The 30-Day Recap: How to Read Your Four Weeks
 
-This is the page you've been working toward. Score yourself again — the same six questions from your Baseline — and put the numbers side by side. Then read the difference.
+This is the moment the program pays off — when you set today next to where you started in Chapter 2 and read the difference. The simplest way to show you how is to walk through what it looked like for Maya, the reader whose four weeks you've followed throughout this book.
 
-| What to rate | Baseline (Day 0) | Today (Day 28) | Change |
+Back on her first morning in Chapter 2, Maya rated the same six things. Here's how they moved by Day 28:
+
+| What to rate | Baseline (Day 0) | Day 28 | Change |
 |---|---|---|---|
-| Bloating / fullness | ____ | ____ | ____ |
-| Gut pain or cramping | ____ | ____ | ____ |
-| Unpredictable bowel habits | ____ | ____ | ____ |
-| Trouble sleeping | ____ | ____ | ____ |
-| Stress / wound-up | ____ | ____ | ____ |
-| Daytime exhaustion (0 = great) | ____ | ____ | ____ |
+| Bloating / fullness | 8 | 5 | −3 |
+| Gut pain or cramping | 6 | 4 | −2 |
+| Unpredictable bowel habits | 7 | 4 | −3 |
+| Trouble sleeping | 6 | 3 | −3 |
+| Stress / wound-up | 7 | 3 | −4 |
+| Daytime exhaustion (0 = great) | 6 | 3 | −3 |
 
-**Gut Score** (first three rows added): Baseline ______ → Today ______   **Moved by:** ______
+Her **Gut Score** — the first three rows added together — fell from **21 out of 30 at baseline to 13** at Day 28, a drop of eight points. Her **resting heart rate** eased from **74 bpm to 68 bpm** over the same four weeks. And the honest "why" she'd named on Day 0 — *get through an afternoon at work without my stomach ruining it* — had quietly come true; her afternoons were ordinary now, not battles.
 
-**Resting heart rate:** Baseline ______ bpm → Today ______ bpm
+Here's how to read your own numbers against your Chapter 2 baseline. Add your first three gut rows the same way to get today's Gut Score, and set it beside the one you started with. Then be fair with what you see. A big drop is wonderful. A modest drop you can hold steadily is arguably better, because it's the kind that lasts for years. Notice too that Maya's numbers didn't all move equally — her stress fell furthest, her gut pain least — and that's normal. Not everyone halves their score, and some weeks are genuinely rough. If a number barely budged, that isn't failure; it's a map, telling you exactly where to aim your stack next month.
 
-Look at that change. Whatever it is — big or small — it's real, it's yours, and you made it happen with five minutes a day. If a number barely moved, that's information too: it tells you where to point your stack next month.
-
-**One last reflection:** Re-read the "why" you wrote on Day 0. Did it shift? Write where you are now:
-
-*Where I am after 28 days: ____________________________________________*
+If you recorded your own numbers along the way — on the free printable companion (see the back of the book), which has the baseline sheet and this recap grid — now is when you lay them side by side and read the shape of your own four weeks.
 
 ---
 
@@ -70,7 +68,7 @@ The breathing, sound, and gentle movement exercises are gentle and widely used, 
 No. This sits alongside your medical care. Keep taking what you're prescribed and keep your doctor in the loop.
 
 **Do I need a wearable or any device?**
-No. The whole program works with a pen and five minutes. HRV tracking is optional and only ever a rough trend.
+No. The whole program works with nothing but five minutes a day. HRV tracking is optional and only ever a rough trend.
 
 ---
 
