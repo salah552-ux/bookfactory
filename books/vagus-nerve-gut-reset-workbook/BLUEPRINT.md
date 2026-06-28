@@ -1,4 +1,4 @@
-# BLUEPRINT — The Vagus Nerve Gut Reset (PROSE REBUILD)
+# BLUEPRINT — The Vagus Nerve Gut Reset
 
 ---
 

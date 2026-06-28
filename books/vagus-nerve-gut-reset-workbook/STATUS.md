@@ -1,4 +1,4 @@
-# The Vagus Nerve Gut Reset (PROSE REBUILD) — Build Status
+# The Vagus Nerve Gut Reset — Build Status
 *Last built: 2026-06-26 20:43*
 
 ## Word Count Progress

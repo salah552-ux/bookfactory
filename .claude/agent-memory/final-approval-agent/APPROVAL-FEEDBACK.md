@@ -74,3 +74,30 @@ Dimension scores: D1 70/75 · D2 50/50 · D3 60/60 · D4 55/55 · D5 35/35 · D6
 - Regex tag-balance gotcha: `<div[ >]` MISSES `<div\n` (newline after tag) and under-counts. Use `<div\b` — gave 43/43 (balanced), not the false 42/43.
 - PIL + `file` both for cover (1600×2560 RGB baseline). Python char/tag scan on fenced HTML: 2,024 chars, tags {b,h2,i,li,p,ul}.
 - grep cure/guaranteed/FDA/100% with context: all "cure" = anti-claims; AI-disclosure grep exit 1 (zero in-book block, correct per 4.2).
+
+---
+
+## 2026-06-28 — FRESH RE-AUDIT: The Vagus Nerve Gut Reset (PROSE edition, Book 4)
+
+**Result:** 291/300 — APPROVED. Hard gates: Compliance 55/55 (PASS); KDP Format Eligibility 4.5 PASS (exit 0, KINDLE-ELIGIBLE); kdp_editions PB+Kindle matches scan. No dimension below floor.
+
+Dimension scores: D1 68/75 · D2 50/50 · D3 60/60 · D4 55/55 · D5 35/35 · D6 23/25.
+
+### The reconciliation that was the whole point of this run (three scores, one product chain)
+- **295/300 (2026-06-21) = VOID.** It audited the fill-in WORKBOOK that KDP rejected as a Blank Journal. The product no longer exists. Lives in pipeline-state.json only as `final_approval_score_workbook_void: 295`. NEVER record it as this book's score.
+- **289/300 (2026-06-26) = superseded.** First prose audit (D1 70/D2 50/D3 58/D4 55/D5 32/D6 24), but logged as an ADDENDUM at the bottom of the stale 2026-06-21 report whose header still bore the old "...Workbook" title + the void 295. Not cleanly traceable → replaced.
+- **291/300 (2026-06-28, this run) = CURRENT, correct.** Clean self-contained six-dimension re-audit, every criterion re-verified on disk. +2 over 289 because the 289 run's D3 (−2 "minor strictness") and D5 (−3 "A+ not built") deductions DON'T hold on strict-rubric re-read: D3 is clean 60/60 (desc 2,225 chars, tags {h2,p,b,i,ul,li}, 7 kws ≤50 off-title) and D5.4 scores the EXISTENCE of the A+ BRIEF (present in LAUNCH-PLAN.md §5), not a built A+ module — so 35/35.
+
+### New learnings / patterns
+1. **Build-tag leakage into the EPUB title page is a real, recurring D1.3/D6.1 deduction.** The pandoc source title was "The Vagus Nerve Gut Reset (PROSE REBUILD)" and that "(PROSE REBUILD)" suffix rode into EPUB title_page.xhtml + the <title>. Cosmetic (KDP uses dashboard metadata, not the interior title page) but it costs the 1.3 "title page matches listing exactly" point and 2 of D6.1. FLAG for production: strip working/build tags from the pandoc title before the final build.
+2. **The reference HTML stays stale across rebuilds.** manuscript-kdp.html still carried the OLD "...Workbook" <title> + 11 "workbook" hits while the EPUB/PDF were clean. It's reference-only (never uploaded, CLAUDE.md Rule 11) so it's harmless to the listing, but it's a −1/−2 package-cleanliness ding and looks alarming on grep. Worth regenerating with the rest.
+3. **Two identical cover files (cover-kdp.jpg + cover-kdp-final.jpg) — verify they're actually identical, don't assume.** sha1sum confirmed same hash (12e1968b…), both 1600×2560 RGB 1:1.6. Good practice: hash-compare the pair rather than trusting the "-final" name.
+4. **format-eligibility.cjs is now the load-bearing hard gate on this exact book** — it's the gate that would have caught the 2026-06-21 Blank-Journal rejection. Re-ran it live (exit 0); did NOT trust the prior report's claim. Always re-run the scanner, never inherit its verdict.
+5. **python3 is NOT on this box — use `python`.** `python3` → exit 127 (command not found). `python` works for the PIL + char/tag scans.
+
+### Verification methods (kept + added)
+- `node scripts/format-eligibility.cjs <slug>` live, honour exit code (PASS = exit 0). Never inherit.
+- `file` + PIL for cover (1600×2560 RGB, ratio 2560/1600 = 1.600). `sha1sum` to prove the two cover files are byte-identical.
+- `unzip -l`/`unzip -p` the EPUB: confirmed content.opf, nav.xhtml, title_page.xhtml, cover.xhtml, embedded EPUB/media/file0.jpg (744,891 B). Reading title_page.xhtml is how the "(PROSE REBUILD)" leak was caught.
+- `python` char/tag scan on fenced HTML desc: 2,225 raw / 2,039 visible chars, tags {b,h2,i,li,p,ul}, all 7 kws ≤50. Title+subtitle 25+133=158 (<200).
+- grep cure/guaranteed/FDA/100% with context: all "cure" = anti-claims; "completely effective" = a personal-routine validity statement, not a clinical %; AI-disclosure grep exit 1 (correct absence per 4.2); "workbook" grep exit 1 across manuscript (prose retitle clean).

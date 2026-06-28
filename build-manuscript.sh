@@ -41,10 +41,24 @@ else
   exit 1
 fi
 
-# ── Extract metadata from BLUEPRINT.md ────────────────────────────────────────
+# ── Extract metadata ──────────────────────────────────────────────────────────
+# Title source priority (canonical → fallback):
+#   1. pipeline-state.json "book_title"  — the canonical, gated value
+#   2. BLUEPRINT.md H1 "# BLUEPRINT — <title>"
+#   3. slug, title-cased
+# Preferring pipeline-state.json prevents a doc-header working label (e.g. a
+# "(PROSE REBUILD)" suffix on the BLUEPRINT H1) from leaking into the built
+# EPUB/DOCX title metadata. Fix: 2026-06-28.
 BLUEPRINT="$BOOK_DIR/BLUEPRINT.md"
+STATE="$BOOK_DIR/pipeline-state.json"
 BOOK_TITLE=""
-if [ -f "$BLUEPRINT" ]; then
+if [ -f "$STATE" ]; then
+  # Extract the value of the first top-level "book_title" key (not book_subtitle).
+  BOOK_TITLE=$(grep -m1 '"book_title"[[:space:]]*:' "$STATE" \
+    | sed 's/.*"book_title"[[:space:]]*:[[:space:]]*"//' \
+    | sed 's/".*//' || echo "")
+fi
+if [ -z "$BOOK_TITLE" ] && [ -f "$BLUEPRINT" ]; then
   BOOK_TITLE=$(grep -m1 "^# BLUEPRINT" "$BLUEPRINT" | sed 's/^# BLUEPRINT — //' | sed 's/^# BLUEPRINT: //' || echo "")
 fi
 if [ -z "$BOOK_TITLE" ]; then

@@ -1,4 +1,4 @@
-# APPROVALS — The Vagus Nerve Gut Reset (PROSE REBUILD)
+# APPROVALS — The Vagus Nerve Gut Reset
 
 **Reviewer:** book-reviewer (Stage 04 quality gate)
 **Date:** 2026-06-26

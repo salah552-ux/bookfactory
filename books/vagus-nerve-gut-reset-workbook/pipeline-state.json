@@ -81,7 +81,7 @@
   },
 
   "quality_scores": {
-    "_rebuild_note": "Scores reflect the 2026-06-26 PROSE rebuild. The prior workbook-era scores (book-reviewer 108, final-approval 295) are VOID — they reviewed the rejected fill-in workbook. book-reviewer has RE-RUN on the prose (110/120 Grade A, APPROVALS.md). fact-checker, compliance-officer (Domain 7 format gate), and proofreader still need their prose re-runs; Stage 06 final-approval must re-run.",
+    "_rebuild_note": "Scores reflect the 2026-06-26 PROSE rebuild. The prior workbook-era scores (book-reviewer 108, final-approval 295) are VOID — they reviewed the rejected fill-in workbook. book-reviewer RE-RAN on the prose (110/120 Grade A, APPROVALS.md); fact-checker (PASS, 2026-06-26), compliance-officer (CONDITIONAL CLEAR, Domain 7 format gate), and proofreader (PASS) all re-ran on the prose. final-approval RE-RAN as a clean single-source-of-truth audit 2026-06-28 = 291/300 APPROVED (FINAL-APPROVAL-REPORT.md fully rewritten to the current title, current series number, prose 4-week structure, referencing the 2026-06-26 fact-check). The stale 2026-06-21 report (old '...Workbook' title, 295/300) and the 2026-06-26 289/300 addendum are both superseded.",
     "book_reviewer_avg": 110,
     "book_reviewer_grade": "A",
     "book_reviewer_result": "PASS — 110/120 prose (APPROVALS.md 2026-06-26). 1 required micro-fix (Wk2 Day 11 'Baseline page') + 1 optional ('a pen') BOTH APPLIED by orchestrator 2026-06-26; orchestrator additionally cleared 3 missed write-prompts in Wk3 Day 19 (jot/write-down/read-back) for §8A consistency. Re-scan: KINDLE-ELIGIBLE, no residual on-page write-prompts.",
@@ -90,8 +90,10 @@
     "fact_check_note": "Prose re-run 2026-06-26 (FACT-CHECK-REPORT.md addendum). Ch.1 claims map to RESEARCH.md; science unchanged by conversion; 1 non-blocking soft note (ENS vs spinal-cord claim).",
     "proofreader_result": "PASS — prose re-run 2026-06-26 (PROOFREAD-REPORT.md addendum). 0 placeholders/doubled-words/double-spaces/banned-phrases.",
     "compliance_result": "CONDITIONAL CLEAR — prose re-run 2026-06-26 (COMPLIANCE-REPORT.md addendum). Domain 7 KINDLE-ELIGIBLE; disclaimer present; no in-book AI line; adjunct health framing; cold safety lines. Sole condition: human sets KDP AI questionnaire at upload.",
-    "final_approval_score": 289,
-    "final_approval_decision": "APPROVED — prose re-run 2026-06-26 (FINAL-APPROVAL-REPORT.md addendum). 289/300, hard gate passed, no dimension below floor. Agent-level approval; human_gates.final_approval_passed stays false until Architect confirms.",
+    "final_approval_score": 291,
+    "final_approval_decision": "APPROVED — FRESH clean re-audit 2026-06-28 (FINAL-APPROVAL-REPORT.md rewritten as single source of truth). 291/300 (D1 68/75, D2 50/50, D3 60/60, D4 55/55, D5 35/35, D6 23/25); both hard gates PASS (Compliance 55/55; KDP Format Eligibility 4.5 KINDLE-ELIGIBLE); no dimension below floor. References the 2026-06-26 fact-check (PASS) on the current prose / new-title package. human_gates.final_approval_passed was previously set true by Architect GO 2026-06-26 and is UNCHANGED by this re-score.",
+    "final_approval_score_prose_addendum_void": 289,
+    "final_approval_score_prose_addendum_note": "289/300 was the prose rebuild's first audit (2026-06-26), logged as an addendum on a stale report still carrying the old '...Workbook' title and the void 295. Superseded by the 2026-06-28 clean re-audit (291/300). +2 because two prior small deductions (D3 metadata strictness, D5 A+ not built) verify to full marks on re-audit.",
     "final_approval_score_workbook_void": 295,
     "format_eligibility": "KINDLE-ELIGIBLE (format-eligibility.cjs, 0 blanks/0 checkboxes/0 blank rows/0 banned keywords)",
     "chapters_below_threshold": []
@@ -171,6 +173,22 @@
   },
 
   "agent_log": [
+    {
+      "timestamp": "2026-06-28T00:00:00Z",
+      "agent": "pipeline-orchestrator",
+      "executed_by": "pipeline-orchestrator",
+      "action": "BUILD-METADATA FIX — strip '(PROSE REBUILD)' working-label suffix from built EPUB title; harden title source",
+      "result": "success",
+      "notes": "Scoped build-metadata-only fix (no QA agent re-run, no prose/cover/listing change, no stage advance, no human-gate flip, no KDP/outward action). ROOT CAUSE: build-manuscript.sh set BOOK_TITLE by grepping BLUEPRINT.md H1, whose '(PROSE REBUILD)' working-label suffix leaked into the EPUB --metadata title. FIX: (1) removed '(PROSE REBUILD)' from the H1 of BLUEPRINT.md (build-critical), APPROVALS.md and STATUS.md (hygiene) — left dated FORMAT NOTE lines (FACTS.md) as historical record; (2) HARDENED build-manuscript.sh so BOOK_TITLE prefers pipeline-state.json canonical 'book_title', falling back to BLUEPRINT H1 then slug (minimal, backward-compatible — other books unaffected). REBUILT via bash build-manuscript.sh: EPUB 792K (>=500KB gate PASS), DOCX 68K, PDF 592K. VERIFIED against the BUILT file (not source): 'PROSE REBUILD' absent from the raw EPUB binary AND from every extracted EPUB file; OPF dc:title is exactly 'The Vagus Nerve Gut Reset'. format-eligibility.cjs = KINDLE-ELIGIBLE (exit 0); validate-state.cjs = clean (PASS, exit 0). Non-blocking carry-over (out of scope, cover untouched per brief): pandoc warns 'could not determine image size' for cover-kdp.jpg, but cover still embedded and EPUB clears the >=500KB cover-embed gate; reference-only manuscript-kdp.html <title> not in scope. Files changed: BLUEPRINT.md, APPROVALS.md, STATUS.md, build-manuscript.sh, exports/final/manuscript-kdp.{epub,docx,pdf,html}, pipeline-state.json (this entry)."
+    },
+    {
+      "timestamp": "2026-06-28T00:00:00Z",
+      "agent": "final-approval-agent",
+      "executed_by": "pipeline-orchestrator",
+      "action": "STALE-REPORT RECONCILIATION — fresh final-approval re-score on the CURRENT prose / new-title package",
+      "result": "success",
+      "notes": "Scoped single-agent run (no other agent invoked; no manuscript/cover/listing regenerated; no build; no outward/KDP action). final-approval-agent overwrote FINAL-APPROVAL-REPORT.md as a clean single source of truth for 'The Vagus Nerve Gut Reset' (no 'Workbook'), Book 4, dated 2026-06-28, referencing the 2026-06-26 fact-check (PASS), prose 4-week structure, Maya worked-example, locked final line verified verbatim vs FACTS.md. SCORE: 291/300 APPROVED (D1 68/75, D2 50/50, D3 60/60, D4 55/55, D5 35/35, D6 23/25); both hard gates PASS (Compliance 55/55; KDP Format Eligibility 4.5 KINDLE-ELIGIBLE via format-eligibility.cjs exit 0); no dimension below floor. RECONCILIATION: 295/300 = 2026-06-21 audit of the KDP-REJECTED fill-in WORKBOOK = VOID (kept as final_approval_score_workbook_void). 289/300 = 2026-06-26 prose addendum on a stale report (kept as final_approval_score_prose_addendum_void). 291/300 = current value recorded in final_approval_score (+2 vs 289: two prior small deductions verify to full marks on clean re-audit). Pre-stage-gate stage 6 CLEARED before dispatch; report verified on disk; only FINAL-APPROVAL-REPORT.md + pipeline-state.json written in books/. NO human gate flipped, NO stage advanced — final_approval_passed remains true (set by Architect GO 2026-06-26, unchanged); cover_approved/ai_questionnaire_confirmed/published unchanged. Non-blocking findings carried: EPUB interior title page shows '(PROSE REBUILD)' build-tag and reference-only manuscript-kdp.html still carries old '...Workbook' <title> — neither affects the KDP upload (dashboard metadata governs; .html never uploaded)."
+    },
     {
       "timestamp": "2026-06-19T00:00:00Z",
       "agent": "master-orchestrator (Sonnet)",
