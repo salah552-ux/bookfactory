@@ -200,18 +200,13 @@ else
       -o "$HTML_FILE"
   fi
 
-  "$CHROME" --headless=new --disable-gpu \
-    --print-to-pdf="$PDF_FILE" \
-    --no-pdf-header-footer \
-    --run-all-compositor-stages-before-draw \
-    "$HTML_FILE" 2>/dev/null
-
-  if [ -f "$PDF_FILE" ]; then
-    PDF_SIZE=$(du -sh "$PDF_FILE" | cut -f1)
-    echo "  ✓ PDF: $PDF_SIZE — $PDF_FILE"
-  else
-    echo "  Warning: PDF generation failed — check Chrome installation."
-  fi
+  # PDF is intentionally NOT generated here.
+  # The locked print design lives in the per-book pdf-style.css / .md-to-pdf.json
+  # and is applied ONLY by build-pdf.sh. This script owns EPUB + DOCX (+ reference
+  # HTML) only. A bare Chrome --print-to-pdf here produced an UNSTYLED PDF that
+  # overwrote the locked design (incident 2026-06-28). Do NOT re-add it.
+  : "${PDF_FILE:?}"  # var kept for reference; not written here
+  echo "  • PDF: skipped by design — run 'bash build-pdf.sh <slug>' for the styled PDF."
 fi
 
 echo ""
