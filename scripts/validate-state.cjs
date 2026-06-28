@@ -260,7 +260,8 @@ function validateBook(slug) {
     }
   }
 
-  return { slug, violations: v, published: hg.published === true };
+  const parked = /^(parked|archived)$/i.test(String(state.lifecycle || ""));
+  return { slug, violations: v, published: hg.published === true, parked };
 }
 
 // --- select books ---
@@ -275,7 +276,11 @@ let criticalCount = 0;
 const reports = [];
 for (const slug of slugs) {
   const r = validateBook(slug);
-  if (HOOK_MODE && r.published) continue; // hook only polices in-flight books
+  // Hook only polices in-flight books: skip published (live) AND explicitly
+  // parked/archived drafts. Parked books still appear in the full report below
+  // (`node scripts/validate-state.cjs`) — nothing is hidden from the audit; the
+  // hook just doesn't hard-block the turn on work the author has set aside.
+  if (HOOK_MODE && (r.published || r.parked)) continue;
   const crit = r.violations.filter((x) => x.level === "CRITICAL");
   criticalCount += crit.length;
   if (HOOK_MODE) {
@@ -314,13 +319,14 @@ console.log(`${C.DIM}contract: .claude/agents/PIPELINE-MANIFEST.json · ${slugs.
 if (branchViol) console.log(`${C.BOLD}repo${C.OFF}  ${tag("CRITICAL")} [INV-4] ${branchViol.msg}\n`);
 
 for (const r of reports) {
+  const parkedTag = r.parked ? ` ${C.YEL}[parked — not hook-blocking, still audited]${C.OFF}` : "";
   if (r.violations.length === 0) {
-    console.log(`${C.GRN}✓${C.OFF} ${C.BOLD}${r.slug}${C.OFF} — clean`);
+    console.log(`${C.GRN}✓${C.OFF} ${C.BOLD}${r.slug}${C.OFF} — clean${parkedTag}`);
     continue;
   }
   const crit = r.violations.filter((x) => x.level === "CRITICAL").length;
   const warn = r.violations.filter((x) => x.level === "WARN").length;
-  console.log(`${crit ? C.RED + "✗" + C.OFF : C.YEL + "!" + C.OFF} ${C.BOLD}${r.slug}${C.OFF} — ${crit} critical, ${warn} warn`);
+  console.log(`${crit ? C.RED + "✗" + C.OFF : C.YEL + "!" + C.OFF} ${C.BOLD}${r.slug}${C.OFF} — ${crit} critical, ${warn} warn${parkedTag}`);
   for (const x of r.violations) console.log(`    ${tag(x.level)} [${x.code}] ${x.msg}`);
 }
 

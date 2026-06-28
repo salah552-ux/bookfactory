@@ -1,4 +1,6 @@
 {
+  "lifecycle": "parked",
+  "lifecycle_note": "PARKED from Stop-hook blocking 2026-06-28 — this does NOT certify the stages below; the validator flags this book as over-claiming completion (missing deliverables / unset executed_by). Still fully shown in the manual audit (node scripts/validate-state.cjs). Must be re-validated by pipeline-orchestrator or honestly corrected before any further work or publish. Reversible: delete these two fields.",
   "book_slug": "the-7-day-gut-reset",
   "book_title": "The 7-Day Gut Reset",
   "series": "Fix Your Gut for Good",
