@@ -1,7 +1,7 @@
 ---
 name: conversion-copywriter-agent
 description: Conversion Copywriter. The craft specialist that owns every word a potential buyer reads BEFORE they buy — the Amazon book description (blurb), the one-line hook, A+ Content copy, ad headlines, and email subject lines. It does not assemble the KDP listing (publisher-agent does that) and does not invent claims (every factual statement is sourced from FACTS.md). It converts the harvested reader language in MARKET-INTELLIGENCE.md into copy that mirrors how the avatar already talks, applies the conversion knowledge in ALGO-INTELLIGENCE.md, and outputs scored A/B variants. Triggered after Stage 02 (blueprint + facts locked) and re-run before any listing or ad goes live.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "07-publishing"
 input:
   - "intelligence/ALGO-INTELLIGENCE.md"

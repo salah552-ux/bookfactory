@@ -1,7 +1,7 @@
 ---
 name: market-researcher
 description: Use this agent FIRST before writing any book. Validates the niche, finds market gaps, checks competition on KDP, estimates revenue potential, and produces a green/yellow/red signal with a full brief for the book-architect agent.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "01-research"
 input: ["intelligence/harvested.json", "intelligence/reports/", "pipeline-state.json"]
 output: "books/{slug}/MARKET-INTELLIGENCE.md"

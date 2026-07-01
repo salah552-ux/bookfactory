@@ -1,7 +1,7 @@
 ---
 name: brief-validator
 description: Runs BEFORE any writing agent. Reads BLUEPRINT.md, the chapter brief, and SERIES-FACTS.md, then cross-checks every named entity. Outputs BRIEF-VALIDATION.md with PASS or FAIL. Writing agents are BLOCKED until this passes. Writes result to AGENT-LOG.md.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "02-planning"
 input: ["BLUEPRINT.md", "02-planning/chapter-brief or agent_brief", "SERIES-FACTS.md (if exists)", "FACTS.md"]
 output: ["BRIEF-VALIDATION.md", "AGENT-LOG.md entry"]

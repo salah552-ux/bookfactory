@@ -1,7 +1,7 @@
 ---
 name: quality-gate
 description: Runs after each pipeline phase completes. Checks that all expected deliverables exist, all scores meet thresholds, all human gates are confirmed, and pipeline-state.json is up to date before unlocking the next stage. Hard gate — next stage does not start until quality-gate passes. Writes quality_gate result to pipeline-state.json and logs every run to AGENT-LOG.md.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "00-coordinator"
 input: ["pipeline-state.json", "BLUEPRINT.md", "APPROVALS.md", "exports/final/", "AGENT-LOG.md"]
 output: ["PASS (next stage unlocked) or BLOCK (specific failures listed)", "pipeline-state.json quality_gate field updated", "AGENT-LOG.md entry"]

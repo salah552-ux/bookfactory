@@ -1,7 +1,7 @@
 ---
 name: business-writer
 description: Specialized writer for business, self-help, productivity, finance, entrepreneurship, and personal development books. Produces clear, punchy, authoritative prose with real-world examples and actionable takeaways. Never corporate, never vague, never AI-generic.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "03-writing"
 input: ["books/{slug}/BLUEPRINT.md", "books/{slug}/FACTS.md", "books/{slug}/manuscript/ (all previously approved chapter files)"]
 output: "books/{slug}/manuscript/<NN-name>.md (single chapter file, naming convention per BLUEPRINT.md)"

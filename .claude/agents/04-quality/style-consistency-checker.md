@@ -1,7 +1,7 @@
 ---
 name: style-consistency-checker
 description: Runs after all writing agents finish. Reads every chapter in manuscript/ and checks for voice and style drift between early and late chapters. Flags chapters that have deviated from the voice anchors in FACTS.md. Invoke with "style check [book-slug]".
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "04-quality"
 input: ["manuscript/*.md", "FACTS.md", "BLUEPRINT.md"]
 output: "STYLE-CONSISTENCY-REPORT.md"

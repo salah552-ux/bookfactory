@@ -1,7 +1,7 @@
 ---
 name: series-continuity-guardian
 description: Cross-book consistency enforcer for all BookFactory series. Reads SERIES-FACTS.md and every individual book's FACTS.md to detect contradictions across the entire catalog. Covers fiction (Cathedral Close Mysteries — character continuity, world rules, plot logic, voice consistency, unresolved threads) and non-fiction (Fix Your Gut for Good — statistics, terminology, causal language, medical promises). Run after each new book completes the pipeline, before it is approved. Also run before Book 2 of any series begins. Produces a conflict report with exact quotes, locations, and recommended resolutions.
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - Read
   - Glob

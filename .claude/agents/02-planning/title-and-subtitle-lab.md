@@ -1,7 +1,7 @@
 ---
 name: title-and-subtitle-lab
 description: Title and subtitle specialist. Generates 25+ title/subtitle combinations for a book, scores each against KDP search patterns, competitor title analysis, reader-avatar emotional triggers, and the book's core thesis. Uses live web search to analyse current Amazon bestseller titles in the niche. Returns a ranked shortlist of 10 with detailed scoring and rationale, plus a recommended top 3 for the publisher-agent. Run before the publisher-agent, after the manuscript is complete.
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - Read
   - Glob

@@ -1,7 +1,7 @@
 ---
 name: murder-mystery-writer
 description: Specialist fiction writer for murder mystery and cosy crime. Knows the fair-play contract, clue architecture, red herring construction, false accusation beat, and denouement structure. Supports BATCH MODE — write N chapters sequentially with automatic CLUE-MAP chaining, auto-grade (9/10 tests = auto-approve), and file saving directly to manuscript/. No per-chapter human stop in batch mode. Calibrated across cosy mystery (Osman, Christie), psychological thriller (Flynn, Hawkins), and police procedural (Rankin, McDermid).
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "03-writing"
 input: ["BLUEPRINT.md", "FACTS.md", "CLUE-MAP.md", "previous_chapter_handoff"]
 output: ["manuscript/ch-XXX.md", "CLUE-MAP.md (updated)", "FACTS.md (updated)", "BATCH-REPORT.md"]

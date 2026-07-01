@@ -1,7 +1,7 @@
 ---
 name: fiction-writer
 description: Specialized writer for all fiction genres — fantasy, thriller, romance, sci-fi, historical fiction, literary fiction, horror, YA. Produces distinctive, human-sounding prose with strong voice, vivid scenes, and page-turning momentum. Follows the book-architect blueprint exactly.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "03-writing"
 input: ["books/{slug}/BLUEPRINT.md", "books/{slug}/FACTS.md", "books/{slug}/manuscript/ (all previously approved chapter files)", "books/{slug}/manuscript/handoffs/ (most recent handoff)"]
 output: "books/{slug}/manuscript/ch-<NNN>.md (zero-padded 3-digit chapter file)"

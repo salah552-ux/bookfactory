@@ -1,7 +1,7 @@
 ---
 name: book-architect
 description: Use this agent after market-researcher approves a niche. Takes the market brief and designs the full book structure — chapter outline, tone bible, pacing map, and opening hook strategy. Produces a blueprint the writer agents follow exactly.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "02-planning"
 input: ["books/{slug}/MARKET-INTELLIGENCE.md", "books/{slug}/COMPETITIVE-ANALYSIS.md", "pipeline-state.json"]
 output: "books/{slug}/BLUEPRINT.md + books/{slug}/FACTS.md + books/{slug}/KDP-LISTING.md (stub)"

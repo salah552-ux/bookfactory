@@ -1,7 +1,7 @@
 ---
 name: novel-writer
 description: Strategic creative director for fiction builds. Receives the MARKET-INTELLIGENCE.md handoff package from deep-market-intelligence-agent. Makes the series vs. standalone decision, designs the complete book or series architecture, locks the creative concept, and routes to the correct genre writing agent. Does NOT write chapters — it designs everything the chapter writers need to produce a market-positioned, commercially viable book.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "02-planning"
 input: ["books/{slug}/MARKET-INTELLIGENCE.md", "books/{slug}/COMPETITIVE-ANALYSIS.md", "pipeline-state.json"]
 output: ["books/{slug}/BLUEPRINT.md", "books/{slug}/SERIES-PLAN.md (if series)", "books/{slug}/FACTS.md (skeleton)"]

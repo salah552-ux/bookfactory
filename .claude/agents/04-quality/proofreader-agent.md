@@ -1,7 +1,7 @@
 ---
 name: proofreader-agent
 description: Line-level proofreading pass on the complete manuscript. Catches typos, spelling inconsistencies, punctuation errors, hyphenation, number formatting, capitalization drift, and repeated words in close proximity. Runs after hook-optimizer and review-bait-optimizer, before series-continuity-guardian. Does NOT touch voice, content, or structure — those are covered by book-reviewer and hook-optimizer. Applies clear errors autonomously; flags ambiguous cases for author review.
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - Read
   - Glob

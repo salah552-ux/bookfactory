@@ -1,7 +1,7 @@
 ---
 name: kdp-seo-agent
 description: Dedicated Amazon SEO and positioning strategist for KDP books. Owns the complete keyword and category strategy that every downstream agent depends on. Produces CATEGORY-SELECTION.md (binding authority for the upload agent) and SEO-STRATEGY.md (keyword strategy for title, subtitle, chapter structure, description, and backend fields). Runs at Stage 01 — before book-architect, before any writing begins, before the title is final. Keyword strategy shapes the title, subtitle, chapter headers, and Look Inside content. Running this after writing is too late.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "01-research"
 input: ["genre", "book_concept", "books/{slug}/MARKET-INTELLIGENCE.md", "intelligence/reports/OPPORTUNITY-REPORT-*.md", "books/{series-slug}/SERIES-KEYWORD-REALITY.md (optional — read if exists)"]
 output: ["books/{slug}/SEO-STRATEGY.md", "books/{slug}/CATEGORY-SELECTION.md", "books/{slug}/SEO-STRATEGY-v2.md (refresh mode only)"]

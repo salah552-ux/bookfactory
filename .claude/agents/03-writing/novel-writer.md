@@ -1,7 +1,7 @@
 ---
 name: novel-writer
 description: ⛔ MOVED — now lives in 02-planning/novel-writer.md. This file is a redirect stub only. Do not invoke from here.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "02-planning"
 input: ["MARKET-INTELLIGENCE.md", "genre", "creative_concept"]
 output: ["BLUEPRINT.md", "SERIES-PLAN.md (if series)", "FACTS.md (skeleton)", "writer_routing_decision"]

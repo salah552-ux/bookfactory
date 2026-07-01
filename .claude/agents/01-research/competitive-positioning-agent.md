@@ -1,7 +1,7 @@
 ---
 name: competitive-positioning-agent
 description: Pre-writing market intelligence agent. Mines Amazon reviews of competing books in the niche to find what readers wanted but didn't get, what failed them, and what no existing book does. Produces a Reader Gap Brief, keyword pattern analysis, and competitive differentiation map that feeds directly into the book-architect and all writer agents. Run BEFORE the manuscript begins, or again mid-project if the positioning feels off.
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - Read
   - Glob

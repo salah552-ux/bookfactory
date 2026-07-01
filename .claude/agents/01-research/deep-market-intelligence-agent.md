@@ -1,7 +1,7 @@
 ---
 name: deep-market-intelligence-agent
 description: The most powerful research agent in the BookFactory pipeline. Uses live Amazon data via Playwright to analyse bestsellers, convert BSR to real daily sales figures, mine competitor reviews for reader gaps, extract author style from book samples, model launch trajectory, and produce a sales forecast with a specific daily sales number and confidence margin. Runs at the very start of every new book build. Outputs MARKET-INTELLIGENCE.md — the single source of truth for every decision that follows.
-model: claude-opus-4-7
+model: claude-opus-4-8
 tools:
   - Read
   - Write

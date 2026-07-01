@@ -1,7 +1,7 @@
 ---
 name: fact-checker
 description: Specialized medical/health fact-checker for BookFactory manuscripts. Verifies every factual claim against primary sources, scores evidence quality, flags print risks, and outputs exact fix language. Runs before any chapter proceeds to approval.
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "04-quality"
 input: ["books/{slug}/manuscript/<chapter-file>.md", "books/{slug}/FACTS.md"]
 output: "books/{slug}/FACT-CHECK-REPORT.md (append-or-replace per chapter)"

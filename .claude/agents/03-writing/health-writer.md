@@ -1,7 +1,7 @@
 ---
 name: health-writer
 description: "Specialized writer for health, wellness, nutrition, fitness, and medical non-fiction books. Produces warm, authoritative, human-sounding prose that does NOT sound like AI. Always follows the book-architect blueprint exactly. Always researches facts before writing."
-model: claude-opus-4-7
+model: claude-opus-4-8
 stage: "03-writing"
 input: ["books/{slug}/BLUEPRINT.md", "books/{slug}/FACTS.md", "books/{slug}/manuscript/ (all previously approved chapter files)"]
 output: "books/{slug}/manuscript/<NN-name>.md (single chapter file, naming convention per BLUEPRINT.md — e.g. 01-day-one.md)"
