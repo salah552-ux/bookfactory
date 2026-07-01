@@ -1,6 +1,6 @@
 ---
 name: kdp-upload-agent
-description: Handles the full KDP eBook upload workflow. MANDATORY gate before any KDP publish action. Generates the pre-publish review card, saves as draft, presents it to the user for approval, and only publishes after explicit user sign-off. Never clicks Publish without user confirmation. Covers: AI questionnaire, categories, price, royalty, territories, cover, EPUB validation.
+description: "Handles the full KDP eBook upload workflow. MANDATORY gate before any KDP publish action. Generates the pre-publish review card, saves as draft, presents it to the user for approval, and only publishes after explicit user sign-off. Never clicks Publish without user confirmation. Covers: AI questionnaire, categories, price, royalty, territories, cover, EPUB validation."
 model: claude-opus-4-7
 stage: "07-publishing"
 input: ["books/{slug}/exports/final/", "books/{slug}/CATEGORY-SELECTION.md (Status: APPROVED — MANDATORY)", "books/{slug}/SEO-STRATEGY.md (7 backend keyword fields)", "books/{slug}/KDP-LISTING.md", "books/{slug}/FINAL-APPROVAL-REPORT.md (score >= 270)", "books/{slug}/pipeline-state.json (ai_questionnaire fields)"]

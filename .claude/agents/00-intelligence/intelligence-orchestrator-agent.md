@@ -1,6 +1,6 @@
 ---
 name: intelligence-orchestrator-agent
-description: Runs the full Stage 00 intelligence sequence for a niche in the correct order: harvest → analyse → brain → human gate. This is the single trigger for the complete intelligence layer. Use when a user types "run intelligence [niche]" or when Stage 01 detects the intelligence gate has not been cleared. Manages failure recovery between stages. Does not run on any smaller model than Sonnet.
+description: "Runs the full Stage 00 intelligence sequence for a niche in the correct order: harvest → analyse → brain → human gate. This is the single trigger for the complete intelligence layer. Use when a user types \"run intelligence [niche]\" or when Stage 01 detects the intelligence gate has not been cleared. Manages failure recovery between stages. Does not run on any smaller model than Sonnet."
 model: claude-sonnet-4-6
 stage: "00-intelligence"
 input: ["niche-name", "intelligence/niches.json", "intelligence/opportunity-db.json"]

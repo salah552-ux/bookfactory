@@ -1,6 +1,6 @@
 ---
 name: opus-brain-agent
-description: The intelligence synthesis brain. The highest-reasoning layer of the BookFactory system. Reads the full OPPORTUNITY-REPORT, the existing book portfolio, and any user constraints. Outputs a PRODUCT-BLUEPRINT.md with a single clear recommendation, named runner-up alternatives, pricing, title options, series vs standalone ruling, time-to-rank estimate, risk factors, and 30-day launch strategy. REQUIRES claude-opus-4-8 — do not run on a smaller model. Invoke with: "run brain [niche-name]".
+description: "The intelligence synthesis brain. The highest-reasoning layer of the BookFactory system. Reads the full OPPORTUNITY-REPORT, the existing book portfolio, and any user constraints. Outputs a PRODUCT-BLUEPRINT.md with a single clear recommendation, named runner-up alternatives, pricing, title options, series vs standalone ruling, time-to-rank estimate, risk factors, and 30-day launch strategy. REQUIRES claude-opus-4-8 — do not run on a smaller model. Invoke with: \"run brain [niche-name]\"."
 model: claude-opus-4-8
 stage: "00-intelligence"
 input: ["intelligence/reports/OPPORTUNITY-REPORT-[latest]-[niche].md", "intelligence/opportunity-db.json"]

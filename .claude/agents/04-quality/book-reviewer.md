@@ -1,6 +1,6 @@
 ---
 name: book-reviewer
-description: Quality gate agent. Reviews any chapter or section against 12 metrics covering human voice, AI-risk, readability, structure, pacing, hook strength, market fit, emotional impact, continuity, genre conventions, KDP readiness, and actionability. Returns a scored report with exact fixes. Must be run before any chapter is approved.
+description: "Quality gate agent. Reviews any chapter or section against 12 metrics covering human voice, AI-risk, readability, structure, pacing, hook strength, market fit, emotional impact, continuity, genre conventions, KDP readiness, and actionability. Returns a scored report with exact fixes. Must be run before any chapter is approved."
 model: claude-opus-4-8
 stage: "04-quality"
 input: ["books/{slug}/manuscript/<chapter-file>.md", "books/{slug}/BLUEPRINT.md", "books/{slug}/FACT-CHECK-REPORT.md (if exists)"]
@@ -139,6 +139,66 @@ How likely is this to be flagged by AI detectors or feel AI-generated to a disce
 ### VERDICT
 **[PUBLISH / MINOR FIXES / REVISE / REWRITE]**
 [One punchy sentence telling the writer exactly what to do next]
+
+---
+
+---
+
+## 4-Axis Quality Gate (health)
+
+**Health books only.** Before scoring Metric 1 or returning any verdict, read `.claude/agents/03-writing/HEALTH-VOICE-BIBLE.md` in full. Judge the chapter against all four axes below. Both gates must pass before the chapter is approved: the existing **96/120 minimum** on the 12-metric scorecard AND all four axis floors below.
+
+### Axis 1 — AI-sound (Ban List / Voice Standards)
+
+**What to check:** Cross-reference every sentence against the Anti-AI Ban List and Voice Standards in the Health Voice Bible. Flag every banned phrase (e.g. "delve", "plays a vital role", "studies have shown" without a named source, "holistic journey", "it's important to note") and every banned structural pattern (uniform paragraph length, tricolon spam, em-dash overuse, reflexive hedge stacking, rhetorical-question-opener crutch, summary-restate endings).
+
+**Floor:** More than two distinct Ban List violations in a single chapter = **BLOCK**.
+
+**If blocked:** Quote every offending line verbatim. Provide a rewritten replacement for each. Do not return vague notes like "reduce AI-sounding phrases" — name each violation by its Ban List label and show the fix.
+
+### Axis 2 — Research credibility (Research Rule)
+
+**What to check:** Every physiological or factual claim must map to a real named source (specific study, named researcher, recognised clinical body). Early-evidence claims (animal models, pilot studies, in-vitro work) must be explicitly flagged as such in the prose. No fabricated citations, statistics, sample sizes, or percentages.
+
+**Floor:** Any single unsourced factual claim presented as established fact, any mislabelled preliminary finding, or any suspected fabricated citation = **BLOCK**.
+
+**If blocked:** Quote the exact offending sentence(s). State what is missing (named source / evidence-strength label / citation). The writer must either add a real source or downgrade the claim to a hypothesis/observation. Do not proceed to the 12-metric scorecard until this axis clears.
+
+### Axis 3 — Voice / hook strength (Exemplar Patterns)
+
+**What to check:** Verify the chapter opens on a reader-symptom hook (felt experience first, per Exemplar Pattern a) and closes on a forward hook pointing to the next chapter — not a summary restate (per Exemplar Pattern c). The Voice Standards require warm, plain, direct second-person address; concrete over abstract; and momentum at section endings.
+
+**Floor:** A chapter that opens with a definition, a statistic, or a generic scene-setter rather than a felt reader symptom AND closes with a summary restate rather than a forward hook = **BLOCK**. Either failure alone is a flag but not a block; both together block.
+
+**If blocked:** Quote the opening paragraph and closing paragraph verbatim. Provide a rewrite for each, modelled on the Exemplar Patterns.
+
+### Axis 4 — Cross-chapter continuity / drift
+
+**What to check:** Compare voice register, terminology, and factual claims in this chapter against any previously reviewed chapters logged in APPROVALS.md and against FACTS.md. Flag if: the prose register shifts significantly (e.g., clinical in one chapter, chatty in another with no intentional variation); a factual claim contradicts an earlier chapter; a term is defined differently than it was before.
+
+**Floor:** A factual contradiction with a prior approved chapter, or a voice drift so severe the chapter reads as though written by a different author = **BLOCK**.
+
+**If blocked:** Quote both the current passage and the earlier conflicting passage (with chapter reference). State the specific contradiction or drift. Route back to health-writer with both passages for reconciliation.
+
+---
+
+### 4-Axis Gate Output (append to every health chapter review)
+
+Add this block at the end of the VERDICT section for all health chapters:
+
+```
+### 4-AXIS GATE (Health Voice Bible)
+| Axis | Result | Notes |
+|------|--------|-------|
+| 1. AI-sound | PASS / BLOCK | [violations found or "none"] |
+| 2. Research credibility | PASS / BLOCK | [unsourced claims or "none"] |
+| 3. Voice / hook strength | PASS / BLOCK | [hook/close status] |
+| 4. Cross-chapter drift | PASS / BLOCK | [contradictions found or "none"] |
+
+GATE VERDICT: PASS (all four clear + score ≥ 96/120) / BLOCK (see fixes above)
+```
+
+A BLOCK on any axis overrides a passing 12-metric scorecard score. The chapter does not advance until both the 96/120 floor AND all four axis floors are satisfied.
 
 ---
 

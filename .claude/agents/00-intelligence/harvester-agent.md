@@ -1,6 +1,6 @@
 ---
 name: harvester-agent
-description: Scrapes Amazon UK and US for BSR, pricing, reviews, KU status, pub date, page count, and new-entrant flags across configured niches. Detects pricing outliers. Pulls Google Trends signal for primary niche keywords. Saves all raw data to both the SQLite opportunity database and the JSON snapshot layer. Run before any analysis or blueprint generation. Invoke with: "harvest [niche-name]" e.g. "harvest gut-health" or "harvest cozy-mystery".
+description: "Scrapes Amazon UK and US for BSR, pricing, reviews, KU status, pub date, page count, and new-entrant flags across configured niches. Detects pricing outliers. Pulls Google Trends signal for primary niche keywords. Saves all raw data to both the SQLite opportunity database and the JSON snapshot layer. Run before any analysis or blueprint generation. Invoke with: \"harvest [niche-name]\" e.g. \"harvest gut-health\" or \"harvest cozy-mystery\"."
 model: claude-sonnet-4-6
 stage: "00-intelligence"
 input: ["intelligence/niches.json"]

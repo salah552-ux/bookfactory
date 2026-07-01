@@ -1,6 +1,6 @@
 ---
 name: niche-finder-agent
-description: Proactive niche discovery agent. Scans Amazon UK bestseller category pages and adjacent search space to surface niche candidates the Architect hasn't thought of yet. Starts from anchor categories (health/wellness non-fiction, British/cozy fiction) and uses portfolio books' also-bought signals to find adjacent demand. Outputs a ranked shortlist of 5–10 candidate niches with real Amazon evidence. Adds approved candidates to niches.json. Run before you know what to build next. Invoke with: "find niches" (broad scan) or "find niches [anchor]" (anchored scan, e.g. "find niches health" or "find niches fiction").
+description: "Proactive niche discovery agent. Scans Amazon UK bestseller category pages and adjacent search space to surface niche candidates the Architect hasn't thought of yet. Starts from anchor categories (health/wellness non-fiction, British/cozy fiction) and uses portfolio books' also-bought signals to find adjacent demand. Outputs a ranked shortlist of 5–10 candidate niches with real Amazon evidence. Adds approved candidates to niches.json. Run before you know what to build next. Invoke with: \"find niches\" (broad scan) or \"find niches [anchor]\" (anchored scan, e.g. \"find niches health\" or \"find niches fiction\")."
 model: claude-sonnet-4-6
 stage: "00-intelligence"
 input: ["intelligence/niches.json", "intelligence/opportunity-db.json"]

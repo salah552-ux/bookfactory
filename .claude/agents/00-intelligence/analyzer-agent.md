@@ -1,6 +1,6 @@
 ---
 name: analyzer-agent
-description: Runs analysis algorithms on harvested Amazon data to produce opportunity reports per niche. Applies BSR-to-sales velocity conversion, niche saturation scoring, price elasticity analysis, content gap detection, and cross-niche opportunity flagging. Must be run AFTER harvester-agent has populated the database. Invoke with: "analyse opportunities [niche-name]".
+description: "Runs analysis algorithms on harvested Amazon data to produce opportunity reports per niche. Applies BSR-to-sales velocity conversion, niche saturation scoring, price elasticity analysis, content gap detection, and cross-niche opportunity flagging. Must be run AFTER harvester-agent has populated the database. Invoke with: \"analyse opportunities [niche-name]\"."
 model: claude-sonnet-4-6
 stage: "00-intelligence"
 input: ["intelligence/opportunity.db", "intelligence/opportunity-db.json"]

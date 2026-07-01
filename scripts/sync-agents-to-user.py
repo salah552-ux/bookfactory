@@ -32,6 +32,30 @@ NAME_RE = re.compile(r"(?m)^name:\s*(\S.*?)\s*$")
 DESC_RE = re.compile(r"(?m)^description:\s*\S")
 
 
+def harden_frontmatter(content):
+    """Ensure the YAML frontmatter `description:` is a quoted scalar.
+
+    A bare (unquoted) description containing a colon-space (e.g. 'Covers: AI ...')
+    makes the YAML frontmatter fail to parse, and Claude Code then SILENTLY drops
+    the agent from the registry. This bit 6 agents (incl. kdp-upload-agent). Quoting
+    the value makes it parse-safe regardless of its punctuation.
+    """
+    lines = content.split("\n")
+    if not lines or lines[0].strip() != "---":
+        return content
+    end = next((i for i in range(1, len(lines)) if lines[i].strip() == "---"), None)
+    if end is None:
+        return content
+    for i in range(1, end):
+        if lines[i].startswith("description:"):
+            val = lines[i][len("description:"):].strip()
+            if val and val[0] not in ('"', "'"):
+                esc = val.replace("\\", "\\\\").replace('"', '\\"')
+                lines[i] = 'description: "' + esc + '"'
+            break
+    return "\n".join(lines)
+
+
 def agent_name(path):
     """Return the frontmatter agent name if this file is a real agent, else None."""
     try:
@@ -78,8 +102,11 @@ def main():
                 skipped_dupes.append("{} (dup of {})".format(os.path.join(stage, fn), seen[name]))
                 continue
             seen[name] = os.path.join(stage, fn)
+            with open(src, "r", encoding="utf-8", errors="replace") as f:
+                content = harden_frontmatter(f.read())
             dstname = "{}{}-{}".format(PREFIX, stage, fn)
-            shutil.copyfile(src, os.path.join(DST, dstname))
+            with open(os.path.join(DST, dstname), "w", encoding="utf-8") as f:
+                f.write(content)
             count += 1
 
     print("[sync-agents] mirrored {} agents -> {}".format(count, DST))
