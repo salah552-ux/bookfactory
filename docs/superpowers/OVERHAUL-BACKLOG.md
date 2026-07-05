@@ -11,5 +11,8 @@ Split into 4 slices. Status as of 2026-07-01:
       📌 REMINDER: pick up here. Scoping Q not yet answered: biggest pain = visual quality / volume /
       product selection / listing quality? Agents in scope: product-extractor, digital-product-designer,
       design-agent, + bookfactory-designer / canva-bulk-create skills.
-- [ ] **Slice 3 — Automation** — ▶️ IN PROGRESS (started 2026-07-01).
-- [ ] **Slice 4 — Agent brains** — pending (prompts/models/memory + cross-book learning).
+- [x] **Slice 3 — Automation** — DONE + committed (f1f654d). Orchestrator retry/loop-guard + Run Ledger + 3 gates.
+- [~] **Slice 4 — Agent brains** — IN PROGRESS. Phased 1→2→3:
+      - [x] #1 Model audit — DONE + committed (2555d73). 19 quality-critical agents → Opus 4.8.
+      - [ ] #2 Cross-book learning memory (shared LESSONS.md agents read/append). NEXT.
+      - [ ] #3 Prompt refresh (agents not touched in slices 1/3).

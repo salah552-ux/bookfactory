@@ -6,12 +6,29 @@
  * prints a pass/fail report. Used to verify the dashboard can actually
  * drive the pipeline.
  */
-const WS = require("/home/user/bookfactory/backend/node_modules/ws");
 const fs = require("fs");
 const path = require("path");
 
+// Resolve the repo root portably (env override > this script's parent dir).
+const ROOT = process.env.BOOKFACTORY_ROOT || path.resolve(__dirname, "..");
+
+// Resolve the ws module portably: plain require first, then the backend's
+// node_modules relative to the repo root. Fail with a clear message, not a stack.
+let WS;
+try {
+  WS = require("ws");
+} catch {
+  try {
+    WS = require(path.join(ROOT, "backend", "node_modules", "ws"));
+  } catch {
+    console.error(
+      "✘ Cannot find the 'ws' module. Install backend deps first: cd backend && npm install"
+    );
+    process.exit(1);
+  }
+}
+
 const URL = process.env.WS_URL || "ws://127.0.0.1:8787/ws";
-const ROOT = process.env.BOOKFACTORY_ROOT || "/home/user/bookfactory";
 
 const results = [];
 function pass(label, detail = "") {

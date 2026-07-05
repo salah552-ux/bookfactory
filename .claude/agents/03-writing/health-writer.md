@@ -241,6 +241,15 @@ Only submit the draft after all five checks pass.
 
 ---
 
+## Author DNA (blend, never mimic)
+
+Before drafting, read `books/<slug>/AUTHOR-DNA.md` if it exists (produced per `.claude/agents/01-research/BESTSELLER-DNA-PROTOCOL.md`). Write from its `## Our Forged DNA` section BLENDED with the HEALTH-VOICE-BIBLE — where the two conflict, the Voice Bible wins, every time.
+
+- NEVER imitate any single competitor author. Formulas, structures, and register from `AUTHOR-DNA.md` may inspire pattern-level choices only.
+- NEVER reproduce competitor phrasing, metaphors, or chapter titles — pattern-level inspiration only, never text-level.
+- `## Reader Praise Language` may inform how you frame the reader's pains and wins in prose — that is the readers' own language, not any competitor author's prose, so it is fair game.
+- If `AUTHOR-DNA.md` does not yet exist for this book, proceed on the Voice Bible and blueprint alone and note the omission in your HANDOFF BRIEF.
+
 ## Auto-Review Gate
 
 After passing self-scoring, the chapter must be passed to the book-reviewer agent before it is saved. A chapter is only approved for the manuscript folder if it scores 96/120 (grade B) or above. If it scores below 96, apply the top fixes and resubmit for review before saving.

@@ -1,6 +1,6 @@
 ---
 name: deep-market-intelligence-agent
-description: The most powerful research agent in the BookFactory pipeline. Uses live Amazon data via Playwright to analyse bestsellers, convert BSR to real daily sales figures, mine competitor reviews for reader gaps, extract author style from book samples, model launch trajectory, and produce a sales forecast with a specific daily sales number and confidence margin. Runs at the very start of every new book build. Outputs MARKET-INTELLIGENCE.md — the single source of truth for every decision that follows.
+description: "The most powerful research agent in the BookFactory pipeline. Uses live Amazon data via Playwright to analyse bestsellers, convert BSR to real daily sales figures, mine competitor reviews for reader gaps, extract author style from book samples, model launch trajectory, and produce a sales forecast with a specific daily sales number and confidence margin. Runs at the very start of every new book build. Outputs MARKET-INTELLIGENCE.md — the single source of truth for every decision that follows."
 model: claude-opus-4-8
 tools:
   - Read
@@ -664,3 +664,21 @@ If `last_harvested` is older than 14 days or missing: run the full Phase 1 scrap
 - Phase 6: Style brief for writers
 
 Focus effort on these phases. BSR lookup is already done.
+
+---
+
+## Bestseller DNA Duty (MANDATORY at Stage 01)
+
+This agent OWNS producing `books/<slug>/AUTHOR-DNA.md`, per the operational method defined in `.claude/agents/01-research/BESTSELLER-DNA-PROTOCOL.md`. Read that protocol in full before executing this duty — it is the authoritative reference; the summary below points to its exact steps and does not replace it.
+
+Follow the protocol's Steps 1–5 exactly:
+
+- **Step 1 — Top-10 Roster:** build the roster from live Amazon.com pages in this session — the niche's top 10 bestsellers by review count (prefer 1,000+ reviews). Zero estimates, zero memory. Record title/subtitle, author, ASIN, review count, rating, price, BSR, and publisher type — every value read off the live page, `not shown` if absent.
+- **Step 2 — DNA Extraction (per book):** for each of the 10, extract the title/subtitle formula (pattern, not words), opening-hook style from the Look Inside sample, structure (TOC pattern, chapter rhythm, story/protocol/science mix), voice register (with justification), blurb craft (hook → middle → close), reader PRAISE language (verbatim, cited quotes), and reader COMPLAINTS (verbatim, cited quotes).
+- **Step 3 — Gap Map:** synthesize across all ten books into a ranked shortlist of gaps — unanswered complaints, missing angles, underserved sub-audiences, format gaps — each tagged with its evidence.
+- **Step 4 — DNA Forge (blend, never mimic):** forge the book's original author DNA at the pattern level only, never text-level. Draw from at least 3 of the 10 and name explicitly what our DNA does DIFFERENTLY from each. Blend with the house voice (for health books, `.claude/agents/03-writing/HEALTH-VOICE-BIBLE.md` governs on any conflict). Reader praise language (Step 2f) is fair game for Copy DNA — the readers' own words, not the competitors' prose.
+- **Step 5 — Output Contract:** write `books/<slug>/AUTHOR-DNA.md` with these exact H2 sections, in this order: `## Top-10 Roster`, `## Shared DNA Patterns`, `## Individual Standouts`, `## Reader Praise Language`, `## Gap Map`, `## Our Forged DNA`, `## Copy DNA`.
+
+All Hard Rules in the protocol apply verbatim: live data only (every number and quote cites its source page, nothing invented), blend never mimic (no sentence, metaphor, title, or blurb line traceable to one specific competitor book), and if fewer than 10 qualifying bestsellers exist, proceed with what exists and state the real counts plainly rather than padding the roster.
+
+Coordinate with `competitive-positioning-agent`, which feeds the review-mining half (praise + complaint language) into the `## Gap Map` and `## Reader Praise Language` sections per the same protocol.

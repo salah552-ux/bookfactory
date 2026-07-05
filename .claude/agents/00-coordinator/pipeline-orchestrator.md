@@ -351,6 +351,8 @@ OUTPUT EXPECTED:
 RULES:
 - AGENT-RULES.md Rule 1 (no invented numbers) applies. Cite or write the "We need real data" placeholder.
 - Do not write outside your scope (Rule 2).
+- Read intelligence/LESSONS.md first — it contains evidence-backed lessons from prior books; apply any that touch your task.
+- Read books/{slug}/AUTHOR-DNA.md first (Stage 02+ briefs only, if the file exists) — it contains the forged author DNA, gap map, and reader praise language per .claude/agents/01-research/BESTSELLER-DNA-PROTOCOL.md; apply the sections relevant to your task.
 - Log to AGENT-LOG.md when complete.
 ```
 
@@ -655,6 +657,30 @@ Parallel group spawn (one line per group, then one line per member's verificatio
 
 ---
 
+## Lessons Memory Protocol
+
+The orchestrator is wired to the cross-book learning memory at `intelligence/LESSONS.md`. This file is the pipeline's accumulated evidence base — lessons proven true on prior books, not theory.
+
+**READ-INJECT.** Every agent brief the orchestrator sends must include this instruction line (already added to the Briefing Template above, additively):
+```
+Read intelligence/LESSONS.md first — it contains evidence-backed lessons from prior books; apply any that touch your task.
+```
+Do not skip this for any spawn, including retries and parallel-group members.
+
+**APPEND.** The orchestrator appends a new dated entry to `intelligence/LESSONS.md` at two moments:
+1. **Closing any stage where something notable happened** — a failure that was fixed (recoverable failure + fix that worked), a quality-gate or pre-stage-gate rejection, or a strong win (e.g. a chapter/agent output that cleared threshold far above minimum, or a fix that prevented a repeat failure). Append when the stage is marked complete, using what was actually observed during that stage's run.
+2. **Stage 10 post-launch reviews** — when real BSR, review count, or sales evidence comes back from `post-launch-agent` / `ams-optimizer-agent`, append a lesson entry capturing what the evidence showed (e.g. a keyword that converted, a launch-week tactic that moved BSR, a mistake that hurt rank) — only once real evidence exists, never a projection.
+
+**book-reviewer "lesson candidate" flags.** If a book-reviewer report includes a "lesson candidate" flag, the orchestrator must consider it for recording — read the flagged note, verify it against the evidence in the report, and append it to `intelligence/LESSONS.md` if it holds up.
+
+**ENTRY RULES (non-negotiable):**
+- Every entry is dated (ISO date).
+- Every entry names the book slug it came from, or `system` if it applies pipeline-wide.
+- Every entry cites concrete evidence — the exact file, score, BSR, review quote, or gate result that proves the lesson. No invented claims or numbers (AGENT-RULES.md Rule 1 applies here too).
+- Never delete a lesson. If a later book's evidence supersedes an earlier lesson, mark the old entry as superseded (e.g. `[SUPERSEDED by 2026-XX-XX entry below]`) and add the new entry — do not remove the old text.
+
+---
+
 ## ESCALATION FORMAT
 
 Only emit after RETRY 3 with the same failure mode, or for the specific blockers listed in the Self-Healing Intervention Protocol (compliance BLOCK, score < 200, external input required, human gate).
@@ -742,6 +768,16 @@ Pipeline state saved to: books/{slug}/pipeline-state.json
 - One line per event: `timestamp · stage · agent · action · result · retry-count · next-step`.
 - On startup, read in order: RUN-LEDGER.md (last state) → pipeline-state.json → `git log` → then run `validate-state` + `pre-stage-gate` to confirm the resume point.
 - Anything the ledger marks complete is DONE — never re-dispatch it.
+
+---
+
+## Bestseller DNA Protocol (Stage 01 requirement)
+
+At Stage 01, in addition to `market-researcher` and `competitive-positioning-agent`, the orchestrator dispatches `deep-market-intelligence-agent` to produce `books/{slug}/AUTHOR-DNA.md` per `.claude/agents/01-research/BESTSELLER-DNA-PROTOCOL.md`. `competitive-positioning-agent` feeds the Gap Map and Reader Praise Language sections (review-mining half) into that artifact.
+
+- **`AUTHOR-DNA.md` is a REQUIRED Stage 01 output before Stage 02 planning begins.** Treat it the same as MARKET-INTELLIGENCE.md and COMPETITIVE-ANALYSIS.md — verify it exists on disk with all seven required H2 sections (`## Top-10 Roster`, `## Shared DNA Patterns`, `## Individual Standouts`, `## Reader Praise Language`, `## Gap Map`, `## Our Forged DNA`, `## Copy DNA`) before running `quality-gate` for Stage 01.
+- If `AUTHOR-DNA.md` is missing or incomplete when Stage 01 verification runs, treat it as a recoverable failure under the Self-Healing Intervention Protocol (missing output file) and re-spawn `deep-market-intelligence-agent` with the protocol path in the brief.
+- **Inject into every Stage 02+ brief.** Alongside the existing LESSONS.md injection line in the Briefing Template, every agent brief from Stage 02 onward must also instruct: "Read books/{slug}/AUTHOR-DNA.md first — it contains the forged author DNA, gap map, and reader praise language." This applies to `book-architect`/`novel-writer`, `health-writer` (and other genre writers), `conversion-copywriter-agent`, `kdp-seo-agent`, and any other Stage 02+ spawn.
 
 ---
 

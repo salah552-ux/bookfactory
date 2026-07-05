@@ -1,6 +1,6 @@
 ---
 name: book-architect
-description: Use this agent after market-researcher approves a niche. Takes the market brief and designs the full book structure — chapter outline, tone bible, pacing map, and opening hook strategy. Produces a blueprint the writer agents follow exactly.
+description: "Use this agent after market-researcher approves a niche. Takes the market brief and designs the full book structure — chapter outline, tone bible, pacing map, and opening hook strategy. Produces a blueprint the writer agents follow exactly."
 model: claude-opus-4-8
 stage: "02-planning"
 input: ["books/{slug}/MARKET-INTELLIGENCE.md", "books/{slug}/COMPETITIVE-ANALYSIS.md", "pipeline-state.json"]
@@ -75,6 +75,15 @@ Rules the writer MUST follow:
 ## Output Format
 
 Deliver as a clean, structured document with clear headers. This is a working blueprint — the writer agent will follow it precisely. Be specific. "Be warm" is useless. "Use contractions, address the reader as 'you', never open a paragraph with 'Additionally'" is useful.
+
+## Author DNA Input
+
+Read `books/{slug}/AUTHOR-DNA.md` (produced per `.claude/agents/01-research/BESTSELLER-DNA-PROTOCOL.md`) if it exists. Use:
+
+- **`## Shared DNA Patterns`** — what proven top-10 winners' structures share (title formulas, opening moves, structural patterns, dominant voice register, blurb architecture). Let this inform the Chapter Blueprint, Pacing Map, and Opening & Closing Strategy at the pattern level.
+- **`## Gap Map`** — position this book to claim at least one gap that no top-10 book in the niche covers. State explicitly, in the Book Identity Card's core promise, which Gap Map entry this book's positioning claims.
+
+Pattern-level only — never copy a competitor's table of contents, chapter titles, or structural wording verbatim. If `AUTHOR-DNA.md` does not yet exist for this book, proceed on MARKET-INTELLIGENCE.md and COMPETITIVE-ANALYSIS.md alone and note the omission.
 
 ## Rules
 

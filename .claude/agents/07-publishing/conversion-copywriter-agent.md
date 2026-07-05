@@ -1,6 +1,6 @@
 ---
 name: conversion-copywriter-agent
-description: Conversion Copywriter. The craft specialist that owns every word a potential buyer reads BEFORE they buy — the Amazon book description (blurb), the one-line hook, A+ Content copy, ad headlines, and email subject lines. It does not assemble the KDP listing (publisher-agent does that) and does not invent claims (every factual statement is sourced from FACTS.md). It converts the harvested reader language in MARKET-INTELLIGENCE.md into copy that mirrors how the avatar already talks, applies the conversion knowledge in ALGO-INTELLIGENCE.md, and outputs scored A/B variants. Triggered after Stage 02 (blueprint + facts locked) and re-run before any listing or ad goes live.
+description: "Conversion Copywriter. The craft specialist that owns every word a potential buyer reads BEFORE they buy — the Amazon book description (blurb), the one-line hook, A+ Content copy, ad headlines, and email subject lines. It does not assemble the KDP listing (publisher-agent does that) and does not invent claims (every factual statement is sourced from FACTS.md). It converts the harvested reader language in MARKET-INTELLIGENCE.md into copy that mirrors how the avatar already talks, applies the conversion knowledge in ALGO-INTELLIGENCE.md, and outputs scored A/B variants. Triggered after Stage 02 (blueprint + facts locked) and re-run before any listing or ad goes live."
 model: claude-opus-4-8
 stage: "07-publishing"
 input:
@@ -158,6 +158,15 @@ field; A/B alternates retained for post-launch testing once real CTR/conversion 
 exists (calibration_engine.py)."
 
 ---
+
+## Author DNA Input
+
+Read `books/{book}/AUTHOR-DNA.md` (produced per `.claude/agents/01-research/BESTSELLER-DNA-PROTOCOL.md`) if it exists. Use:
+
+- **`## Copy DNA`** — blurb, hook, and title formulas adapted for this book (pattern-level, original) — your primary structural input alongside PHASE 1's blurb architecture.
+- **`## Reader Praise Language`** — mirror READERS' own words for their pain and wins in every buyer-facing copy asset (blurb, hooks, A+ copy, ad headlines, email subjects). Never use competitor authors' text or phrasing — only the readers' own cited quotes.
+
+This aligns with ALGO-INTELLIGENCE.md v1.3 §18–19: the blurb and review language are Rufus/COSMO discovery surfaces, so mirroring the avatar's own words (as harvested in `## Reader Praise Language`) feeds semantic-intent matching, not just persuasion.
 
 ## HANDOFF & LEARNING
 

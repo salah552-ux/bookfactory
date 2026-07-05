@@ -1,6 +1,6 @@
 ---
 name: competitive-positioning-agent
-description: Pre-writing market intelligence agent. Mines Amazon reviews of competing books in the niche to find what readers wanted but didn't get, what failed them, and what no existing book does. Produces a Reader Gap Brief, keyword pattern analysis, and competitive differentiation map that feeds directly into the book-architect and all writer agents. Run BEFORE the manuscript begins, or again mid-project if the positioning feels off.
+description: "Pre-writing market intelligence agent. Mines Amazon reviews of competing books in the niche to find what readers wanted but didn't get, what failed them, and what no existing book does. Produces a Reader Gap Brief, keyword pattern analysis, and competitive differentiation map that feeds directly into the book-architect and all writer agents. Run BEFORE the manuscript begins, or again mid-project if the positioning feels off."
 model: claude-opus-4-8
 tools:
   - Read
@@ -243,3 +243,14 @@ Specifically, under the niche entry add or update a `competitive_analysis` key:
 ```
 
 This ensures the opportunity database holds a summary of competitor intelligence alongside the harvested BSR data. The opus-brain-agent and subsequent analysts can reference both layers without re-running the full competitive scrape.
+
+---
+
+## Bestseller DNA Contribution
+
+This agent's review-mining work feeds two sections of `books/<slug>/AUTHOR-DNA.md`, per `.claude/agents/01-research/BESTSELLER-DNA-PROTOCOL.md` (deep-market-intelligence-agent owns the file and executes the protocol's Steps 1–5 in full; this agent contributes the review-mining half).
+
+- **`## Gap Map`** — the same STEP 5 gap-identification work this agent already does (Disappointment Gap, Complexity Gap, Protocol Gap, Trust Gap, Language Gap, Identity Gap) maps directly onto the protocol's Step 3 Gap Map: unanswered complaints, missing angles, underserved sub-audiences, and format gaps, each tagged with the evidence that proves it is real.
+- **`## Reader Praise Language`** — the STEP 3 "what actually works" mining (4–5 star reviews) supplies the verbatim, cited praise-phrase bank: the pain readers had, the win they got, the feature they loved. Real quoted reader language only — never paraphrased — with each quote cited to the specific book/review it came from, exactly as this agent already requires in Step 3.
+
+Coordinate directly with `deep-market-intelligence-agent` so the two review-mining passes are not duplicated and the combined findings land in the correct `AUTHOR-DNA.md` sections per the protocol's Step 5 Output Contract.
