@@ -1,76 +1,100 @@
-# BookFactory Daily Brief — 2026-06-29
+# BookFactory Daily Brief — 2026-07-06
 
 ---
 
 ## ACTION REQUIRED
 
-| # | Priority | Item | Reply to approve |
-|---|----------|------|-----------------|
-| 1 | 🔴 CRITICAL — Day 20 unactioned | **Cathedral Close price unverified post-Countdown Deal.** Deal ended 2026-06-09. Open amazon.co.uk → search `B0GZD1S8HF` → confirm price shows £6.99. If wrong, fix in KDP Pricing immediately. 5-minute browser check. | Reply **PRICE-OK** |
-| 2 | 🔴 HIGH — 6 days to deadline | **Fix Your Gut — KDP Select re-enrollment decision due 2026-07-05.** Term ends 2026-07-19 (20 days). Auto-renews unless you opt out. Decide: stay in KU, or go wide? | Reply **RENEW** or **OPT-OUT** |
-| 3 | 🔴 HIGH — 19 days to hard deadline | **Cathedral Close — Countdown Deal window closes 2026-07-18.** Must end ≥14 days before KDP Select term end (2026-08-01). Miss this = next chance earliest 2026-09-01. Schedule via KDP dashboard now. | Reply **SCHEDULE-DEAL** |
-| 4 | 🔴 HIGH — Day 22 | **Monitoring completely blind.** Amazon 403 on every scrape for 22 days (11/11 runs). Pick a fix: (A) paste BSR/rating/reviews manually into both pipeline-state.json files, (B) add `RAINFOREST_API_KEY` or `KEEPA_API_KEY` to env, (C) Keepa Chrome extension one-off export. | Reply **MANUAL**, **API-KEY**, or **KEEPA** |
-| 5 | 🔴 HIGH — Day 22 | **ASIN discrepancies unresolved.** Fix Your Gut: state shows `null` (treated as unpublished). Cathedral Close: `AT25QRT6FPTE6` is 13 chars — invalid. Log into KDP Bookshelf → copy exact 10-char ASINs for both → update both pipeline-state.json files. | Reply **ASINS-FIXED** |
+Two hard deadlines hit the 14-day window **today**. Both need a decision now.
+
+### 🔴 1 — Fix Your Gut for Good: KDP Select expires in 13 days (2026-07-19)
+Auto-renewal fires unless you act. If you want wide distribution (Apple, Kobo, B&N), opt out **before 2026-07-19**. If you miss it, the title is locked in KDP Select until ~2026-10-17.
+> Log into KDP → Bookshelf → "Manage KDP Select" → choose Renew or Don't Renew.
+> Reply **RENEW** or **GO-WIDE** to confirm your decision.
+
+### 🔴 2 — Cathedral Close: Countdown Deal window closes in 12 days (2026-07-18)
+The eligible window (from 2026-06-02) closes 14 days before the KDP Select term ends (2026-08-01). A deal must **end** by 2026-07-18 — which means schedule it today or this term's window is gone. Next opportunity: ~2026-09-01.
+> KDP → Bookshelf → Cathedral Close → Promote and Advertise → Countdown Deals.
+> Reply **SCHEDULED** once done, or **SKIP** to pass this term.
+
+### 🔴 3 — Cathedral Close: Post-deal price unverified (Day 27, critical)
+Countdown Deal ended 2026-06-09. Whether the price reverted to £6.99 has never been confirmed. 5-minute browser check only.
+> Open amazon.co.uk → search B0GZD1S8HF → confirm live price is £6.99.
+> If wrong: KDP → Pricing → correct. Reply **VERIFIED** once confirmed.
+
+### 🔴 4 — Both books: ASINs unresolved in state files (Day 29)
+- *Fix Your Gut*: ASIN is null in pipeline-state.json (book may be live since 2026-04-21 — state is 78 days stale).
+- *Cathedral Close*: ASIN `AT25QRT6FPTE6` is 13 characters — invalid (must be 10).
+> KDP → Bookshelf → copy exact ASINs for both titles. Update both pipeline-state.json files.
+> Reply **ASINS UPDATED** once done.
+
+### 🔴 5 — Watchdog completely blind (Day 29, 41% run coverage)
+Amazon 403s block every automated scrape. No BSR, rating, or price data for either book since monitoring began.
+> Three options: **(A)** manual browser check + paste metrics into pipeline-state.json; **(B)** add `RAINFOREST_API_KEY` or `KEEPA_API_KEY` to environment; **(C)** Keepa Chrome extension one-time export.
+> Reply **OPTION A**, **OPTION B**, or **OPTION C**.
+
+### 🟡 6 — New ALGO-INTELLIGENCE-CANDIDATE.md awaiting review (drafted 2026-07-01)
+9 findings (3 HIGH confidence): DRM-free EPUB/PDF downloads, KDP Select now permits library distribution, Sponsored Brands open to single-book authors. No `ALGO-INTELLIGENCE.md` exists yet — this is the inaugural sweep. Needs your sign-off to become the v1.0 baseline.
+> Read `intelligence/ALGO-INTELLIGENCE-CANDIDATE.md` → reply **PROMOTE** to create ALGO-INTELLIGENCE.md.
 
 ---
 
 ## Live Book Status
 
-All scrapes failed — Amazon returned HTTP 403 on every attempt (11 consecutive runs, 22 calendar days). No live metrics. Previous known values: 0 reviews, no BSR baseline for either book.
+Watchdog has been scrape-blocked for 29 consecutive days (403 bot-protection). All metrics below are UNVERIFIED.
 
-| Book | Rating | Reviews | BSR | Price |
-|------|--------|---------|-----|-------|
-| Fix Your Gut for Good (B0GXYLWS1W) | — | — | — | — |
-| Death in the Cathedral Close (B0GZD1S8HF) | — | — | — | 🔴 £6.99 UNVERIFIED (day 20) |
-
-*Two multi-day reporting gaps in 12 days (06-17→06-21 and 06-23→06-28) — automated scheduler needs investigation.*
+| Book | Rating | Reviews | BSR | Price | Note |
+|------|--------|---------|-----|-------|------|
+| Fix Your Gut for Good (B0GXYLWS1W) | unknown | 0 (last recorded) | unknown | unknown | State shows unpublished but anchored live 2026-04-21 |
+| Death in the Cathedral Close (B0GZD1S8HF) | unknown | 0 (last recorded) | unknown | £6.99 UNVERIFIED (deal ended Day 27) | Live since 2026-05-03; ads not started; 0 ARC emails sent |
 
 ---
 
 ## Upcoming Deadlines (next 14 days)
 
-| Date | Days | Item |
-|------|------|------|
-| **2026-07-05** | **6 days** | KDP Select re-enrollment decision — Fix Your Gut for Good (term ends 2026-07-19) |
+| Date | Book | Deadline | Risk if missed |
+|------|------|----------|---------------|
+| **2026-07-18** | Cathedral Close | Countdown Deal must END by this date | Window lost; next opportunity ~2026-09-01 |
+| **2026-07-19** | Fix Your Gut | KDP Select term expires | Auto-renewed into KDP Select until ~2026-10-17 |
 
-**Beyond 14 days but time-sensitive:**
-- **2026-07-18** (19 days) — Cathedral Close Countdown Deal last eligible end date this KDP Select term.
+No other deadlines in the next 14 days.
 
 ---
 
 ## Standing Gaps
 
-| Gap | Book(s) | Age |
-|-----|---------|-----|
-| No BookFunnel capture link live | Both books | Ongoing |
-| Category mismatch (Cozy > General) unverified | Cathedral Close | Ongoing — verify KDP dashboard |
-| Zero reviews, 0 ARC emails, ads never started | Cathedral Close | 57 days live — run `arc-manager-agent` + `amazon-ads-agent` |
-| Stage 10-postlaunch stuck, `post-launch-agent` never run | Cathedral Close | 57 days |
-| Writing stage stuck, Chapters 1–2 missing from disk | The Dust Between Seconds | 60 days (only 1/32 chapters on disk) |
-| Production files missing on disk (EPUB + cover) | Cathedral Close | `exports/final/` does not exist — run `bash build-manuscript.sh untitled-cosy-mystery` |
-| Stage 06 complete but no builds exist on disk | Fix Your Gut for Good | `epub_built=false`, `pdf_built=false`, no files found |
+These have been open for multiple weeks and will keep firing until resolved.
+
+| Gap | Books affected | Open since |
+|-----|---------------|------------|
+| BookFunnel capture link not live | Fix Your Gut + Cathedral Close | Unknown |
+| Cathedral Close category mismatch (Cozy > General + British & Irish) | Cathedral Close | Unknown — treat as flagged until verified in KDP |
+| State integrity contradictions (5 total, 0 resolved) | All 3 books | 2026-06-14 (4 weeks) |
+| Cathedral Close: missing production files (`exports/final/` does not exist on disk) | Cathedral Close | 2026-06-21 (3 weeks) |
+| Cathedral Close: `final_approval_score = null` on a live title | Cathedral Close | 2026-06-14 (4 weeks) |
+| The Dust Between Seconds: writing stage stuck 67 days; chapters 1 & 2 missing from disk | Dust Between Seconds | 2026-04-30 |
 
 ---
 
 ## Intelligence
 
-**Niche freshness — all 3 stale (run in your LOCAL terminal, not cloud):**
+**All 3 niches are STALE** (must be run from local Playwright session — cloud agent cannot harvest):
 
 | Niche | Last harvested | Age |
 |-------|---------------|-----|
-| gut-health | 2026-05-13 | 47 days |
-| cozy-mystery | 2026-06-01 | 28 days |
-| vagus-nerve | 2026-06-03 | 26 days |
+| gut-health | 2026-05-13 | 54 days |
+| cozy-mystery | 2026-06-01 | 35 days |
+| vagus-nerve | 2026-06-03 | 33 days |
 
-**Algo candidate (Job 4 — monthly):** `intelligence/ALGO-INTELLIGENCE-CANDIDATE.md` not found — no new candidate this cycle.
+Run in order: `harvest gut-health && analyse opportunities gut-health` → repeat for cozy-mystery → vagus-nerve.
+
+**New algo candidate:** `intelligence/ALGO-INTELLIGENCE-CANDIDATE.md` (drafted 2026-07-01, 5 days old). 9 findings, inaugural sweep — no `ALGO-INTELLIGENCE.md` exists yet. Key items: DRM-free downloads now live, KDP Select permits library distribution, Sponsored Brands open to single-book authors, print royalty tiered at $9.99 threshold. Needs Architect review and promotion. See Action #6 above.
 
 ---
 
 ## All Clear
 
-Nothing is all clear today. 5 ACTION REQUIRED items; monitoring blind 22 days; 5 state integrity contradictions open 2–3 weeks.
+Nothing is all clear today. Two hard deadlines are inside the 14-day window and require decisions before tomorrow.
 
 ---
 
-*Sources: watchdog-2026-06-29.md · milestones-2026-06-29.md · intel-freshness-2026-06-29.md · integrity-2026-06-29.md · ALGO-INTELLIGENCE-CANDIDATE.md (not found)*
-*Generated: 2026-06-29*
+*Sources: watchdog-2026-07-06.md · milestones-2026-07-06.md · intel-freshness-2026-07-06.md · integrity-2026-07-05.md · ALGO-INTELLIGENCE-CANDIDATE.md (2026-07-01) | Brief generated 2026-07-06*
