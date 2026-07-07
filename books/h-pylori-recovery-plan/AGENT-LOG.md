@@ -16,6 +16,26 @@
 | 2026-06-16T23:55:00Z | design-agent | 06-production | COMPLETE (Architect override) | RASTER-COMPOSITE mode: ChatGPT cover identified+placed; composited cream product-title line "The H. Pylori Recovery Plan" into the dark lane between THE INVISIBLE ENEMY and the subtitle (sharp + SVG); KDP 8-point spec ALL PASS (jpeg/1600x2560/srgb/3ch/no-alpha/1.11MB/ratio 1.6); JFIF header injected to fix Pandoc cover embed; COVER-PSYCHOLOGY 7-point = 4 YES / 3 NO (Q3, Q5, Q6 fail) — GO only as documented Architect override of the locked rubric; score 38/50 vs prior navy 46/50; EPUB/DOCX/PDF rebuilt (cover embedded, viewBox 1600x2560); interior PDF rebuilt; AI-IMAGE DISCLOSURE REMINDER: ChatGPT cover = AI-generated, KDP Images questionnaire must declare "Yes" |
 | 2026-06-17T18:58:00Z | kdp-upload-agent | 07-publishing | COMPLETE | DRAFT-ONLY upload complete (HARD RULE #1). Draft title ID A2OVX276PKKM4D; all Details/Content/Pricing entered; EPUB+cover uploaded+processed, KDP quality check PASS; 2 cats (Disorders & Diseases 362837031, Nutrition 362840031); 7 keywords; series fix your gut for good Book 2; £6.99/$9.99 70% KDP Select; AI questionnaire filled+confirmed. NOT PUBLISHED — saved as Draft, Architect publishes manually. Deviations flagged: AI Text option mapped to "Some sections, with extensive editing"; image AI tool "ChatGPT" entered (KDP mandatory field overrode brief's leave-blank); DRM=Yes (brief silent); primary marketplace Amazon.co.uk; category granular leaves (Abdominal Disorders/Digestive Health) not offered by live form. |
 | 2026-06-17T18:38:00Z | design-agent | 06-production | COMPLETE | TASK A3 — title-hierarchy fix: blacked out the old baked title band (y36–598, 992x1586 src) erasing the FIX YOUR GUT banner + "H. PYLORI" + red "THE INVISIBLE ENEMY", subtitle/art preserved (verified subtitle first-bright-row y598+ intact); composited NEW dominant title "H. PYLORI / RECOVERY / PLAN" (Arial Black 900, cream #F6F0DF, 3 equal heavy lines) + smaller "FIX YOUR GUT FOR GOOD" banner + red "THE INVISIBLE ENEMY" sub-line (#CB1F1F); upscaled lanczos3 to 1600x2560; KDP 9-point spec ALL PASS (jpeg/1600x2560/srgb/3ch/no-alpha/ICC/0.43MB/ratio 1.6); KDP Q7 title-match NOW PASSES — dominant title reads "H. PYLORI RECOVERY PLAN" matching listing "The H. Pylori Recovery Plan"; outputs written to 3 jpg paths + 100px thumb; EPUB/DOCX/PDF rebuilt (cover embedded file0.jpg 455773 bytes byte-identical, viewBox 1600x2560 renders correctly); script exports/cover/fix-title-a3.js; source PNG untouched |
+| 2026-07-06T00:00:00Z | pipeline-orchestrator (Opus) | reconciliation | SUCCESS | STATE RECONCILIATION (no builds/KDP/agents). Book is LIVE per Architect's KDP Bookshelf (2026-06-29): Live, ASIN B0H5TZTPRT, Submitted 2026-06-17, KDP Select enrolled. State said parked/published=false/kdp_status=not_started/asin=null — reality wins. Set lifecycle active, published true, asin B0H5TZTPRT, kdp_status live, live_date 2026-06-17. Price/royalty/current_stage/stage objects untouched. Live-status only — does NOT certify the stage audit; INV-13 executed_by unset + INV-12 missing COMPLIANCE/SERIES-FACTS + INV-9 score 113<270 remain (executed_by NOT back-filled). |
+
+## pipeline-orchestrator | 2026-07-06 | State reconciliation — live-status drift
+
+**Trigger:** The Architect observed the book Live on the KDP Bookshelf (session 2026-06-29) — "The H. Pylori Recovery Plan by S.A. Ibrahim — Kindle eBook — Live — Submitted on June 17, 2026 — ASIN B0H5TZTPRT — KDP Select: eBook enrolled — series: fix your gut for good" — while `pipeline-state.json` still said parked / published=false / kdp_status=not_started / asin=null. The book was published outside pipeline tracking. Reality wins.
+
+**Scope:** State reconciliation only. No browser work, no builds, no KDP actions, no other agents spawned.
+
+**Fields changed (pipeline-state.json):**
+- `lifecycle`: `parked` → `active` (+ dated reconciliation note)
+- `human_gates.published`: `false` → `true` (+ `published_note`)
+- `publishing.asin`: `null` → `"B0H5TZTPRT"`
+- `publishing.kdp_status`: `not_started` → `live`
+- `publishing.live_date`: `null` → `"2026-06-17"` (per bookshelf "Submitted on June 17, 2026")
+- `publishing.kdp_select`: already `true` (unchanged)
+- `last_updated`: `2026-06-12` → `2026-07-06`; one `agent_log` array entry appended
+
+**Deliberately NOT changed:** list_price_gbp/usd, royalty_pct, current_stage, post_launch metrics, every stage object. Price/royalty were not re-verified against the live listing this session — left as previously locked, not treated as Amazon-confirmed.
+
+**Not certified by this reconciliation:** the stage-completion audit. Pre-existing validator criticals remain and were intentionally left untouched — INV-13 `executed_by='(unset)'` on all completed stages (NOT back-filled: those stages were historically closed by "master-orchestrator", and fabricating pipeline-orchestrator authorship is exactly what INV-13 guards against), INV-12 missing COMPLIANCE-REPORT.md + SERIES-FACTS.md, INV-9 final_approval_score 113<270. These need a proper orchestrator re-validation or honest correction, separately.
 
 ## category-decision-agent | 2026-06-16 | Category 3 lock
 

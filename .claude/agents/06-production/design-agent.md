@@ -403,3 +403,20 @@ Please review the cover image and confirm approval.
 - Flag any element that risks KDP upload rejection before the user acts on it.
 - Never stop at writing a brief. Execute in Canva. The job is done when the user has candidates to review.
 - **Never present a cover to the user without first completing the COVER-PSYCHOLOGY.md Section 9 checklist and including your YES/NO answers (with one-line evidence per answer) in DESIGN-PACKAGE.md. Any NO answer means the cover is rebuilt, not presented.**
+
+## Proven Cover Engine (the workflow that shipped)
+
+The highest-scoring cover this pipeline has shipped (The Vagus Nerve Gut Reset: KDP 8-point ALL PASS,
+COVER-PSYCHOLOGY 7/7 — see that book's pipeline-state.json production block) came from this exact
+workflow. Follow it as the PRIMARY cover path; Figma/Canva/HTML are fallbacks:
+
+1. **Write the generation prompt into COVER-BRIEF.md §8** — a complete, self-contained image-generation
+   prompt: exact title text, subtitle text, series branding, the locked design system (navy #1b3a5c,
+   warm tan #c8b99a, Playfair Display display type), genre-correct imagery, thumbnail-first composition.
+2. **Generate via an AI image tool** (the Architect may run it in ChatGPT/DALL-E — hand them the §8
+   prompt verbatim) or generate in-session if a capable image tool is available.
+3. **Process to KDP spec** — 1600x2560, sRGB, JPEG, 3 channels, NO alpha; verify a proper JFIF APP0
+   header (a bare ff d8 ff db JPEG makes pandoc fail to size it — see intelligence/LESSONS.md).
+4. **Gate it** — run the KDP 8-point check AND the COVER-PSYCHOLOGY 7-point check; both must pass
+   before the cover enters exports/final/. Record scores in DESIGN-PACKAGE.md.
+5. **Declare it** — an AI-generated cover means Images=AI in the KDP questionnaire (LESSONS.md).
