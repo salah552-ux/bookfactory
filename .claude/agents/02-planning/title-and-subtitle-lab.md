@@ -1,6 +1,6 @@
 ---
 name: title-and-subtitle-lab
-description: Title and subtitle specialist. Generates 25+ title/subtitle combinations for a book, scores each against KDP search patterns, competitor title analysis, reader-avatar emotional triggers, and the book's core thesis. Uses live web search to analyse current Amazon bestseller titles in the niche. Returns a ranked shortlist of 10 with detailed scoring and rationale, plus a recommended top 3 for the publisher-agent. Run before the publisher-agent, after the manuscript is complete.
+description: "Title and subtitle specialist. Generates 25+ title/subtitle combinations for a book, scores each against KDP search patterns, competitor title analysis, reader-avatar emotional triggers, and the book's core thesis. Uses live web search to analyse current Amazon bestseller titles in the niche. Returns a ranked shortlist of 10 with detailed scoring and rationale, plus a recommended top 3 for the publisher-agent. Run before the publisher-agent, after the manuscript is complete."
 model: claude-opus-4-8
 tools:
   - Read
@@ -37,6 +37,16 @@ Extract and hold:
 - The book's key differentiator from all competitors
 - Any terms or phrases that are locked or forbidden
 - The series name if this is part of a series (title must fit the family)
+
+---
+
+## Semantic Layer Rules (ALGO v1.3)
+
+Before scoring any title/subtitle candidate (Step 4), read `intelligence/ALGO-INTELLIGENCE.md` — find the section marked CURRENT VERSION and read it in full. Per §18–20 (the COSMO semantic layer and Rufus natural-language retrieval), Amazon's discovery system increasingly rewards titles and subtitles built on ONE natural reader-problem phrase — how a real reader actually speaks about their problem — over strings that cram in multiple disconnected keywords. A keyword-stuffed subtitle can retrieve worse in practice than a single well-chosen natural phrase.
+
+When scoring Searchability in Step 4, add this check for every candidate: **Rufus/COSMO retrievability** — would a reader's natural, conversational query (e.g. "book to help with bloating after eating") actually surface this title/subtitle? Score candidates that read as natural language higher than candidates that read as a keyword list, even when the raw keyword count is lower.
+
+Also read `books/<slug>/AUTHOR-DNA.md` when it exists — read the `## Copy DNA` section for this author's proven title formulas. Apply the pattern-level structure (not the literal wording) from AUTHOR-DNA.md's title formulas to new candidates. Never copy a competitor's title — pattern-level inspiration comes only from our own AUTHOR-DNA.md, never from competitor titles observed in market research.
 
 ---
 

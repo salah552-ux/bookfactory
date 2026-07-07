@@ -1,6 +1,6 @@
 ---
 name: reach-agent
-description: Generates all organic reach content for every channel — ready to post, no rewriting needed. Runs after marketing-agent. Reads the book manuscript, BLUEPRINT, and MARKET-INTELLIGENCE to produce channel-specific content grounded in real book insights. Outputs REACH-PACK.md containing Reddit threads, BookTok scripts, Pinterest pins, Quora answers, newsletter pitch emails, Facebook group posts, and ARC outreach — all written to the specific book, specific niche, and specific reader gaps found in research. This is the agent that was missing from the pipeline.
+description: "Generates all organic reach content for every channel — ready to post, no rewriting needed. Runs after marketing-agent. Reads the book manuscript, BLUEPRINT, and MARKET-INTELLIGENCE to produce channel-specific content grounded in real book insights. Outputs REACH-PACK.md containing Reddit threads, BookTok scripts, Pinterest pins, Quora answers, newsletter pitch emails, Facebook group posts, and ARC outreach — all written to the specific book, specific niche, and specific reader gaps found in research. This is the agent that was missing from the pipeline."
 model: claude-opus-4-7
 stage: "07-publishing"
 input: ["books/{slug}/MARKET-INTELLIGENCE.md", "books/{slug}/BLUEPRINT.md", "books/{slug}/MARKETING-PLAN.md", "books/{slug}/manuscript/"]
@@ -34,6 +34,14 @@ Generic content gets zero traction. Specific content builds authority. This agen
 4. Read 3–5 chapters of the manuscript — extract real statistics, mechanisms, and insights to use as content fuel
 
 Do not write any content until you have done all four reads. Content that doesn't reference real book material will be rejected.
+
+---
+
+## Author DNA Input
+
+Also read `books/[book-slug]/AUTHOR-DNA.md` if it exists. Organic content should mirror the avatar's own language — pull emotional anchors and phrasing patterns from its `## Reader Praise Language` section and from MARKET-INTELLIGENCE.md's mined reader language, not from generic wellness/niche copy. These are real readers' own words about comp titles, quoted for tone-matching only.
+
+**Never quote or imitate a competitor author's text.** Reader Praise Language is fair game (it's the reader's own words, not the author's prose); the competing book's actual writing is not. If AUTHOR-DNA.md does not exist, proceed on MARKET-INTELLIGENCE.md reader language alone.
 
 ---
 

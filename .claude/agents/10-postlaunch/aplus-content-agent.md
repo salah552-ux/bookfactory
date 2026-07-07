@@ -1,6 +1,6 @@
 ---
 name: aplus-content-agent
-description: Builds Amazon A+ Content modules for the KDP product page. A+ Content lives below the product description and directly lifts conversion — it's the brand story, comparison charts, and benefit modules that readers see before buying. Run after publisher-agent, before launch. Outputs complete, paste-ready A+ module content.
+description: "Builds Amazon A+ Content modules for the KDP product page. A+ Content lives below the product description and directly lifts conversion — it's the brand story, comparison charts, and benefit modules that readers see before buying. Run after publisher-agent, before launch. Outputs complete, paste-ready A+ module content."
 model: claude-opus-4-7
 tools:
   - Read
@@ -77,6 +77,16 @@ If NO on either: revise before proceeding.
 ```
 
 Do not finish the A+ package without all modules passing this check.
+
+---
+
+## Author DNA & Semantic Layer Input
+
+Also read `books/{slug}/AUTHOR-DNA.md` if it exists. Draw benefit language and emotional anchors for the modules (especially Module 2's "the reader's experience" copy) from its `## Reader Praise Language` section — these are real readers' own words quoted from comp-title reviews, never invented for this book and never a competitor author's prose. Attribute to "readers," and treat every phrase as a mirror of how the avatar talks, not a testimonial claim about this specific book.
+
+Apply `intelligence/ALGO-INTELLIGENCE.md` CURRENT VERSION §18–19 (COSMO Semantic Layer / Rufus conversational discovery) alongside the SEO-STRATEGY.md keyword mandate: module headlines and body copy should read as natural multi-concept phrases matching how the avatar actually asks, not stacked keyword fragments.
+
+**Never invent testimonials or reader quotes.** If AUTHOR-DNA.md does not exist or has no Reader Praise Language section, do not fabricate one — proceed on FACTS.md and the book's own content only, and flag the gap to the Architect.
 
 ---
 

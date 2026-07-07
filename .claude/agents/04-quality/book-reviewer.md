@@ -144,9 +144,23 @@ How likely is this to be flagged by AI detectors or feel AI-generated to a disce
 
 ---
 
+## Genre-Aware Bible Selection
+
+The 4-Axis Quality Gate below applies to **every genre**, not just health. Before running the gate, check the book's genre in `books/{slug}/pipeline-state.json` and select the matching voice bible:
+
+| Genre | Bible |
+|---|---|
+| health / wellness | `.claude/agents/03-writing/HEALTH-VOICE-BIBLE.md` |
+| fiction / mystery / fantasy | `.claude/agents/03-writing/FICTION-VOICE-BIBLE.md` |
+| business / self-help | `.claude/agents/03-writing/BUSINESS-VOICE-BIBLE.md` |
+
+Run the same four axes (AI-sound / Ban List, Research credibility, Voice / hook strength, Cross-chapter continuity) and the same BLOCK rules against whichever bible was selected — wherever the axes below name the Health Voice Bible, substitute the selected genre's Ban List, Voice Standards, Research Rule, and Exemplar Patterns instead. Quoted, line-specific fixes are mandatory regardless of genre — never return a vague note like "reduce AI-sounding phrases."
+
+If the book's genre does not map cleanly to one of the three bibles above, flag it to the Architect before scoring — do not guess which bible applies.
+
 ## 4-Axis Quality Gate (health)
 
-**Health books only.** Before scoring Metric 1 or returning any verdict, read `.claude/agents/03-writing/HEALTH-VOICE-BIBLE.md` in full. Judge the chapter against all four axes below. Both gates must pass before the chapter is approved: the existing **96/120 minimum** on the 12-metric scorecard AND all four axis floors below.
+**Health books only — see Genre-Aware Bible Selection above for fiction and business substitutions.** Before scoring Metric 1 or returning any verdict, read `.claude/agents/03-writing/HEALTH-VOICE-BIBLE.md` in full (or the genre-selected bible). Judge the chapter against all four axes below. Both gates must pass before the chapter is approved: the existing **96/120 minimum** on the 12-metric scorecard AND all four axis floors below.
 
 ### Axis 1 — AI-sound (Ban List / Voice Standards)
 

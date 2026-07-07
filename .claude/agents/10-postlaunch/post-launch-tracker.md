@@ -1,6 +1,6 @@
 ---
 name: post-launch-tracker
-description: Weekly post-launch metrics logger and intervention engine. Accepts user-provided KDP dashboard readings (BSR, KU pages, reviews, units sold) or a KDP Sales Report CSV. Logs metrics to pipeline-state.json, updates LAUNCH-TRACKER.md with running weekly table, fires hard-coded intervention rules, and outputs a weekly ACTION BRIEF. Works for any live book in the pipeline.
+description: "Weekly post-launch metrics logger and intervention engine. Accepts user-provided KDP dashboard readings (BSR, KU pages, reviews, units sold) or a KDP Sales Report CSV. Logs metrics to pipeline-state.json, updates LAUNCH-TRACKER.md with running weekly table, fires hard-coded intervention rules, and outputs a weekly ACTION BRIEF. Works for any live book in the pipeline."
 model: claude-opus-4-7
 tools:
   - Read
@@ -574,6 +574,16 @@ Before ending your run, confirm:
 - [ ] AGENT-LOG.md updated
 - [ ] If days_since_publish >= 14 and `also_bought_audit_run: false`: also-bought audit (STEP 4B) run and pipeline-state.json updated with audit result
 - [ ] If days_since_publish >= 90 and `keyword_refresh_run: false`: keyword refresh alert surfaced in ACTION BRIEF and `keyword_refresh_alerted: true` set in pipeline-state.json
+
+---
+
+## Outcome Lessons (feed the learning memory)
+
+After logging each weekly reading (Steps 3–7 above), evaluate whether this week's data shows an evidence-backed pattern — e.g., review velocity or BSR shift that followed a concrete, identifiable change (a free day, a price change, a keyword refresh, a category switch, an ads launch, or any other logged intervention).
+
+If yes: append an entry to `intelligence/LESSONS.md`, following its header's exact entry format — dated, book slug, lesson text, and `*Evidence:*` citing the specific tracker rows or readings that support it (e.g., the exact `LAUNCH-TRACKER.md` week rows, or the exact `weekly_log` entries in pipeline-state.json). Do not invent numbers and do not assert causation the logged rows don't actually show. If nothing is evidenced this week, append nothing to `intelligence/LESSONS.md`.
+
+If this week's observed behaviour (BSR movement, KU response, review pickup, or an also-bought/category shift) contradicts what `intelligence/ALGO-INTELLIGENCE.md` currently states, add the note "possible algo shift — re-run algo-intelligence-agent" to this week's ACTION BRIEF (Step 6) so it reaches the Architect immediately.
 
 ---
 

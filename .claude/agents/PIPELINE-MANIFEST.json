@@ -211,7 +211,7 @@
     "00-intelligence": { "required_outputs": [], "gate_in": [] },
     "01-research":     { "required_outputs": ["MARKET-INTELLIGENCE.md"], "gate_in": [] },
     "02-planning":     { "required_outputs": ["BLUEPRINT.md", "FACTS.md"], "gate_in": ["market_intelligence_approved"] },
-    "03-writing":      { "required_outputs": ["manuscript/*chapter*.md"], "gate_in": ["blueprint_approved"] },
+    "03-writing":      { "required_outputs": ["manuscript/*.md"], "gate_in": ["blueprint_approved"], "_note": "Glob widened 2026-07-05 (Architect-approved): was manuscript/*chapter*.md, which matched only fiction naming and false-blocked health books' numeric day-files (e.g. 01-day-one.md) that build-manuscript.sh supports." },
     "04-quality":      { "required_outputs": ["FACT-CHECK-REPORT.md", "APPROVALS.md", "COMPLIANCE-REPORT.md", "PROOFREAD-REPORT.md"], "required_outputs_severity": "CRITICAL", "gate_in": [] },
     "05-optimisation": { "required_outputs": ["HOOK-OPTIMIZER-REPORT.md", "REVIEW-BAIT-REPORT.md", "CATEGORY-SELECTION.md"], "required_outputs_severity": "CRITICAL", "gate_in": [] },
     "06-production":   { "required_outputs": ["exports/final/manuscript-kdp.pdf", "FINAL-APPROVAL-REPORT.md"], "required_outputs_severity": "CRITICAL", "gate_in": [], "_note": "EPUB is enforced conditionally by INV-10 (only when kdp_editions.kindle != false) so paperback-only books are not false-blocked; PDF is universal (every edition has it). Format eligibility for any Kindle edition is enforced by INV-14." },

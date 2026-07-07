@@ -31,17 +31,24 @@ timezone unless noted. Trigger IDs are filled in after registration (see the
 
 ## Live books (canonical reference for all jobs)
 
-| Book | Slug | ASIN | Marketplace | Live date | KDP Select term |
-|------|------|------|-------------|-----------|-----------------|
-| Fix Your Gut for Good | `fix-your-gut-for-good` | `B0GXYLWS1W` | UK (.co.uk) | 2026-04-21 | ends 2026-07-19 |
-| Death in the Cathedral Close | `death-in-the-cathedral-close` | `B0GZD1S8HF` | UK (.co.uk) | 2026-05-03 | Countdown deal 06-02→06-09 |
+*Roster refreshed 2026-07-05 from `books/*/pipeline-state.json` — 4 live books.*
+
+| Book | Slug | ASIN | Marketplace | Live date | Notes |
+|------|------|------|-------------|-----------|-------|
+| Fix Your Gut for Good | `fix-your-gut-for-good` | `B0GXYLWS1W` | UK (.co.uk) | 2026-04-21 | KDP Select ends 2026-07-19 |
+| Death in the Cathedral Close | `death-in-the-cathedral-close` | `B0GZD1S8HF` | UK (.co.uk) | 2026-05-03 | Countdown deal ran ~06-02→06-09 (unresolved price conflict below) |
+| The Vagus Nerve Gut Reset | `vagus-nerve-gut-reset-workbook` | pending (state `asin`=null) | US (.com) — primary | 2026-07-02 | LIVE (human clicked Publish 2026-07-02); Kindle-only; ASIN to be read off the live product page |
+| The H. Pylori Recovery Plan | `h-pylori-recovery-plan` | `B0H5TZTPRT` | US (.com) — primary (unconfirmed in state) | live per KDP bookshelf | ⚠ STATE MISMATCH: pipeline-state says `lifecycle: parked` / `kdp_status: not_started` / `published: false` / `asin: null`, but the book is live on Amazon (ASIN `B0H5TZTPRT`). Treat as LIVE; needs Architect reconciliation. |
 
 State files:
 - `books/fix-your-gut-for-good/pipeline-state.json`
 - `books/death-in-the-cathedral-close/pipeline-state.json`
+- `books/vagus-nerve-gut-reset-workbook/pipeline-state.json`
+- `books/h-pylori-recovery-plan/pipeline-state.json`
 - `intelligence/opportunity-db.json`
 - `intelligence/INTELLIGENCE-LOG.md`
 - `intelligence/ALGO-INTELLIGENCE.md`
+- `intelligence/LESSONS.md`
 
 ---
 
@@ -107,6 +114,55 @@ State files:
 
 ---
 
+## LOCAL JOBS (repo-writing — Windows Task Scheduler, not cloud)
+
+These jobs WRITE to the repo (trackers, state, LESSONS.md), so they run LOCALLY
+via the claude CLI (already logged in) — cloud routines cannot write per Design
+Constraints #1/#2 above. Registered with Windows Task Scheduler (`schtasks`),
+not `RemoteTrigger`.
+
+### Job 7 — Weekly Feedback Heartbeat (LOCAL)
+
+The keystone of the feedback loop (see
+`docs/superpowers/specs/2026-07-05-feedback-loop-scheduler-design.md`). Once a
+week it takes the public-Amazon pulse of every live book (BSR, review count,
+star rating, price, availability — public product pages only, never KDP login),
+logs each reading to `books/<slug>/LAUNCH-TRACKER.md` and the book's
+`pipeline-state.json` `post_launch` fields, runs a REALITY AUDIT comparing the
+live page against recorded state (published flag / ASIN / price — the h-pylori
+class of drift), appends an evidence-backed entry to `intelligence/LESSONS.md`
+ONLY when the week's data genuinely evidences a pattern, flags a possible algo
+shift when observed ranking behaviour contradicts the current
+`intelligence/ALGO-INTELLIGENCE.md` version, and emits one compact ACTION BRIEF
+at `automation/reports/weekly-heartbeat-<date>.md`. Alert-only; never invents a
+number; any number cites its source page.
+
+- **Schedule:** Monday 09:00 weekly (local clock)
+- **Type:** LOCAL claude CLI run (daemon pattern) + public Amazon scrape
+- **Reads:** all 4 live `pipeline-state.json`; each `LAUNCH-TRACKER.md`;
+  `intelligence/LESSONS.md`; `intelligence/ALGO-INTELLIGENCE.md`; the public
+  Amazon product pages for the 4 live ASINs (UK for books 1–2, US for 3–4)
+- **Writes:** `automation/reports/weekly-heartbeat-<date>.md`; appends to each
+  `books/<slug>/LAUNCH-TRACKER.md`; updates `post_launch` in each state file;
+  appends an evidenced entry to `intelligence/LESSONS.md` when warranted
+- **Prompt:** see `prompts/job7-weekly-heartbeat.md` (fully self-contained —
+  roster, ASINs, paths, and thresholds are all inline)
+- **Execution:** `run-weekly-heartbeat.cmd` (invokes `claude -p` with the prompt
+  file) launched by Windows Task Scheduler.
+- **Register (example):**
+  ```
+  schtasks /create /tn "BookFactory Weekly Heartbeat" /tr "C:\Users\salah\BookFactory\run-weekly-heartbeat.cmd" /sc weekly /d MON /st 09:00
+  ```
+  Verify with `schtasks /query /tn "BookFactory Weekly Heartbeat"`.
+
+> Numbering note: the cloud **JOB 7 — KDP Inbox Bridge + Drive Backup** above is
+> a separate, pre-existing cloud routine. This local Weekly Feedback Heartbeat
+> shares the label "Job 7" because it is the seventh designed job in the
+> 2026-07-05 feedback-loop layer; the two do not collide (different tier,
+> different executor, different schedule window). Do not merge or delete either.
+
+---
+
 ## TIER 2 — Human-in-the-loop
 
 ### JOB 6 — Morning Briefing
@@ -134,6 +190,16 @@ from agent writes. `settings.local.json` is merged on top by Claude Code.
 ---
 
 ## Registered IDs (registered 2026-06-07 by Opus orchestrator)
+
+> **⚠ NOTE — 2026-07-05: cloud Jobs 1–6 registrations have EXPIRED.** Per Design
+> Constraint #5 above ("CCR recurring routines auto-expire after 7 days in some
+> trigger modes"), every trigger below was registered 2026-06-07 and is now well
+> past that window — treat the cloud layer (Jobs 1–8 + Weekly Post-Launch
+> Monitor) as DORMANT, not firing. If you want them back, re-run each
+> registration block. The new **Job 7 — Weekly Feedback Heartbeat (LOCAL)** does
+> NOT depend on any of these — it runs locally via Windows Task Scheduler and is
+> unaffected. Re-registering the cloud jobs is the Architect's call (see the
+> 2026-07-05 feedback-loop design: cloud re-registration is out of scope).
 
 | Job | Trigger ID | Cron (UTC) | Next run (UTC) | Status |
 |-----|-----------|------------|----------------|--------|

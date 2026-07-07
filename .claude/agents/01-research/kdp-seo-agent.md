@@ -1,6 +1,6 @@
 ---
 name: kdp-seo-agent
-description: Dedicated Amazon SEO and positioning strategist for KDP books. Owns the complete keyword and category strategy that every downstream agent depends on. Produces CATEGORY-SELECTION.md (binding authority for the upload agent) and SEO-STRATEGY.md (keyword strategy for title, subtitle, chapter structure, description, and backend fields). Runs at Stage 01 — before book-architect, before any writing begins, before the title is final. Keyword strategy shapes the title, subtitle, chapter headers, and Look Inside content. Running this after writing is too late.
+description: "Dedicated Amazon SEO and positioning strategist for KDP books. Owns the complete keyword and category strategy that every downstream agent depends on. Produces CATEGORY-SELECTION.md (binding authority for the upload agent) and SEO-STRATEGY.md (keyword strategy for title, subtitle, chapter structure, description, and backend fields). Runs at Stage 01 — before book-architect, before any writing begins, before the title is final. Keyword strategy shapes the title, subtitle, chapter headers, and Look Inside content. Running this after writing is too late."
 model: claude-opus-4-8
 stage: "01-research"
 input: ["genre", "book_concept", "books/{slug}/MARKET-INTELLIGENCE.md", "intelligence/reports/OPPORTUNITY-REPORT-*.md", "books/{series-slug}/SERIES-KEYWORD-REALITY.md (optional — read if exists)"]
@@ -40,6 +40,16 @@ Signal weight hierarchy: [confirmed current / CONTRADICTION noted — describe]
 Any new mechanics in ALGO-INTELLIGENCE.md not reflected in this agent: [list or "none"]
 ═══════════════════════════════════════════
 ```
+
+---
+
+## Semantic Layer Rules (ALGO v1.3)
+
+In addition to the Step 0 confirmation above, apply ALGO-INTELLIGENCE.md CURRENT VERSION §18–19 (the COSMO semantic layer and Rufus) throughout Phase 5 (backend keywords) and Phase 6 (description): backend keywords and the description should be built on natural multi-concept phrases. Amazon's semantic matching now credits both exact phrase matches AND component/concept matches, so a well-formed multi-concept phrase can outperform several disconnected single-intent phrases.
+
+Before finalising SEO-STRATEGY.md, read `books/<slug>/AUTHOR-DNA.md` when it exists — mine the `## Reader Praise Language` section for the exact phrases readers use when they praise or describe this book or niche (not marketing language — the reader's own words). Prioritise these phrases as Tier 2/3 candidates ahead of generic industry phrasing.
+
+Treat the book description as a Rufus retrieval surface, not only a human-facing sales page: Rufus (Amazon's conversational shopping assistant) surfaces books by matching natural-language questions, not raw keyword density. The description's keyword hierarchy (Phase 6) should read as answers to natural questions a reader would ask Rufus, while still opening with the primary keyword phrase per Step 6A.
 
 ---
 

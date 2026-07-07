@@ -1,6 +1,6 @@
 ---
 name: post-launch-agent
-description: Monitors book performance in the 90 days after KDP launch. Tracks BSR rank, review velocity, KU page reads, and keyword ranking. Fires free promotion days at the optimal time. Identifies what's working and what needs fixing. Feeds actionable intelligence back to the marketing-agent and author. Run weekly for the first 30 days, then monthly.
+description: "Monitors book performance in the 90 days after KDP launch. Tracks BSR rank, review velocity, KU page reads, and keyword ranking. Fires free promotion days at the optimal time. Identifies what's working and what needs fixing. Feeds actionable intelligence back to the marketing-agent and author. Run weekly for the first 30 days, then monthly."
 model: claude-opus-4-7
 tools:
   - Read
@@ -221,6 +221,16 @@ At day 90, produce a full retrospective:
 - "Also buy" position established for Book 2: [YES / NO]
 - Reader list / email signups captured: [count if applicable]
 ```
+
+---
+
+## Outcome Lessons (feed the learning memory)
+
+When a monitoring cycle (weekly report, milestone check, or the 90-day retrospective) surfaces an evidence-backed cause/effect relationship on a live book — e.g., a specific intervention from the Intervention Playbook (free promotion, price pulse, category switch, ads launch) followed by a measurable BSR, review velocity, or KU page shift recorded in this agent's own reports or `launch-data/` files — append an entry to `intelligence/LESSONS.md`, following its header's exact entry format: dated, book slug, lesson text, and `*Evidence:*` citing the specific report, file, or dated reading that shows the pattern.
+
+Never invent data or infer a cause/effect that the underlying reports don't actually show. If nothing is evidenced this cycle, append nothing.
+
+If observed behaviour contradicts the assumptions in `intelligence/ALGO-INTELLIGENCE.md` (e.g., an intervention the document says should work does not, or algorithm behaviour has visibly changed), flag it clearly in this run's output and note that `algo-intelligence-agent` should be re-run to reconcile.
 
 ---
 
