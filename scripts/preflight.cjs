@@ -300,6 +300,27 @@ section(9, "Disk artifacts (live books)");
   if (live === 0) ok("No live (published) books to check", "informational");
 }
 
+// ---- 10. Post-launch loop (live books) --------------------------------------
+section(10, "Post-launch loop (live books)");
+{
+  let audit = null;
+  try { audit = require("./postlaunch-audit.cjs"); }
+  catch (e) { warn("postlaunch-audit.cjs not loadable", e.message); }
+  if (audit) {
+    const results = audit.auditLiveBooks(BOOKS_DIR);
+    if (results.length === 0) {
+      ok("Every live book has fresh sourced observations + recorded activation");
+    } else {
+      for (const r of results) {
+        for (const f of r.findings) {
+          if (f.level === "CRITICAL") crit(`${r.slug} [${f.code}]`, f.msg);
+          else warn(`${r.slug} [${f.code}]`, f.msg);
+        }
+      }
+    }
+  }
+}
+
 // ---- summary ----------------------------------------------------------------
 const go = criticals === 0;
 console.log(`\n${C.BOLD}────────────────────────────────────────${C.OFF}`);

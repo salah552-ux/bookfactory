@@ -236,7 +236,17 @@
     "INV-10": { "rule": "epub_built_and_sized", "severity": "CRITICAL", "desc": "If 06-production is complete, exports/final/manuscript-kdp.epub must exist AND be >= 500KB." },
     "INV-11": { "rule": "no_ai_disclosure", "severity": "CRITICAL", "desc": "No manuscript *copyright*.md may contain 'AI Disclosure' or 'drafted with the assistance of AI'." },
     "INV-12": { "rule": "required_outputs_critical", "severity": "CRITICAL", "desc": "If a stage is complete but any of its gates.required_outputs is missing, that is CRITICAL (not WARN)." },
-    "INV-14": { "rule": "kindle_format_eligibility", "severity": "CRITICAL", "desc": "If a Kindle edition is declared (kdp_editions.kindle != false) or an EPUB exists, the manuscript must pass scripts/format-eligibility.cjs — no blank fill-in lines (>20), empty checkboxes (>10), blank tracker tables (>0), or banned-as-Kindle keywords (coloring/puzzle/blank-journal/etc). Blank-journal/workbook/coloring/puzzle content is PAPERBACK-ONLY on KDP. This is the rule that catches the 2026-06-21 vagus-nerve rejection. Re-route to paperback (kdp_editions.kindle:false) or build a blank-free Kindle variant + companion PDF. Implemented in validate-state.cjs (Stop-hook) and pre-stage-gate.cjs (pre-flight, stage >= 6)." }
+    "INV-14": { "rule": "kindle_format_eligibility", "severity": "CRITICAL", "desc": "If a Kindle edition is declared (kdp_editions.kindle != false) or an EPUB exists, the manuscript must pass scripts/format-eligibility.cjs — no blank fill-in lines (>20), empty checkboxes (>10), blank tracker tables (>0), or banned-as-Kindle keywords (coloring/puzzle/blank-journal/etc). Blank-journal/workbook/coloring/puzzle content is PAPERBACK-ONLY on KDP. This is the rule that catches the 2026-06-21 vagus-nerve rejection. Re-route to paperback (kdp_editions.kindle:false) or build a blank-free Kindle variant + companion PDF. Implemented in validate-state.cjs (Stop-hook) and pre-stage-gate.cjs (pre-flight, stage >= 6)." },
+    "INV-15": {
+      "rule": "launch_activation_recorded",
+      "severity": "CRITICAL",
+      "desc": "A live (published) book must have post_launch.launch_activation with category_verified_live, aplus_submitted, author_central_live, arc_outreach_sent all true. A live book with unpulled activation levers is a COLD LAUNCH — the factory is NO-GO for new pipeline runs until the levers are genuinely pulled and recorded via scripts/log-launch-metrics.cjs --activate. Enforced by scripts/postlaunch-audit.cjs via preflight section 10 (not the Stop hook — dashboard work has human latency)."
+    },
+    "INV-16": {
+      "rule": "postlaunch_observations_fresh",
+      "severity": "CRITICAL",
+      "desc": "A live book must have >= 1 post_launch.observations entry and the newest must be <= 30 days old. Every observation must cite a real source — scripts/log-launch-metrics.cjs refuses any metric without --source (Rule 0A zero tolerance). A live book with no logged reality means the feedback loop is open. Enforced by scripts/postlaunch-audit.cjs via preflight section 10."
+    }
   },
 
   "kdp_editions_schema": {
