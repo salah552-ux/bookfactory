@@ -90,4 +90,21 @@ assert.strictEqual(buildObservation({}, TODAY), null);
   assert.ok(fs.readFileSync(p2, "utf8").includes("| 1 | 2026-07-09 | 9999"));
 }
 
+// 9. appendToTracker preserves CRLF line endings in an existing CRLF tracker.
+{
+  const dir = fs.mkdtempSync(path.join(os.tmpdir(), "bf-crlf-"));
+  const p = path.join(dir, "LAUNCH-TRACKER.md");
+  const crlf = [
+    "# LAUNCH TRACKER — crlf-book", "",
+    "| Week | Date | BSR Main | BSR Sub 1 | Reviews | Rating | KU Pages | Units Sold | Interventions Fired |",
+    "|------|------|----------|-----------|---------|--------|----------|------------|---------------------|",
+    "| — | 2026-05-31 | BASELINE | — | 0 | null | null | null | none |",
+  ].join("\r\n");
+  fs.writeFileSync(p, crlf);
+  appendToTracker(p, "crlf-book", "| 1 | 2026-07-09 | 123456 | — | 0 | — | — | — | none · src: KDP dashboard 2026-07-09 |");
+  const out = fs.readFileSync(p, "utf8");
+  assert.ok(out.includes("2026-07-09 | 123456"), "row appended");
+  assert.strictEqual(out.split("\r\n").length - 1, out.split("\n").length - 1, "every newline is still CRLF — no LF-only lines introduced");
+}
+
 console.log("ALL PASS — log-launch-metrics");

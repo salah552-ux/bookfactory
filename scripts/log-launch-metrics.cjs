@@ -94,9 +94,10 @@ const TRACKER_TABLE_HEADER = [
 ].join("\n");
 
 function appendToTracker(trackerPath, slug, row) {
-  let txt = fs.existsSync(trackerPath)
+  const txt = fs.existsSync(trackerPath)
     ? fs.readFileSync(trackerPath, "utf8")
     : `# LAUNCH TRACKER — ${slug}\n\n${TRACKER_TABLE_HEADER}\n`;
+  const eol = txt && txt.includes("\r\n") ? "\r\n" : "\n";
   const lines = txt.split(/\r?\n/);
   // Anchor on the weekly-table header row specifically — the tracker contains
   // several other tables (known state, milestones) that must not receive rows.
@@ -108,7 +109,7 @@ function appendToTracker(trackerPath, slug, row) {
     while (end + 1 < lines.length && lines[end + 1].trim().startsWith("|")) end++;
     lines.splice(end + 1, 0, row);
   }
-  fs.writeFileSync(trackerPath, lines.join("\n"));
+  fs.writeFileSync(trackerPath, lines.join(eol));
 }
 
 module.exports = { parseArgs, buildObservation, applyToState, trackerRow, appendToTracker };
