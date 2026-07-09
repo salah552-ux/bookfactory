@@ -97,6 +97,17 @@ design (state=parked/not_started vs live on Amazon) — flag it every run until 
 Architect reconciles the state file. Do NOT auto-edit contested fields
 (published flag, lifecycle, price) — surface them for the Architect.
 
+## STEP 3.5 — POST-LAUNCH LOOP AUDIT (the "flying blind" class of bug)
+
+Run: `node scripts/postlaunch-audit.cjs`
+
+- Exit 0 → note "post-launch loop closed" in the heartbeat report and move on.
+- Exit 1 → list every finding in the report under a `🔴 POST-LAUNCH LOOP OPEN` heading, addressed to the Architect:
+  - `[INV-16]` findings mean a live book has no (or stale) logged reality. The ONLY fix is the Architect reading the KDP dashboard and running `node scripts/log-launch-metrics.cjs <slug> ... --source "KDP dashboard <date>"`. Never invent or estimate the missing numbers (Rule 0A).
+  - `[INV-15]` findings mean a cold launch — unpulled activation levers (category verification, A+ Content, Author Central, ARC outreach). Each is recorded with `--activate <field>` only once genuinely done on the dashboard.
+  - `[RERANK]` warnings mean a Day-14 / Day-30 re-rank re-observation is due (ALGO-INTELLIGENCE v1.3 §23 Lever 6 baseline discipline).
+- Remind the Architect: preflight is NO-GO for new pipeline runs while any `[INV-15]`/`[INV-16]` finding stands (preflight §10). Producing another book does not fix an unactivated backlist.
+
 ### STEP 4 — OUTCOME LESSONS (only if evidenced)
 If — and only if — this week's data shows a MEANINGFUL, EVIDENCE-BACKED pattern
 (e.g. review velocity changed after a specific change the pipeline made; BSR
