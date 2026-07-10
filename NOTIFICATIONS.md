@@ -1,0 +1,9 @@
+# BookFactory Automation — Human Gate Notifications
+
+The orchestrator daemon writes here when a book hits a gate that needs you.
+
+## 2026-07-10T09:49:41.376Z — `the-7-day-gut-reset`
+
+Human gate awaiting action:
+- **ai_questionnaire_confirmed**: KDP AI questionnaire awaiting confirmation
+- **published**: KDP PUBLISH confirmation pending
