@@ -44,16 +44,23 @@ function buildObservation(flags, today) {
   if (!flags.source || !String(flags.source).trim()) {
     throw new Error('REFUSED: metrics require --source (e.g. --source "KDP dashboard 2026-07-09"). No number enters the system without a real source.');
   }
-  const num = (v) => (v === undefined ? null : Number(v));
+  const num = (flag, v) => {
+    if (v === undefined) return null;
+    const n = Number(v);
+    if (!Number.isFinite(n)) {
+      throw new Error(`REFUSED: --${flag} '${v}' is not a valid number. A malformed numeric flag would serialize to null — indistinguishable from "not measured" — so it is rejected instead of silently written.`);
+    }
+    return n;
+  };
   return {
     date: today,
-    week: num(flags.week),
-    bsr_main: num(flags.bsr),
-    bsr_sub1: num(flags["bsr-sub"]),
-    reviews: num(flags.reviews),
-    rating: num(flags.rating),
-    ku_pages: num(flags["ku-pages"]),
-    units_paid: num(flags.units),
+    week: num("week", flags.week),
+    bsr_main: num("bsr", flags.bsr),
+    bsr_sub1: num("bsr-sub", flags["bsr-sub"]),
+    reviews: num("reviews", flags.reviews),
+    rating: num("rating", flags.rating),
+    ku_pages: num("ku-pages", flags["ku-pages"]),
+    units_paid: num("units", flags.units),
     promo: !!flags.promo,
     note: flags.note || null,
     source: String(flags.source).trim(),
@@ -82,7 +89,10 @@ function applyToState(state, { obs = null, activate = [], rerankApplied = false 
 
 function trackerRow(obs) {
   const c = (v) => (v === null || v === undefined ? "—" : String(v));
-  const tail = `${obs.note || "none"} · src: ${obs.source}`;
+  // Escape literal pipes in free-text note — otherwise a note containing "|" would
+  // inject extra markdown table columns and corrupt the row.
+  const note = (obs.note || "none").replace(/\|/g, "/");
+  const tail = `${note} · src: ${obs.source}`;
   return `| ${c(obs.week)} | ${obs.date} | ${c(obs.bsr_main)} | ${c(obs.bsr_sub1)} | ${c(obs.reviews)} | ${c(obs.rating)} | ${c(obs.ku_pages)} | ${c(obs.units_paid)}${obs.promo ? " (promo)" : ""} | ${tail} |`;
 }
 

@@ -35,15 +35,26 @@ function auditBook(slug, state, now = Date.now()) {
 
   const pl = state.post_launch || {};
   const obs = Array.isArray(pl.observations) ? pl.observations : [];
+  const weeklyLog = Array.isArray(pl.weekly_log) ? pl.weekly_log : [];
 
-  // INV-16 — observation exists and is fresh
-  if (obs.length === 0) {
+  // INV-16 — sourced observation exists and is fresh. Two production write paths feed this:
+  // scripts/log-launch-metrics.cjs writes post_launch.observations[]; the pre-existing weekly
+  // heartbeat + post-launch-tracker agent writes post_launch.weekly_log[]. Both count, but ONLY
+  // entries with a non-blank date AND a non-blank source qualify — zero tolerance for unsourced
+  // numbers, no matter which array they landed in.
+  const isSourced = (o) =>
+    !!o &&
+    typeof o.date === "string" && o.date.trim() !== "" &&
+    typeof o.source === "string" && o.source.trim() !== "";
+  const qualifying = [...obs, ...weeklyLog].filter(isSourced);
+
+  if (qualifying.length === 0) {
     findings.push({
       level: "CRITICAL", code: "INV-16",
       msg: `live book has ZERO post-launch observations — the feedback loop is open. Log real KDP dashboard data: node scripts/log-launch-metrics.cjs ${slug} --bsr <n> --reviews <n> --source "KDP dashboard <date>"`,
     });
   } else {
-    const stamps = obs.map((o) => Date.parse(o.date)).filter(Number.isFinite);
+    const stamps = qualifying.map((o) => Date.parse(o.date)).filter(Number.isFinite);
     const newest = stamps.length ? Math.max(...stamps) : NaN;
     if (!Number.isFinite(newest)) {
       findings.push({ level: "CRITICAL", code: "INV-16", msg: "observations exist but none has a parseable date." });
@@ -55,9 +66,15 @@ function auditBook(slug, state, now = Date.now()) {
     }
   }
 
-  // INV-15 — launch activation levers recorded
+  // INV-15 — launch activation levers recorded. aplus_submitted has one legacy alias: the
+  // pre-existing manifest field post_launch.aplus_content_live === true also satisfies it
+  // (either field true → lever satisfied). The other three levers have no alias.
   const act = pl.launch_activation || {};
-  const missing = ACTIVATION_FIELDS.filter((f) => act[f] !== true);
+  const missing = ACTIVATION_FIELDS.filter((f) => {
+    if (act[f] === true) return false;
+    if (f === "aplus_submitted" && pl.aplus_content_live === true) return false;
+    return true;
+  });
   if (missing.length) {
     findings.push({
       level: "CRITICAL", code: "INV-15",

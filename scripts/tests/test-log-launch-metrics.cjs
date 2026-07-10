@@ -107,4 +107,24 @@ assert.strictEqual(buildObservation({}, TODAY), null);
   assert.strictEqual(out.split("\r\n").length - 1, out.split("\n").length - 1, "every newline is still CRLF — no LF-only lines introduced");
 }
 
+// 10. ZERO TOLERANCE for malformed numeric flags: a non-numeric metric value must THROW,
+// not silently become NaN -> null (indistinguishable from "not measured").
+{
+  assert.throws(
+    () => buildObservation({ bsr: "abc", source: "KDP dashboard 2026-07-09" }, TODAY),
+    (e) => e.message.includes("REFUSED") && e.message.includes("bsr") && e.message.includes("abc"),
+    "malformed --bsr must throw a REFUSED error naming the flag and the bad value"
+  );
+}
+
+// 11. trackerRow escapes literal pipes in the note so a note can never corrupt the table —
+// column count (pipe count) must stay identical to a note-free row.
+{
+  const obs = buildObservation({ week: "2", bsr: "1000", reviews: "1", source: "KDP dashboard 2026-07-09", note: "ran a promo | got 3 reviews" }, TODAY);
+  const row = trackerRow(obs);
+  assert.strictEqual((row.match(/\|/g) || []).length, 10, "9 cells = 10 pipes, even with a pipe in the note");
+  assert.ok(row.includes("ran a promo / got 3 reviews"), "pipe in note replaced with /");
+  assert.ok(!row.includes("ran a promo | got 3 reviews"), "literal pipe must not survive into the row");
+}
+
 console.log("ALL PASS — log-launch-metrics");

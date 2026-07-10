@@ -305,7 +305,7 @@ section(10, "Post-launch loop (live books)");
 {
   let audit = null;
   try { audit = require("./postlaunch-audit.cjs"); }
-  catch (e) { warn("postlaunch-audit.cjs not loadable", e.message); }
+  catch (e) { crit("Post-launch hard gate cannot run — postlaunch-audit.cjs failed to load", e.message); }
   if (audit) {
     const results = audit.auditLiveBooks(BOOKS_DIR);
     if (results.length === 0) {

@@ -75,4 +75,40 @@ assert.deepStrictEqual(auditBook("draft", { human_gates: { published: false } },
   assert.deepStrictEqual(f.filter((x) => x.code === "RERANK"), []);
 }
 
+// 8. Schema-aware INV-16: a fresh, SOURCED weekly_log[] entry (no observations[] at all)
+// must clear INV-16 — this is the shape the weekly heartbeat + post-launch-tracker agent
+// actually writes in production (books/death-in-the-cathedral-close/pipeline-state.json).
+{
+  const f = auditBook("weekly-good", live({
+    weekly_log: [{ date: "2026-07-01", source: "Architect — KDP dashboard" }],
+    launch_activation: fullActivation(),
+  }), NOW);
+  assert.deepStrictEqual(f.filter((x) => x.code === "INV-16"), []);
+}
+
+// 9. weekly_log[] entry with NO source key → INV-16 still fires (zero-tolerance: unsourced
+// entries never count, no matter which array they live in).
+{
+  const f = auditBook("weekly-unsourced", live({
+    weekly_log: [{ date: "2026-07-01" }],
+    launch_activation: fullActivation(),
+  }), NOW);
+  assert.ok(f.some((x) => x.code === "INV-16" && x.level === "CRITICAL"), "unsourced weekly_log entry must not clear INV-16");
+}
+
+// 10. INV-15 aplus legacy alias: post_launch.aplus_content_live === true satisfies the
+// aplus_submitted lever even though launch_activation.aplus_submitted is absent — but
+// the OTHER missing levers must still be listed (only aplus gets the alias).
+{
+  const f = auditBook("aplus-alias", live({
+    observations: [{ date: "2026-07-01", source: "KDP dashboard 2026-07-01" }],
+    launch_activation: { category_verified_live: true },
+    aplus_content_live: true,
+  }), NOW);
+  const inv15 = f.find((x) => x.code === "INV-15");
+  assert.ok(inv15, "expected INV-15 for the still-missing levers");
+  assert.ok(!inv15.msg.includes("aplus_submitted"), "aplus lever satisfied via legacy alias must not be listed as missing");
+  assert.ok(inv15.msg.includes("author_central_live") && inv15.msg.includes("arc_outreach_sent"), "other missing levers must still be listed");
+}
+
 console.log("ALL PASS — postlaunch-audit");
