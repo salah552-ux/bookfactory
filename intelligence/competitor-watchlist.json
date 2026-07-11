@@ -1,0 +1,75 @@
+{
+  "_comment": "Competitor BSR time-series watchlist (Keepa-lite). ASINs/titles copied VERBATIM from the named analysis report's algorithms.bsr_velocity.top20 array (rank 1-5) — never invented. marketplace is set from that report's marketplaces_present. Consumed by scripts/track-competitors.cjs.",
+  "niches": {
+    "gut-health": {
+      "marketplace": "co.uk",
+      "asins": [
+        {
+          "asin": "B0CTCBR3VB",
+          "title": "The Food For Life Cookbook",
+          "added": "2026-07-11",
+          "source": "intelligence/reports/gut_health_analysis.json bsr_velocity top20"
+        },
+        {
+          "asin": "1916662226",
+          "title": "The Complete Guide to Taming Chronic Inflammation",
+          "added": "2026-07-11",
+          "source": "intelligence/reports/gut_health_analysis.json bsr_velocity top20"
+        },
+        {
+          "asin": "B0GFX8K9GQ",
+          "title": "Gut: The 8-million-copy #1 bestseller",
+          "added": "2026-07-11",
+          "source": "intelligence/reports/gut_health_analysis.json bsr_velocity top20"
+        },
+        {
+          "asin": "B0C888GXWL",
+          "title": "Gut Fix: Discover the herbal remedies, diet tips, and supplements",
+          "added": "2026-07-11",
+          "source": "intelligence/reports/gut_health_analysis.json bsr_velocity top20"
+        },
+        {
+          "asin": "B0FYJHG4MP",
+          "title": "Gut Health and Mental Clarity: A Simple Microbiome Reset Plan",
+          "added": "2026-07-11",
+          "source": "intelligence/reports/gut_health_analysis.json bsr_velocity top20"
+        }
+      ]
+    },
+    "vagus-nerve": {
+      "marketplace": "co.uk",
+      "asins": [
+        {
+          "asin": "B0FMZF3TZM",
+          "title": "The Vagus Nerve Whisperer: Breathe, eat, relax - step-by-step guide with video exercises for anxiety, insomnia, stress and digestive (UK Version)",
+          "added": "2026-07-11",
+          "source": "intelligence/reports/vagus_nerve_analysis.json bsr_velocity top20"
+        },
+        {
+          "asin": "B0GDQVDGYW",
+          "title": "Vagus Nerve Reset Workbook 2026: Daily Exercises and Practices for Calm, Better Sleep, and Stress Relief (The Self-Healing Vagus Nerve Reset 1)",
+          "added": "2026-07-11",
+          "source": "intelligence/reports/vagus_nerve_analysis.json bsr_velocity top20"
+        },
+        {
+          "asin": "B0DNMCL75S",
+          "title": "The Great Nerve: The New Science of the Vagus Nerve and How to Harness Its Healing Reflexes",
+          "added": "2026-07-11",
+          "source": "intelligence/reports/vagus_nerve_analysis.json bsr_velocity top20"
+        },
+        {
+          "asin": "B0DQPY9TDY",
+          "title": "Vagus Nerve Brain-Belly Reset (2 Books in 1): Somatic Therapy for Complex PTSD and Gut Health: 40+ Beginner Exercises for Optimal Mind-Body Healing",
+          "added": "2026-07-11",
+          "source": "intelligence/reports/vagus_nerve_analysis.json bsr_velocity top20"
+        },
+        {
+          "asin": "B0GRGYVFBZ",
+          "title": "Somatic Therapy Workbook for Nervous System Reset: A Step-by-Step 30-Day Plan to Calm Anxiety, Heal Trauma, and Rewire Survival Mode",
+          "added": "2026-07-11",
+          "source": "intelligence/reports/vagus_nerve_analysis.json bsr_velocity top20"
+        }
+      ]
+    }
+  }
+}
