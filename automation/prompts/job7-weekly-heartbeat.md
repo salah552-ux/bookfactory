@@ -99,6 +99,8 @@ Architect reconciles the state file. Do NOT auto-edit contested fields
 
 ## STEP 3.5 — POST-LAUNCH LOOP AUDIT (the "flying blind" class of bug)
 
+First, token-free: for each live book with a recorded ASIN (`publishing.asin` in its pipeline-state.json), run `node scripts/fetch-live-baseline.cjs <asin> <marketplace> --log <slug>` to refresh its public BSR/review baseline before auditing.
+
 Run: `node scripts/postlaunch-audit.cjs`
 
 - Exit 0 → note "post-launch loop closed" in the heartbeat report and move on.
