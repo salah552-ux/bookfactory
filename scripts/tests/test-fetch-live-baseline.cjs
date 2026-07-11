@@ -2,7 +2,7 @@
 // Tests for fetch-live-baseline.cjs. Pure unit tests over synthetic HTML
 // fixture strings built in-test — NO network, NO real book state touched.
 const assert = require("assert");
-const { parseBaseline, buildLoggerArgs } = require("../fetch-live-baseline.cjs");
+const { parseBaseline, buildLoggerArgs, decideAndFallback } = require("../fetch-live-baseline.cjs");
 
 const SOURCE = "amazon.com/dp/B0GXYLWS1W public page, script fetch 2026-07-11";
 
@@ -276,4 +276,151 @@ const SOURCE = "amazon.com/dp/B0GXYLWS1W public page, script fetch 2026-07-11";
   assert.strictEqual(r.status, "PARSE_INCOMPLETE", "missing review count is a genuine gap, flagged");
 }
 
-console.log("ALL PASS — fetch-live-baseline");
+// -----------------------------------------------------------------------
+// 13. FIX 2 — scoped block detection: a genuine product page whose review
+//     text happens to contain the literal phrase "Robot Check" must NOT be
+//     misclassified BLOCKED. looksLikeProductPage must win over block
+//     markers found anywhere in the body.
+// -----------------------------------------------------------------------
+{
+  const html = [
+    "<html><body>",
+    "<h2>Product details</h2>",
+    "<div>ASIN B0GXYLWS1W</div>",
+    '<li><span class="a-text-bold">Best Sellers Rank:</span>',
+    "<span>#48,210 in Books</span></li>",
+    '<div id="reviews">',
+    '<span class="review-text">I had to do a Robot Check when I tried to ',
+    "reorder this on my phone, but the book itself is fantastic.</span>",
+    "</div>",
+    '<span id="acrCustomerReviewText">12 customer reviews</span>',
+    "</body></html>",
+  ].join("\n");
+  const r = parseBaseline(html);
+  assert.strictEqual(
+    r.status,
+    "OK",
+    "a real product page is never BLOCKED just because 'Robot Check' appears in review text"
+  );
+  assert.strictEqual(r.bsr_main, 48210, "BSR still parsed correctly off the real product page");
+  assert.strictEqual(r.reviews, 12);
+}
+
+// -----------------------------------------------------------------------
+// 14–16. FIX 1 — decideAndFallback (async, so wrapped in an IIFE below).
+//   14. Content-detected block: HTTP 200 (tier1.status === null) + a
+//       robot-check body must still trigger the Tier-2 fallback attempt,
+//       exactly like an HTTP-status-detected block does — only the page
+//       CONTENT reveals this block, which only parseBaseline can see.
+//   15. A genuinely OK Tier-1 result (HTTP 200 + real product page) must
+//       NOT invoke Tier 2 at all — the unified decision point should not
+//       fire needlessly.
+//   16. An HTTP-status-detected block (503, tier1.status === "BLOCKED",
+//       thin/empty body) that Tier 2 successfully recovers must return the
+//       Tier-2 parse, with no fallback note — preserving the pre-existing
+//       recovery path through the new unified decision point.
+// -----------------------------------------------------------------------
+async function runAsyncTests() {
+  // 14.
+  {
+    const robotCheckHtml = [
+      "<html><body>",
+      "<h4>Sorry, we just need to make sure you're not a robot.</h4>",
+      '<form action="/errors/validateCaptcha" method="get">',
+      "<p>Enter the characters you see below</p>",
+      "</form>",
+      "</body></html>",
+    ].join("\n");
+
+    let tier2Calls = 0;
+    const stubTier2Unavailable = async () => {
+      tier2Calls++;
+      return { available: false };
+    };
+
+    const tier1 = { status: null, html: robotCheckHtml }; // HTTP 200, block only visible in content
+    const { parsed, fallback } = await decideAndFallback(tier1, stubTier2Unavailable);
+    assert.strictEqual(tier2Calls, 1, "Tier 2 must be attempted for a content-detected block");
+    assert.strictEqual(parsed.status, "BLOCKED", "final status is BLOCKED for a content-detected block");
+    assert.strictEqual(
+      fallback,
+      "playwright unavailable",
+      "fallback note present when Tier 2 is unavailable, matching the status-based path's behaviour"
+    );
+  }
+
+  // 15.
+  {
+    const okHtml = [
+      "<html><body>",
+      "<h2>Product details</h2>",
+      '<li><span class="a-text-bold">Best Sellers Rank:</span>',
+      "<span>#100 in Kindle Store</span></li>",
+      '<span id="acrCustomerReviewText">5 customer reviews</span>',
+      "</body></html>",
+    ].join("\n");
+
+    let tier2Calls = 0;
+    const stubTier2 = async () => {
+      tier2Calls++;
+      return { available: false };
+    };
+
+    const tier1 = { status: null, html: okHtml };
+    const { parsed, fallback } = await decideAndFallback(tier1, stubTier2);
+    assert.strictEqual(tier2Calls, 0, "Tier 2 must not be invoked when Tier 1 already parsed OK");
+    assert.strictEqual(parsed.status, "OK");
+    assert.strictEqual(parsed.bsr_main, 100);
+    assert.strictEqual(fallback, null);
+  }
+
+  // 16.
+  {
+    const recoveredHtml = [
+      "<html><body>",
+      "<h2>Product details</h2>",
+      '<li><span class="a-text-bold">Best Sellers Rank:</span>',
+      "<span>#7 in Kindle Store</span></li>",
+      '<span id="acrCustomerReviewText">9 customer reviews</span>',
+      "</body></html>",
+    ].join("\n");
+
+    const stubTier2Recovered = async () => ({ available: true, html: recoveredHtml });
+
+    const tier1 = { status: "BLOCKED", html: "" }; // e.g. HTTP 503, thin body
+    const { parsed, fallback } = await decideAndFallback(tier1, stubTier2Recovered);
+    assert.strictEqual(parsed.status, "OK", "Tier 2 recovery still works through the unified decision point");
+    assert.strictEqual(parsed.bsr_main, 7);
+    assert.strictEqual(fallback, null, "no fallback note when Tier 2 successfully recovered the page");
+  }
+}
+
+// -----------------------------------------------------------------------
+// 17. FIX 4 — parseReviews must never surface a non-finite parseInt result.
+//     A malformed acrCustomerReviewText value ("," with no digits) matches
+//     the loose [\d,]+ shape but parseInt('', 10) is NaN — the guard must
+//     fall through to the generic scan (which, here, hits the same
+//     malformed text and also fails its guard) and land on null, not NaN.
+//     NaN is worse than null: JSON.stringify keeps `reviews: null` visibly
+//     honest, whereas `reviews: NaN` would silently pass buildLoggerArgs'
+//     `!== null` check and get logged as the literal string "--reviews NaN".
+// -----------------------------------------------------------------------
+{
+  const html = [
+    "<html><body>",
+    "<h2>Product details</h2>",
+    '<span id="acrCustomerReviewText">, customer reviews</span>',
+    "</body></html>",
+  ].join("\n");
+  const r = parseBaseline(html);
+  assert.strictEqual(r.reviews, null, "a malformed review count must guard to null, never NaN");
+}
+
+runAsyncTests()
+  .then(() => {
+    console.log("ALL PASS — fetch-live-baseline");
+  })
+  .catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });

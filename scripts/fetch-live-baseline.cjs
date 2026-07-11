@@ -19,7 +19,15 @@
  *                    as a child process. If status is not OK, the logger is
  *                    never invoked and this script exits 1.
  *
- * Module exports (for tests — no network involved): { parseBaseline, buildLoggerArgs }
+ *   NOTE for machine consumers: with --log, the logger child process runs
+ *   with stdio "inherit" and prints its own output AFTER this script's JSON
+ *   line. Only the FIRST stdout line is this script's JSON — parse that one
+ *   line and ignore everything after it.
+ *
+ * Module exports (for tests — no network involved): { parseBaseline,
+ * buildLoggerArgs, decideAndFallback }. decideAndFallback takes an injected
+ * Tier-2 thunk as its second argument, so it too runs with zero network
+ * access under test.
  */
 const https = require("https");
 const path = require("path");
@@ -127,11 +135,17 @@ function parseReviews(html) {
   // Preferred: the acrCustomerReviewText element, where the number and the
   // phrase sit in the same text node right after the opening tag.
   const acr = text.match(/id=["']acrCustomerReviewText["'][^>]*>\s*([\d,]+)\s+customer reviews?/i);
-  if (acr) return parseInt(acr[1].replace(/,/g, ""), 10);
+  if (acr) {
+    const n = parseInt(acr[1].replace(/,/g, ""), 10);
+    if (Number.isFinite(n)) return n;
+  }
   // Fallback: scan the whole visible page text for "<n> customer review(s)".
   const plain = stripTags(text);
   const generic = plain.match(/([\d,]+)\s+customer reviews?/i);
-  if (generic) return parseInt(generic[1].replace(/,/g, ""), 10);
+  if (generic) {
+    const n = parseInt(generic[1].replace(/,/g, ""), 10);
+    if (Number.isFinite(n)) return n;
+  }
   return null;
 }
 
@@ -149,11 +163,15 @@ function parseBaseline(html) {
     status: "OK",
   };
 
-  if (looksBlocked(text)) {
-    return { ...result, status: "BLOCKED" };
-  }
-
+  // Product-page-ness is checked FIRST and wins outright: a real product
+  // page can legitimately contain a block marker as ordinary text (e.g. a
+  // review mentioning "Robot Check" in passing) without being a block page
+  // itself. Block markers are only meaningful on a page that ISN'T already
+  // confirmed to be a real product page.
   if (!looksLikeProductPage(text)) {
+    if (looksBlocked(text)) {
+      return { ...result, status: "BLOCKED" };
+    }
     return { ...result, status: "FETCH_FAILED" };
   }
 
@@ -217,7 +235,7 @@ function buildLoggerArgs(slug, result) {
   return args;
 }
 
-module.exports = { parseBaseline, buildLoggerArgs };
+module.exports = { parseBaseline, buildLoggerArgs, decideAndFallback };
 
 // ---------------------------------------------------------------------------
 // Network layer (Tier 1 stdlib HTTPS, Tier 2 optional Playwright fallback).
@@ -316,29 +334,50 @@ function emptyParsed(status) {
   return { bsr_main: null, sub_ranks: [], reviews: null, no_bsr_line: false, status };
 }
 
+// decideAndFallback — the single decision point for whether the Tier-2
+// (Playwright) fallback is needed, and resolves it when it is.
+//
+// A block can only surface two ways: (a) the HTTP layer itself (503 / >=400
+// / network error — runTier1 already sets tier1.status for these), or (b)
+// content-detected — Amazon's robot-check page usually arrives as a normal
+// HTTP 200, which only parseBaseline (reading the body) can see. Both routes
+// must trigger the same Tier-2 attempt, so this function always parses
+// tier1.html first, then combines that with tier1.status: the HTTP-layer
+// status wins when set (it's authoritative for transport failures, where
+// the body may be empty or unrelated), otherwise the content classification
+// decides — which is what catches case (b).
+//
+// `runTier2Fn` is a zero-arg thunk resolving the Tier-2 result (production
+// wires it to `() => runTier2(url)`; tests inject a synthetic thunk), so
+// this function needs no network access to exercise every branch.
+async function decideAndFallback(tier1, runTier2Fn) {
+  const contentParsed = parseBaseline(tier1.html);
+  const status = tier1.status || contentParsed.status;
+
+  if (status !== "BLOCKED" && status !== "FETCH_FAILED") {
+    return { parsed: contentParsed, fallback: null };
+  }
+
+  const tier2 = await runTier2Fn();
+  if (tier2.available && tier2.html) {
+    return { parsed: parseBaseline(tier2.html), fallback: null };
+  }
+  if (tier2.available) {
+    return {
+      parsed: emptyParsed(status),
+      fallback: tier2.error ? `playwright fetch failed: ${tier2.error}` : "playwright fetch failed",
+    };
+  }
+  return { parsed: emptyParsed(status), fallback: "playwright unavailable" };
+}
+
 async function fetchBaseline(asin, marketplace) {
   const tld = marketplace === "co.uk" ? "co.uk" : "com";
   const url = `https://www.amazon.${tld}/dp/${asin}`;
   const fetchedAt = new Date().toISOString();
 
-  let parsed;
-  let fallback = null;
-
   const tier1 = await runTier1(url);
-  if (tier1.status === "BLOCKED" || tier1.status === "FETCH_FAILED") {
-    const tier2 = await runTier2(url);
-    if (tier2.available && tier2.html) {
-      parsed = parseBaseline(tier2.html);
-    } else if (tier2.available) {
-      parsed = emptyParsed(tier1.status);
-      fallback = tier2.error ? `playwright fetch failed: ${tier2.error}` : "playwright fetch failed";
-    } else {
-      parsed = emptyParsed(tier1.status);
-      fallback = "playwright unavailable";
-    }
-  } else {
-    parsed = parseBaseline(tier1.html);
-  }
+  const { parsed, fallback } = await decideAndFallback(tier1, () => runTier2(url));
 
   const result = {
     asin,

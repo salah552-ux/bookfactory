@@ -99,7 +99,7 @@ Architect reconciles the state file. Do NOT auto-edit contested fields
 
 ## STEP 3.5 — POST-LAUNCH LOOP AUDIT (the "flying blind" class of bug)
 
-First, token-free: for each live book with a recorded ASIN (`publishing.asin` in its pipeline-state.json), run `node scripts/fetch-live-baseline.cjs <asin> <marketplace> --log <slug>` to refresh its public BSR/review baseline before auditing.
+First, token-free: for each live book with a recorded ASIN (`publishing.asin` in its pipeline-state.json), run `node scripts/fetch-live-baseline.cjs <asin> <marketplace> --log <slug>` to refresh its public BSR/review baseline before auditing — `<marketplace>` must be the literal token `co.uk` or `com` (UK books → literal `co.uk`, US books → literal `com`), NOT the roster's display text (e.g. "UK — amazon.co.uk"); the script silently defaults any unrecognised value to `com`.
 
 Run: `node scripts/postlaunch-audit.cjs`
 
