@@ -262,6 +262,8 @@ TRENDS SIGNAL:
   Source: [URL or "web search — no direct Trends data available"]
 ```
 
+Also run `node scripts/harvest-autocomplete.cjs <com|co.uk> <seed-term...> --out intelligence/reports/autocomplete-[niche]-[date].json` for the niche's seed terms and cite the saved file as a primary Amazon source (real buyer autocomplete phrases, not invented).
+
 ---
 
 ### Step 6 — Save to SQLite database
