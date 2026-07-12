@@ -534,6 +534,45 @@ async function runAsyncTests() {
   assert.strictEqual(r.status, "OK");
 }
 
+// -----------------------------------------------------------------------
+// 20. FIX 5 — real amazon.co.uk layout (B0CTCBR3VB, live fetch): the main
+//     review widget renders as
+//       <span id="acrCustomerReviewText" aria-label="2,842 Reviews"
+//             class="a-size-small">(2,842)</span>
+//     — content is parenthesized digits only ("(2,842)"), no "ratings"/
+//     "customer reviews" word, so the existing content-only match must not
+//     be the only path: the FIRST element's own aria-label attribute (or,
+//     failing that, its parenthesized content) must be read too. Fixture
+//     also carries stray "188 ratings" carousel text elsewhere in the body
+//     to prove the carousel-contamination rule still holds — it must never
+//     be picked up in place of the real value.
+// -----------------------------------------------------------------------
+{
+  const html = [
+    "<html><body>",
+    '<div id="carousel-top">',
+    '<div class="carousel-item"><span>188 ratings</span></div>',
+    "</div>",
+    "<h2>Product details</h2>",
+    "<div>ASIN B0CTCBR3VB</div>",
+    '<li><span class="a-text-bold">Best Sellers Rank:</span>',
+    "<span>#48,210 in Books</span></li>",
+    '<div id="averageCustomerReviews_feature_div">',
+    '<span id="acrCustomerReviewText" aria-label="2,842 Reviews" class="a-size-small">(2,842)</span>',
+    "</div>",
+    "</body></html>",
+  ].join("\n");
+
+  const r = parseBaseline(html);
+  assert.strictEqual(
+    r.reviews,
+    2842,
+    "aria-label / parenthesized content on the FIRST acrCustomerReviewText element is read when content has no ratings/reviews word"
+  );
+  assert.strictEqual(r.bsr_main, 48210, "BSR still parses correctly alongside the fix");
+  assert.strictEqual(r.status, "OK");
+}
+
 runAsyncTests()
   .then(() => {
     console.log("ALL PASS — fetch-live-baseline");

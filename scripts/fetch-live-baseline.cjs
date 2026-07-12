@@ -152,11 +152,30 @@ function parseReviews(html) {
   // stray carousel count ("188 ratings", "409 ratings", ...) elsewhere on
   // the page from ever being picked up. A body-wide numeric scan is a
   // zero-tolerance violation.
-  const acr = text.match(/id=["']acrCustomerReviewText["'][^>]*>([\s\S]*?)<\/span>/i);
+  const acr = text.match(/id=["']acrCustomerReviewText["']([^>]*)>([\s\S]*?)<\/span>/i);
   if (acr) {
-    const countMatch = acr[1].match(/([\d,]+)\s+(?:ratings?|customer reviews?)/i);
+    const tagAttrs = acr[1];
+    const content = acr[2];
+
+    // (a-1) content match, e.g. "7,810 ratings" / "12 customer reviews".
+    const countMatch = content.match(/([\d,]+)\s+(?:ratings?|customer reviews?)/i);
     if (countMatch) {
       const n = parseInt(countMatch[1].replace(/,/g, ""), 10);
+      if (Number.isFinite(n)) return n;
+    }
+    // (a-2) the same element's aria-label attribute, e.g. observed live:
+    // aria-label="2,842 Reviews" — some layouts render the count only in
+    // the accessible label, not in the visible text content.
+    const ariaMatch = tagAttrs.match(/aria-label=["']([\d,]+)\s+(?:Reviews?|Ratings?)["']/i);
+    if (ariaMatch) {
+      const n = parseInt(ariaMatch[1].replace(/,/g, ""), 10);
+      if (Number.isFinite(n)) return n;
+    }
+    // (a-3) parenthesized content, e.g. observed live: "(2,842)" with no
+    // trailing "ratings"/"reviews" word at all.
+    const parenMatch = content.match(/\(([\d,]+)\)/);
+    if (parenMatch) {
+      const n = parseInt(parenMatch[1].replace(/,/g, ""), 10);
       if (Number.isFinite(n)) return n;
     }
   }
