@@ -255,6 +255,32 @@ async function runAsyncTests() {
     assert.strictEqual(results.length, 1);
     assert.strictEqual(results[0].asin, "VN1");
   }
+
+  // 13. appendObservation preserves CRLF line endings in an existing CRLF JSONL file.
+  {
+    const file = tmpFile("rank-history-crlf.jsonl");
+    // Create a CRLF-seeded JSONL with two lines
+    const line1 = { date: "2026-07-11", asin: "AAA", status: "OK" };
+    const line2 = { date: "2026-07-12", asin: "BBB", status: "OK" };
+    const crlf = [JSON.stringify(line1), JSON.stringify(line2)].join("\r\n") + "\r\n";
+    fs.writeFileSync(file, crlf);
+
+    // Append a new observation
+    appendObservation(file, { date: "2026-07-13", asin: "CCC", status: "OK" });
+
+    // Verify CRLF is preserved
+    const out = fs.readFileSync(file, "utf8");
+    const crlfCount = (out.match(/\r\n/g) || []).length;
+    const lfCount = (out.match(/\n/g) || []).length;
+    assert.strictEqual(crlfCount, lfCount, "every newline is still CRLF — no LF-only lines introduced");
+
+    // Verify all three lines parse as valid JSON
+    const lines = out.split(/\r?\n/).filter((l) => l.trim().length > 0);
+    assert.strictEqual(lines.length, 3, "three appends produce three lines");
+    lines.forEach((l) => {
+      JSON.parse(l); // will throw if not valid JSON
+    });
+  }
 }
 
 runAsyncTests()

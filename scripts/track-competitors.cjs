@@ -114,11 +114,13 @@ function buildLine({ date, niche, asin, title, marketplace, fetched }) {
 
 // ---------------------------------------------------------------------------
 // appendObservation — append-only JSONL writer. Never overwrites; creates
-// the parent directory on first use.
+// the parent directory on first use. Preserves existing line endings (CRLF
+// on Windows, LF on Unix).
 // ---------------------------------------------------------------------------
 function appendObservation(filePath, obs) {
   fs.mkdirSync(path.dirname(filePath), { recursive: true });
-  fs.appendFileSync(filePath, JSON.stringify(obs) + "\n");
+  const eol = fs.existsSync(filePath) && fs.readFileSync(filePath, "utf8").includes("\r\n") ? "\r\n" : "\n";
+  fs.appendFileSync(filePath, JSON.stringify(obs) + eol);
 }
 
 // ---------------------------------------------------------------------------
