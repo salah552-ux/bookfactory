@@ -113,12 +113,24 @@ function findBsrWindow(html, bsrIdx) {
 }
 
 // Extracts every "#<rank> in <category>" occurrence from a raw HTML window.
+// The leading "#" is optional — Amazon's UK marketplace layout omits it
+// entirely (observed live: "42,191 in Kindle Store", vs the .com "#2,355,773
+// in Kindle Store") — both share the same "<rank> in <category>" shape once
+// the "#" is treated as optional.
 // Returns [{rank, category}, ...] in document order — index 0 is always the
-// main rank ("#N in Kindle Store" / "#N in Books"); the rest are sub-ranks.
+// main rank ("#N in Kindle Store" / "#N in Books", or the hash-less UK
+// equivalent); the rest are sub-ranks.
 function extractRanks(windowHtml) {
-  const boundaryText = stripTagsKeepBoundaries(windowHtml);
+  let boundaryText = stripTagsKeepBoundaries(windowHtml);
+  // Strip parenthetical asides — e.g. "(See Top 100 in Kindle Store)" or
+  // "( See Top 100 in Kindle Store )" — before rank matching. Two reasons:
+  // (1) a category name must never swallow the aside as trailing text —
+  // categories end before an opening paren — and (2) now that "#" is
+  // optional, a stray digit run inside the aside itself (the "100" in
+  // "Top 100") would otherwise be mistaken for a real rank.
+  boundaryText = boundaryText.replace(/\([^)]*\)/g, " ");
   const out = [];
-  const re = /#([\d,]+)[\s]*in[\s]+([^#]+)/g;
+  const re = /#?([\d,]+)[\s]*in[\s]+([^#(]+)/g;
   let m;
   while ((m = re.exec(boundaryText))) {
     const rank = parseInt(m[1].replace(/,/g, ""), 10);
@@ -132,20 +144,29 @@ function extractRanks(windowHtml) {
 
 function parseReviews(html) {
   const text = String(html || "");
-  // Preferred: the acrCustomerReviewText element, where the number and the
-  // phrase sit in the same text node right after the opening tag.
-  const acr = text.match(/id=["']acrCustomerReviewText["'][^>]*>\s*([\d,]+)\s+customer reviews?/i);
+  // (a) ONLY numeric source: the first acrCustomerReviewText element's own
+  // inner text, parsed for "<n> ratings" (UK layout) or "<n> customer
+  // review(s)" (.com layout). This id belongs to the MAIN product being
+  // viewed — related-product carousel widgets never reuse it — so scoping
+  // the digit extraction to just this element's content is what keeps a
+  // stray carousel count ("188 ratings", "409 ratings", ...) elsewhere on
+  // the page from ever being picked up. A body-wide numeric scan is a
+  // zero-tolerance violation.
+  const acr = text.match(/id=["']acrCustomerReviewText["'][^>]*>([\s\S]*?)<\/span>/i);
   if (acr) {
-    const n = parseInt(acr[1].replace(/,/g, ""), 10);
-    if (Number.isFinite(n)) return n;
+    const countMatch = acr[1].match(/([\d,]+)\s+(?:ratings?|customer reviews?)/i);
+    if (countMatch) {
+      const n = parseInt(countMatch[1].replace(/,/g, ""), 10);
+      if (Number.isFinite(n)) return n;
+    }
   }
-  // Fallback: scan the whole visible page text for "<n> customer review(s)".
+  // (b) Zero-case fallback: "0 customer reviews" is Amazon's fixed phrasing
+  // for a genuinely review-less product and is never how a carousel item's
+  // count is rendered, so this narrow, non-numeric-scanning check carries no
+  // contamination risk.
   const plain = stripTags(text);
-  const generic = plain.match(/([\d,]+)\s+customer reviews?/i);
-  if (generic) {
-    const n = parseInt(generic[1].replace(/,/g, ""), 10);
-    if (Number.isFinite(n)) return n;
-  }
+  if (/\b0\s+customer reviews?\b/i.test(plain)) return 0;
+  // (c) Otherwise: null. Never a body-wide numeric ratings/reviews scan.
   return null;
 }
 

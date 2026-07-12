@@ -416,6 +416,124 @@ async function runAsyncTests() {
   assert.strictEqual(r.reviews, null, "a malformed review count must guard to null, never NaN");
 }
 
+// -----------------------------------------------------------------------
+// 18. UK no-hash BSR block: live amazon.co.uk (B0CTCBR3VB, fetched
+//     2026-07-11) has NO "#" before any rank — "42,191 in Kindle Store
+//     ( See Top 100 in Kindle Store ) 1 in Public Health & Preventive
+//     Medicine 4 in General Medical Issues Guides 8 in Natural Foods".
+//     The "(" See Top 100 "..." parenthetical must not be swallowed into a
+//     category name, and its own stray digits ("100") must never be
+//     mistaken for a rank.
+// -----------------------------------------------------------------------
+{
+  const html = [
+    "<html><body>",
+    '<div id="detailBulletsWrapper_feature_div">',
+    '<ul class="detail-bullet-list">',
+    "<li>",
+    '<span class="a-list-item">',
+    '<span class="a-text-bold">Best Sellers Rank:</span>',
+    "<span>",
+    "42,191 in Kindle Store ( See Top 100 in Kindle Store )",
+    '<ul class="zg_hrsr">',
+    '<li class="zg_hrsr_item">',
+    '<span class="zg_hrsr_rank">1</span> in ',
+    '<a href="/gp/bestsellers/x">Public Health &amp; Preventive Medicine</a>',
+    "</li>",
+    '<li class="zg_hrsr_item">',
+    '<span class="zg_hrsr_rank">4</span> in ',
+    '<a href="/gp/bestsellers/x">General Medical Issues Guides</a>',
+    "</li>",
+    '<li class="zg_hrsr_item">',
+    '<span class="zg_hrsr_rank">8</span> in ',
+    '<a href="/gp/bestsellers/x">Natural Foods</a>',
+    "</li>",
+    "</ul>",
+    "</span>",
+    "</span>",
+    "</li>",
+    "</ul>",
+    "</div>",
+    "<h2>Product details</h2>",
+    "<div>ASIN B0CTCBR3VB</div>",
+    '<span id="acrCustomerReviewText">7,810 ratings</span>',
+    "</body></html>",
+  ].join("\n");
+
+  const r = parseBaseline(html);
+  assert.strictEqual(r.bsr_main, 42191, "UK no-hash main BSR parsed as integer, commas stripped");
+  assert.strictEqual(r.sub_ranks.length, 3, "three UK no-hash sub-ranks found");
+  assert.deepStrictEqual(
+    r.sub_ranks.map((s) => s.rank),
+    [1, 4, 8],
+    "sub-rank numbers parsed without a '#' prefix"
+  );
+  assert.ok(/Public Health & Preventive Medicine/.test(r.sub_ranks[0].category), "sub-rank 1 category captured");
+  assert.ok(/General Medical Issues Guides/.test(r.sub_ranks[1].category), "sub-rank 2 category captured");
+  assert.ok(/Natural Foods/.test(r.sub_ranks[2].category), "sub-rank 3 category captured");
+  assert.ok(!/See Top 100/.test(r.sub_ranks[0].category), "the '(See Top 100...)' aside never leaks into a category");
+  assert.strictEqual(r.status, "OK");
+}
+
+// -----------------------------------------------------------------------
+// 19. Review count precedence is scoped to the FIRST acrCustomerReviewText
+//     element only — carousel-contaminated body text (multiple stray
+//     "<n> ratings" strings from related-product widgets) must never be
+//     picked up. Reuses the UK no-hash BSR block from test 18 plus a real
+//     acrCustomerReviewText element ("7,810 ratings") and several stray
+//     carousel counts before and after it in the body.
+// -----------------------------------------------------------------------
+{
+  const html = [
+    "<html><body>",
+    '<div id="carousel-top">',
+    '<div class="carousel-item"><span>188 ratings</span></div>',
+    '<div class="carousel-item"><span>248 ratings</span></div>',
+    "</div>",
+    '<div id="averageCustomerReviews_feature_div">',
+    '<span id="acrCustomerReviewText">7,810 ratings</span>',
+    "</div>",
+    "<h2>Product details</h2>",
+    "<div>ASIN B0CTCBR3VB</div>",
+    '<div id="detailBulletsWrapper_feature_div">',
+    '<ul class="detail-bullet-list">',
+    "<li>",
+    '<span class="a-list-item">',
+    '<span class="a-text-bold">Best Sellers Rank:</span>',
+    "<span>",
+    "42,191 in Kindle Store ( See Top 100 in Kindle Store )",
+    '<ul class="zg_hrsr">',
+    '<li class="zg_hrsr_item">',
+    '<span class="zg_hrsr_rank">1</span> in ',
+    '<a href="/gp/bestsellers/x">Public Health &amp; Preventive Medicine</a>',
+    "</li>",
+    '<li class="zg_hrsr_item">',
+    '<span class="zg_hrsr_rank">4</span> in ',
+    '<a href="/gp/bestsellers/x">General Medical Issues Guides</a>',
+    "</li>",
+    '<li class="zg_hrsr_item">',
+    '<span class="zg_hrsr_rank">8</span> in ',
+    '<a href="/gp/bestsellers/x">Natural Foods</a>',
+    "</li>",
+    "</ul>",
+    "</span>",
+    "</span>",
+    "</li>",
+    "</ul>",
+    "</div>",
+    '<div id="also-bought-carousel">',
+    '<div class="carousel-item"><span>409 ratings</span></div>',
+    '<div class="carousel-item"><span>77 ratings</span></div>',
+    "</div>",
+    "</body></html>",
+  ].join("\n");
+
+  const r = parseBaseline(html);
+  assert.strictEqual(r.reviews, 7810, "main product's acrCustomerReviewText count used, not a carousel stray count");
+  assert.strictEqual(r.bsr_main, 42191, "BSR still parses correctly alongside the carousel noise");
+  assert.strictEqual(r.status, "OK");
+}
+
 runAsyncTests()
   .then(() => {
     console.log("ALL PASS — fetch-live-baseline");
