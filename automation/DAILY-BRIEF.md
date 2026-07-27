@@ -1,98 +1,96 @@
-# BookFactory Daily Brief — 2026-07-20
+# BookFactory Daily Brief — 2026-07-27
 
 ---
 
-## ACTION REQUIRED (6 items)
+## ACTION REQUIRED
 
-### 1 — Fix Your Gut for Good: KDP Select EXPIRED YESTERDAY — OVERDUE
-`kdp_select_term_end = 2026-07-19`. Term ended yesterday. If not already re-enrolled, the book is now exiting KDP Select and losing KU, Countdown Deal, and Free Day eligibility. Log into KDP now and confirm status.
-> Reply **REENROLL** or **GOWIDE** to close this item.
+**4 items need your decision today.**
 
-### 2 — Death in the Cathedral Close: KDP Select ends in 12 days (est. 2026-08-01)
-Computed from `live_date 2026-05-03 + 90 days`. Re-enrollment or go-wide decision due by 2026-08-01.
-> Reply **REENROLL** or **GOWIDE** to close this item.
+### 1. 🔴 Fix Your Gut for Good — KDP Select EXPIRED 8 days ago
+KDP Select term ended **2026-07-19**. Auto-renewal may or may not have fired. If it lapsed, the book is no longer KU-eligible and cannot run a Countdown Deal on 2026-08-18.
+→ Check KDP dashboard now. If auto-renewed, note it in pipeline-state.json. If not, re-enroll immediately.
+→ *Once confirmed: reply* **SELECT-CONFIRMED** *to mark resolved.*
 
-### 3 — Both live books: Amazon scrape FAILED (2nd consecutive week)
-HTTP 403 bot-block on amazon.co.uk for both titles (2026-07-13 and 2026-07-20). All alert rules (rating drop, BSR worsening, price change, new bad reviews) cannot fire. Manual check required — log BSR, rating, and review count into each book's `pipeline-state.json weekly_log`.
-> Reply **LOGGED** once you've entered the numbers.
+### 2. 🟠 Death in the Cathedral Close — KDP Select term-end UNKNOWN, likely 5 days away
+`kdp_select_term_end` is absent from pipeline-state.json. Standard 90-day term from live date (2026-05-03) would expire ~**2026-08-01** — 5 days from now. No re-enrollment decision recorded.
+→ Check KDP dashboard for exact term-end date. Add it to pipeline-state.json.
+→ *Once confirmed: reply* **SELECT-DITC-CONFIRMED**
 
-### 4 — Death in the Cathedral Close: Category mismatch still unresolved (43 days)
-`category_mismatch_flagged = true` since 2026-06-07. Correct end-state: Amateur Sleuth + Cozy + British & Irish > Mystery & Thrillers. Cozy was never confirmed live in KDP.
-> Reply **CATFIXED** once confirmed live in KDP.
+### 3. 🟠 Vagus Nerve Gut Reset Workbook — cleared for upload 30 days ago, still unpublished
+All Stage 06 gates passed on 2026-06-26. `final_approval_score = 291/300`. Cover, EPUB, PDF — all built. Zero action taken since.
+→ Ready to go live. Invoke `kdp-upload-agent` when ready.
+→ *Reply* **UPLOAD** *to trigger the agent.*
 
-### 5 — ALGO-INTELLIGENCE-CANDIDATE.md: awaiting review and promotion
-Drafted 2026-07-01, last modified 2026-07-17. This is the inaugural sweep — no `ALGO-INTELLIGENCE.md` exists yet. All pipeline agents that read algorithm intelligence have no canonical source file.
-> Reply **ALGOAPPROVED** to trigger merge into ALGO-INTELLIGENCE.md v1.0.
-
-### 6 — H-Pylori Recovery Plan: post-launch stage never started (33 days live)
-`kdp_status = "live"` since 2026-06-17, but `current_stage = 9` and `stages["10-postlaunch"].status = "not_started"`. Zero BSR baseline, zero review tracking, no ARC follow-up, no ads gate, no A+ trigger. Also: `pre_launch.launch_ready = false` (shipped without pre-launch sign-off) and `final_approval_score = 113` (book-reviewer /120 scale — 300-point audit never run). Most contradictions of any book in the portfolio (4).
-> Reply **STARTPOSTLAUNCH** to unblock stage 10 for h-pylori-recovery-plan.
+### 4. 🟡 h-pylori Recovery Plan — live 39 days, post-launch never started
+Live since 2026-06-17 (ASIN B0H5TZTPRT). Stage 10 status: `not_started`. Zero BSR/KU/review data logged. Also: `final_approval_score = 113` (book-reviewer /120 scale — the 300-point final-approval-agent audit was never run).
+→ Run `post-launch-tracker` with current KDP dashboard readings. Run `final-approval-agent`.
+→ *Reply* **TRACK** *to start the post-launch sequence.*
 
 ---
 
 ## Live Book Status
 
-> **Watchdog SCRAPE FAILED (2nd consecutive week)** — Amazon UK returned HTTP 403 on both attempts for both titles today. Values below are last-known from pipeline-state.json. Absence of alert ≠ all clear.
+> ⚠️ Watchdog has failed for **3 consecutive weeks** (HTTP 403 bot-block). All values below are stale. No alert rules could be evaluated. **Absence of alerts ≠ all clear.**
 
-| Book | ASIN | Reviews | BSR (last known) | Price | As of |
-|------|------|---------|-----------------|-------|-------|
-| Fix Your Gut for Good | B0GXYLWS1W | 0 | not recorded | £9.99 / $9.99 | 2026-06-07 |
-| Death in the Cathedral Close | B0GZD1S8HF | 0 | 1,370,902 overall | £6.99 | 2026-06-02 (48 days stale) |
+| Book | Rating | Reviews | BSR | Price | Last scraped |
+|------|--------|---------|-----|-------|-------------|
+| Fix Your Gut for Good (B0GXYLWS1W) | scrape failed | 0 (as of 2026-06-07) | not recorded | £9.99 / US ~$2.99 noted | 2026-07-27 (failed) |
+| Death in the Cathedral Close (B0GZD1S8HF) | scrape failed | 0 (as of 2026-06-02) | 1,370,902 (as of 2026-06-02) | £6.99 | 2026-07-27 (failed) |
 
-KDP Select status for Fix Your Gut is now unknown — term expired 2026-07-19; re-enrollment not confirmed in state.
-Post-Countdown-Deal price for Cathedral Close not confirmed (deal ended 2026-06-09).
-
-> Long-term fix: replace the HTTP-only watchdog with `review-miner` (Playwright-capable) to bypass Amazon's 403 bot-block.
+**Watchdog fix needed:** Switch from HTTP fetch to Playwright-based agent (`review-miner` or `harvester-agent`). Current watchdog cannot bypass Amazon's 403 block.
 
 ---
 
 ## Upcoming Deadlines (next 14 days)
 
-| Date | Book | Event |
-|------|------|--------|
-| **2026-07-19 (OVERDUE)** | Fix Your Gut for Good | KDP Select expired — re-enrollment decision overdue NOW |
-| **~2026-08-01** | Death in the Cathedral Close | KDP Select term end — 12 days |
-
-Next Countdown Deal window for Fix Your Gut opens ~2026-08-18 (29 days) — only relevant if already re-enrolled.
+| Date | Book | Item |
+|------|------|------|
+| **2026-08-01** (5 days) | Death in the Cathedral Close | Likely KDP Select term expiry — **unconfirmed, needs KDP login today** |
+| **2026-08-18** (22 days) | Fix Your Gut for Good | Next Countdown Deal window — only opens if Select re-enrolled |
 
 ---
 
-## Standing Gaps (unresolved week-over-week)
+## Standing Gaps
 
-| Gap | Book(s) | Open since |
-|-----|---------|-----------|
-| BookFunnel link not live | Fix Your Gut + Cathedral Close | 90+ / 79+ days |
-| Category mismatch | Cathedral Close | 2026-06-07 (43 days) |
-| `final_approval_passed=true`, score=null, no FINAL-APPROVAL.md | Cathedral Close | 2026-06-14 (6 weeks) |
-| Chapters 1–2 missing from disk | The Dust Between Seconds (parked) | 2026-06-14 (6 weeks) |
-| No `pipeline-state.json` | cortisol-gut-health | unknown |
+These have been open since ~2026-05-31 across both live books:
 
-Both BookFunnel gaps mean every sale since launch has missed email capture. LEAD-MAGNET.md and EMAIL-SEQUENCE.md already exist — the BookFunnel page itself is the only remaining step for Fix Your Gut.
+| Gap | Books affected | Status |
+|-----|---------------|--------|
+| BookFunnel link not live | Fix Your Gut + Death in the Cathedral Close | Open since 2026-05-31. Lead magnet written; link only missing piece. |
+| Category mismatch unconfirmed | Death in the Cathedral Close | Metadata corrected locally 2026-06-07; KDP live categories blocked on Architect KDP login. Target: Amateur Sleuth + Cozy + British & Irish > Mystery. |
 
 ---
 
 ## Intelligence
 
-**All 4 niches STALE** — must re-harvest from local Playwright session (cloud cannot run harvester):
+**All 4 niches stale** — any new book blueprint is blocked (Rule 0B) until re-harvest.
 
-| Niche | Last harvested | Age | Note |
-|-------|---------------|-----|------|
-| gut-health | 2026-05-13 | 68 days | Most overdue; 2 live books in this niche |
-| cozy-mystery | 2026-06-01 | 49 days | Cathedral Close had no BSR at 30 days post-launch |
-| vagus-nerve | 2026-06-03 | 47 days | Web-search only — full Playwright harvest never run |
-| h-pylori-gut-health | 2026-06-07 | 43 days | Web-search only — full Playwright harvest never run |
+| Niche | Last harvested | Age |
+|-------|---------------|-----|
+| gut-health | 2026-05-13 | **75 days** |
+| cozy-mystery | 2026-06-01 | 56 days |
+| vagus-nerve | 2026-06-03 | 54 days |
+| h-pylori-gut-health | 2026-06-07 | 50 days |
 
-**ALGO-INTELLIGENCE-CANDIDATE.md** — new/unreviewed (modified 2026-07-17). This is the inaugural sweep; `ALGO-INTELLIGENCE.md` does not yet exist. All agents relying on algorithm intelligence are running without a source document.
+Re-harvest requires your local machine (Playwright). Commands: `harvest <niche> ; analyse opportunities <niche>` in priority order above.
 
-**Integrity (Job 5 — 2026-07-19):** 13 contradictions across 5 books (up from 12 last week; +1 new in h-pylori-recovery-plan). Two longest-running unresolved (6 weeks each): Cathedral Close final_approval gate set without a score; Dust Between Seconds missing manuscript chapters. Full detail: `automation/reports/integrity-2026-07-19.md`.
+**Algo candidate present:** `intelligence/ALGO-INTELLIGENCE-CANDIDATE.md` drafted 2026-07-01 — **26 days without review**. `ALGO-INTELLIGENCE.md` (v1.0) has never been created. All downstream discoverability agents are running without an algo baseline. Review the candidate and promote approved entries.
+→ *Reply* **ALGO-PROMOTE** *to invoke algo-intelligence-agent for the merge.*
+
+---
+
+## Integrity (from 2026-07-26 audit)
+
+13 contradictions across 5 books — **unchanged for the second week running.** None resolved.
+
+Most serious: `h-pylori-recovery-plan` — 4 contradictions, live book, invalid quality gate (score 113 ≠ 300-point audit), 39 days without post-launch data. See Action #4 above.
+
+Two 7-week-old contradictions still open:
+- `death-in-the-cathedral-close`: `final_approval_score = null` but `final_approval_passed = true` (no FINAL-APPROVAL.md ever run)
+- `the-dust-between-seconds`: `completed_chapters = 1` but `current_chapter = 04`; Chapters 1 and 2 missing from `manuscript/`
 
 ---
 
 ## All Clear
 
-Nothing is all clear today. 8 milestone rules fired across 2 books; 13 state contradictions across 5 books; all niche intelligence stale; Amazon scrape blocked two consecutive weeks; KDP Select on Fix Your Gut expired yesterday without confirmed re-enrollment.
-
----
-
-*Sources: watchdog-2026-07-20.md · milestones-2026-07-20.md · intel-freshness-2026-07-20.md · integrity-2026-07-19.md · ALGO-INTELLIGENCE-CANDIDATE.md (modified 2026-07-17)*
-*Brief generated: 2026-07-20 | Automated Job 6*
+Nothing is fully green today. 4 decisions needed; 2 standing gaps unresolved; watchdog blind for 3 weeks.
