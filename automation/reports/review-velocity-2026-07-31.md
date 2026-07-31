@@ -1,0 +1,142 @@
+# Review Velocity Report — 2026-07-31
+
+**Total new reviews this week (both books combined): UNVERIFIABLE — Amazon fetch blocked (13th consecutive block). Prior values used. Both books remain at 0 verified reviews. Review-generation action required on both titles — both are stalled at Pre-Gate 1 (ads locked).**
+
+---
+
+## Data-Source Notes
+
+| Source | Result |
+|--------|--------|
+| Amazon.co.uk direct fetch (primary) — dp/ URL | 403 Forbidden — blocked both ASINs |
+| WebSearch cached count fallback | No indexed pages found for either ASIN (B0GXYLWS1W, B0GZD1S8HF) |
+| Gmail secondary check (from:amazon, subject:review, newer_than:8d) | Empty — no review notifications (expected; Amazon does not email authors on new reviews) |
+| Gmail secondary check (from:amazon, "customer review" OR "review removed", newer_than:8d) | Empty |
+
+Amazon's bot-protection layer continues to block all automated fetch attempts. This is the **13th consecutive blocked run** (first block observed 2026-06-07, 8+ weeks ago). **No review counts have been invented.** Per hard rules, prior values (0) are used and flagged as unverified.
+
+---
+
+## Review Velocity Table
+
+| Book | ASIN | Prior Count (2026-07-24) | Current Count | New This Period | Days Elapsed | Reviews / Week | Current Gate | To Next Gate | ETA to Next Gate |
+|------|------|--------------------------|---------------|----------------|-------------|---------------|-------------|-------------|-----------------|
+| Fix Your Gut for Good | B0GXYLWS1W | 0 | **FETCH BLOCKED** (prior: 0) | 0 (unverified) | 7 days | 0 r/wk (unverified) | Pre-Gate 1 | 5 reviews (Gate 1 — ads unlock) | **STALLED** |
+| Death in the Cathedral Close | B0GZD1S8HF | 0 | **FETCH BLOCKED** (prior: 0) | 0 (unverified) | 7 days | 0 r/wk (unverified) | Pre-Gate 1 | 5 reviews (Gate 1 — ads unlock) | **STALLED** |
+
+---
+
+## Gate Status Detail
+
+### Gate Reference
+
+| Gate | Reviews Required | Unlocks |
+|------|-----------------|---------|
+| Gate 1 | 5 | Amazon Ads activation |
+| Gate 2 | 10 | Bid scaling / campaign expansion |
+| Gate 3 | 15 | ASIN-targeting campaign |
+| Gate 4 | 25 | Full ad stack / placement multipliers |
+| Gate 5 | 50 | BookBub eligibility |
+
+### Fix Your Gut for Good (B0GXYLWS1W)
+
+- **Current gate:** Pre-Gate 1 (0 / 5 reviews — unverified; fetch blocked)
+- **Reviews to Gate 1:** 5
+- **Days since live date:** 101 days (live since 2026-04-21)
+- **Velocity:** 0 reviews/week (unverified; fetch blocked since 2026-06-07)
+- **ETA to Gate 1:** STALLED — review-generation action needed
+- **KDP Select status:** Term expired 2026-07-19 (12 days ago) — re-enrolment decision still outstanding. Next Countdown Deal window opens ~2026-08-18 if re-enrolled and if 30-day wait has passed.
+
+### Death in the Cathedral Close (B0GZD1S8HF)
+
+- **Current gate:** Pre-Gate 1 (0 / 5 reviews — unverified; fetch blocked)
+- **Reviews to Gate 1:** 5
+- **Days since live date:** 89 days (live since 2026-05-03)
+- **Velocity:** 0 reviews/week (unverified; fetch blocked; 89 days live, 0 verified reviews)
+- **ETA to Gate 1:** STALLED — review-generation action needed
+
+---
+
+## ⚠️ Critical Alert: KDP Select Term Expired (Fix Your Gut for Good) — 12 Days Overdue
+
+`publishing.kdp_select_term_end` was **2026-07-19**, now 12 days past. This was flagged in the 2026-07-24 report with no confirmed resolution. If not re-enrolled:
+- KU page-read income has stopped
+- Next Countdown Deal window (~2026-08-18) unavailable without re-enrolment
+- Free promotion days in the new term unavailable
+
+**Action required:** Log into KDP dashboard immediately and confirm Select re-enrolment status for B0GXYLWS1W.
+
+---
+
+## ⚠️ Escalation: 13-Week Stall on Reviews — Both Books
+
+Both books have been live for 12–15 weeks with zero verified reviews and zero velocity. **Gate 1 (5 reviews) is the ads-unlock gate — Amazon Ads cannot be activated until 5 reviews are reached.**
+
+### Priority 1 — ARC Reader Outreach (highest conversion, currently dead)
+
+- `post_launch.arc_emails_sent = 0` for **both** books — 89–101 days post-launch with zero ARC contact
+- ARC readers committed to reviewing — this is the fastest path to Gate 1
+- Run `arc-manager-agent` or send ARC follow-up emails to any list built during pre-launch
+- 3–5 ARC reviews pushes both books past Gate 1 immediately and unlocks the full ads stack
+- **Every additional week of delay is a week of ad revenue permanently lost.**
+
+### Priority 2 — Personal / Network Outreach
+
+- Direct ask to 5–10 verified readers of either book
+- Verified-purchase reviews only — no incentivised reviews (KDP ToS)
+- One honest email to a warm reader outperforms any automation
+
+### Priority 3 — In-Book Review CTA Traffic
+
+- Both EPUBs contain back-matter review CTAs (placed by review-bait-optimizer)
+- CTA only converts if readers are finishing the book
+- Check KDP dashboard: if KU page reads > 0, some readers are finishing — CTA should be converting
+- If KU page reads = 0: the traffic problem precedes the review problem; ads must be unlocked first
+
+### Priority 4 — Manual Review Count Check (persistent fetch block)
+
+- Amazon.co.uk has blocked WebFetch and WebSearch for 13 consecutive weekly runs (8+ weeks)
+- Review counts cannot be verified by this automation until the block resolves
+- **Recommended action:** Check both product pages manually in a browser once per week and record counts directly into pipeline-state.json via the STATE DELTA process
+
+---
+
+## Gmail Secondary Check
+
+Searches run:
+- `from:amazon subject:(review) newer_than:8d`
+- `from:amazon ("customer review" OR "your review" OR "review removed") newer_than:8d`
+
+**Result: Both searches returned empty.** No Amazon review-related emails in the last 8 days. Expected — Amazon does not notify authors/publishers when a customer posts a new review. No labelling action taken.
+
+---
+
+## STATE DELTA
+
+> The Architect or a write-enabled agent applies these changes. This report does NOT edit pipeline-state.json directly.
+
+**No count delta to apply** — live counts could not be verified (fetch blocked); prior values unchanged at 0 for both books.
+
+**Recommended weekly_log entries to anchor today's run date:**
+
+```
+books/fix-your-gut-for-good/pipeline-state.json
+  post_launch.weekly_log → append:
+    { "date": "2026-07-31", "review_count": 0, "avg_rating": null, "source": "fetch-blocked-prior-value" }
+
+books/death-in-the-cathedral-close/pipeline-state.json
+  post_launch.weekly_log → append:
+    { "date": "2026-07-31", "review_count": 0, "avg_rating": null, "source": "fetch-blocked-prior-value" }
+```
+
+**Additional state action required:**
+
+```
+books/fix-your-gut-for-good/pipeline-state.json
+  publishing.kdp_select → verify re-enrolment; term expired 2026-07-19 (now 12 days overdue)
+  If re-enrolled: publishing.kdp_select_term_start = "2026-07-19", publishing.kdp_select_term_end = "2026-10-17"
+```
+
+---
+
+*Review velocity run: 2026-07-31 | Prior report: 2026-07-24 (7 days) | Fetch method: WebFetch (403 both ASINs) → WebSearch (no cached results) → all blocked | Gmail: 0 review-related emails | No counts invented | No pipeline-state.json files modified.*
