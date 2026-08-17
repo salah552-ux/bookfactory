@@ -1,0 +1,108 @@
+# BookFactory Milestone Sentinel — 2026-08-17
+
+## ACTION REQUIRED (9 items)
+
+---
+
+## Fix Your Gut for Good (ASIN B0GXYLWS1W)
+
+### Rule 1 — KDP Select term expiry
+**FIRED** — KDP Select term ended 29 days ago (2026-07-19). No re-enrollment recorded in pipeline-state.json.
+- `publishing.kdp_select_term_end`: 2026-07-19
+- Days since expiry: **29 days** (as of 2026-08-17)
+- If not re-enrolled, book is no longer in KDP Select and lost KU eligibility 29 days ago.
+- **Action: Architect must confirm re-enrollment status in KDP dashboard immediately. If not enrolled, enrol now to start next 90-day term.**
+
+### Rule 2 — Active Countdown Deal ending soon
+ok — No countdown deal currently active (`post_launch.countdown_deal_run` = false).
+
+### Rule 3 — Countdown Deal eligibility window opens within 7 days
+**FIRED** — Next countdown window opens **TOMORROW: 2026-08-18** (1 day away).
+- `post_launch.countdown_deal_eligible_next_term`: 2026-08-18
+- Note from file: "Next window: ~2026-08-18 in next Select term."
+- **Action: Set up the Countdown Deal in KDP dashboard today (deals must be scheduled in advance). Invoke `amazon-ads-agent` to prepare bid adjustments for deal week.**
+
+### Rule 4 — BookFunnel link not live
+**FIRED** — Standing GAP (unchanged since flagged 2026-05-31).
+- `post_launch.bookfunnel_link_live`: false
+- `post_launch.bookfunnel_gap_flagged`: true
+- Lead magnet content exists (LEAD-MAGNET.md, EMAIL-SEQUENCE.md created 2026-05-28) but the BookFunnel page has never been built and linked.
+- **Action: Create BookFunnel page for "The Gut Trigger Cheat Sheet", add link to book back matter, rebuild EPUB, re-upload to KDP.**
+
+### Rule 5 — Category mismatch
+ok — No `category_mismatch_flagged` field in this book's state.
+
+### Rule 6 — Stages stuck in_progress >14 days
+**FIRED (×2)** — Two stages have been in_progress with no update for 71 days (last overall update: 2026-06-07).
+
+| Stage | Status | Last update | Days stuck |
+|---|---|---|---|
+| 08-products | in_progress | 2026-06-07 | **71 days** |
+| 10-postlaunch | in_progress | 2026-06-07 | **71 days** |
+
+- Stage 08-products: LEAD-MAGNET.md and EMAIL-SEQUENCE.md exist; BookFunnel link pending (linked to Rule 4 above).
+- Stage 10-postlaunch: APLUS-CONTENT.md created 2026-05-28, awaiting Brand Registry enrollment to submit. `aplus_content_submitted` = false. `aplus_content_live` = false.
+- **Action: Invoke `pipeline-orchestrator` to drive both stages to completion.**
+
+### Rule 7 — Human gates false on live book
+ok — All human_gates fields are true. (Informational: `pre_launch.author_central_uk_live` = false, `pre_launch.author_central_us_live` = false, `pre_launch.goodreads_listing_live` = false — not hard gates but standing gaps.)
+
+---
+
+## Death in the Cathedral Close (ASIN B0GZD1S8HF)
+
+### Rule 1 — KDP Select term expiry
+**FIRED** — `kdp_select_term_end` field does not exist in pipeline-state.json. Book is enrolled in KDP Select (`publishing.kdp_select` = true), live since 2026-05-03. Standard 90-day term would end ~2026-08-01 (16 days ago) — but this date is not recorded in the file.
+- **Status: unknown — needs Architect input.** Was KDP Select re-enrolled? Add `kdp_select_term_end` to pipeline-state.json and confirm dashboard status.
+
+### Rule 2 — Active Countdown Deal ending soon
+ok — The Countdown Deal ran 2026-06-02 to 2026-06-09 (ended 69 days ago). No active deal.
+
+### Rule 3 — Countdown Deal eligibility window opens within 7 days
+ok — Next eligibility window date not recorded in file (`countdown_deal_eligible_next_term` field absent). Cannot compute without file data.
+
+### Rule 4 — BookFunnel link not live
+**FIRED** — Standing GAP (unchanged since flagged 2026-05-31).
+- `post_launch.bookfunnel_link_live`: false
+- `post_launch.bookfunnel_gap_flagged`: true
+- **Action: Create BookFunnel page for Cathedral Close, add link to back matter, rebuild EPUB, re-upload to KDP.**
+
+### Rule 5 — Category mismatch
+**FIRED** — `post_launch.category_mismatch_flagged`: true.
+- Mismatch confirmed on Deal Day 1 (2026-06-02): book is in Traditional Detective Mysteries instead of planned Cozy + Amateur Sleuth + British & Irish.
+- Local metadata was updated 2026-06-07 but KDP dashboard change still requires user login. **GAP has been open for 71 days with no resolution recorded.**
+- `post_launch.category_mismatch_note`: "Correct end state: Amateur Sleuth + Cozy + British & Irish > Mystery & Thrillers."
+- **Action: Log in to KDP dashboard, update category to Cozy Mystery + British & Irish > Mystery & Thrillers + Amateur Sleuths. Confirm live. Update `category_mismatch_flagged` to false in pipeline-state.json.**
+
+### Rule 6 — Stage stuck in_progress >14 days
+**FIRED** — Stage 10-postlaunch in_progress since 2026-05-03; pipeline-state.json last updated 2026-05-28 (81 days ago).
+
+| Stage | Status | Last update | Days stuck |
+|---|---|---|---|
+| 10-postlaunch | in_progress | 2026-05-28 | **81 days** |
+
+- No A+ Content, no AMS campaigns, no BookFunnel link, no review count update, no further BSR data logged after 2026-06-02.
+- **Action: Invoke `pipeline-orchestrator` to resume post-launch work. Run `post-launch-tracker` with current KDP data.**
+
+### Rule 7 — Human gates false on live book
+ok — All human_gates fields present are true.
+
+---
+
+## Priority Order (most urgent first)
+
+| # | Book | Rule | Deadline |
+|---|---|---|---|
+| 1 | Fix Your Gut | Rule 3 — Countdown window opens | **2026-08-18 (TOMORROW)** |
+| 2 | Fix Your Gut | Rule 1 — KDP Select term ended | 2026-07-19 (29 days overdue) |
+| 3 | Cathedral Close | Rule 1 — KDP Select term end unknown | ~2026-08-01 (unknown/overdue) |
+| 4 | Cathedral Close | Rule 5 — Category mismatch | 71 days open — no deadline, but costing discoverability daily |
+| 5 | Fix Your Gut | Rule 6 — Stage 08-products stuck | 71 days stuck |
+| 6 | Fix Your Gut | Rule 6 — Stage 10-postlaunch stuck | 71 days stuck |
+| 7 | Cathedral Close | Rule 6 — Stage 10-postlaunch stuck | 81 days stuck |
+| 8 | Fix Your Gut | Rule 4 — BookFunnel GAP | Open since 2026-05-31 |
+| 9 | Cathedral Close | Rule 4 — BookFunnel GAP | Open since 2026-05-31 |
+
+---
+
+*Generated by BookFactory Milestone Sentinel — 2026-08-17*
