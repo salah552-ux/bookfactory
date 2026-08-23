@@ -1845,3 +1845,10 @@ Append-only log of every orchestrator daemon decision.
 - `2026-08-23T01:52:16.518Z` **the-7-day-gut-reset** `blocked` — ai_questionnaire_confirmed, published
 - `2026-08-23T01:52:16.520Z` **the-dust-between-seconds** `invoked` — DRY RUN — would invoke pipeline-orchestrator for the-dust-between-seconds
 - `2026-08-23T01:52:16.522Z` **vagus-nerve-gut-reset-workbook** `invoked` — DRY RUN — would invoke pipeline-orchestrator for vagus-nerve-gut-reset-workbook
+- `2026-08-23T06:53:23.645Z` **cortisol-gut-health** `no_state` — pipeline-state.json missing
+- `2026-08-23T06:53:23.648Z` **death-in-the-cathedral-close** `invoked` — DRY RUN — would invoke pipeline-orchestrator for death-in-the-cathedral-close
+- `2026-08-23T06:53:23.651Z` **fix-your-gut-for-good** `invoked` — DRY RUN — would invoke pipeline-orchestrator for fix-your-gut-for-good
+- `2026-08-23T06:53:23.652Z` **h-pylori-recovery-plan** `invoked` — DRY RUN — would invoke pipeline-orchestrator for h-pylori-recovery-plan
+- `2026-08-23T06:53:23.654Z` **the-7-day-gut-reset** `blocked` — ai_questionnaire_confirmed, published
+- `2026-08-23T06:53:23.657Z` **the-dust-between-seconds** `invoked` — DRY RUN — would invoke pipeline-orchestrator for the-dust-between-seconds
+- `2026-08-23T06:53:23.658Z` **vagus-nerve-gut-reset-workbook** `invoked` — DRY RUN — would invoke pipeline-orchestrator for vagus-nerve-gut-reset-workbook
