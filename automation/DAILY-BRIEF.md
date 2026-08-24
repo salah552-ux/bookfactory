@@ -1,105 +1,74 @@
-# BookFactory Daily Brief — 2026-08-17
+# BookFactory Daily Brief — 2026-08-24
 
 ---
 
 ## ACTION REQUIRED
 
-> **4 items need a decision today. Start here.**
+**9 items need a decision. Top priorities:**
 
-### 1. CRITICAL — Schedule Fix Your Gut Countdown Deal TODAY
-Eligibility window opens **tomorrow, 2026-08-18**. Deals must be scheduled before the window; you cannot do this after it opens. Miss it and the window doesn't return for ~90 days.
-→ Log into KDP → Promotions → Countdown Deals → Schedule now.
-→ Then reply **COUNTDOWN** once scheduled so the pipeline records it.
-
-### 2. HIGH — KDP Select re-enrollment: both books unconfirmed
-- **Fix Your Gut:** Select term ended **29 days ago (2026-07-19)**. No re-enrollment in pipeline-state. Book may have lost KU eligibility 29 days ago.
-- **Cathedral Close:** Select term end date never recorded. Standard 90-day term from 2026-05-03 would have expired ~2026-08-01 (**16 days ago**). Unknown if auto-renewed.
-→ Check both books in KDP dashboard. Confirm enrollment or re-enrol now.
-→ Reply **SELECT-FYG** and/or **SELECT-CC** once confirmed.
-
-### 3. HIGH — H-Pylori Recovery Plan: live 60 days with zero post-launch monitoring
-Book has been live since **2026-06-17** (ASIN B0H5TZTPRT). `current_stage=9`, `stages["10-postlaunch"]="not_started"`. No BSR tracking, no review monitoring, no countdown deal scheduled. This has appeared in **five consecutive weekly integrity audits** with zero remediation.
-→ Reply **HPYLORI** to trigger `pipeline-orchestrator` to start Stage 10.
-
-### 4. MEDIUM — New algo candidate ready for review
-`intelligence/ALGO-INTELLIGENCE-CANDIDATE.md` (drafted 2026-08-01) contains 1 high-confidence finding: **KDP 70% royalty ceiling raised from $9.99 to $12.99**, effective July 7, 2026. This affects pricing guidance in `publisher-agent`, `marketing-agent`, and `kdp-upload-agent`. The file cannot be promoted automatically — it needs your sign-off.
-→ Reply **PROMOTE** to merge it into ALGO-INTELLIGENCE.md (pipeline-orchestrator will handle).
+| # | Item | Age | What to do |
+|---|------|-----|------------|
+| 1 | **Fix Your Gut — KDP Select expired** | 36 days overdue (2026-07-19) | Log in to KDP, confirm re-enrollment, write the new term-end date to pipeline-state.json. Reply **CONFIRM** once done. |
+| 2 | **Fix Your Gut — Countdown Deal window OPEN** | 6 days unused (opened 2026-08-18) | Blocked by #1 above. Once Select is confirmed active, schedule the Countdown Deal in KDP NOW. Every day is a burned promo slot. Reply **SCHEDULE** once booked. |
+| 3 | **Cathedral Close — KDP Select term unknown** | ~23 days overdue (est. 2026-08-01) | No `kdp_select_term_end` field exists. Log in to KDP, confirm status, add the field. Reply **CONFIRM** once done. |
+| 4 | **Cathedral Close — Category mismatch** | 78 days open | Log in to KDP, change category to Cozy Mystery + British & Irish + Amateur Sleuths. Set `category_mismatch_flagged: false`. Reply **FIXED** once done. |
+| 5 | **h-pylori-recovery-plan — 0 post-launch monitoring** | Live 67 days, stage 10 never started | CRITICAL (6th consecutive week). Run `post-launch-tracker` with current KDP dashboard data. Reply **TRACKED** once done. |
+| 6 | **Both books — BookFunnel links missing** | 85 days open | Create BookFunnel pages (Gut Trigger Cheat Sheet + Cathedral Close magnet), add links to back matter, rebuild + re-upload EPUBs. Reply **BOOKFUNNEL** once live. |
+| 7 | **Stages stuck (3 books)** | 78–88 days | Invoke `pipeline-orchestrator` on fix-your-gut (stages 08+10) and cathedral-close (stage 10). |
+| 8 | **Amazon egress blocked** | Ongoing | Allow-list `www.amazon.co.uk` in the scheduled routine's network egress policy so the watchdog can check live BSR and reviews. |
+| 9 | **ALGO-INTELLIGENCE candidate not promoted** | Drafted 2026-08-01 | Review `intelligence/ALGO-INTELLIGENCE-CANDIDATE.md` (1 HIGH + 1 MEDIUM finding vs v1.2). Merge approved entries into ALGO-INTELLIGENCE.md and bump version. Reply **PROMOTED** once done. |
 
 ---
 
 ## Live Book Status
 
-> Scrape failed for the **third consecutive week** — Amazon.co.uk egress blocked by proxy. All values below are from pipeline-state.json (stale).
+**Watchdog scrape FAILED today** — `www.amazon.co.uk` is blocked at the egress proxy. No live BSR or review data was retrieved for either book. Last known values only:
 
-| Book | ASIN | Reviews | Rating | BSR | Price | Last Live Data |
-|------|------|---------|--------|-----|-------|----------------|
-| Fix Your Gut for Good | B0GXYLWS1W | 0 | — | not recorded | £9.99 UK / $2.99 US ⚠️ | 2026-06-07 (71d ago) |
-| Death in Cathedral Close | B0GZD1S8HF | 0 | — | #1,370,902 UK | £6.99 | 2026-06-02 (76d ago) |
-| H-Pylori Recovery Plan | B0H5TZTPRT | unknown | unknown | unknown | unknown | Never logged |
+| Book | ASIN | Reviews | BSR (last recorded) | Note |
+|------|------|---------|---------------------|------|
+| Fix Your Gut for Good | B0GXYLWS1W | 0 | unknown | Live since 2026-04-21 |
+| Death in the Cathedral Close | B0GZD1S8HF | 0 | 1,370,902 (2026-06-02 only) | Live since 2026-05-03 |
 
-⚠️ **Fix Your Gut US price:** $2.99 showing vs. $9.99 list — flagged 71 days ago, still unresolved.
+*(h-pylori-recovery-plan — B0H5TZTPRT — live since 2026-06-17; no monitoring active.)*
 
 ---
 
 ## Upcoming Deadlines (next 14 days)
 
-| Date | Book | Item |
-|------|------|------|
-| **2026-08-18 (TOMORROW)** | Fix Your Gut | Countdown Deal eligibility window opens — schedule TODAY |
-| 2026-07-19 (29d overdue) | Fix Your Gut | KDP Select re-enrollment (term ended — see ACTION REQUIRED #2) |
-| ~2026-08-01 (16d overdue) | Cathedral Close | KDP Select re-enrollment (estimated expiry — see ACTION REQUIRED #2) |
+- **Countdown Deal window for Fix Your Gut:** OPEN NOW — closes at end of current KDP Select term (~2026-10-17 if already renewed). Schedule immediately.
+- **Cathedral Close Countdown Deal window:** Unknown — dependent on KDP Select term resolution (item #3 above).
 
-No other date-bound deadlines in the next 14 days recorded in pipeline-state.
+No other hard deadlines logged in the next 14 days.
 
 ---
 
 ## Standing Gaps
 
-| Gap | Open Since | Days | Status |
-|-----|-----------|------|--------|
-| BookFunnel link — Fix Your Gut | 2026-05-31 | 78d | Lead magnet content exists; page not built |
-| BookFunnel link — Cathedral Close | 2026-05-31 | 78d | No lead magnet yet |
-| Cathedral Close category mismatch (Trad Detective vs Cozy + British & Irish) | 2026-06-02 | 76d | Local fix done; KDP dashboard not updated |
-| Fix Your Gut US price ($2.99 vs $9.99 list) | 2026-06-07 | 71d | KDP dashboard check needed |
-| Amazon.co.uk watchdog scrape blocked (proxy egress) | 2026-08-03 | 14d | No fix recorded; all alert rules unevaluable |
-| Fix Your Gut Author Central (UK + US) not live | 2026-04-21 | — | Low priority but open |
-| Fix Your Gut Goodreads listing not live | 2026-04-21 | — | Low priority but open |
+| Gap | Book(s) | Age | Status |
+|-----|---------|-----|--------|
+| BookFunnel page not built | Fix Your Gut + Cathedral Close | 85 days | Unchanged |
+| Cathedral Close category mismatch | Cathedral Close | 78 days | Unchanged |
+| Author Central UK/US + Goodreads not live | Fix Your Gut | 125 days | No action recorded |
+| h-pylori stage 10 not started | h-pylori-recovery-plan | 67 days live | No action (6 weeks flagged) |
 
 ---
 
 ## Intelligence
 
-**All 4 niches STALE** — harvests must be run in a **local Playwright-enabled session** (cloud agent cannot run harvester).
+- **ALL 4 niches are stale** (78–103 days). 11th consecutive week failing the 14-day freshness threshold.
+  - gut-health: 103 days | cozy-mystery: 84 days | vagus-nerve: 82 days | h-pylori-gut-health: 78 days
+  - Must be run in a **local Playwright session** — the cloud agent cannot execute harvests.
+  - Priority order: `harvest gut-health` → `harvest cozy-mystery` → `harvest vagus-nerve` → `harvest h-pylori-gut-health`
 
-| Niche | Last Harvested | Age |
-|-------|---------------|-----|
-| gut-health | 2026-05-13 | 96d 🔴 |
-| cozy-mystery | 2026-06-01 | 77d 🔴 |
-| vagus-nerve | 2026-06-03 | 75d 🔴 (partial harvest only) |
-| h-pylori-gut-health | 2026-06-07 | 71d 🔴 (no BSR snapshots) |
-
-Any new book blueprint or category decision for these niches is **blocked** until re-harvested locally.
-
-**New algo candidate:** `intelligence/ALGO-INTELLIGENCE-CANDIDATE.md` drafted 2026-08-01 — not yet promoted. Key finding: KDP 70% royalty ceiling is now $12.99 (up from $9.99, effective July 7, 2026). See ACTION REQUIRED #4.
-
----
-
-## Integrity (Job 5 — 2026-08-16)
-
-19 contradictions across 5 of 6 books. Up from 14 last week (+5 new, 0 resolved).
-
-Most serious (5 consecutive weeks unfixed): **H-Pylori Recovery Plan — live 60 days, post-launch stage not started.** See ACTION REQUIRED #3.
-
-Next most serious: Fix Your Gut now carries 5 contradictions (stage 09 pending while current_stage=10; two out-of-order stage timestamps). Low operational risk but audit trail is broken.
-
-Full contradiction list in `automation/reports/integrity-2026-08-16.md`.
+- **New ALGO-INTELLIGENCE candidate available** (drafted 2026-08-01, not yet promoted). Covers Jun 12 → Aug 1 vs current v1.2. Contains 1 HIGH-confidence and 1 MEDIUM-confidence finding. See `intelligence/ALGO-INTELLIGENCE-CANDIDATE.md`. Needs Architect review and merge. *(See ACTION REQUIRED #9.)*
 
 ---
 
 ## All Clear
 
-Nothing is fully green today. The Countdown Deal deadline (tomorrow) is the single most time-sensitive item.
+Nothing is all clear today. 9 open actions, 19 unresolved state contradictions across 5 books, 1 CRITICAL revenue asset unmonitored for 67 days.
 
 ---
 
-*Sources: watchdog-2026-08-17.md, milestones-2026-08-17.md, intel-freshness-2026-08-17.md, integrity-2026-08-16.md, ALGO-INTELLIGENCE-CANDIDATE.md (2026-08-01). No metrics invented — all values restated from source reports.*
+*Sources: watchdog-2026-08-24.md · milestones-2026-08-24.md · intel-freshness-2026-08-24.md · integrity-2026-08-23.md · ALGO-INTELLIGENCE-CANDIDATE.md*
+*Generated: 2026-08-24 (automated Job 6)*
