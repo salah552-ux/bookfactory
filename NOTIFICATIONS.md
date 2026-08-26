@@ -942,3 +942,8 @@ Human gate awaiting action:
 Human gate awaiting action:
 - **ai_questionnaire_confirmed**: KDP AI questionnaire awaiting confirmation
 - **published**: KDP PUBLISH confirmation pending
+## 2026-08-26T13:06:54.890Z — `the-7-day-gut-reset`
+
+Human gate awaiting action:
+- **ai_questionnaire_confirmed**: KDP AI questionnaire awaiting confirmation
+- **published**: KDP PUBLISH confirmation pending
